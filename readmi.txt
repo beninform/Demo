@@ -1,0 +1,1 @@
+atest is a starter app for trying out jspsych
