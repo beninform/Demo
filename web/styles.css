@@ -1,0 +1,22 @@
+.bp-img {
+	width: 40%;
+}
+
+#input-0 {
+	font-size: 22px;
+}
+
+#input-1 {
+	font-size: 22px;
+}
+
+/*type='text'*/
+
+input[type=text] {
+  width: 60%;
+  height: 3em;
+}
+
+input[type=text]:focus {
+  background-color: lightblue;
+}
