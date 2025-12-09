@@ -1,5 +1,82 @@
+/* Adjustable layout proportions */
+/*:root {
+    --vertical-space: 60px;
+    --horizontal-space: 60px;
+    --top-width: 60%;
+    --middle-width: 25%;
+    --bottom-width: 60%;
+}*/
+
+
+.intro-container {
+    --vertical-space: 60px;
+    --horizontal-space: 60px;
+    --top-width: 60%;
+    --middle-width: 25%;
+    --bottom-width: 60%;
+
+    margin: var(--vertical-space) var(--horizontal-space);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*font-family: Arial, sans-serif;*/
+}
+
+.intro-top {
+    width: var(--top-width);
+    text-align: center;
+    margin-bottom: var(--vertical-space);
+}
+
+.intro-middle-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: var(--horizontal-space);
+    margin-bottom: var(--vertical-space);
+}
+
+.intro-middle-left,
+.intro-middle-right {
+    width: var(--middle-width);
+    text-align: center;
+    border-style: solid;
+    padding: 30px;
+    padding-top: 50px;
+    padding-bottom: 60px;
+}
+
+.intro-bottom {
+    width: var(--bottom-width);
+    text-align: center;
+}
+
+.instructions-container {
+	padding-top: 10%;
+    padding-left: 20%;   
+    padding-right: 20%;
+    font-family: Arial, sans-serif;
+    text-align: left;
+}
+
+.example-container {
+    font-family: Arial, sans-serif;
+}
+
+.set-a-b-label-container {
+    display: flex;
+    justify-content: center;	
+}
+
+#set-a-label, #set-b-label {
+    width: 25%;
+    text-align: center;
+}
+
 .bp-img {
-	width: 40%;
+	width: 40vw;
+	max-width: 100%;
+
 }
 
 #input-0 {
@@ -10,13 +87,76 @@
 	font-size: 22px;
 }
 
-/*type='text'*/
 
 input[type=text] {
-  width: 60%;
-  height: 3em;
+  width: 40%;
 }
 
 input[type=text]:focus {
   background-color: lightblue;
+}
+
+.outer-wrapper {
+	/*position: relative;*/
+    display: flex;
+    justify-content: center;	
+}
+
+.candidate-rules, .preamble-form-wrapper {
+    width: 45vw;
+    text-align: center;
+} 
+
+.preamble-form-wrapper {
+    background-color: #EFE;
+} 
+
+.jspsych-survey-text-question {
+	margin: 2%;
+}
+
+/*.candidate-rules {
+	float: left;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+}*/
+#table-container {
+	width: 40vw;
+}
+#rules-table {
+	background-color: #FEE;
+	width: 40vw;
+	text-align: left;
+}
+
+#rules-table {
+    border-collapse: collapse;
+}
+
+#rules-table tr {
+    border-bottom: 1px solid black;
+}
+
+
+#rules-table td {
+	height: 75px;
+	padding: 2%;
+}
+
+#rules-table th {
+	padding: 2%;
+}
+
+p {
+	margin: 2px;
+}
+
+#jspsych-survey-text-0, #jspsych-survey-text-1 {
+	margin-top: 0em;
+	margin-bottom: 0em;
+}
+
+.jspsych-content {
+	margin: 0em auto;
 }

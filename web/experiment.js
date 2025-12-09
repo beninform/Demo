@@ -1,80 +1,118 @@
+// get the user id from the querystring
+
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+}
+let id = getQueryVariable('id');
+console.log('id', id);
+
+
+
 let jsPsych = initJsPsych();
 
 let timeline = [];
 
 let welcomeTrial = {
     type: jsPsychHtmlKeyboardResponse, 
-    stimulus: `
-    <h1>Welcome to the first D432 Demo</h1> 
-    <p>In this experiment, you will be shown a set of figures in two groups
-     and asked to tell us the rule that distinctly describes the first group.</p>
-     <p>You will also be asked to tell us the rule that distinctly describes the
-     second group.</p>
-    <p>There are three parts to this experiment.</p>
-    <p>Press SPACE to proceed to the first part.</p>
-    `,
-    choices: [' '], 
+    stimulus: trialText.introductionText,
 };
 timeline.push(welcomeTrial);
+
+// TODO add radio button for 'I know the answer' prior to input text
+// TODO add institutional logo
+// TODO add option to resume later - with save form
+
+let instructionTrial = {
+    type: jsPsychSurveyText,
+    preamble: trialText.instructionText,
+    questions: [
+        {prompt: 'Your code', required: true, name: 'usrcode'}
+    ],
+    data: {
+        collect: true
+    }
+};
+timeline.push(instructionTrial);
+
+let exampleTrial = {
+    type: jsPsychSurveyText,
+    preamble: `
+        ${trialText.exampleText}
+        <h3>BP 1</h3>
+        ${trialText.tempLabelsText}
+        <img class='bp-img' src='img/p0001.png'/>
+        <p>We will make it possible to skip forward later, if you cannot solve a problem.</p>
+        `,
+    questions: [
+        {prompt: 'Your rule for set A', required: true, name: 'Arule', rows:3},
+        {prompt: 'Your rule for set B', required: true, name: 'Brule', rows:3}
+    ],
+    data: {
+        collect: true
+    },
+}
+timeline.push(exampleTrial);
 
 for (let block of blocks) {
     let blockIntroTrial = {
         type: jsPsychHtmlKeyboardResponse,
         stimulus: `
         	<h1>${block.title}</h1>
-        	<p>You are about to see a series of pages.</p>
-            <p>Each page has a group of six figures on the left (set A), 
-            separated from six figures on the right (set B).
-            <p>What is the rule that describes set A?</p>
-            <p>What is the rule that describes set B?</p>
-    		<p>Press SPACE to see the first problem.</p>
-        	`,
-        choices: [' '],
+            <p>There are ${block.conditions[0].length} problems in this part.<br />
+            You can save your progress at any time.</p>
+            <p>Press any key to begin.</p>
+        	`
     };
     timeline.push(blockIntroTrial);
 
-    let tempLabelsText = `
-            <p>Set A &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            Set B</p>`
-    let preambleText = '';
+
     //TODO give feedback on example page response
     for (let imgno of block.conditions[0]) {
         let imagenostr = '000'+imgno;
         let imgstr = imagenostr.slice(-4);
+
+        let sideboxVal = null;
+        if (id=='H2SO4') {  // switches candidate rules on (from querystring)
+            sideboxVal = imgno
+        };
+
+
+
         let inputTrial = {
             type: jsPsychSurveyText,
             preamble: `
                 <h3>BP ${imgno}</h3>
-                ${tempLabelsText}
+                ${trialText.tempLabelsText}
                 <img class='bp-img' src='img/p${imgstr}.png'/>
                 `,
             questions: [
-                {prompt: 'Your rule for set A', required: true},
-                {prompt: 'Your rule for set B', required: true}
+                {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows:2},
+                {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows:2}
             ],
-
             data: {
-
                 collect: true, // flag whether we want to collect to csv
                 imagenr: imgstr,
                 blockId: block.title,
             },
-            // on_finish: function (data) {
-            //     // do something
-            // }
+            sidebox: sideboxVal
 
         }
-	    timeline.push(inputTrial);
-        
+        timeline.push(inputTrial);
+
         let results = jsPsych.data
             .get()
             .ignore('preamble')
             .csv();
-        console.log('£', results);
-	}
+    }
 }
+
 
 let resultsTrial = {
     type: jsPsychHtmlKeyboardResponse,
