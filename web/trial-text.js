@@ -13,7 +13,7 @@ let trialText = {
 
 	    <div class="intro-bottom">
 	    	<p>There are three parts to the experiment.</p>
-	    	<p>Press any key to proceed.</p>
+	    	<p>Press the button below to proceed.</p>
 	    </div>
 	</div>
 				`,

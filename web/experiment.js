@@ -19,15 +19,20 @@ let jsPsych = initJsPsych();
 
 let timeline = [];
 
+
 let welcomeTrial = {
-    type: jsPsychHtmlKeyboardResponse, 
+    type: jsPsychHtmlButtonResponse,
     stimulus: trialText.introductionText,
+    choices: ['Continue'],
+    // prompt: ""
 };
+
 timeline.push(welcomeTrial);
 
 // TODO add radio button for 'I know the answer' prior to input text
 // TODO add institutional logo
 // TODO add option to resume later - with save form
+// TODO capture user code in instruction trial (or provide it in querystring)
 
 let instructionTrial = {
     type: jsPsychSurveyText,
@@ -62,13 +67,14 @@ timeline.push(exampleTrial);
 
 for (let block of blocks) {
     let blockIntroTrial = {
-        type: jsPsychHtmlKeyboardResponse,
+        type: jsPsychHtmlButtonResponse,
         stimulus: `
         	<h1>${block.title}</h1>
             <p>There are ${block.conditions[0].length} problems in this part.<br />
             You can save your progress at any time.</p>
-            <p>Press any key to begin.</p>
-        	`
+            <p>Press the button below to begin.</p>
+        	`,
+            choices: ['Continue'],
     };
     timeline.push(blockIntroTrial);
 
