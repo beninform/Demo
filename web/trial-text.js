@@ -48,8 +48,7 @@ let trialText = {
 	exampleText: `
 		<div class="example-container">
 			<h1>Example Problem</h1>
-			<p>What rule correctly describes all the images in set A (and none of those in set B)?<br />
-			What rule correctly describes all the images in set B (and none of those in set A)?</p>
+
 		</div>
 
 		`

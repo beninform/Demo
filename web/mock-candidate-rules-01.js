@@ -1,0 +1,3002 @@
+﻿var rulesArray = [
+  {
+    "ID": 1,
+    "BP": 1,
+    "A": "empty",
+    "B": "marked"
+  },
+  {
+    "ID": 2,
+    "BP": 1,
+    "A": "no shapes",
+    "B": "shapes present"
+  },
+  {
+    "ID": 3,
+    "BP": 1,
+    "A": "no outlines",
+    "B": "outlines present"
+  },
+  {
+    "ID": 4,
+    "BP": 1,
+    "A": "no enclosed areas",
+    "B": "enclosed areas"
+  },
+  {
+    "ID": 5,
+    "BP": 1,
+    "A": "blank space",
+    "B": "patterned space"
+  },
+  {
+    "ID": 6,
+    "BP": 2,
+    "A": "large centered shapes",
+    "B": "small off-center shapes"
+  },
+  {
+    "ID": 7,
+    "BP": 2,
+    "A": "continuous simple outlines",
+    "B": "fragmented intricate outlines"
+  },
+  {
+    "ID": 8,
+    "BP": 2,
+    "A": "solid bold figures",
+    "B": "thin detailed figures"
+  },
+  {
+    "ID": 9,
+    "BP": 2,
+    "A": "standard geometric forms",
+    "B": "symbolic non-standard forms"
+  },
+  {
+    "ID": 10,
+    "BP": 2,
+    "A": "aligned silhouettes",
+    "B": "tilted intricate shapes"
+  },
+  {
+    "ID": 11,
+    "BP": 3,
+    "A": "outlined shapes",
+    "B": "filled shapes"
+  },
+  {
+    "ID": 12,
+    "BP": 3,
+    "A": "hollow interiors",
+    "B": "solid interiors"
+  },
+  {
+    "ID": 13,
+    "BP": 3,
+    "A": "transparent centers",
+    "B": "opaque centers"
+  },
+  {
+    "ID": 14,
+    "BP": 3,
+    "A": "line-based shapes",
+    "B": "silhouette-based shapes"
+  },
+  {
+    "ID": 15,
+    "BP": 3,
+    "A": "background visible",
+    "B": "background obscured"
+  },
+  {
+    "ID": 16,
+    "BP": 4,
+    "A": "convex shapes",
+    "B": "concave shapes"
+  },
+  {
+    "ID": 17,
+    "BP": 4,
+    "A": "regular geometric forms",
+    "B": "irregular forms"
+  },
+  {
+    "ID": 18,
+    "BP": 4,
+    "A": "uniform boundaries",
+    "B": "mixed boundaries"
+  },
+  {
+    "ID": 19,
+    "BP": 4,
+    "A": "simple",
+    "B": "complex corner types"
+  },
+  {
+    "ID": 20,
+    "BP": 4,
+    "A": "consistent",
+    "B": "inconsistent fill and outlines"
+  },
+  {
+    "ID": 21,
+    "BP": 5,
+    "A": "straight-edged polygons",
+    "B": "smooth curves"
+  },
+  {
+    "ID": 22,
+    "BP": 5,
+    "A": "discrete vertices",
+    "B": "continuous loops"
+  },
+  {
+    "ID": 23,
+    "BP": 5,
+    "A": "finite side count",
+    "B": "indefinite form"
+  },
+  {
+    "ID": 24,
+    "BP": 5,
+    "A": "angular transitions",
+    "B": "smooth transitions"
+  },
+  {
+    "ID": 25,
+    "BP": 5,
+    "A": "polygonal connectivity",
+    "B": "organic shapes"
+  },
+  {
+    "ID": 26,
+    "BP": 6,
+    "A": "triangular shapes",
+    "B": "non-triangular shapes"
+  },
+  {
+    "ID": 27,
+    "BP": 6,
+    "A": "non-parallel edges",
+    "B": "parallel edges"
+  },
+  {
+    "ID": 28,
+    "BP": 6,
+    "A": "skewed angles",
+    "B": "right or wide angles"
+  },
+  {
+    "ID": 29,
+    "BP": 6,
+    "A": "odd vertices",
+    "B": "even or star vertices"
+  },
+  {
+    "ID": 30,
+    "BP": 6,
+    "A": "no reflective symmetry",
+    "B": "reflective symmetry"
+  },
+  {
+    "ID": 31,
+    "BP": 7,
+    "A": "vertical orientation",
+    "B": "horizontal orientation"
+  },
+  {
+    "ID": 32,
+    "BP": 7,
+    "A": "tall shapes",
+    "B": "wide shapes"
+  },
+  {
+    "ID": 33,
+    "BP": 7,
+    "A": "portrait layout",
+    "B": "landscape layout"
+  },
+  {
+    "ID": 34,
+    "BP": 7,
+    "A": "vertical flow",
+    "B": "horizontal flow"
+  },
+  {
+    "ID": 35,
+    "BP": 7,
+    "A": "vertical dimension emphasis",
+    "B": "horizontal dimension emphasis"
+  },
+  {
+    "ID": 36,
+    "BP": 8,
+    "A": "horizontal or vertical alignment",
+    "B": "diagonal or curved alignment"
+  },
+  {
+    "ID": 37,
+    "BP": 8,
+    "A": "single closed shape",
+    "B": "multiple or open shapes"
+  },
+  {
+    "ID": 38,
+    "BP": 8,
+    "A": "convex shapes",
+    "B": "concave or inward-curved shapes"
+  },
+  {
+    "ID": 39,
+    "BP": 8,
+    "A": "touches bounding box",
+    "B": "fully contained shapes"
+  },
+  {
+    "ID": 40,
+    "BP": 8,
+    "A": "geometric polygons",
+    "B": "freeform silhouettes"
+  },
+  {
+    "ID": 41,
+    "BP": 9,
+    "A": "smooth outlines",
+    "B": "jagged zigzag edges"
+  },
+  {
+    "ID": 42,
+    "BP": 9,
+    "A": "simple geometric shapes",
+    "B": "complex serrated forms"
+  },
+  {
+    "ID": 43,
+    "BP": 9,
+    "A": "convex",
+    "B": "spiky concave"
+  },
+  {
+    "ID": 44,
+    "BP": 9,
+    "A": "low-frequency contours",
+    "B": "high-frequency sharp peaks"
+  },
+  {
+    "ID": 45,
+    "BP": 9,
+    "A": "gentle curves",
+    "B": "repetitive acute angles"
+  },
+  {
+    "ID": 46,
+    "BP": 10,
+    "A": "triangles",
+    "B": "quadrilaterals or more"
+  },
+  {
+    "ID": 47,
+    "BP": 10,
+    "A": "no right angles",
+    "B": "presence of right angles"
+  },
+  {
+    "ID": 48,
+    "BP": 10,
+    "A": "single peaks",
+    "B": "no single peaks"
+  },
+  {
+    "ID": 49,
+    "BP": 10,
+    "A": "no parallel edges",
+    "B": "parallel edges"
+  },
+  {
+    "ID": 50,
+    "BP": 10,
+    "A": "three segments",
+    "B": "four or more segments"
+  },
+  {
+    "ID": 51,
+    "BP": 11,
+    "A": "irregular shapes",
+    "B": "regular polygons/circles"
+  },
+  {
+    "ID": 52,
+    "BP": 11,
+    "A": "rectangular bounding boxes",
+    "B": "square bounding boxes"
+  },
+  {
+    "ID": 53,
+    "BP": 11,
+    "A": "asymmetrical designs",
+    "B": "symmetrical figures"
+  },
+  {
+    "ID": 54,
+    "BP": 11,
+    "A": "non-standard forms",
+    "B": "classic geometric figures"
+  },
+  {
+    "ID": 55,
+    "BP": 11,
+    "A": "slanted orientations",
+    "B": "orthogonal/circular alignments"
+  },
+  {
+    "ID": 56,
+    "BP": 12,
+    "A": "single stroke",
+    "B": "multiple strokes"
+  },
+  {
+    "ID": 57,
+    "BP": 12,
+    "A": "simple shapes",
+    "B": "complex shapes"
+  },
+  {
+    "ID": 58,
+    "BP": 12,
+    "A": "convex",
+    "B": "concave or irregular"
+  },
+  {
+    "ID": 59,
+    "BP": 12,
+    "A": "no internal spaces",
+    "B": "enclosed space or holes"
+  },
+  {
+    "ID": 60,
+    "BP": 12,
+    "A": "aligned",
+    "B": "radially or irregularly oriented"
+  },
+  {
+    "ID": 61,
+    "BP": 13,
+    "A": "vertical rectangles",
+    "B": "horizontal rectangles"
+  },
+  {
+    "ID": 62,
+    "BP": 13,
+    "A": "horizontal ellipses",
+    "B": "vertical ellipses"
+  },
+  {
+    "ID": 63,
+    "BP": 13,
+    "A": "portrait orientation",
+    "B": "landscape orientation"
+  },
+  {
+    "ID": 64,
+    "BP": 13,
+    "A": "tall shapes with corners",
+    "B": "wide shapes with corners"
+  },
+  {
+    "ID": 65,
+    "BP": 13,
+    "A": "wide curves",
+    "B": "tall curves"
+  },
+  {
+    "ID": 66,
+    "BP": 14,
+    "A": "organic outlines",
+    "B": "geometric shapes"
+  },
+  {
+    "ID": 67,
+    "BP": 14,
+    "A": "continuous strokes",
+    "B": "interrupted strokes"
+  },
+  {
+    "ID": 68,
+    "BP": 14,
+    "A": "complex curves",
+    "B": "straight lines"
+  },
+  {
+    "ID": 69,
+    "BP": 14,
+    "A": "edge-reaching designs",
+    "B": "contained designs"
+  },
+  {
+    "ID": 70,
+    "BP": 14,
+    "A": "intersecting elements",
+    "B": "non-overlapping elements"
+  },
+  {
+    "ID": 71,
+    "BP": 15,
+    "A": "standard geometric shapes",
+    "B": "symbolic and perfect forms"
+  },
+  {
+    "ID": 72,
+    "BP": 15,
+    "A": "closed shapes without twists",
+    "B": "open forms or with spiral elements"
+  },
+  {
+    "ID": 73,
+    "BP": 15,
+    "A": "uniform outlines",
+    "B": "shapes with angular or pointed features"
+  },
+  {
+    "ID": 74,
+    "BP": 15,
+    "A": "tilted or skewed orientation",
+    "B": "upright or aligned orientation"
+  },
+  {
+    "ID": 75,
+    "BP": 15,
+    "A": "absence of internal gaps",
+    "B": "presence of internal twists or gaps"
+  },
+  {
+    "ID": 76,
+    "BP": 16,
+    "A": "smooth spirals",
+    "B": "angular intersections"
+  },
+  {
+    "ID": 77,
+    "BP": 16,
+    "A": "single continuous line",
+    "B": "multiple line segments"
+  },
+  {
+    "ID": 78,
+    "BP": 16,
+    "A": "circular silhouettes",
+    "B": "polygonal outlines"
+  },
+  {
+    "ID": 79,
+    "BP": 16,
+    "A": "uniform curves",
+    "B": "abrupt direction changes"
+  },
+  {
+    "ID": 80,
+    "BP": 16,
+    "A": "single enclosed region",
+    "B": "multiple or none"
+  },
+  {
+    "ID": 81,
+    "BP": 17,
+    "A": "iconic",
+    "B": "non-iconic"
+  },
+  {
+    "ID": 82,
+    "BP": 17,
+    "A": "merged forms",
+    "B": "single forms"
+  },
+  {
+    "ID": 83,
+    "BP": 17,
+    "A": "curves with angles",
+    "B": "homogeneous contours"
+  },
+  {
+    "ID": 84,
+    "BP": 17,
+    "A": "notched or indented",
+    "B": "smooth perimeters"
+  },
+  {
+    "ID": 85,
+    "BP": 17,
+    "A": "asymmetrical",
+    "B": "symmetrical"
+  },
+  {
+    "ID": 86,
+    "BP": 18,
+    "A": "vertical symmetry",
+    "B": "asymmetry"
+  },
+  {
+    "ID": 87,
+    "BP": 18,
+    "A": "triangular elements",
+    "B": "no triangular elements"
+  },
+  {
+    "ID": 88,
+    "BP": 18,
+    "A": "hourglass shapes",
+    "B": "non-hourglass shapes"
+  },
+  {
+    "ID": 89,
+    "BP": 18,
+    "A": "alternating straight and curved segments",
+    "B": "uniform segment type"
+  },
+  {
+    "ID": 90,
+    "BP": 18,
+    "A": "two-lobed structures",
+    "B": "single-lobed structures"
+  },
+  {
+    "ID": 91,
+    "BP": 19,
+    "A": "two-part shapes with connecting bridges",
+    "B": "continuous shapes"
+  },
+  {
+    "ID": 92,
+    "BP": 19,
+    "A": "horizontal elements presence",
+    "B": "absence"
+  },
+  {
+    "ID": 93,
+    "BP": 19,
+    "A": "bilateral symmetry",
+    "B": "asymmetry"
+  },
+  {
+    "ID": 94,
+    "BP": 19,
+    "A": "identifiable letters",
+    "B": "non-letter forms"
+  },
+  {
+    "ID": 95,
+    "BP": 19,
+    "A": "notable right angles",
+    "B": "absence of right angles"
+  },
+  {
+    "ID": 96,
+    "BP": 20,
+    "A": "three dots",
+    "B": "four dots"
+  },
+  {
+    "ID": 97,
+    "BP": 20,
+    "A": "simplicity",
+    "B": "complexity in shapes formed by dots"
+  },
+  {
+    "ID": 98,
+    "BP": 20,
+    "A": "convex dot placement",
+    "B": "mixed convex and concave dot placement"
+  },
+  {
+    "ID": 99,
+    "BP": 20,
+    "A": "single concavity",
+    "B": "multiple or zero concavities"
+  },
+  {
+    "ID": 100,
+    "BP": 20,
+    "A": "symmetrical",
+    "B": "asymmetrical dot configuration"
+  },
+  {
+    "ID": 101,
+    "BP": 21,
+    "A": "triangles with varied orientations",
+    "B": "uniform triangle orientation"
+  },
+  {
+    "ID": 102,
+    "BP": 21,
+    "A": "corner-positioned elements",
+    "B": "non-corner elements"
+  },
+  {
+    "ID": 103,
+    "BP": 21,
+    "A": "size variability within shapes",
+    "B": "uniform shape sizes"
+  },
+  {
+    "ID": 104,
+    "BP": 21,
+    "A": "triangle dominance in count and size",
+    "B": "circle dominance"
+  },
+  {
+    "ID": 105,
+    "BP": 21,
+    "A": "spatial relationships and connections",
+    "B": "spatial uniformity"
+  },
+  {
+    "ID": 106,
+    "BP": 22,
+    "A": "mixed shapes",
+    "B": "uniform shapes"
+  },
+  {
+    "ID": 107,
+    "BP": 22,
+    "A": "angled shapes",
+    "B": "aligned shapes"
+  },
+  {
+    "ID": 108,
+    "BP": 22,
+    "A": "variable sizes",
+    "B": "uniform sizes"
+  },
+  {
+    "ID": 109,
+    "BP": 22,
+    "A": "overlapping",
+    "B": "non-overlapping"
+  },
+  {
+    "ID": 110,
+    "BP": 22,
+    "A": "distinctive shape orientation",
+    "B": "uniform orientation"
+  },
+  {
+    "ID": 111,
+    "BP": 23,
+    "A": "single shape",
+    "B": "multiple shapes"
+  },
+  {
+    "ID": 112,
+    "BP": 23,
+    "A": "central focus",
+    "B": "distributed layout"
+  },
+  {
+    "ID": 113,
+    "BP": 23,
+    "A": "single boundary",
+    "B": "multiple boundaries"
+  },
+  {
+    "ID": 114,
+    "BP": 23,
+    "A": "uniform shape type",
+    "B": "mixed shape types"
+  },
+  {
+    "ID": 115,
+    "BP": 23,
+    "A": "no shape overlap",
+    "B": "potential shape overlap"
+  },
+  {
+    "ID": 116,
+    "BP": 24,
+    "A": "upright triangles",
+    "B": "no upright triangles"
+  },
+  {
+    "ID": 117,
+    "BP": 24,
+    "A": "left-placed elements",
+    "B": "right-placed elements"
+  },
+  {
+    "ID": 118,
+    "BP": 24,
+    "A": "multiple shape types",
+    "B": "single or complete shape set"
+  },
+  {
+    "ID": 119,
+    "BP": 24,
+    "A": "corner-aligned",
+    "B": "centrally clustered"
+  },
+  {
+    "ID": 120,
+    "BP": 24,
+    "A": "count-based grouping",
+    "B": "size or form-based grouping"
+  },
+  {
+    "ID": 121,
+    "BP": 25,
+    "A": "singular black shape",
+    "B": "multiple or no black shapes"
+  },
+  {
+    "ID": 122,
+    "BP": 25,
+    "A": "fixed shape distribution",
+    "B": "variable shape distribution"
+  },
+  {
+    "ID": 123,
+    "BP": 25,
+    "A": "prime shape count",
+    "B": "composite shape count"
+  },
+  {
+    "ID": 124,
+    "BP": 25,
+    "A": "specific shape orientation",
+    "B": "varied shape orientation"
+  },
+  {
+    "ID": 125,
+    "BP": 25,
+    "A": "unique shape arrangement",
+    "B": "repeated shape combination"
+  },
+  {
+    "ID": 126,
+    "BP": 26,
+    "A": "triangles",
+    "B": "circles"
+  },
+  {
+    "ID": 127,
+    "BP": 26,
+    "A": "filled shapes touching",
+    "B": "non-touching"
+  },
+  {
+    "ID": 128,
+    "BP": 26,
+    "A": "complete corners",
+    "B": "empty corners"
+  },
+  {
+    "ID": 129,
+    "BP": 26,
+    "A": "balanced orientations",
+    "B": "imbalanced orientations"
+  },
+  {
+    "ID": 130,
+    "BP": 26,
+    "A": "shape mirroring",
+    "B": "non-mirroring"
+  },
+  {
+    "ID": 131,
+    "BP": 27,
+    "A": "exact count of shapes",
+    "B": "varying count"
+  },
+  {
+    "ID": 132,
+    "BP": 27,
+    "A": "specific color fill patterns",
+    "B": "varied fills"
+  },
+  {
+    "ID": 133,
+    "BP": 27,
+    "A": "fixed shape combinations",
+    "B": "missing elements"
+  },
+  {
+    "ID": 134,
+    "BP": 27,
+    "A": "balanced black and outline usage",
+    "B": "imbalance"
+  },
+  {
+    "ID": 135,
+    "BP": 27,
+    "A": "corner placement of shapes",
+    "B": "empty corners"
+  },
+  {
+    "ID": 136,
+    "BP": 28,
+    "A": "triangles",
+    "B": "no triangles"
+  },
+  {
+    "ID": 137,
+    "BP": 28,
+    "A": "black shapes majority",
+    "B": "non-black shapes majority"
+  },
+  {
+    "ID": 138,
+    "BP": 28,
+    "A": "odd number of shapes",
+    "B": "even number of shapes"
+  },
+  {
+    "ID": 139,
+    "BP": 28,
+    "A": "upward triangles",
+    "B": "downward triangles"
+  },
+  {
+    "ID": 140,
+    "BP": 28,
+    "A": "complete quadrant coverage",
+    "B": "incomplete quadrant coverage"
+  },
+  {
+    "ID": 141,
+    "BP": 29,
+    "A": "majority enclosed circles",
+    "B": "minority enclosed circles"
+  },
+  {
+    "ID": 142,
+    "BP": 29,
+    "A": "largest shape left-aligned",
+    "B": "central or right-aligned"
+  },
+  {
+    "ID": 143,
+    "BP": 29,
+    "A": "rotated polygons",
+    "B": "upright polygons"
+  },
+  {
+    "ID": 144,
+    "BP": 29,
+    "A": "concave or irregular shapes",
+    "B": "convex shapes"
+  },
+  {
+    "ID": 145,
+    "BP": 29,
+    "A": "prime circle count",
+    "B": "composite circle count"
+  },
+  {
+    "ID": 146,
+    "BP": 30,
+    "A": "self-intersecting lines",
+    "B": "non-intersecting lines"
+  },
+  {
+    "ID": 147,
+    "BP": 30,
+    "A": "angular and straight segments",
+    "B": "purely curved or angular"
+  },
+  {
+    "ID": 148,
+    "BP": 30,
+    "A": "enclosed forms",
+    "B": "open shapes"
+  },
+  {
+    "ID": 149,
+    "BP": 30,
+    "A": "overlaid or interlocked forms",
+    "B": "single discrete shapes"
+  },
+  {
+    "ID": 150,
+    "BP": 30,
+    "A": "polygons with extras",
+    "B": "simple outlines or free-form curves"
+  },
+  {
+    "ID": 151,
+    "BP": 31,
+    "A": "single continuous stroke",
+    "B": "multiple strokes"
+  },
+  {
+    "ID": 152,
+    "BP": 31,
+    "A": "single loop",
+    "B": "multiple or no loops"
+  },
+  {
+    "ID": 153,
+    "BP": 31,
+    "A": "dominant large curve",
+    "B": "no dominant curve"
+  },
+  {
+    "ID": 154,
+    "BP": 31,
+    "A": "no repeated shapes",
+    "B": "repeated shapes"
+  },
+  {
+    "ID": 155,
+    "BP": 31,
+    "A": "continuous line",
+    "B": "line segments or breaks"
+  },
+  {
+    "ID": 156,
+    "BP": 32,
+    "A": "sharp angles",
+    "B": "rounded edges"
+  },
+  {
+    "ID": 157,
+    "BP": 32,
+    "A": "pointed tips",
+    "B": "smooth silhouettes"
+  },
+  {
+    "ID": 158,
+    "BP": 32,
+    "A": "polygonal forms",
+    "B": "organic blobs"
+  },
+  {
+    "ID": 159,
+    "BP": 32,
+    "A": "symbolic icons",
+    "B": "simple forms"
+  },
+  {
+    "ID": 160,
+    "BP": 32,
+    "A": "jagged outlines",
+    "B": "consistent curves"
+  },
+  {
+    "ID": 161,
+    "BP": 33,
+    "A": "irregular",
+    "B": "regular shapes"
+  },
+  {
+    "ID": 162,
+    "BP": 33,
+    "A": "asymmetrical",
+    "B": "symmetrical outlines"
+  },
+  {
+    "ID": 163,
+    "BP": 33,
+    "A": "combinations of edges",
+    "B": "uniform edges"
+  },
+  {
+    "ID": 164,
+    "BP": 33,
+    "A": "sharp angles",
+    "B": "smooth or right angles"
+  },
+  {
+    "ID": 165,
+    "BP": 33,
+    "A": "concave features",
+    "B": "convex features"
+  },
+  {
+    "ID": 166,
+    "BP": 34,
+    "A": "different inner",
+    "B": "same inner and outer shapes"
+  },
+  {
+    "ID": 167,
+    "BP": 34,
+    "A": "straight-edged",
+    "B": "curved or multi-edged outer shapes"
+  },
+  {
+    "ID": 168,
+    "BP": 34,
+    "A": "inner shape touching multiple",
+    "B": "one edge of outer shape"
+  },
+  {
+    "ID": 169,
+    "BP": 34,
+    "A": "single 90-degree angle",
+    "B": "no 90-degree angles"
+  },
+  {
+    "ID": 170,
+    "BP": 34,
+    "A": "central placement",
+    "B": "off-center placement"
+  },
+  {
+    "ID": 171,
+    "BP": 35,
+    "A": "centered features",
+    "B": "off-center features"
+  },
+  {
+    "ID": 172,
+    "BP": 35,
+    "A": "parallel edges",
+    "B": "no parallel edges"
+  },
+  {
+    "ID": 173,
+    "BP": 35,
+    "A": "symmetric shapes",
+    "B": "asymmetric shapes"
+  },
+  {
+    "ID": 174,
+    "BP": 35,
+    "A": "consistent geometric types",
+    "B": "mixed geometric types"
+  },
+  {
+    "ID": 175,
+    "BP": 35,
+    "A": "simple outlines",
+    "B": "complex outlines"
+  },
+  {
+    "ID": 176,
+    "BP": 36,
+    "A": "upright triangles",
+    "B": "rotated or inverted triangles"
+  },
+  {
+    "ID": 177,
+    "BP": 36,
+    "A": "single circle and triangle",
+    "B": "multiple or different types"
+  },
+  {
+    "ID": 178,
+    "BP": 36,
+    "A": "non-overlapping shapes",
+    "B": "overlapping shapes"
+  },
+  {
+    "ID": 179,
+    "BP": 36,
+    "A": "horizontal center alignment",
+    "B": "off-center alignment"
+  },
+  {
+    "ID": 180,
+    "BP": 36,
+    "A": "lower circle",
+    "B": "upper circle positioning"
+  },
+  {
+    "ID": 181,
+    "BP": 37,
+    "A": "fixed shape orientation",
+    "B": "variable shape orientation"
+  },
+  {
+    "ID": 182,
+    "BP": 37,
+    "A": "central shape position",
+    "B": "peripheral shape position"
+  },
+  {
+    "ID": 183,
+    "BP": 37,
+    "A": "even shape distribution",
+    "B": "clustered shape distribution"
+  },
+  {
+    "ID": 184,
+    "BP": 37,
+    "A": "consistent diagonal alignment",
+    "B": "inconsistent alignment"
+  },
+  {
+    "ID": 185,
+    "BP": 37,
+    "A": "one-to-one shape banding",
+    "B": "shape overlap within bands"
+  },
+  {
+    "ID": 186,
+    "BP": 38,
+    "A": "triangle larger than circle",
+    "B": "circle larger than triangle"
+  },
+  {
+    "ID": 187,
+    "BP": 38,
+    "A": "single triangle and circle",
+    "B": "multiple shapes present"
+  },
+  {
+    "ID": 188,
+    "BP": 38,
+    "A": "tilted triangles",
+    "B": "upright triangles"
+  },
+  {
+    "ID": 189,
+    "BP": 38,
+    "A": "triangle encloses circle",
+    "B": "circle encloses triangle"
+  },
+  {
+    "ID": 190,
+    "BP": 38,
+    "A": "non-concentric shapes",
+    "B": "concentric shapes"
+  },
+  {
+    "ID": 191,
+    "BP": 39,
+    "A": "fixed number of segments",
+    "B": "variable number of segments"
+  },
+  {
+    "ID": 192,
+    "BP": 39,
+    "A": "parallel lines",
+    "B": "non-parallel lines"
+  },
+  {
+    "ID": 193,
+    "BP": 39,
+    "A": "angled segments",
+    "B": "axis-aligned segments"
+  },
+  {
+    "ID": 194,
+    "BP": 39,
+    "A": "perfect intersections",
+    "B": "no endpoint intersections"
+  },
+  {
+    "ID": 195,
+    "BP": 39,
+    "A": "uniform segment lengths",
+    "B": "variable segment lengths"
+  },
+  {
+    "ID": 196,
+    "BP": 40,
+    "A": "vertical alignment",
+    "B": "no vertical alignment"
+  },
+  {
+    "ID": 197,
+    "BP": 40,
+    "A": "right-angled triangles",
+    "B": "no right-angled triangles"
+  },
+  {
+    "ID": 198,
+    "BP": 40,
+    "A": "corner clustering",
+    "B": "no corner clustering"
+  },
+  {
+    "ID": 199,
+    "BP": 40,
+    "A": "quadrant distribution",
+    "B": "no quadrant distribution"
+  },
+  {
+    "ID": 200,
+    "BP": 40,
+    "A": "rotational asymmetry",
+    "B": "rotational symmetry"
+  },
+  {
+    "ID": 201,
+    "BP": 41,
+    "A": "outlined",
+    "B": "filled circles"
+  },
+  {
+    "ID": 202,
+    "BP": 41,
+    "A": "centered elements",
+    "B": "no central elements"
+  },
+  {
+    "ID": 203,
+    "BP": 41,
+    "A": "aligned",
+    "B": "misaligned pairs"
+  },
+  {
+    "ID": 204,
+    "BP": 41,
+    "A": "touching",
+    "B": "non-touching circles"
+  },
+  {
+    "ID": 205,
+    "BP": 41,
+    "A": "clustered",
+    "B": "spaced-out arrangement"
+  },
+  {
+    "ID": 206,
+    "BP": 42,
+    "A": "curved edges",
+    "B": "straight edges"
+  },
+  {
+    "ID": 207,
+    "BP": 42,
+    "A": "uniform shape orientation",
+    "B": "tilted shape orientation"
+  },
+  {
+    "ID": 208,
+    "BP": 42,
+    "A": "exact dot count and placement",
+    "B": "variable dot count and placement"
+  },
+  {
+    "ID": 209,
+    "BP": 42,
+    "A": "simple geometric shapes",
+    "B": "irregular shapes"
+  },
+  {
+    "ID": 210,
+    "BP": 42,
+    "A": "left-oriented shapes",
+    "B": "centered or right-oriented shapes"
+  },
+  {
+    "ID": 211,
+    "BP": 43,
+    "A": "uniform",
+    "B": "varying peak characteristics"
+  },
+  {
+    "ID": 212,
+    "BP": 43,
+    "A": "consistent",
+    "B": "mixed line styles"
+  },
+  {
+    "ID": 213,
+    "BP": 43,
+    "A": "horizontal",
+    "B": "slanted orientation"
+  },
+  {
+    "ID": 214,
+    "BP": 43,
+    "A": "symmetrical",
+    "B": "asymmetrical peaks"
+  },
+  {
+    "ID": 215,
+    "BP": 43,
+    "A": "contained",
+    "B": "boundary-reaching layouts"
+  },
+  {
+    "ID": 216,
+    "BP": 44,
+    "A": "two main curves",
+    "B": "three or more curved segments"
+  },
+  {
+    "ID": 217,
+    "BP": 44,
+    "A": "concave",
+    "B": "convex circle placement"
+  },
+  {
+    "ID": 218,
+    "BP": 44,
+    "A": "V-bend",
+    "B": "no V-bend"
+  },
+  {
+    "ID": 219,
+    "BP": 44,
+    "A": "continuous arc",
+    "B": "direction reversal"
+  },
+  {
+    "ID": 220,
+    "BP": 44,
+    "A": "left-to-right arc",
+    "B": "looped connections"
+  },
+  {
+    "ID": 221,
+    "BP": 45,
+    "A": "overlapping shapes",
+    "B": "non-overlapping shapes"
+  },
+  {
+    "ID": 222,
+    "BP": 45,
+    "A": "circle-plus-polygon pairs",
+    "B": "other shape combinations"
+  },
+  {
+    "ID": 223,
+    "BP": 45,
+    "A": "two shapes only",
+    "B": "multiple or accessory shapes"
+  },
+  {
+    "ID": 224,
+    "BP": 45,
+    "A": "curved and straight outlines combined",
+    "B": "not combined"
+  },
+  {
+    "ID": 225,
+    "BP": 45,
+    "A": "one shape fully behind",
+    "B": "shared front-facing edges"
+  },
+  {
+    "ID": 226,
+    "BP": 46,
+    "A": "vertex-touching",
+    "B": "no vertex-touching"
+  },
+  {
+    "ID": 227,
+    "BP": 46,
+    "A": "single overlap",
+    "B": "no overlap or multiple shapes"
+  },
+  {
+    "ID": 228,
+    "BP": 46,
+    "A": "angle-varied triangles",
+    "B": "axis-aligned triangles"
+  },
+  {
+    "ID": 229,
+    "BP": 46,
+    "A": "filled-unfilled pairing",
+    "B": "homogeneously filled or outlined"
+  },
+  {
+    "ID": 230,
+    "BP": 46,
+    "A": "shape symmetries",
+    "B": "no symmetries"
+  },
+  {
+    "ID": 231,
+    "BP": 47,
+    "A": "nested",
+    "B": "unnested shapes"
+  },
+  {
+    "ID": 232,
+    "BP": 47,
+    "A": "enclosed",
+    "B": "touching shapes"
+  },
+  {
+    "ID": 233,
+    "BP": 47,
+    "A": "single dominant shape",
+    "B": "multiple equal shapes"
+  },
+  {
+    "ID": 234,
+    "BP": 47,
+    "A": "enclosure by different",
+    "B": "same shape type"
+  },
+  {
+    "ID": 235,
+    "BP": 47,
+    "A": "clear size distinction",
+    "B": "uniform size"
+  },
+  {
+    "ID": 236,
+    "BP": 48,
+    "A": "black shapes overrepresented",
+    "B": "underrepresented"
+  },
+  {
+    "ID": 237,
+    "BP": 48,
+    "A": "specific shape configurations",
+    "B": "absent configurations"
+  },
+  {
+    "ID": 238,
+    "BP": 48,
+    "A": "symmetrical fill symmetry",
+    "B": "asymmetrical fill"
+  },
+  {
+    "ID": 239,
+    "BP": 48,
+    "A": "restricted total shape count",
+    "B": "unrestricted count"
+  },
+  {
+    "ID": 240,
+    "BP": 48,
+    "A": "corner-placed shapes",
+    "B": "non-corner placements"
+  },
+  {
+    "ID": 241,
+    "BP": 49,
+    "A": "isolated dots",
+    "B": "clustered dots"
+  },
+  {
+    "ID": 242,
+    "BP": 49,
+    "A": "centered forms",
+    "B": "off-center or tilted forms"
+  },
+  {
+    "ID": 243,
+    "BP": 49,
+    "A": "standard shapes",
+    "B": "irregular or elongated shapes"
+  },
+  {
+    "ID": 244,
+    "BP": 49,
+    "A": "even dot distribution",
+    "B": "uneven or edge-aligned dots"
+  },
+  {
+    "ID": 245,
+    "BP": 49,
+    "A": "aligned edges",
+    "B": "misaligned or rotated edges"
+  },
+  {
+    "ID": 246,
+    "BP": 50,
+    "A": "centered shapes",
+    "B": "non-centered shapes"
+  },
+  {
+    "ID": 247,
+    "BP": 50,
+    "A": "pairing of identical shapes",
+    "B": "no identical pairs"
+  },
+  {
+    "ID": 248,
+    "BP": 50,
+    "A": "horizontal alignment",
+    "B": "scattered arrangement"
+  },
+  {
+    "ID": 249,
+    "BP": 50,
+    "A": "recognizable object assemblage",
+    "B": "non-recognizable objects"
+  },
+  {
+    "ID": 250,
+    "BP": 50,
+    "A": "combined polygon and curved forms",
+    "B": "single type forms"
+  },
+  {
+    "ID": 251,
+    "BP": 51,
+    "A": "clustered circles",
+    "B": "evenly spaced circles"
+  },
+  {
+    "ID": 252,
+    "BP": 51,
+    "A": "triangular formations",
+    "B": "non-triangular formations"
+  },
+  {
+    "ID": 253,
+    "BP": 51,
+    "A": "vertical or horizontal alignments",
+    "B": "no specific alignment"
+  },
+  {
+    "ID": 254,
+    "BP": 51,
+    "A": "gap in the center",
+    "B": "central circles"
+  },
+  {
+    "ID": 255,
+    "BP": 51,
+    "A": "straight-line arrangements",
+    "B": "no linear arrangements"
+  },
+  {
+    "ID": 256,
+    "BP": 52,
+    "A": "opposite-facing arrowheads",
+    "B": "same-direction arrowheads"
+  },
+  {
+    "ID": 257,
+    "BP": 52,
+    "A": "multiple arcs/segments",
+    "B": "single sweeping curve"
+  },
+  {
+    "ID": 258,
+    "BP": 52,
+    "A": "sharp bends",
+    "B": "smooth curves"
+  },
+  {
+    "ID": 259,
+    "BP": 52,
+    "A": "compact shapes",
+    "B": "extended linear shapes"
+  },
+  {
+    "ID": 260,
+    "BP": 52,
+    "A": "clockwise flow",
+    "B": "counterclockwise flow"
+  },
+  {
+    "ID": 261,
+    "BP": 53,
+    "A": "inner shape simpler",
+    "B": "inner shape more complex"
+  },
+  {
+    "ID": 262,
+    "BP": 53,
+    "A": "outer shape larger",
+    "B": "inner shape larger"
+  },
+  {
+    "ID": 263,
+    "BP": 53,
+    "A": "inner shape fewer sides",
+    "B": "inner shape more sides"
+  },
+  {
+    "ID": 264,
+    "BP": 53,
+    "A": "inner triangle",
+    "B": "outer triangle"
+  },
+  {
+    "ID": 265,
+    "BP": 53,
+    "A": "aligned edges",
+    "B": "misaligned edges"
+  },
+  {
+    "ID": 266,
+    "BP": 54,
+    "A": "higher vertical positioning",
+    "B": "lower vertical positioning"
+  },
+  {
+    "ID": 267,
+    "BP": 54,
+    "A": "distinct horizontal layout",
+    "B": "overlapping horizontal layout"
+  },
+  {
+    "ID": 268,
+    "BP": 54,
+    "A": "consistent shape orientation",
+    "B": "varied shape orientation"
+  },
+  {
+    "ID": 269,
+    "BP": 54,
+    "A": "center-focused arrangement",
+    "B": "off-center arrangement"
+  },
+  {
+    "ID": 270,
+    "BP": 54,
+    "A": "non-overlapping shapes",
+    "B": "overlapping shapes"
+  },
+  {
+    "ID": 271,
+    "BP": 55,
+    "A": "regular geometric outlines",
+    "B": "irregular shapes"
+  },
+  {
+    "ID": 272,
+    "BP": 55,
+    "A": "single protruding tab",
+    "B": "inward sockets"
+  },
+  {
+    "ID": 273,
+    "BP": 55,
+    "A": "aligned edges",
+    "B": "rotated or tilted shapes"
+  },
+  {
+    "ID": 274,
+    "BP": 55,
+    "A": "one dominant curved feature",
+    "B": "multiple curved arcs"
+  },
+  {
+    "ID": 275,
+    "BP": 55,
+    "A": "balanced layouts",
+    "B": "asymmetrical outlines"
+  },
+  {
+    "ID": 276,
+    "BP": 56,
+    "A": "odd number of shapes",
+    "B": "even number of shapes"
+  },
+  {
+    "ID": 277,
+    "BP": 56,
+    "A": "non-uniform shape sizes",
+    "B": "uniform shape sizes"
+  },
+  {
+    "ID": 278,
+    "BP": 56,
+    "A": "distinct fill styles",
+    "B": "uniform fill styles"
+  },
+  {
+    "ID": 279,
+    "BP": 56,
+    "A": "unrestricted shape overlap",
+    "B": "no overlapping shapes"
+  },
+  {
+    "ID": 280,
+    "BP": 56,
+    "A": "asymmetrical",
+    "B": "symmetrical layout"
+  },
+  {
+    "ID": 281,
+    "BP": 57,
+    "A": "same shape types",
+    "B": "different shape types"
+  },
+  {
+    "ID": 282,
+    "BP": 57,
+    "A": "consistent fill and line styles",
+    "B": "mixed fill and line styles"
+  },
+  {
+    "ID": 283,
+    "BP": 57,
+    "A": "non-overlapping shapes",
+    "B": "overlapping shapes"
+  },
+  {
+    "ID": 284,
+    "BP": 57,
+    "A": "similar orientation and alignment",
+    "B": "varied orientation and alignment"
+  },
+  {
+    "ID": 285,
+    "BP": 57,
+    "A": "geometrically regular",
+    "B": "geometrically mixed shapes"
+  },
+  {
+    "ID": 286,
+    "BP": 58,
+    "A": "filled shapes",
+    "B": "outlined shapes"
+  },
+  {
+    "ID": 287,
+    "BP": 58,
+    "A": "exact element counts",
+    "B": "varied element counts"
+  },
+  {
+    "ID": 288,
+    "BP": 58,
+    "A": "element alignment",
+    "B": "non-aligned elements"
+  },
+  {
+    "ID": 289,
+    "BP": 58,
+    "A": "shapes touching",
+    "B": "separated shapes"
+  },
+  {
+    "ID": 290,
+    "BP": 58,
+    "A": "specific shape configurations",
+    "B": "absent configurations"
+  },
+  {
+    "ID": 291,
+    "BP": 59,
+    "A": "homogeneous shape types",
+    "B": "mixed shape types"
+  },
+  {
+    "ID": 292,
+    "BP": 59,
+    "A": "convex shapes",
+    "B": "presence of concave shapes"
+  },
+  {
+    "ID": 293,
+    "BP": 59,
+    "A": "consistent orientation",
+    "B": "variable orientation"
+  },
+  {
+    "ID": 294,
+    "BP": 59,
+    "A": "geometric simplicity",
+    "B": "irregularity"
+  },
+  {
+    "ID": 295,
+    "BP": 59,
+    "A": "scale hierarchy",
+    "B": "uniform scaling"
+  },
+  {
+    "ID": 296,
+    "BP": 60,
+    "A": "angled orientation",
+    "B": "vertical-horizontal alignment"
+  },
+  {
+    "ID": 297,
+    "BP": 60,
+    "A": "shared vertices",
+    "B": "isolated shapes"
+  },
+  {
+    "ID": 298,
+    "BP": 60,
+    "A": "matching shape pairs by size",
+    "B": "uniform shapes"
+  },
+  {
+    "ID": 299,
+    "BP": 60,
+    "A": "bottom-left elements",
+    "B": "empty corners"
+  },
+  {
+    "ID": 300,
+    "BP": 60,
+    "A": "nested potential",
+    "B": "separate shapes"
+  },
+  {
+    "ID": 301,
+    "BP": 61,
+    "A": "non-intersecting lines",
+    "B": "intersecting lines"
+  },
+  {
+    "ID": 302,
+    "BP": 61,
+    "A": "even",
+    "B": "odd number of plus signs"
+  },
+  {
+    "ID": 303,
+    "BP": 61,
+    "A": "clustered plus signs",
+    "B": "distributed plus signs"
+  },
+  {
+    "ID": 304,
+    "BP": 61,
+    "A": "diagonal",
+    "B": "axis-aligned lines"
+  },
+  {
+    "ID": 305,
+    "BP": 61,
+    "A": "centered",
+    "B": "off-center elements"
+  },
+  {
+    "ID": 306,
+    "BP": 62,
+    "A": "single stroke",
+    "B": "multiple strokes"
+  },
+  {
+    "ID": 307,
+    "BP": 62,
+    "A": "open-ended shapes",
+    "B": "closed/enclosed shapes"
+  },
+  {
+    "ID": 308,
+    "BP": 62,
+    "A": "smooth curves",
+    "B": "angles/corners"
+  },
+  {
+    "ID": 309,
+    "BP": 62,
+    "A": "horizontal orientation",
+    "B": "vertical orientation"
+  },
+  {
+    "ID": 310,
+    "BP": 62,
+    "A": "non-intersecting lines",
+    "B": "intersecting/crossing lines"
+  },
+  {
+    "ID": 311,
+    "BP": 63,
+    "A": "parallel edges",
+    "B": "no parallel edges"
+  },
+  {
+    "ID": 312,
+    "BP": 63,
+    "A": "named shapes",
+    "B": "unnamed shapes"
+  },
+  {
+    "ID": 313,
+    "BP": 63,
+    "A": "single silhouette",
+    "B": "multiple or complex silhouettes"
+  },
+  {
+    "ID": 314,
+    "BP": 63,
+    "A": "four corners or smooth",
+    "B": "varied corner counts"
+  },
+  {
+    "ID": 315,
+    "BP": 63,
+    "A": "solid fills and simple shading",
+    "B": "complex or varied fills"
+  },
+  {
+    "ID": 316,
+    "BP": 64,
+    "A": "varying positions",
+    "B": "fixed vertical alignments"
+  },
+  {
+    "ID": 317,
+    "BP": 64,
+    "A": "oblique",
+    "B": "horizontal/vertical orientations"
+  },
+  {
+    "ID": 318,
+    "BP": 64,
+    "A": "scattered arrangements",
+    "B": "clustered formations"
+  },
+  {
+    "ID": 319,
+    "BP": 64,
+    "A": "peripheral placements",
+    "B": "central placements"
+  },
+  {
+    "ID": 320,
+    "BP": 64,
+    "A": "rotated elements",
+    "B": "aligned elements"
+  },
+  {
+    "ID": 321,
+    "BP": 65,
+    "A": "vertical arrangements",
+    "B": "horizontal arrangements"
+  },
+  {
+    "ID": 322,
+    "BP": 65,
+    "A": "greater circle count",
+    "B": "greater triangle count"
+  },
+  {
+    "ID": 323,
+    "BP": 65,
+    "A": "top-bottom shape separation",
+    "B": "mixed layout"
+  },
+  {
+    "ID": 324,
+    "BP": 65,
+    "A": "symmetrical shapes",
+    "B": "asymmetrical shapes"
+  },
+  {
+    "ID": 325,
+    "BP": 65,
+    "A": "shape type clustering",
+    "B": "mixed clustering"
+  },
+  {
+    "ID": 326,
+    "BP": 66,
+    "A": "horizontal alignment",
+    "B": "varied positioning"
+  },
+  {
+    "ID": 327,
+    "BP": 66,
+    "A": "continuous chains",
+    "B": "disconnected clusters"
+  },
+  {
+    "ID": 328,
+    "BP": 66,
+    "A": "presence of closed loops",
+    "B": "absence of closed loops"
+  },
+  {
+    "ID": 329,
+    "BP": 66,
+    "A": "vertical connections",
+    "B": "lack of vertical adjacency"
+  },
+  {
+    "ID": 330,
+    "BP": 66,
+    "A": "exact circle count",
+    "B": "variable circle count"
+  },
+  {
+    "ID": 331,
+    "BP": 67,
+    "A": "exact three endpoints",
+    "B": "variable endpoints"
+  },
+  {
+    "ID": 332,
+    "BP": 67,
+    "A": "single trunk branching",
+    "B": "multiple branch junctions"
+  },
+  {
+    "ID": 333,
+    "BP": 67,
+    "A": "smooth curves",
+    "B": "sharp angles"
+  },
+  {
+    "ID": 334,
+    "BP": 67,
+    "A": "branches on same side",
+    "B": "branches on opposite sides"
+  },
+  {
+    "ID": 335,
+    "BP": 67,
+    "A": "flipped Y-shaped",
+    "B": "non Y-shaped"
+  },
+  {
+    "ID": 336,
+    "BP": 68,
+    "A": "fixed branch placement",
+    "B": "varied branch placement"
+  },
+  {
+    "ID": 337,
+    "BP": 68,
+    "A": "single path",
+    "B": "multiple paths"
+  },
+  {
+    "ID": 338,
+    "BP": 68,
+    "A": "vertical symmetry",
+    "B": "no vertical symmetry"
+  },
+  {
+    "ID": 339,
+    "BP": 68,
+    "A": "separate branches",
+    "B": "intersecting branches"
+  },
+  {
+    "ID": 340,
+    "BP": 68,
+    "A": "consistent angle formation",
+    "B": "varying angle formation"
+  },
+  {
+    "ID": 341,
+    "BP": 69,
+    "A": "consistent branch count",
+    "B": "varied branch count"
+  },
+  {
+    "ID": 342,
+    "BP": 69,
+    "A": "non-intersecting branches",
+    "B": "intersecting branches"
+  },
+  {
+    "ID": 343,
+    "BP": 69,
+    "A": "single-direction curves",
+    "B": "mixed-direction curves"
+  },
+  {
+    "ID": 344,
+    "BP": 69,
+    "A": "single attachment point",
+    "B": "multiple attachment points"
+  },
+  {
+    "ID": 345,
+    "BP": 69,
+    "A": "even number of lines",
+    "B": "odd number of lines"
+  },
+  {
+    "ID": 346,
+    "BP": 70,
+    "A": "limited endpoints",
+    "B": "numerous endpoints"
+  },
+  {
+    "ID": 347,
+    "BP": 70,
+    "A": "curved stems",
+    "B": "straight stems"
+  },
+  {
+    "ID": 348,
+    "BP": 70,
+    "A": "unilateral branching",
+    "B": "bilateral branching"
+  },
+  {
+    "ID": 349,
+    "BP": 70,
+    "A": "acute angles",
+    "B": "obtuse angles"
+  },
+  {
+    "ID": 350,
+    "BP": 70,
+    "A": "simple branching paths",
+    "B": "subdivided branches"
+  },
+  {
+    "ID": 351,
+    "BP": 71,
+    "A": "nested shapes",
+    "B": "absence of deep nesting"
+  },
+  {
+    "ID": 352,
+    "BP": 71,
+    "A": "rotated shapes",
+    "B": "axis-aligned shapes"
+  },
+  {
+    "ID": 353,
+    "BP": 71,
+    "A": "presence of all shape types",
+    "B": "omission of shape types"
+  },
+  {
+    "ID": 354,
+    "BP": 71,
+    "A": "specific spatial placement",
+    "B": "absence of defined placement"
+  },
+  {
+    "ID": 355,
+    "BP": 71,
+    "A": "vertex-sharing polygons",
+    "B": "non-sharing polygons"
+  },
+  {
+    "ID": 356,
+    "BP": 72,
+    "A": "stylized letters",
+    "B": "non-recognizable forms"
+  },
+  {
+    "ID": 357,
+    "BP": 72,
+    "A": "fewer than four direction changes",
+    "B": "four or more direction changes"
+  },
+  {
+    "ID": 358,
+    "BP": 72,
+    "A": "single loop/open curve",
+    "B": "multiple loops/complex paths"
+  },
+  {
+    "ID": 359,
+    "BP": 72,
+    "A": "at most two inflection points",
+    "B": "more than two inflection points"
+  },
+  {
+    "ID": 360,
+    "BP": 72,
+    "A": "vertical segments",
+    "B": "diagonal/horizontal preference"
+  },
+  {
+    "ID": 361,
+    "BP": 73,
+    "A": "angled orientations",
+    "B": "aligned orientations"
+  },
+  {
+    "ID": 362,
+    "BP": 73,
+    "A": "triangular layouts",
+    "B": "linear layouts"
+  },
+  {
+    "ID": 363,
+    "BP": 73,
+    "A": "unique shape rotations",
+    "B": "repeated shape rotations"
+  },
+  {
+    "ID": 364,
+    "BP": 73,
+    "A": "non-overlapping shapes",
+    "B": "overlapping shapes"
+  },
+  {
+    "ID": 365,
+    "BP": 73,
+    "A": "distinct quadrant placement",
+    "B": "shared quadrant placement"
+  },
+  {
+    "ID": 366,
+    "BP": 74,
+    "A": "pointed tips",
+    "B": "rounded or looped ends"
+  },
+  {
+    "ID": 367,
+    "BP": 74,
+    "A": "stem-like extensions",
+    "B": "absence of protruding stems"
+  },
+  {
+    "ID": 368,
+    "BP": 74,
+    "A": "asymmetrical bodies",
+    "B": "symmetrical or evenly curved bodies"
+  },
+  {
+    "ID": 369,
+    "BP": 74,
+    "A": "single continuous outline",
+    "B": "outlines with loops or crossings"
+  },
+  {
+    "ID": 370,
+    "BP": 74,
+    "A": "diagonal orientation",
+    "B": "vertical or horizontal orientation"
+  },
+  {
+    "ID": 371,
+    "BP": 75,
+    "A": "upward-pointing",
+    "B": "non-upward-pointing triangles"
+  },
+  {
+    "ID": 372,
+    "BP": 75,
+    "A": "concave up",
+    "B": "concave down or sideways curves"
+  },
+  {
+    "ID": 373,
+    "BP": 75,
+    "A": "overlapping",
+    "B": "non-overlapping shapes"
+  },
+  {
+    "ID": 374,
+    "BP": 75,
+    "A": "consistent size ratio",
+    "B": "variable size ratio"
+  },
+  {
+    "ID": 375,
+    "BP": 75,
+    "A": "aligned orientation",
+    "B": "varied orientation"
+  },
+  {
+    "ID": 376,
+    "BP": 76,
+    "A": "fixed concave patterns",
+    "B": "varying concave patterns"
+  },
+  {
+    "ID": 377,
+    "BP": 76,
+    "A": "vertical symmetry",
+    "B": "asymmetry"
+  },
+  {
+    "ID": 378,
+    "BP": 76,
+    "A": "tall shapes",
+    "B": "wide shapes"
+  },
+  {
+    "ID": 379,
+    "BP": 76,
+    "A": "smooth, rounded outlines",
+    "B": "sharp, pointed outlines"
+  },
+  {
+    "ID": 380,
+    "BP": 76,
+    "A": "bilateral symmetry",
+    "B": "no symmetry"
+  },
+  {
+    "ID": 381,
+    "BP": 77,
+    "A": "vertical lines",
+    "B": "no vertical lines"
+  },
+  {
+    "ID": 382,
+    "BP": 77,
+    "A": "multiple rays from single vertex",
+    "B": "few or no rays from single vertex"
+  },
+  {
+    "ID": 383,
+    "BP": 77,
+    "A": "odd number of endpoints",
+    "B": "even number of endpoints"
+  },
+  {
+    "ID": 384,
+    "BP": 77,
+    "A": "interior reflex angles",
+    "B": "no reflex angles"
+  },
+  {
+    "ID": 385,
+    "BP": 77,
+    "A": "mirror symmetry",
+    "B": "no mirror symmetry"
+  },
+  {
+    "ID": 386,
+    "BP": 78,
+    "A": "vertical lines present",
+    "B": "vertical lines absent"
+  },
+  {
+    "ID": 387,
+    "BP": 78,
+    "A": "distinct line orientations",
+    "B": "missing orientations"
+  },
+  {
+    "ID": 388,
+    "BP": 78,
+    "A": "non-intersecting lines",
+    "B": "intersecting lines"
+  },
+  {
+    "ID": 389,
+    "BP": 78,
+    "A": "consistent angular patterns",
+    "B": "variable angular patterns"
+  },
+  {
+    "ID": 390,
+    "BP": 78,
+    "A": "diverse line lengths",
+    "B": "uniform line lengths"
+  },
+  {
+    "ID": 391,
+    "BP": 79,
+    "A": "specific positional configurations",
+    "B": "non-specific configurations"
+  },
+  {
+    "ID": 392,
+    "BP": 79,
+    "A": "balanced horizontal distribution",
+    "B": "unbalanced distribution"
+  },
+  {
+    "ID": 393,
+    "BP": 79,
+    "A": "fixed vertical hierarchy",
+    "B": "varied vertical arrangement"
+  },
+  {
+    "ID": 394,
+    "BP": 79,
+    "A": "shape adjacency constraints",
+    "B": "no adjacency constraints"
+  },
+  {
+    "ID": 395,
+    "BP": 79,
+    "A": "specific quadrant placement",
+    "B": "random quadrant distribution"
+  },
+  {
+    "ID": 396,
+    "BP": 80,
+    "A": "left-leaning shapes",
+    "B": "right-leaning shapes"
+  },
+  {
+    "ID": 397,
+    "BP": 80,
+    "A": "all shapes unique in vertical and horizontal lines",
+    "B": "some shared alignments"
+  },
+  {
+    "ID": 398,
+    "BP": 80,
+    "A": "lower-focused",
+    "B": "upper-focused shapes"
+  },
+  {
+    "ID": 399,
+    "BP": 80,
+    "A": "triangle formation",
+    "B": "non-triangle formation"
+  },
+  {
+    "ID": 400,
+    "BP": 80,
+    "A": "one quadrant empty",
+    "B": "no quadrant constraints"
+  },
+  {
+    "ID": 401,
+    "BP": 81,
+    "A": "triangle quantity and orientation",
+    "B": "circle quantity and absence of orientation"
+  },
+  {
+    "ID": 402,
+    "BP": 81,
+    "A": "balanced",
+    "B": "unbalanced black and white shapes"
+  },
+  {
+    "ID": 403,
+    "BP": 81,
+    "A": "shape pattern continuity",
+    "B": "discontinuity"
+  },
+  {
+    "ID": 404,
+    "BP": 81,
+    "A": "geometrical symmetry",
+    "B": "lack of symmetry"
+  },
+  {
+    "ID": 405,
+    "BP": 81,
+    "A": "centralized",
+    "B": "decentralized circle placement"
+  },
+  {
+    "ID": 406,
+    "BP": 82,
+    "A": "single shape",
+    "B": "multiple shapes"
+  },
+  {
+    "ID": 407,
+    "BP": 82,
+    "A": "consistent diagonal alignment",
+    "B": "inconsistent alignment"
+  },
+  {
+    "ID": 408,
+    "BP": 82,
+    "A": "specific number of objects",
+    "B": "varied number of objects"
+  },
+  {
+    "ID": 409,
+    "BP": 82,
+    "A": "corner placements",
+    "B": "central placements"
+  },
+  {
+    "ID": 410,
+    "BP": 82,
+    "A": "asymmetrical arrangements",
+    "B": "symmetrical arrangements"
+  },
+  {
+    "ID": 411,
+    "BP": 83,
+    "A": "fixed shape count with centered circle",
+    "B": "varied counts and off-center circles"
+  },
+  {
+    "ID": 412,
+    "BP": 83,
+    "A": "symmetric and enclosed arrangements",
+    "B": "asymmetric and open arrangements"
+  },
+  {
+    "ID": 413,
+    "BP": 83,
+    "A": "uniform spacing and orientation",
+    "B": "varied spacing and orientation"
+  },
+  {
+    "ID": 414,
+    "BP": 83,
+    "A": "plus signs forming patterns",
+    "B": "dispersed plus signs"
+  },
+  {
+    "ID": 415,
+    "BP": 83,
+    "A": "central circle in interior",
+    "B": "circle near or touching edges"
+  },
+  {
+    "ID": 416,
+    "BP": 84,
+    "A": "enclosed squares",
+    "B": "open squares"
+  },
+  {
+    "ID": 417,
+    "BP": 84,
+    "A": "centered squares",
+    "B": "corner squares"
+  },
+  {
+    "ID": 418,
+    "BP": 84,
+    "A": "continuous shapes",
+    "B": "segmented shapes"
+  },
+  {
+    "ID": 419,
+    "BP": 84,
+    "A": "even circle count",
+    "B": "odd circle count"
+  },
+  {
+    "ID": 420,
+    "BP": 84,
+    "A": "aligned squares",
+    "B": "misaligned squares"
+  },
+  {
+    "ID": 421,
+    "BP": 85,
+    "A": "triangular constructions",
+    "B": "multi-sided shapes"
+  },
+  {
+    "ID": 422,
+    "BP": 85,
+    "A": "three segments",
+    "B": "four or more segments"
+  },
+  {
+    "ID": 423,
+    "BP": 85,
+    "A": "non-parallel lines",
+    "B": "parallel lines"
+  },
+  {
+    "ID": 424,
+    "BP": 85,
+    "A": "limited intersections",
+    "B": "multiple intersections"
+  },
+  {
+    "ID": 425,
+    "BP": 85,
+    "A": "absence of horizontal/vertical lines",
+    "B": "presence"
+  },
+  {
+    "ID": 426,
+    "BP": 86,
+    "A": "tree-like structures",
+    "B": "star-like configurations"
+  },
+  {
+    "ID": 427,
+    "BP": 86,
+    "A": "single pen stroke continuity",
+    "B": "required crossings"
+  },
+  {
+    "ID": 428,
+    "BP": 86,
+    "A": "maximum three endpoints",
+    "B": "multi-endpoint complexity"
+  },
+  {
+    "ID": 429,
+    "BP": 86,
+    "A": "asymmetry",
+    "B": "radial symmetry"
+  },
+  {
+    "ID": 430,
+    "BP": 86,
+    "A": "absence of central intersection",
+    "B": "central node with spokes"
+  },
+  {
+    "ID": 431,
+    "BP": 87,
+    "A": "intersecting at non-right angles",
+    "B": "intersecting at 90 degrees"
+  },
+  {
+    "ID": 432,
+    "BP": 87,
+    "A": "multiple disjoint line groups",
+    "B": "single connected cluster"
+  },
+  {
+    "ID": 433,
+    "BP": 87,
+    "A": "nested enclosed shapes",
+    "B": "no nesting"
+  },
+  {
+    "ID": 434,
+    "BP": 87,
+    "A": "symmetrical",
+    "B": "asymmetrical diagrams"
+  },
+  {
+    "ID": 435,
+    "BP": 87,
+    "A": "contains squares or rectangles",
+    "B": "lacks squares or rectangles"
+  },
+  {
+    "ID": 436,
+    "BP": 88,
+    "A": "exact number of shapes",
+    "B": "variable number of shapes"
+  },
+  {
+    "ID": 437,
+    "BP": 88,
+    "A": "overlapping",
+    "B": "separate clusters"
+  },
+  {
+    "ID": 438,
+    "BP": 88,
+    "A": "vertical",
+    "B": "horizontal arrangements"
+  },
+  {
+    "ID": 439,
+    "BP": 88,
+    "A": "enclosed",
+    "B": "free-standing shapes"
+  },
+  {
+    "ID": 440,
+    "BP": 88,
+    "A": "central shape type",
+    "B": "varied center"
+  },
+  {
+    "ID": 441,
+    "BP": 89,
+    "A": "fixed shape count",
+    "B": "variable shape count"
+  },
+  {
+    "ID": 442,
+    "BP": 89,
+    "A": "consistent orientation",
+    "B": "mixed orientations"
+  },
+  {
+    "ID": 443,
+    "BP": 89,
+    "A": "no overlaps",
+    "B": "overlapping shapes"
+  },
+  {
+    "ID": 444,
+    "BP": 89,
+    "A": "symmetrical arrangements",
+    "B": "asymmetrical arrangements"
+  },
+  {
+    "ID": 445,
+    "BP": 89,
+    "A": "boundary placement",
+    "B": "center placement"
+  },
+  {
+    "ID": 446,
+    "BP": 90,
+    "A": "horizontal alignment",
+    "B": "irregular arrangement"
+  },
+  {
+    "ID": 447,
+    "BP": 90,
+    "A": "alternating color patterns",
+    "B": "uniform color arrangement"
+  },
+  {
+    "ID": 448,
+    "BP": 90,
+    "A": "clusters and overlaps",
+    "B": "separation"
+  },
+  {
+    "ID": 449,
+    "BP": 90,
+    "A": "even",
+    "B": "odd number of shapes"
+  },
+  {
+    "ID": 450,
+    "BP": 90,
+    "A": "limited",
+    "B": "varied horizontal span"
+  },
+  {
+    "ID": 451,
+    "BP": 91,
+    "A": "triadic features",
+    "B": "absence of threes"
+  },
+  {
+    "ID": 452,
+    "BP": 91,
+    "A": "straight lines and angles",
+    "B": "curves and circles"
+  },
+  {
+    "ID": 453,
+    "BP": 91,
+    "A": "asymmetry",
+    "B": "symmetry"
+  },
+  {
+    "ID": 454,
+    "BP": 91,
+    "A": "separate elements",
+    "B": "single connected shape"
+  },
+  {
+    "ID": 455,
+    "BP": 91,
+    "A": "odd-cornered shapes",
+    "B": "even-cornered shapes"
+  },
+  {
+    "ID": 456,
+    "BP": 92,
+    "A": "smooth continuous curves",
+    "B": "angular intersections"
+  },
+  {
+    "ID": 457,
+    "BP": 92,
+    "A": "single path shapes",
+    "B": "segmented or crossing paths"
+  },
+  {
+    "ID": 458,
+    "BP": 92,
+    "A": "spiral or loop-like forms",
+    "B": "zigzag or linear forms"
+  },
+  {
+    "ID": 459,
+    "BP": 92,
+    "A": "alternating fill patterns",
+    "B": "non-repetitive patterns"
+  },
+  {
+    "ID": 460,
+    "BP": 92,
+    "A": "odd count elements",
+    "B": "even or zero count elements"
+  },
+  {
+    "ID": 461,
+    "BP": 93,
+    "A": "odd",
+    "B": "even number of elements"
+  },
+  {
+    "ID": 462,
+    "BP": 93,
+    "A": "black circles forming continuous paths",
+    "B": "discontinuous or isolated"
+  },
+  {
+    "ID": 463,
+    "BP": 93,
+    "A": "single central branching point",
+    "B": "multiple or hollow branch centers"
+  },
+  {
+    "ID": 464,
+    "BP": 93,
+    "A": "black-dominated center",
+    "B": "interspersed distribution"
+  },
+  {
+    "ID": 465,
+    "BP": 93,
+    "A": "hollow circle endpoints",
+    "B": "black circle endpoints"
+  },
+  {
+    "ID": 466,
+    "BP": 94,
+    "A": "branching nodes",
+    "B": "chain ends"
+  },
+  {
+    "ID": 467,
+    "BP": 94,
+    "A": "central hubs",
+    "B": "perimeter placement"
+  },
+  {
+    "ID": 468,
+    "BP": 94,
+    "A": "multi-directional intersections",
+    "B": "linear alignments"
+  },
+  {
+    "ID": 469,
+    "BP": 94,
+    "A": "symmetrical arrangements",
+    "B": "asymmetrical designs"
+  },
+  {
+    "ID": 470,
+    "BP": 94,
+    "A": "forked paths",
+    "B": "single-file chains"
+  },
+  {
+    "ID": 471,
+    "BP": 95,
+    "A": "vertical orientation",
+    "B": "horizontal orientation"
+  },
+  {
+    "ID": 472,
+    "BP": 95,
+    "A": "standard geometric shapes",
+    "B": "altered outlines"
+  },
+  {
+    "ID": 473,
+    "BP": 95,
+    "A": "uninterrupted boundaries",
+    "B": "interrupted or misaligned boundaries"
+  },
+  {
+    "ID": 474,
+    "BP": 95,
+    "A": "tall configurations",
+    "B": "wide configurations"
+  },
+  {
+    "ID": 475,
+    "BP": 95,
+    "A": "convex shapes",
+    "B": "concave or indented shapes"
+  },
+  {
+    "ID": 476,
+    "BP": 96,
+    "A": "triangles",
+    "B": "quadrilaterals or higher polygons"
+  },
+  {
+    "ID": 477,
+    "BP": 96,
+    "A": "three vertices",
+    "B": "four or more vertices"
+  },
+  {
+    "ID": 478,
+    "BP": 96,
+    "A": "single apex",
+    "B": "multiple or no apexes"
+  },
+  {
+    "ID": 479,
+    "BP": 96,
+    "A": "parallel stripes aligned to base",
+    "B": "no such alignment"
+  },
+  {
+    "ID": 480,
+    "BP": 96,
+    "A": "clear base-apex structure",
+    "B": "no single base-apex structure"
+  },
+  {
+    "ID": 481,
+    "BP": 97,
+    "A": "triangular forms",
+    "B": "circular shapes"
+  },
+  {
+    "ID": 482,
+    "BP": 97,
+    "A": "straight lines and angles",
+    "B": "continuous curves"
+  },
+  {
+    "ID": 483,
+    "BP": 97,
+    "A": "vertices and corners",
+    "B": "smooth outlines"
+  },
+  {
+    "ID": 484,
+    "BP": 97,
+    "A": "discrete line segments",
+    "B": "uninterrupted curves"
+  },
+  {
+    "ID": 485,
+    "BP": 97,
+    "A": "non-symmetrical shapes",
+    "B": "symmetrical forms"
+  },
+  {
+    "ID": 486,
+    "BP": 98,
+    "A": "triangles",
+    "B": "quadrilaterals"
+  },
+  {
+    "ID": 487,
+    "BP": 98,
+    "A": "three-sided shapes",
+    "B": "four-sided shapes"
+  },
+  {
+    "ID": 488,
+    "BP": 98,
+    "A": "absence of parallel edges",
+    "B": "presence of parallel edges"
+  },
+  {
+    "ID": 489,
+    "BP": 98,
+    "A": "no equal-length edges",
+    "B": "equal-length edges"
+  },
+  {
+    "ID": 490,
+    "BP": 98,
+    "A": "perimeter with three strokes",
+    "B": "perimeter with four strokes"
+  },
+  {
+    "ID": 491,
+    "BP": 99,
+    "A": "closed loops",
+    "B": "incomplete shapes"
+  },
+  {
+    "ID": 492,
+    "BP": 99,
+    "A": "symmetrical arrangement",
+    "B": "asymmetrical arrangement"
+  },
+  {
+    "ID": 493,
+    "BP": 99,
+    "A": "consistent orientation",
+    "B": "varied orientation"
+  },
+  {
+    "ID": 494,
+    "BP": 99,
+    "A": "separate clusters",
+    "B": "overlapping groups"
+  },
+  {
+    "ID": 495,
+    "BP": 99,
+    "A": "odd total shapes",
+    "B": "even total shapes"
+  },
+  {
+    "ID": 496,
+    "BP": 100,
+    "A": "triangular elements",
+    "B": "non-triangular elements"
+  },
+  {
+    "ID": 497,
+    "BP": 100,
+    "A": "sharp angles",
+    "B": "smooth curves"
+  },
+  {
+    "ID": 498,
+    "BP": 100,
+    "A": "predominantly straight lines",
+    "B": "pronounced loops"
+  },
+  {
+    "ID": 499,
+    "BP": 100,
+    "A": "integrated apex and peak",
+    "B": "rounded tops"
+  },
+  {
+    "ID": 500,
+    "BP": 100,
+    "A": "single enclosed space",
+    "B": "multiple/no enclosed spaces"
+  }
+]

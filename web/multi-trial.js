@@ -11,7 +11,6 @@ for (let block of blocks) {
         stimulus: `
             <h1>${block.title}</h1>
             <p>There are ${block.conditions[0].length} problems in this part.<br />
-            You can save your progress at any time.</p>
             <p>Press any key to begin.</p>
             `,
         // choices: [' '],

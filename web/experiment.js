@@ -53,7 +53,6 @@ let exampleTrial = {
         <h3>BP 1</h3>
         ${trialText.tempLabelsText}
         <img class='bp-img' src='img/p0001.png'/>
-        <p>We will make it possible to skip forward later, if you cannot solve a problem.</p>
         `,
     questions: [
         {prompt: 'Your rule for set A', required: true, name: 'Arule', rows:3},
@@ -87,7 +86,7 @@ for (let block of blocks) {
         if (id=='H2SO4') {  // switches candidate rules on (from querystring)
             console.log('H2SO4 detected in url');
             sideboxVal = imgno
-            console.log('imgno', imgno);
+            // console.log('imgno', imgno);
         } else {
             console.log('wrong or no id in url');
         };
