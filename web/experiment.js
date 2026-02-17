@@ -70,8 +70,7 @@ for (let block of blocks) {
         type: jsPsychHtmlButtonResponse,
         stimulus: `
         	<h1>${block.title}</h1>
-            <p>There are ${block.conditions[0].length} problems in this part.<br />
-            You can save your progress at any time.</p>
+            <p>There are ${block.conditions[0].length} problems in this part.</p>
             <p>Press the button below to begin.</p>
         	`,
             choices: ['Continue'],
@@ -86,7 +85,11 @@ for (let block of blocks) {
 
         let sideboxVal = null;
         if (id=='H2SO4') {  // switches candidate rules on (from querystring)
+            console.log('H2SO4 detected in url');
             sideboxVal = imgno
+            console.log('imgno', imgno);
+        } else {
+            console.log('wrong or no id in url');
         };
 
 

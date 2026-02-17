@@ -1,12 +1,12 @@
 "use strict";
 
-import rules from './rules/mock-candidate-rules.json' with {type: 'json'};
+import rules from './rules/o1_concepts_5.json' with {type: 'json'};
 
-// console.log(rules);
+console.log(rules);
 // console.log(typeof rules);
 
 
-fetch('./rules/mock-candidate-rules.json')
+fetch('./rules/o1_concepts_5.json')
   .then(response => response.json())
   .then(data => createTable(data))
   .catch(err => console.error("Error loading JSON:", err));

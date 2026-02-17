@@ -1,0 +1,13 @@
+﻿ID,BP,A,B
+1,2,big shapes,small shapes
+2,2,shapes near the centre,shapes near the edge
+3,2,shapes shaded in,shapes not shaded in
+4,2,shapes that are angular,shapes that are rounded
+5,3,big shapes,small shapes
+6,3,shapes near the centre,shapes near the edge
+7,3,shapes not shaded in,shapes shaded in
+8,3,shapes that are angular,shapes that are rounded
+9,4,big shapes,small shapes
+10,4,shapes near the centre,shapes near the edge
+11,4,shapes not shaded in,shapes shaded in
+12,4,shapes that are angular,shapes that are rounded

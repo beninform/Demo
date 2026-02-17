@@ -153,7 +153,7 @@ p {
 }
 
 #jspsych-survey-text-0, #jspsych-survey-text-1 {
-	margin-top: 0em;
+	margin-top: 0em !important;
 	margin-bottom: 0em;
 }
 
