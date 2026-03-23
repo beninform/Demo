@@ -11,7 +11,6 @@ function getQueryVariable(variable) {
     }
 }
 let id = getQueryVariable('id');
-console.log('id', id);
 
 
 
@@ -35,14 +34,16 @@ timeline.push(welcomeTrial);
 // TODO capture user code in instruction trial (or provide it in querystring)
 
 let instructionTrial = {
-    type: jsPsychSurveyText,
-    preamble: trialText.instructionText,
-    questions: [
-        {prompt: 'Your code', required: true, name: 'usrcode'}
-    ],
-    data: {
-        collect: true
-    }
+    type: jsPsychHtmlButtonResponse,
+    stimulus: trialText.instructionText,
+    // questions: [
+    //     {prompt: 'Your code', required: true, name: 'usrcode'}
+    // ],
+    // data: {
+    //     collect: true
+    // }
+    choices: ['Continue'],
+
 };
 timeline.push(instructionTrial);
 
@@ -55,8 +56,8 @@ let exampleTrial = {
         <img class='bp-img' src='img/p0001.png'/>
         `,
     questions: [
-        {prompt: 'Your rule for set A', required: true, name: 'Arule', rows:3},
-        {prompt: 'Your rule for set B', required: true, name: 'Brule', rows:3}
+        {prompt: 'Your rule for set A', required: true, name: 'Arule', rows:5, columns: 19},
+        {prompt: 'Your rule for set B', required: true, name: 'Brule', rows:5, columns: 19}
     ],
     data: {
         collect: true
@@ -84,11 +85,11 @@ for (let block of blocks) {
 
         let sideboxVal = null;
         if (id=='H2SO4') {  // switches candidate rules on (from querystring)
-            console.log('H2SO4 detected in url');
+            // console.log('H2SO4 detected in url');
             sideboxVal = imgno
             // console.log('imgno', imgno);
-        } else {
-            console.log('wrong or no id in url');
+        // } else {
+        //     console.log('wrong or no id in url');
         };
 
 
@@ -101,8 +102,8 @@ for (let block of blocks) {
                 <img class='bp-img' src='img/p${imgstr}.png'/>
                 `,
             questions: [
-                {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows:2},
-                {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows:2}
+                {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows:5, columns: 19},
+                {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows:5, columns: 19}
             ],
             data: {
                 collect: true, // flag whether we want to collect to csv

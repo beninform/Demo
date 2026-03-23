@@ -85,83 +85,132 @@ var jsPsychSurveyText = function(n) {
             var s = "";
 
 
-            // we insert a wrapper div that encloses the survey form (closing tag is on line 134 below)
+            // 
+            // 
+            // 
+            // 
+            // ////////////////////////////////////////////////////////////////////////////////////////
+            // 
+            // 
+            // we insert a wrapper div that encloses the survey form (closing tag is on line 191 below)
             // we then insert, as a sibling of the form, a div for the rules - and within that, a table
-            s += '<div id="outer-wrapper" class="outer-wrapper">'
+            //
+            //
 
-            s += '  <div id="candidate-rules" class="candidate-rules" style="height: 100%">'
+            s += `<div id="outer-wrapper" class="outer-wrapper">
+                 `;
 
             let bongProbNumber = t.sidebox;
 
+
+            // Set the timer to show skip button after delay
+            const myTimer = createResettableTimer(() => {
+                // showSkipButton();
+                console.log('Timer finished!');
+            }, 60000);
+
+
             if (bongProbNumber !== null) {
+                let filteredArray = rulesArray.filter((item) => item.BP == bongProbNumber);
 
-
-            let filteredArray = rulesArray.filter((item) => item.BP == bongProbNumber);
-
-
-            s += `    <div id="table-container" class="table-container">
-                      <h3>Candidate Rules</h3>
-                      <table id="rules-table">
-                        <thead>
-                        `
-            const keys = Object.keys(filteredArray[0]);  // use first object to get keys
-            keys.forEach(key => {  // iterate col heads
-                if ( ['A', 'B'].includes(key) ) {
-                    s += `<th>${key}</th>`;
-                }
-            })
-            s += `      </thead>
-                 `
-            // ---- Create table body ----
-
-            s += `      <tbody>
-                 `
-            filteredArray.forEach(item => {  // iterate rows
-                s += `        <tr>`  // open the row
+                s += '  <div id="candidate-rules" class="candidate-rules" style="height: 100%">';
+                s += `    <div id="table-container" class="table-container">
+                              <h3>Candidate Rules</h3>
+                              <table id="rules-table">
+                                    <thead>
+                            `;
+                const keys = Object.keys(filteredArray[0]);  // use first object to get keys
+                
                 keys.forEach(key => {  // iterate col heads
                     if ( ['A', 'B'].includes(key) ) {
-                    s += `<td>${item[key]}</td>`  // insert cells of row
+                        s += `<th>${key}</th>`;
                     }
                 });
-                s += `</tr>  
-                `           // close the row
-            });
+                s += `      </thead>
+                     `;
+                // ---- Create table body ----
 
-            s += `      </tbody>
-                      </table>
-                      </div>
-                `
-}
+                s += `      <tbody>
+                     `;
+                filteredArray.forEach(item => {  // iterate rows
+                    s += `        <tr>`  // open the row
 
-            s += `</div>
-                  <div id="preamble-form-wrapper" class="preamble-form-wrapper">`  // div closed on line 157
+                    keys.forEach(key => {  // iterate col heads
+                        if ( ['A', 'B'].includes(key) ) {
+                        s += `<td>${item[key]}</td>`  // insert cells of row
+                        }
+                    });
+                    
+                    s += `</tr>  
+                    `;           // close the row
+                });
+
+                s += `      </tbody>
+                          </table>
+                          </div>
+                    `;
+                // console.log('line 145 in plugin-survey-text.js - candidate rules for BP no', bongProbNumber)
+                s += `</div>
+            `;
+
+            myTimer.reset();
+
+            } else {
+                // console.log('line 149 in plugin-survey-text.js - candidate rules for BP no', bongProbNumber)
+                // no div for candidate rules if bongProbNumber is null
+            myTimer.reset();
+               
+            };
+            // we have now closed the candidate rules div
 
 
+            //
+            //
+            //
+            // now start the wrapper for the BP pictures (the 'preamble') and the user responses (the form)
+            //
+            //
+            //
+
+            s += `<div id="preamble-form-wrapper" class="preamble-form-wrapper">`;  // this div closed on line 189
 
             t.preamble !== null && (s += '<div id="jspsych-survey-text-preamble" class="jspsych-survey-text-preamble">' + t.preamble + "</div>");
             // source code has previous line terminated in comma, not semicolon!
 
             t.autocomplete ? s += '<form id="jspsych-survey-text-form">' : s += '<form id="jspsych-survey-text-form" autocomplete="off">';
+            s += `<div class="form-row">
+            `;
             for (var i = [], e = 0; e < t.questions.length; e++) i.push(e);
             t.randomize_question_order && (i = this.jsPsych.randomization.shuffle(i));
             for (var e = 0; e < t.questions.length; e++) {
                 var o = t.questions[i[e]],
                     a = i[e];
-                s += '<div id="jspsych-survey-text-' + a + '" class="jspsych-survey-text-question" style="margin: 2em 0em;">', s += '<p class="jspsych-survey-text">' + o.prompt + "</p>";
+                s += '<div id="jspsych-survey-text-' + a + '" class="jspsych-survey-text-question" style="margin: 2em 0em;">'; 
+                s += '<p class="jspsych-survey-text">' + o.prompt + "</p>";
                 var u = e == 0 ? "autofocus" : "",
                     l = o.required ? "required" : "";
                 o.rows == 1 ? s += '<input type="text" id="input-' + a + '"  name="#jspsych-survey-text-response-' + a + '" data-name="' + o.name + '" size="' + o.columns + '" ' + u + " " + l + ' placeholder="' + o.placeholder + '"></input>' : s += '<textarea id="input-' + a + '" name="#jspsych-survey-text-response-' + a + '" data-name="' + o.name + '" cols="' + o.columns + '" rows="' + o.rows + '" ' + u + " " + l + ' placeholder="' + o.placeholder + '"></textarea>', 
                 s += "</div>"
-            }
-            s += '<input type="submit" id="jspsych-survey-text-next" class="jspsych-btn jspsych-survey-text" value="' + t.button_label + '"></input>', 
-            s += "</form>" 
+            };
+            s += `</div>`;  // end of form-row div
+            s += '<input type="submit" id="jspsych-survey-text-next" class="jspsych-btn jspsych-survey-text" value="' + t.button_label + '"></input>';
 
-            s += `</div>`
+            s += `<button id="skipBtn" class="jspsych-btn" onclick="skipAction()">Skip</button>`;
 
+            s += "</form>";
 
-            s += "</div>"  // closing the outer-wrapper div
+            s += `</div>`;  // closing the preamble-form-wrapper div
 
+            s += "</div>";  // closing the outer-wrapper div
 
+            // end of our hack
+            // 
+            // 
+            // 
+            //  /////////////////////////////////////////////////////////////////////////////////////////
+            //           
+            // 
+            // 
 
             r.innerHTML = s, r.querySelector("#input-" + i[0]).focus(), r.querySelector("#jspsych-survey-text-form").addEventListener("submit", T => {
                 T.preventDefault();
@@ -180,7 +229,8 @@ var jsPsychSurveyText = function(n) {
                 };
                 this.jsPsych.finishTrial(g)
             });
-            var P = performance.now()
+            var P = performance.now();
+
         }
         simulate(r, t, e, s) {
             t == "data-only" && (s(), this.simulate_data_only(r, e)), t == "visual" && this.simulate_visual(r, e, s)

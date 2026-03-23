@@ -55,8 +55,13 @@
 	padding-top: 10%;
     padding-left: 20%;   
     padding-right: 20%;
+    max-width: 800px;
     font-family: Arial, sans-serif;
     text-align: left;
+}
+
+.instructions-container > p {
+  margin-bottom: 30px; /* between paragraphs */
 }
 
 .example-container {
@@ -80,11 +85,11 @@
 }
 
 #input-0 {
-	font-size: 22px;
+	font-size: 18px;
 }
 
 #input-1 {
-	font-size: 22px;
+	font-size: 18px;
 }
 
 
@@ -107,13 +112,29 @@ input[type=text]:focus {
     text-align: center;
 } 
 
-.preamble-form-wrapper {
+.preamble-form-wrapper > button:focus {
+    outline: 2px solid blue;
+    background-color: #eef;
+}
+
+/*.preamble-form-wrapper {
     background-color: #EFE;
-} 
+} */
+
+.form-row {
+  display: flex;
+  gap: 10px; /* space between them */
+  width: 100%;
+  box-sizing: border-box;
+}
 
 .jspsych-survey-text-question {
-	margin: 2%;
+  flex: 1; /* makes them share space equally */
+  padding: 10px;
+  /*background: #eee;*/
+  box-sizing: border-box;
 }
+
 
 /*.candidate-rules {
 	float: left;
@@ -125,7 +146,7 @@ input[type=text]:focus {
 	width: 40vw;
 }
 #rules-table {
-	background-color: #FEE;
+	background-color: #EEE;
 	width: 40vw;
 	text-align: left;
 }
@@ -164,4 +185,20 @@ p {
 h3 {
     margin-top: 0.1em !important;
     margin-bottom: 0.1em !important;
+}
+
+#skipBtn {
+    display: none; /* Hidden initially */
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#skipBtn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }

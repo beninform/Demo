@@ -1,5 +1,5 @@
-// let blockSize = 33;
-let blockSize = 4;
+let blockSize = 33;
+// let blockSize = 4;  // have only four problems in each part for testing
 
 let imgns_a = [...Array(blockSize).keys()];
 let imgnos_a = imgns_a.map(a => a+2);
