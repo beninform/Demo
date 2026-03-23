@@ -92,13 +92,53 @@ var jsPsychSurveyText = function(n) {
             // ////////////////////////////////////////////////////////////////////////////////////////
             // 
             // 
-            // we insert a wrapper div that encloses the survey form (closing tag is on line 191 below)
+            // we insert a wrapper div that encloses the survey form (closing tag is on line 207 below)
             // we then insert, as a sibling of the form, a div for the rules - and within that, a table
             //
             //
 
             s += `<div id="outer-wrapper" class="outer-wrapper">
                  `;
+
+            s += `<div id="preamble-form-wrapper" class="preamble-form-wrapper">`;  // this div closed on line 130
+
+            t.preamble !== null && (s += '<div id="jspsych-survey-text-preamble" class="jspsych-survey-text-preamble">' + t.preamble + "</div>");
+            // source code has previous line terminated in comma, not semicolon!
+
+            t.autocomplete ? s += '<form id="jspsych-survey-text-form">' : s += '<form id="jspsych-survey-text-form" autocomplete="off">';
+            s += `<div class="form-row">
+            `;
+            for (var i = [], e = 0; e < t.questions.length; e++) i.push(e);
+            t.randomize_question_order && (i = this.jsPsych.randomization.shuffle(i));
+            for (var e = 0; e < t.questions.length; e++) {
+                var o = t.questions[i[e]],
+                    a = i[e];
+                s += '<div id="jspsych-survey-text-' + a + '" class="jspsych-survey-text-question" style="margin: 2em 0em;">'; 
+                s += '<p class="jspsych-survey-text">' + o.prompt + "</p>";
+                var u = e == 0 ? "autofocus" : "",
+                    l = o.required ? "required" : "";
+                o.rows == 1 ? s += '<input type="text" id="input-' + a + '"  name="#jspsych-survey-text-response-' + a + '" data-name="' + o.name + '" size="' + o.columns + '" ' + u + " " + l + ' placeholder="' + o.placeholder + '"></input>' : s += '<textarea id="input-' + a + '" name="#jspsych-survey-text-response-' + a + '" data-name="' + o.name + '" cols="' + o.columns + '" rows="' + o.rows + '" ' + u + " " + l + ' placeholder="' + o.placeholder + '"></textarea>', 
+                s += "</div>"
+            };
+            s += `</div>`;  // end of form-row div
+            s += '<input type="submit" id="jspsych-survey-text-next" class="jspsych-btn jspsych-survey-text" value="' + t.button_label + '"></input>';
+
+            s += `<button id="skipBtn" class="jspsych-btn" onclick="skipAction()">Skip</button>`;
+
+            s += "</form>";
+
+            s += `</div>`;  // closing the preamble-form-wrapper div
+
+
+            //
+            //
+            //
+            // now end the wrapper for the BP pictures (the 'preamble') and the user responses (the form)
+            // now start the div for the candidate rules
+            //
+            //
+            //
+
 
             let bongProbNumber = t.sidebox;
 
@@ -163,43 +203,6 @@ var jsPsychSurveyText = function(n) {
             };
             // we have now closed the candidate rules div
 
-
-            //
-            //
-            //
-            // now start the wrapper for the BP pictures (the 'preamble') and the user responses (the form)
-            //
-            //
-            //
-
-            s += `<div id="preamble-form-wrapper" class="preamble-form-wrapper">`;  // this div closed on line 189
-
-            t.preamble !== null && (s += '<div id="jspsych-survey-text-preamble" class="jspsych-survey-text-preamble">' + t.preamble + "</div>");
-            // source code has previous line terminated in comma, not semicolon!
-
-            t.autocomplete ? s += '<form id="jspsych-survey-text-form">' : s += '<form id="jspsych-survey-text-form" autocomplete="off">';
-            s += `<div class="form-row">
-            `;
-            for (var i = [], e = 0; e < t.questions.length; e++) i.push(e);
-            t.randomize_question_order && (i = this.jsPsych.randomization.shuffle(i));
-            for (var e = 0; e < t.questions.length; e++) {
-                var o = t.questions[i[e]],
-                    a = i[e];
-                s += '<div id="jspsych-survey-text-' + a + '" class="jspsych-survey-text-question" style="margin: 2em 0em;">'; 
-                s += '<p class="jspsych-survey-text">' + o.prompt + "</p>";
-                var u = e == 0 ? "autofocus" : "",
-                    l = o.required ? "required" : "";
-                o.rows == 1 ? s += '<input type="text" id="input-' + a + '"  name="#jspsych-survey-text-response-' + a + '" data-name="' + o.name + '" size="' + o.columns + '" ' + u + " " + l + ' placeholder="' + o.placeholder + '"></input>' : s += '<textarea id="input-' + a + '" name="#jspsych-survey-text-response-' + a + '" data-name="' + o.name + '" cols="' + o.columns + '" rows="' + o.rows + '" ' + u + " " + l + ' placeholder="' + o.placeholder + '"></textarea>', 
-                s += "</div>"
-            };
-            s += `</div>`;  // end of form-row div
-            s += '<input type="submit" id="jspsych-survey-text-next" class="jspsych-btn jspsych-survey-text" value="' + t.button_label + '"></input>';
-
-            s += `<button id="skipBtn" class="jspsych-btn" onclick="skipAction()">Skip</button>`;
-
-            s += "</form>";
-
-            s += `</div>`;  // closing the preamble-form-wrapper div
 
             s += "</div>";  // closing the outer-wrapper div
 
