@@ -56,8 +56,8 @@ let exampleTrial = {
         <img class='bp-img' src='img/p0001.png'/>
         `,
     questions: [
-        {prompt: 'Your rule for set A', required: true, name: 'Arule', rows:5, columns: 19},
-        {prompt: 'Your rule for set B', required: true, name: 'Brule', rows:5, columns: 19}
+        {prompt: 'Your rule for set A', required: true, name: 'Arule', rows:2, columns: 19},
+        {prompt: 'Your rule for set B', required: true, name: 'Brule', rows:2, columns: 19}
     ],
     data: {
         collect: true
@@ -73,7 +73,7 @@ for (let block of blocks) {
             <p>There are ${block.conditions[0].length} problems in this part.</p>
             <p>Press the button below to begin.</p>
         	`,
-            choices: ['Continue'],
+        choices: ['Continue']
     };
     timeline.push(blockIntroTrial);
 
@@ -93,7 +93,6 @@ for (let block of blocks) {
         };
 
 
-
         let inputTrial = {
             type: jsPsychSurveyText,
             preamble: `
@@ -102,15 +101,60 @@ for (let block of blocks) {
                 <img class='bp-img' src='img/p${imgstr}.png'/>
                 `,
             questions: [
-                {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows:5, columns: 19},
-                {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows:5, columns: 19}
+                {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows:2, columns: 20},
+                {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows:2, columns: 20}
             ],
             data: {
                 collect: true, // flag whether we want to collect to csv
                 imagenr: imgstr,
                 blockId: block.title,
             },
-            sidebox: sideboxVal
+            sidebox: sideboxVal,
+            button_label: 'Continue', 
+            on_load: function() {
+                const btn = document.querySelector('.jspsych-btn');
+                let buttonLockTime = 30; // time in seconds that the continue button is locked
+                const remainingTime = 150; // time in seconds after which the trial will auto-submit if the participant hasn't clicked continue
+                const totalTrialTime = (buttonLockTime + remainingTime) * 1000;
+                
+                btn.disabled = true;
+                btn['value'] = `Continue (${buttonLockTime}s)`;
+
+                const timer = setInterval(() => {
+                    buttonLockTime--;
+                    btn['value'] = `Continue (${buttonLockTime}s)`;
+
+                    if (buttonLockTime <= 0) {
+                        clearInterval(timer);
+                        btn.disabled = false;
+                        btn['value'] = "Continue";
+                    }
+                }, 1000);
+
+                const autoSubmitTimer = setTimeout(() => {
+                    const textFields = document.querySelectorAll('textarea, input[type="text"]');
+                    textFields.forEach(field => {
+                        field.required = false;
+                    });
+                    btn.disabled = false;
+                    btn.click(); 
+                }, totalTrialTime);
+
+                btn.addEventListener('click', () => {
+                    clearTimeout(autoSubmitTimer);
+                });
+
+                // dynamically resize textareas
+                const textAreas = document.querySelectorAll('textarea');
+                textAreas.forEach(textarea => {
+                    textarea.style.overflowY = "hidden";
+                    textarea.style.resize = "none";
+                    textarea.addEventListener('input', function() {
+                        this.style.height = 'auto';
+                        this.style.height = this.scrollHeight + 'px';
+                    });
+                });
+            }
 
         }
         timeline.push(inputTrial);
