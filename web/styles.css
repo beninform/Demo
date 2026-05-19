@@ -65,7 +65,49 @@
 }
 
 .example-container {
+    padding-top: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
     font-family: Arial, sans-serif;
+    text-align: left;
+}
+
+.example-container > p {
+  margin-bottom: 20px;
+}
+
+.example-ready-container {
+    padding-top: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 5%;
+    font-family: Arial, sans-serif;
+    text-align: left;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.mc-container {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 5%;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.mc-container label {
+    display: block;
+}
+
+.instruction-btn {
+    margin: auto;
+    text-align: center;
+}
+
+.example-solution-container label {
+    display: block;
 }
 
 .set-a-b-label-container {
@@ -81,7 +123,6 @@
 .bp-img {
 	width: 40vw;
 	max-width: 100%;
-
 }
 
 #input-0 {

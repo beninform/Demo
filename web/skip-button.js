@@ -1,3 +1,91 @@
+function setupInstructionMC() {
+    const btn = document.querySelector('.jspsych-btn');
+    btn.classList.add('hidden');
+
+    document.querySelectorAll('textarea').forEach(textarea => {
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+        });
+    });
+
+    const form = document.querySelector('.jspsych-content');
+    const htmlTemplate = trialText.exampleMC;
+    
+    form.insertAdjacentHTML('beforeend', htmlTemplate);
+
+    const instructionBtn = document.querySelector('.instruction-btn');
+    if (instructionBtn && btn) {
+        instructionBtn.appendChild(btn);
+    }
+
+    const cb1 = document.getElementById('cb1');
+    const cb2 = document.getElementById('cb2');
+    const solutionText = document.getElementById('solution-text');
+
+    function evaluateCheckboxes() {
+        if (cb2.checked && !cb1.checked) {
+            solutionText.classList.remove('hidden');
+            btn.classList.remove('hidden');
+        } else {
+            solutionText.classList.add('hidden');
+            btn.classList.add('hidden');
+        }
+    }
+
+    cb1.addEventListener('change', evaluateCheckboxes);
+    cb2.addEventListener('change', evaluateCheckboxes);
+
+    btn.addEventListener('click', (e) => {
+        const nativeForm = document.querySelector('form').requestSubmit();
+    });
+}
+
+function setupTrialButton() {
+    const btn = document.querySelector('.jspsych-btn');
+    let buttonLockTime = 30; // time in seconds that the continue button is locked
+    const remainingTime = 150; // time in seconds after which the trial will auto-submit if the participant hasn't clicked continue
+    const totalTrialTime = (buttonLockTime + remainingTime) * 1000;
+    
+    btn.disabled = true;
+    btn['value'] = `Continue (${buttonLockTime}s)`;
+
+    const timer = setInterval(() => {
+        buttonLockTime--;
+        btn['value'] = `Continue (${buttonLockTime}s)`;
+
+        if (buttonLockTime <= 0) {
+            clearInterval(timer);
+            btn.disabled = false;
+            btn['value'] = "Continue";
+        }
+    }, 1000);
+
+    const autoSubmitTimer = setTimeout(() => {
+        const textFields = document.querySelectorAll('textarea, input[type="text"]');
+        textFields.forEach(field => {
+            field.required = false;
+        });
+        btn.disabled = false;
+        btn.click(); 
+    }, totalTrialTime);
+
+    btn.addEventListener('click', () => {
+        clearTimeout(autoSubmitTimer);
+    });
+
+    // dynamically resize textareas
+    const textAreas = document.querySelectorAll('textarea');
+    textAreas.forEach(textarea => {
+        textarea.style.overflowY = "hidden";
+        textarea.style.resize = "none";
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+        });
+    });
+}
+
 
 // Function to show the skip button after 1 minute (60,000 ms)
 function showSkipButton() {
