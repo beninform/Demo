@@ -97,10 +97,13 @@ for (let block of blocks) {
         let inputTrial = {
             type: jsPsychSurveyText,
             preamble: `
+                <div class="trial-countdown-wrapper">
+                    Time remaining: <span id="trial-countdown">--:--</span>
+                </div>
                 <h3>BP ${imgno}</h3>
                 ${trialText.tempLabelsText}
                 <img class='bp-img' src='img/p${imgstr}.png'/>
-                `,
+            `,
             questions: [
                 {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows:2, columns: 20},
                 {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows:2, columns: 20}

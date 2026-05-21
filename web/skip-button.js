@@ -2,8 +2,8 @@ function setupInstructionMC() {
     const btn = document.querySelector('.jspsych-btn');
     btn.classList.add('hidden');
 
-    document.querySelectorAll('textarea').forEach(textarea => {
-        textarea.addEventListener('input', function() {
+    document.querySelectorAll('textarea').forEach(field => {
+        field.addEventListener('input', function() {
             this.style.height = 'auto';
             this.style.height = this.scrollHeight + 'px';
         });
@@ -37,64 +37,94 @@ function setupInstructionMC() {
     cb2.addEventListener('change', evaluateCheckboxes);
 
     btn.addEventListener('click', (e) => {
-        const nativeForm = document.querySelector('form').requestSubmit();
+        document.querySelector('form').requestSubmit();
     });
 }
 
 function setupTrialButton() {
     const btn = document.querySelector('.jspsych-btn');
+    const countdownDisplay = document.getElementById('trial-countdown');
+    const textAreas = document.querySelectorAll('textarea');
+
     let buttonLockTime = 10;
     const remainingTime = 150;
-    const totalTrialTime = (buttonLockTime + remainingTime) * 1000;
-    const textAreas = document.querySelectorAll('textarea');
+    let totalTrialTime = buttonLockTime + remainingTime; 
     
-    let isTimeUp = false;
     btn.disabled = true;
     btn['value'] = `Continue (${buttonLockTime}s)`;
 
+    function updateCountdownDisplay() {
+        if (countdownDisplay) {
+            const mins = String(Math.floor(totalTrialTime / 60)).padStart(2, '0');
+            const secs = String(totalTrialTime % 60).padStart(2, '0');
+            countdownDisplay.innerText = `${mins}:${secs}`;
+        }
+    }
+
+    updateCountdownDisplay();
+
     function checkButtonState() {
-        const hasEnoughText = Array.from(textAreas).every(t => t.value.trim().length > 3);
+        const hasEnoughText = Array.from(textAreas).every(t => t.value.trim().length >= 3);
         
-        if (isTimeUp || hasEnoughText) {
+        if (hasEnoughText) {
             btn.disabled = false;
             btn['value'] = `Continue`;
         } else {
             btn.disabled = true;
+            if (buttonLockTime > 0) {
+                btn['value'] = `Continue (${buttonLockTime}s)`;
+            } else {
+                btn['value'] = `Continue`;
+            }
         }
     }
 
     const timer = setInterval(() => {
-        buttonLockTime--;
-        
-        if (!isTimeUp) {
-            btn['value'] = `Continue (${buttonLockTime}s)`;
+        if (buttonLockTime > 0) {
+            buttonLockTime--;
         }
 
-        if (buttonLockTime <= 0) {
+        totalTrialTime--;
+        checkButtonState();
+        updateCountdownDisplay();
+        
+        if (totalTrialTime <= 0) {
             clearInterval(timer);
-            isTimeUp = true;
-            btn['value'] = "Continue";
-            checkButtonState();
+            
+            const popupHTML = `
+                <div class="timeout-popup-overlay">
+                    <div class="timeout-popup-content">
+                        <h3>Time for trial has run out!</h3>
+                        <p>You will be sent to the next trial.</p>
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', popupHTML);
+
+            textAreas.forEach(field => {
+                field.required = false;
+                field.disabled = true;
+            });
+
+            setTimeout(() => {
+                const popup = document.querySelector('.timeout-popup-overlay');
+                if (popup) popup.remove();
+                
+                btn.disabled = false;
+                btn.click();
+            }, 2000);
         }
     }, 1000);
 
-    const autoSubmitTimer = setTimeout(() => {
-        const textFields = document.querySelectorAll('textarea, input[type="text"]');
-        textFields.forEach(field => {
-            field.required = false;
-        });
-        btn.disabled = false;
-        btn.click();
-    }, totalTrialTime);
-
     btn.addEventListener('click', () => {
-        clearTimeout(autoSubmitTimer);
+        clearInterval(timer);
     });
 
-    textAreas.forEach(textarea => {
-        textarea.style.overflowY = "hidden";
-        textarea.style.resize = "none";
-        textarea.addEventListener('input', function() {
+    textAreas.forEach(field => {
+        field.style.overflowY = "hidden";
+        field.style.resize = "none";
+        field.addEventListener('input', function() {
             this.style.height = 'auto';
             this.style.height = this.scrollHeight + 'px';
             checkButtonState();
