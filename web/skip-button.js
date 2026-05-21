@@ -43,21 +43,38 @@ function setupInstructionMC() {
 
 function setupTrialButton() {
     const btn = document.querySelector('.jspsych-btn');
-    let buttonLockTime = 30; // time in seconds that the continue button is locked
-    const remainingTime = 150; // time in seconds after which the trial will auto-submit if the participant hasn't clicked continue
+    let buttonLockTime = 10;
+    const remainingTime = 150;
     const totalTrialTime = (buttonLockTime + remainingTime) * 1000;
+    const textAreas = document.querySelectorAll('textarea');
     
+    let isTimeUp = false;
     btn.disabled = true;
     btn['value'] = `Continue (${buttonLockTime}s)`;
 
+    function checkButtonState() {
+        const hasEnoughText = Array.from(textAreas).every(t => t.value.trim().length > 3);
+        
+        if (isTimeUp || hasEnoughText) {
+            btn.disabled = false;
+            btn['value'] = `Continue`;
+        } else {
+            btn.disabled = true;
+        }
+    }
+
     const timer = setInterval(() => {
         buttonLockTime--;
-        btn['value'] = `Continue (${buttonLockTime}s)`;
+        
+        if (!isTimeUp) {
+            btn['value'] = `Continue (${buttonLockTime}s)`;
+        }
 
         if (buttonLockTime <= 0) {
             clearInterval(timer);
-            btn.disabled = false;
+            isTimeUp = true;
             btn['value'] = "Continue";
+            checkButtonState();
         }
     }, 1000);
 
@@ -67,21 +84,20 @@ function setupTrialButton() {
             field.required = false;
         });
         btn.disabled = false;
-        btn.click(); 
+        btn.click();
     }, totalTrialTime);
 
     btn.addEventListener('click', () => {
         clearTimeout(autoSubmitTimer);
     });
 
-    // dynamically resize textareas
-    const textAreas = document.querySelectorAll('textarea');
     textAreas.forEach(textarea => {
         textarea.style.overflowY = "hidden";
         textarea.style.resize = "none";
         textarea.addEventListener('input', function() {
             this.style.height = 'auto';
             this.style.height = this.scrollHeight + 'px';
+            checkButtonState();
         });
     });
 }
