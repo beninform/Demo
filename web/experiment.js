@@ -45,11 +45,17 @@ let instructionTrial = {
 };
 timeline.push(instructionTrial);
 
+let exampleTrialText = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: trialText.exampleText,
+    choices: ['Continue']
+};
+timeline.push(exampleTrialText);
+
 let exampleTrial = {
     type: jsPsychSurveyText,
     preamble: `
-        ${trialText.exampleText}
-        <h3>BP 1</h3>
+        <h1>Example Problem</h1>
         ${trialText.tempLabelsText}
         <img class='bp-img' src='img/p0001.png'/>
         ${trialText.exampleReadyText}
@@ -62,7 +68,7 @@ let exampleTrial = {
         collect: true
     },
     on_load: setupInstructionMC
-}
+};
 timeline.push(exampleTrial);
 
 
@@ -114,8 +120,16 @@ for (let block of blocks) {
                 blockId: block.title,
             },
             sidebox: sideboxVal, 
-            on_load: setupTrialButton
+            on_load: function() {
+                const uniqueParam = `BP_${imgno}`;
+                const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?trial=' + uniqueParam;
+                
+                window.history.replaceState({ path: newUrl }, '', newUrl);
+
+                setupTrialButton();
+            }
         }
+        
         timeline.push(inputTrial);
 
         let results = jsPsych.data

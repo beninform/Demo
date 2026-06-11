@@ -65,34 +65,38 @@ let trialText = {
 	exampleText: `
 		<div class="example-container">
 			<h1>Example Problem</h1>
-			<p>Below, you are shown 12 diagrams. Each diagram represents shapes with specific features, such as geometric properties or higher-level concepts.</p>
+			<p>On the next page, you will be shown 12 diagrams. Each diagram represents shapes with specific features, such as geometric properties or higher-level concepts.</p>
 
-			<p>The 6 diagrams on the left side belong to Set A. <br> The 6 diagrams on the right side belong to Set B.</p>
+			<p>The 6 diagrams on the left side will belong to Set A. <br> The 6 diagrams on the right side belong will to Set B.</p>
 
-			<p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.<br>
-			Important: The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
+			<p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
+			<p>Important: The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
 		</div>
 
 	`,
 	exampleReadyText: `
 		<div class="example-ready-container">
-			<p>Write your answers in the boxes.
-			When you’re ready, click the check box as instructed.</p>
-			<p>After answering, tick only the second box.</p>
+			<p>Write your answers in the boxes. After answering, check only the second box.</p>
 		</div>
 
 	`,
 	exampleMC:`
 		<div class="mc-container">
-            <label><input type="checkbox" id="cb1"> First box</label>
-            <label><input type="checkbox" id="cb2"> Second box</label>
-            
-            <div id="solution-text" class="hidden">
-                <p>Possible solution:<br>Rule for Set A (left): empty.<br>Rule for Set B (right): non-empty.</p>
-                <div class="instruction-btn">
-                    <button type="submit" id="btn" class="jspsych-btn hidden">Continue</button>
-                </div>
-            </div>
-        </div>
+			<label><input type="checkbox" id="cb1"> First box</label>
+			<label><input type="checkbox" id="cb2"> Second box</label>
+			
+			<div id="solution-text" class="hidden">
+				<p>Here is an acceptable solution to the example problem:</p>
+				
+				<div class="solution-rules">
+					<p>Rule for Set A (left): empty.</p>
+					<p>Rule for Set B (right): non-empty.</p>
+				</div>
+				
+				<div class="instruction-btn">
+					<button type="submit" id="btn" class="jspsych-btn hidden">Continue</button>
+				</div>
+			</div>
+		</div>
 		`
 	};
