@@ -121,12 +121,7 @@ for (let block of blocks) {
             },
             sidebox: sideboxVal, 
             on_load: function() {
-                const uniqueParam = `BP_${imgno}`;
-                const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?trial=' + uniqueParam;
-                
-                window.history.replaceState({ path: newUrl }, '', newUrl);
-
-                setupTrialButton();
+                setupTrialButtons();
             }
         }
         

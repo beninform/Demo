@@ -132,6 +132,27 @@
     text-align: center;
 }
 
+.trial-buttons-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.trial-buttons-container .jspsych-btn {
+    flex: 1;
+}
+
+.trial-buttons-container .jspsych-btn:disabled {
+    background-color: #e0e0e0 !important;
+    color: #a0a0a0 !important;
+    border-color: #d3d3d3 !important;
+    cursor: not-allowed !important;
+    box-shadow: none !important;
+}
+
 .trial-countdown-container {
     background-color: #f8f9fa;
     border: 1px solid #dee2e6;

@@ -1,3 +1,4 @@
+// setup for the attention check boxes
 function setupInstructionMC() {
     const btn = document.querySelector('.jspsych-btn');
     btn.classList.add('hidden');
@@ -41,17 +42,34 @@ function setupInstructionMC() {
     });
 }
 
-function setupTrialButton() {
-    const btn = document.querySelector('.jspsych-btn');
-    const countdownDisplay = document.getElementById('trial-countdown');
+// setup continue and skip buttons 
+function setupTrialButtons() {
+    const continueBtn = document.getElementById('jspsych-survey-text-next');
     const textAreas = document.querySelectorAll('textarea');
+    const countdownDisplay = document.getElementById('trial-countdown');
 
-    let buttonLockTime = 10;
-    const remainingTime = 150;
-    let totalTrialTime = buttonLockTime + remainingTime; 
+    if (!continueBtn) return; 
+
+    continueBtn.innerText = 'Continue';
+
+    const skipBtn = document.createElement('button');
+    skipBtn.type = 'button';
+    skipBtn.id = 'skip-btn';
+    skipBtn.className = 'jspsych-btn';
+
+    const buttonContainer = document.createElement('div');
+    buttonContainer.className = 'trial-buttons-container';
+
+    continueBtn.parentNode.insertBefore(buttonContainer, continueBtn);
+    buttonContainer.appendChild(continueBtn);
+    buttonContainer.appendChild(skipBtn);
+
+    let skipLockTime = 10;
+    let totalTrialTime = 150;
     
-    btn.disabled = true;
-    btn['value'] = `Continue (${buttonLockTime}s)`;
+    continueBtn.disabled = true;
+    skipBtn.disabled = true;
+    skipBtn.innerText = `Skip (${skipLockTime}s)`;
 
     function updateCountdownDisplay() {
         if (countdownDisplay) {
@@ -61,31 +79,25 @@ function setupTrialButton() {
         }
     }
 
-    updateCountdownDisplay();
-
-    function checkButtonState() {
+    function checkTextRequirement() {
         const hasEnoughText = Array.from(textAreas).every(t => t.value.trim().length >= 3);
-        
-        if (hasEnoughText) {
-            btn.disabled = false;
-            btn['value'] = `Continue`;
-        } else {
-            btn.disabled = true;
-            if (buttonLockTime > 0) {
-                btn['value'] = `Continue (${buttonLockTime}s)`;
-            } else {
-                btn['value'] = `Continue`;
-            }
-        }
+        continueBtn.disabled = !hasEnoughText;
     }
 
+    updateCountdownDisplay();
+    checkTextRequirement();
+
     const timer = setInterval(() => {
-        if (buttonLockTime > 0) {
-            buttonLockTime--;
+        if (skipLockTime > 0) {
+            skipLockTime--;
+            skipBtn.innerText = `Skip (${skipLockTime}s)`;
+            if (skipLockTime === 0) {
+                skipBtn.disabled = false;
+                skipBtn.innerText = 'Skip';
+            }
         }
 
         totalTrialTime--;
-        checkButtonState();
         updateCountdownDisplay();
         
         if (totalTrialTime <= 0) {
@@ -103,22 +115,31 @@ function setupTrialButton() {
             document.body.insertAdjacentHTML('beforeend', popupHTML);
 
             textAreas.forEach(field => {
-                field.required = false;
                 field.disabled = true;
             });
 
             setTimeout(() => {
                 const popup = document.querySelector('.timeout-popup-overlay');
                 if (popup) popup.remove();
-                
-                btn.disabled = false;
-                btn.click();
+
+                textAreas.forEach(field => field.required = false); 
+                continueBtn.disabled = false; 
+                continueBtn.click();
             }, 2000);
         }
     }, 1000);
 
-    btn.addEventListener('click', () => {
+    continueBtn.addEventListener('click', () => {
         clearInterval(timer);
+    });
+
+    skipBtn.addEventListener('click', () => {
+        clearInterval(timer);
+        
+        textAreas.forEach(field => field.required = false); 
+        
+        continueBtn.disabled = false; 
+        continueBtn.click(); 
     });
 
     textAreas.forEach(field => {
@@ -127,11 +148,10 @@ function setupTrialButton() {
         field.addEventListener('input', function() {
             this.style.height = 'auto';
             this.style.height = this.scrollHeight + 'px';
-            checkButtonState();
+            checkTextRequirement();
         });
     });
 }
-
 
 // Function to show the skip button after 1 minute (60,000 ms)
 function showSkipButton() {
