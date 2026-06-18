@@ -7,35 +7,56 @@ function setupInstructionMC() {
         field.addEventListener('input', function() {
             this.style.height = 'auto';
             this.style.height = this.scrollHeight + 'px';
+            checkTextRequirement();
         });
     });
 
-    const form = document.querySelector('.jspsych-content');
-    const htmlTemplate = trialText.exampleMC;
+    const jspsychForm = document.getElementById('jspsych-survey-text-form');
+    const mcContainer = document.querySelector('.left-panel .mc-container');
     
-    form.insertAdjacentHTML('beforeend', htmlTemplate);
+    mcContainer.parentNode.insertBefore(jspsychForm, mcContainer);
+    mcContainer.insertAdjacentHTML('beforebegin', trialText.exampleMC);
 
     const instructionBtn = document.querySelector('.instruction-btn');
-    if (instructionBtn && btn) {
-        instructionBtn.appendChild(btn);
-    }
+    instructionBtn.appendChild(btn);
 
     const cb1 = document.getElementById('cb1');
     const cb2 = document.getElementById('cb2');
     const solutionText = document.getElementById('solution-text');
 
-    function evaluateCheckboxes() {
-        if (cb2.checked && !cb1.checked) {
-            solutionText.classList.remove('hidden');
-            btn.classList.remove('hidden');
-        } else {
-            solutionText.classList.add('hidden');
-            btn.classList.add('hidden');
+    solutionText.classList.add('hidden');
+
+    function checkTextRequirement() {
+        const hasEnoughText = Array.from(textAreas).every(t => t.value.trim().length >= 3);
+        
+        cb1.disabled = !hasEnoughText;
+        cb2.disabled = !hasEnoughText;
+        
+        if (!hasEnoughText) {
+            cb1.checked = false;
+            cb2.checked = false;
+            evaluateCheckboxes();
         }
     }
 
-    cb1.addEventListener('change', evaluateCheckboxes);
-    cb2.addEventListener('change', evaluateCheckboxes);
+    function evaluateCheckboxes() {
+        if (cb1 && cb2 && solutionText) {
+            if (cb2.checked && !cb1.checked) {
+                solutionText.classList.remove('hidden');
+                btn.classList.remove('hidden');
+            } else {
+                solutionText.classList.add('hidden');
+                btn.classList.add('hidden');
+            }
+        }
+    }
+
+    if (cb1 && cb2) {
+        cb1.addEventListener('change', evaluateCheckboxes);
+        cb2.addEventListener('change', evaluateCheckboxes);
+    }
+
+    checkTextRequirement();
 
     btn.addEventListener('click', (e) => {
         document.querySelector('form').requestSubmit();

@@ -45,30 +45,16 @@ let instructionTrial = {
 };
 timeline.push(instructionTrial);
 
-let exampleTrialText = {
-    type: jsPsychHtmlButtonResponse,
-    stimulus: trialText.exampleText,
-    choices: ['Continue']
-};
-timeline.push(exampleTrialText);
-
 let exampleTrial = {
     type: jsPsychSurveyText,
-    preamble: `
-        <h1>Example Problem</h1>
-        ${trialText.tempLabelsText}
-        <img class='bp-img' src='img/p0001.png'/>
-        ${trialText.exampleReadyText}
-        `,
+    preamble: trialText.exampleProblem,
     questions: [
-        {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows:2, columns: 20},
-        {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows:2, columns: 20}
+        {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows: 2},
+        {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows: 2}
     ],
-    data: {
-        collect: true
-    },
     on_load: setupInstructionMC
 };
+
 timeline.push(exampleTrial);
 
 

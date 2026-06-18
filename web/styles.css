@@ -7,7 +7,6 @@
     --bottom-width: 60%;
 }*/
 
-
 .intro-container {
     --vertical-space: 60px;
     --horizontal-space: 60px;
@@ -92,6 +91,40 @@
 
 .hidden {
     display: none !important;
+}
+
+
+.split-screen {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    gap: 60px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.left-panel {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+}
+
+.right-panel {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-top: 40px;
+}
+
+.jspsych-survey-text-question textarea {
+    width: 100% !important;
+    box-sizing: border-box;
 }
 
 .solution-text {
@@ -235,7 +268,7 @@
 }
 
 #set-a-label, #set-b-label {
-    width: 25%;
+    width: 175px;
     text-align: center;
 }
 
