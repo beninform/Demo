@@ -12,7 +12,7 @@ function setupInstructionMC() {
     });
 
     const jspsychForm = document.getElementById('jspsych-survey-text-form');
-    const mcContainer = document.querySelector('.left-panel .mc-container');
+    const mcContainer = document.querySelector('.preamble-form-wrapper .mc-container');
     
     mcContainer.parentNode.insertBefore(jspsychForm, mcContainer);
     mcContainer.insertAdjacentHTML('beforebegin', trialText.exampleMC);
@@ -27,8 +27,8 @@ function setupInstructionMC() {
     solutionText.classList.add('hidden');
 
     function checkTextRequirement() {
+
         const hasEnoughText = Array.from(textAreas).every(t => t.value.trim().length >= 3);
-        
         cb1.disabled = !hasEnoughText;
         cb2.disabled = !hasEnoughText;
         

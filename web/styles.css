@@ -122,6 +122,18 @@
     padding-top: 40px;
 }
 
+.instruction-box {
+    padding: 20px;
+    width: 70%;
+    text-align: left;
+    padding-top: 100px;
+}
+
+.instruction-box > p {
+    /*line-height: 15px;*/
+    margin-bottom: 20px;
+}
+
 .jspsych-survey-text-question textarea {
     width: 100% !important;
     box-sizing: border-box;

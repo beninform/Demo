@@ -52,6 +52,7 @@ let exampleTrial = {
         {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows: 2},
         {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows: 2}
     ],
+    sidebox: 1, 
     on_load: setupInstructionMC
 };
 
@@ -79,7 +80,7 @@ for (let block of blocks) {
         let sideboxVal = null;
         if (id=='H2SO4') {  // switches candidate rules on (from querystring)
             // console.log('H2SO4 detected in url');
-            sideboxVal = imgno
+            sideboxVal = imgno;
             // console.log('imgno', imgno);
         // } else {
         //     console.log('wrong or no id in url');

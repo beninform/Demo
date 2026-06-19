@@ -149,8 +149,10 @@ var jsPsychSurveyText = function(n) {
                 console.log('Timer finished!');
             }, 60000);
 
+            if (bongProbNumber == 1) {
+                s += trialText.exampleProblemText;
 
-            if (bongProbNumber !== null) {
+            } else if (bongProbNumber !== null) {
                 let filteredArray = rulesArray.filter((item) => item.BP == bongProbNumber);
 
                 s += '  <div id="candidate-rules" class="candidate-rules" style="height: 100%">';
