@@ -1,6 +1,7 @@
 // setup for the attention check boxes
 function setupInstructionMC() {
     const btn = document.querySelector('.jspsych-btn');
+    const textAreas = document.querySelectorAll('textarea');
     btn.classList.add('hidden');
 
     document.querySelectorAll('textarea').forEach(field => {
