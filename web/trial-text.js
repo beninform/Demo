@@ -14,34 +14,17 @@ let trialText = {
 
 	    <div class="intro-bottom">
 	    	<p>There are three parts to the experience.</p>
+			<p>Access to parts two and three depend on your success in part one.</p>
 	    	<p>Press the button below to proceed.</p>
 	    </div>
 	</div>
-				`,
-	oldinstructionText: `
-	<div class="instructions-container">
-		<h1>Instructions</h1>
-		<p>In each part of the experiment, you will be asked to solve 33 problems.</p>
-		<p>You will have the option to skip problems. But if you skip too many problems or if your answers make no sense (nonsense words or sentences), you will not be invited to proceed to the next study part.</p>
-
-		<p>The study consists of three parts, which will each take approximately 35 minutes.</p>
-		<p>Please enter a code you will be able to recall that consists of at least 5 characters using letters and numbers.
-		It must be memorable for you. So we ask you to use the following.</p>
-		<ol>
-			<li>First letter of your first name</li>
-			<li>Day of the month of your birthday</li>
-			<li>Last two digits of year of birth</li>
-			<li>Last letter of your hometown</li>
-		</ol>
-	</div>
-
 	`,
 	instructionText: `
 	<div class="instructions-container">
 		<h1>Instructions</h1>
 		<p>In each part of the experiment, you will be asked to solve a set of problems.
 		There will be one problem on each screen.</p>
-		<p>Each of the three parts will take approximately 35 minutes to complete.</p>
+		<p>Each of the three parts will take approximately 35 minutes to complete. Your access to part two is dependent on your progress in part one.</p>
 		<p>Before we start part one, we will show you a single example problem.</p>
 		<p>As with all the problems, you must enter an answer in each box to be able to continue.</p>
 		<p>For efficient progress, if you wish, you can use the <code style="color:#8B0000;">Tab</code> button 
@@ -161,5 +144,14 @@ let trialText = {
 				</div>
 			</div>
 		</div>
-		`
+	`,
+	finalText:`
+	<div class="final-text-container">
+	<p>Thank you for completing the first part of the experiment. 
+        Your responses will be reviewed - usually within 24 hours, often sooner, depending on the time of day. 
+        You will be contacted and either thanked for your time or asked to attempt some further problems. 
+        Please contact us if you have heard nothing after two days. info@synergy.trx.li. 
+        You can now close this tab</p>
+	</div>`
+		
 	};

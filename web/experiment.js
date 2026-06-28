@@ -1,21 +1,38 @@
+const urlParams = new URLSearchParams(window.location.search);
+
+let uid = urlParams.get('uid') || 'PROLIFIC_ID'; 
+let tid = urlParams.get('tid') || 'ncr';
+let pid = urlParams.get('pid') || 'pia';
+
 // get the user id from the querystring
 
-function getQueryVariable(variable) {
-    var query = window.location.search.substring(1);
-    var vars = query.split('&');
-    for (var i = 0; i < vars.length; i++) {
-        var pair = vars[i].split('=');
-        if (decodeURIComponent(pair[0]) == variable) {
-            return decodeURIComponent(pair[1]);
-        }
-    }
-}
-let id = getQueryVariable('id');
+// function getQueryVariable(variable) {
+//     var query = window.location.search.substring(1);
+//     var vars = query.split('&');
+//     for (var i = 0; i < vars.length; i++) {
+//         var pair = vars[i].split('=');
+//         if (decodeURIComponent(pair[0]) == variable) {
+//             return decodeURIComponent(pair[1]);
+//         }
+//     }
+// }
+// let id = getQueryVariable('id');
 
 let jsPsych = initJsPsych();
 
 let timeline = [];
 
+let selectedBlock = [];
+
+if (pid === 'pia') {
+    selectedBlock = [blocks[0]]; 
+} else if (pid === 'pib') {
+    selectedBlock = [blocks[1]]; 
+} else if (pid === 'pic') {
+    selectedBlock = [blocks[2]]; 
+} else {
+    selectedBlock = blocks;
+}
 
 let welcomeTrial = {
     type: jsPsychHtmlButtonResponse,
@@ -59,7 +76,7 @@ let exampleTrial = {
 timeline.push(exampleTrial);
 
 
-for (let block of blocks) {
+for (let block of selectedBlock) {
     let blockIntroTrial = {
         type: jsPsychHtmlButtonResponse,
         stimulus: `
@@ -77,26 +94,42 @@ for (let block of blocks) {
         let imagenostr = '000'+imgno;
         let imgstr = imagenostr.slice(-4);
 
-        let sideboxVal = null;
-        if (id=='H2SO4') {  // switches candidate rules on (from querystring)
-            // console.log('H2SO4 detected in url');
-            sideboxVal = imgno;
-            // console.log('imgno', imgno);
-        // } else {
-        //     console.log('wrong or no id in url');
-        };
+        let trialPreamble = `
+            <div class="trial-countdown-wrapper">
+                Time remaining: <span id="trial-countdown">--:--</span>
+            </div>
+            <h3>BP ${imgno}</h3>
+            ${trialText.tempLabelsText}
+            <img class='bp-img' src='img/p${imgstr}.png'/>
+        `;
 
+        let sideboxVal = null;
+        if (tid === 'wcr') {  // switches candidate rules on (from querystring)
+            sideboxVal = imgno;
+            trialPreamble += `
+                <button type="button" class="help-btn" id="help-toggle-btn">?</button>
+                <div class="help-popup hidden" id="help-popup-box">
+                        Type each of your rules into the appropriate answer box. You cannot drag and drop any text from the candidate rules list.
+                </div>
+            `;
+        } else {
+            trialPreamble += `
+                <button type="button" class="help-btn" id="help-toggle-btn">?</button>
+                <div class="help-popup hidden" id="help-popup-box">
+                        Type each of your rules into the appropriate answer box. The page shows a ‘time remaining’ countdown timer. 
+                        This allows you two and a half minutes for each problem. 
+                        After the time has elapsed, you will be automatically moved on to the next problem. 
+                        You can only use the ‘continue’ button once you have entered text into each of the answer boxes.
+                        The skip button will only be available after the first ten seconds. 
+                        You are encouraged not to skip problems. 
+                        In any event, you will not be able to skip more than four problems.
+                </div>
+            `;
+        };
 
         let inputTrial = {
             type: jsPsychSurveyText,
-            preamble: `
-                <div class="trial-countdown-wrapper">
-                    Time remaining: <span id="trial-countdown">--:--</span>
-                </div>
-                <h3>BP ${imgno}</h3>
-                ${trialText.tempLabelsText}
-                <img class='bp-img' src='img/p${imgstr}.png'/>
-            `,
+            preamble: trialPreamble,
             questions: [
                 {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows:2, columns: 20},
                 {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows:2, columns: 20}
@@ -109,6 +142,7 @@ for (let block of blocks) {
             sidebox: sideboxVal, 
             on_load: function() {
                 setupTrialButtons();
+                setupHelpButton();
             }
         }
         
@@ -120,6 +154,17 @@ for (let block of blocks) {
             .csv();
     }
 }
+
+let finalTrial = {
+    type: jsPsychHtmlKeyboardResponse,
+    stimulus: trialText.finalText, 
+    choices: "NO_KEYS",
+    on_finish: function() {
+        jsPsych.data.get().localSave('csv', 'experiment_results.csv');
+    }
+};
+
+timeline.push(finalTrial);
 
 
 let resultsTrial = {

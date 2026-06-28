@@ -147,29 +147,41 @@
 
 .solution-rules {
     display: flex;
-    gap: 140px;
-    margin-top: 15px;
+    gap: 30px;
+    margin-top: 10px;
     margin-bottom: 20px;
+    height: 50px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
 }
 
 .solution-rules p {
     flex: 1;
     margin: 0;
-    
     border: 1px solid #cccccc;
-    padding: 15px;
+    padding: 5px;
 }
 
 .mc-container {
+    width: 100%;
     padding-left: 10%;
     padding-right: 10%;
-    padding-bottom: 5%;
     margin-top: 20px;
     text-align: left;
+    padding: 0;
 }
 
 .mc-container label {
     display: block;
+}
+
+.final-text-container{
+    padding-top: 10%;
+    padding-left: 20%;   
+    padding-right: 20%;
+    max-width: 800px;
+    font-family: Arial, sans-serif;
+    text-align: left;
 }
 
 .instruction-btn {
@@ -196,6 +208,52 @@
     border-color: #d3d3d3 !important;
     cursor: not-allowed !important;
     box-shadow: none !important;
+}
+
+#skip-btn {
+    position: relative;
+}
+#skip-btn:hover::after {
+    content: "Any sensible answer is better than skipping.";
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 100;
+}
+
+.skip-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+.skip-popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    max-width: 400px;
+    width: 100%;
+}
+.skip-popup-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
 .trial-countdown-container {
@@ -272,6 +330,50 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.help-btn {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    color: #666666;
+    border: 1px solid #dcdcdc;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.help-btn:hover::after {
+    content: "Open help information";
+    position: absolute;
+    right: 40px;
+    top: 2px;
+    background: #333;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.help-popup {
+    position: fixed;
+    top: 60px;
+    right: 20px;
+    width: 280px;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1001;
+    text-align: left;
+    font-size: 14px;
+    color: #333;
 }
 
 .set-a-b-label-container {

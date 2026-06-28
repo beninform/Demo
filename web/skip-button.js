@@ -41,14 +41,12 @@ function setupInstructionMC() {
     }
 
     function evaluateCheckboxes() {
-        if (cb1 && cb2 && solutionText) {
-            if (cb2.checked && !cb1.checked) {
-                solutionText.classList.remove('hidden');
-                btn.classList.remove('hidden');
-            } else {
-                solutionText.classList.add('hidden');
-                btn.classList.add('hidden');
-            }
+        if (cb2.checked && !cb1.checked) {
+            solutionText.classList.remove('hidden');
+            btn.classList.remove('hidden');
+        } else {
+            solutionText.classList.add('hidden');
+            btn.classList.add('hidden');
         }
     }
 
@@ -69,8 +67,7 @@ function setupTrialButtons() {
     const continueBtn = document.getElementById('jspsych-survey-text-next');
     const textAreas = document.querySelectorAll('textarea');
     const countdownDisplay = document.getElementById('trial-countdown');
-
-    if (!continueBtn) return; 
+    const bpImg = document.querySelector('.bp-img');
 
     continueBtn.innerText = 'Continue';
 
@@ -79,26 +76,27 @@ function setupTrialButtons() {
     skipBtn.id = 'skip-btn';
     skipBtn.className = 'jspsych-btn';
 
-    const buttonContainer = document.createElement('div');
-    buttonContainer.className = 'trial-buttons-container';
+    const btnContainer = document.createElement('div');
+    btnContainer.className = 'trial-buttons-container';
 
-    continueBtn.parentNode.insertBefore(buttonContainer, continueBtn);
-    buttonContainer.appendChild(continueBtn);
-    buttonContainer.appendChild(skipBtn);
+    continueBtn.parentNode.insertBefore(btnContainer, continueBtn);
+    btnContainer.appendChild(continueBtn);
+    btnContainer.appendChild(skipBtn);
 
     let skipLockTime = 10;
     let totalTrialTime = 150;
+
+    const startSkipLock = skipLockTime;
+    const startTotalTime = totalTrialTime;
     
     continueBtn.disabled = true;
     skipBtn.disabled = true;
     skipBtn.innerText = `Skip (${skipLockTime}s)`;
 
     function updateCountdownDisplay() {
-        if (countdownDisplay) {
-            const mins = String(Math.floor(totalTrialTime / 60)).padStart(2, '0');
-            const secs = String(totalTrialTime % 60).padStart(2, '0');
-            countdownDisplay.innerText = `${mins}:${secs}`;
-        }
+        const mins = String(Math.floor(totalTrialTime / 60)).padStart(2, '0');
+        const secs = String(totalTrialTime % 60).padStart(2, '0');
+        countdownDisplay.innerText = `${mins}:${secs}`;
     }
 
     function checkTextRequirement() {
@@ -109,69 +107,140 @@ function setupTrialButtons() {
     updateCountdownDisplay();
     checkTextRequirement();
 
-    const timer = setInterval(() => {
-        if (skipLockTime > 0) {
-            skipLockTime--;
-            skipBtn.innerText = `Skip (${skipLockTime}s)`;
-            if (skipLockTime === 0) {
+    let timer = null;
+
+    function startTimer() {
+        const startTime = Date.now();
+
+        timer = setInterval(() => {
+            const secondsElapsed = Math.floor((Date.now() - startTime) / 1000);
+
+            skipLockTime = Math.max(0, startSkipLock - secondsElapsed);
+            totalTrialTime = Math.max(0, startTotalTime - secondsElapsed);
+
+            if (skipLockTime > 0) {
+                skipBtn.innerText = `Skip (${skipLockTime}s)`;
+            } else {
                 skipBtn.disabled = false;
                 skipBtn.innerText = 'Skip';
             }
-        }
 
-        totalTrialTime--;
-        updateCountdownDisplay();
-        
-        if (totalTrialTime <= 0) {
-            clearInterval(timer);
+            updateCountdownDisplay();
             
-            const popupHTML = `
-                <div class="timeout-popup-overlay">
-                    <div class="timeout-popup-content">
-                        <h3>Time for trial has run out!</h3>
-                        <p>You will be sent to the next trial.</p>
-                        <div class="spinner"></div>
-                    </div>
+            if (totalTrialTime <= 0) {
+                clearInterval(timer);
+                handleTimeout();
+            }
+        }, 1000);
+    }
+
+    function handleTimeout() {
+        const popupHTML = `
+            <div class="timeout-popup-overlay">
+                <div class="timeout-popup-content">
+                    <h3>Time for trial has run out!</h3>
+                    <p>You will be sent to the next trial.</p>
+                    <div class="spinner"></div>
                 </div>
-            `;
-            document.body.insertAdjacentHTML('beforeend', popupHTML);
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', popupHTML);
 
-            textAreas.forEach(field => {
-                field.disabled = true;
-            });
+        textAreas.forEach(field => { field.disabled = true; });
 
-            setTimeout(() => {
-                const popup = document.querySelector('.timeout-popup-overlay');
-                if (popup) popup.remove();
+        setTimeout(() => {
+            const popup = document.querySelector('.timeout-popup-overlay');
+            if (popup) popup.remove();
 
-                textAreas.forEach(field => field.required = false); 
-                continueBtn.disabled = false; 
-                continueBtn.click();
-            }, 2000);
-        }
-    }, 1000);
+            textAreas.forEach(field => field.required = false); 
+            continueBtn.disabled = false; 
+            continueBtn.click();
+        }, 2000);
+    }
+
+
+    if (bpImg.complete) {
+        startTimer();
+    } else {
+        bpImg.addEventListener('load', startTimer);
+    }
 
     continueBtn.addEventListener('click', () => {
         clearInterval(timer);
     });
 
     skipBtn.addEventListener('click', () => {
-        clearInterval(timer);
-        
-        textAreas.forEach(field => field.required = false); 
-        
-        continueBtn.disabled = false; 
-        continueBtn.click(); 
+        const currentSkips = window.skipCount || 0;
+  
+        const nextSkipAttempt = currentSkips + 1;
+
+        let popupText = "";
+        let confirmBtnLabel = "Skip";
+
+        if (nextSkipAttempt === 1) {
+            popupText = "You are about to skip a problem. You are allowed a maximum of four skips.";
+        } else if (nextSkipAttempt === 2) {
+            popupText = "You are about to skip a second problem. You are allowed a maximum of four skips.";
+        } else if (nextSkipAttempt === 3) {
+            popupText = "You are about to skip a third problem. You are allowed a maximum of four skips.";
+        } else if (nextSkipAttempt === 4) {
+            popupText = "You are about to skip a fourth problem. Your session will end with this action.";
+            confirmBtnLabel = "End";
+        }
+
+        const skipPopupHTML = `
+            <div class="skip-popup-overlay" id="skip-confirm-popup">
+                <div class="skip-popup-content">
+                    <p>${popupText}</p> 
+                    <div class="skip-popup-buttons">
+                        <button type="button" class="jspsych-btn" id="skip-popup-cancel">Cancel</button>
+                        <button type="button" class="jspsych-btn" id="skip-popup-confirm">${confirmBtnLabel}</button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        document.body.insertAdjacentHTML('beforeend', skipPopupHTML);
+
+        const cancelBtn = document.getElementById('skip-popup-cancel');
+        const confirmBtn = document.getElementById('skip-popup-confirm');
+        const popupOverlay = document.getElementById('skip-confirm-popup');
+
+        cancelBtn.addEventListener('click', () => {
+            if (popupOverlay) popupOverlay.remove();
+        });
+
+        confirmBtn.addEventListener('click', () => {
+            if (popupOverlay) popupOverlay.remove();
+
+            clearInterval(timer);
+            
+            window.skipCount = nextSkipAttempt;
+            jsPsych.data.addProperties({ total_skips: window.skipCount });
+
+            textAreas.forEach(field => field.required = false); 
+            continueBtn.disabled = false; 
+            continueBtn.click(); 
+        });
+    });
+}
+
+// setup the help button and popup
+function setupHelpButton() {
+    const helpBtn = document.getElementById('help-toggle-btn');
+    const helpPopup = document.getElementById('help-popup-box');
+
+    helpBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        helpPopup.classList.toggle('hidden');
     });
 
-    textAreas.forEach(field => {
-        field.style.overflowY = "hidden";
-        field.style.resize = "none";
-        field.addEventListener('input', function() {
-            this.style.height = 'auto';
-            this.style.height = this.scrollHeight + 'px';
-            checkTextRequirement();
-        });
+    helpPopup.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+
+    document.addEventListener('click', () => {
+        helpPopup.classList.add('hidden');
     });
 }
 
