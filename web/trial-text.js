@@ -45,32 +45,64 @@ let trialText = {
         </div>
 
     `,
-	exampleProblem: `
-			<div class="preamble-form-wrapper">
-				<h1>Example Problem</h1>
+	ncrExampleProblem: `
+            <div class="preamble-form-wrapper ncr-layout">
+                <h1>Example Problem</h1>
 
-				<div class='set-a-b-label-container'>
-					<div id='set-a-label'><p>Set A</p></div>
-					<div id='set-b-label'><p>Set B</p></div>
-				</div>
-				
-				<img class='bp-img' src='img/p0001.png' alt="Bongard Problem"/>
+                <div class='set-a-b-label-container'>
+                    <div id='set-a-label'><p>Set A</p></div>
+                    <div id='set-b-label'><p>Set B</p></div>
+                </div>
+                
+                <img class='bp-img' src='img/p0001.png' alt="Bongard Problem"/>
 
-				<p style="margin-top:20px; font-weight: bold;">Write your answers in the boxes. Then check only the second box.</p>
+                <p class="example-instruction-text">Write your answers in the boxes. Then check only the second box.</p>
 
-				<div id="survey-container-target"></div>
+                <div id="survey-container-target"></div>
 
-				<div class="mc-container">
-					<div id="solution-text" class="hidden">
-						<p>Here is an acceptable solution to the example problem:</p>
-						<div class="solution-rules">
-							<p>empty</p>
-							<p>non-empty</p>
-						</div>
-					</div>
-				</div>
-			</div>
-	`,
+                <div class="mc-container">
+                    <div id="solution-text" class="hidden">
+                        <p>Here is an acceptable solution to the example problem:</p>
+                        <div class="solution-rules">
+                            <p>empty</p>
+                            <p>non-empty</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    `,
+    wcrExampleProblem: `
+            <div class="split-screen wcr-layout">
+                <div class="left-panel preamble-form-wrapper">
+                    <h1>Example Problem</h1>
+
+                    <div class='set-a-b-label-container'>
+                        <div id='set-a-label'><p>Set A</p></div>
+                        <div id='set-b-label'><p>Set B</p></div>
+                    </div>
+                    
+                    <img class='bp-img' src='img/p0001.png' alt="Bongard Problem"/>
+
+                    <p class="example-instruction-text">Write your answers in the boxes. Then check only the second box.</p>
+
+                    <div id="survey-container-target"></div>
+
+                    <div class="mc-container">
+                        <div id="solution-text" class="hidden">
+                            <p>Here is an acceptable solution to the example problem:</p>
+                            <div class="solution-rules">
+                                <p>empty</p>
+                                <p>non-empty</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right-panel wcr-image-panel">
+                    <img class="bp-img wcr-preview-img" src="img/p0001.png" alt="Candidate Rules Help" />
+                </div>
+            </div>
+    `,
 	exampleProblemText: `
 			<div id="candidate-rules" class="candidate-rules">
 				<div class="instruction-box">

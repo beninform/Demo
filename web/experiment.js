@@ -64,7 +64,7 @@ timeline.push(instructionTrial);
 
 let exampleTrial = {
     type: jsPsychSurveyText,
-    preamble: trialText.exampleProblem,
+    preamble: tid === 'ncr' ? trialText.ncrExampleProblem : trialText.wcrExampleProblem,
     questions: [
         {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows: 2},
         {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows: 2}
@@ -159,7 +159,7 @@ let finalTrial = {
     type: jsPsychHtmlKeyboardResponse,
     stimulus: trialText.finalText, 
     choices: "NO_KEYS",
-    on_finish: function() {
+    on_load: function() {
         jsPsych.data.get().localSave('csv', 'experiment_results.csv');
     }
 };

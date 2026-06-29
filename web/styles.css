@@ -139,6 +139,29 @@
     box-sizing: border-box;
 }
 
+.example-instruction-text {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.wcr-layout .left-panel.preamble-form-wrapper {
+    padding-top: 0 !important;
+}
+
+.wcr-layout .wcr-image-panel {
+    padding-top: 0 !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.wcr-layout .wcr-preview-img {
+    width: 100%;
+    max-width: 48vw;
+    height: auto !important;
+    margin-top: 110px;
+}
+
 .solution-text {
     display: flex;
     flex-direction: column;
