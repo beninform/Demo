@@ -104,6 +104,14 @@ function setupTrialButtons() {
         continueBtn.disabled = !hasEnoughText;
     }
 
+    document.querySelectorAll('textarea').forEach(field => {
+        field.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = this.scrollHeight + 'px';
+            checkTextRequirement();
+        });
+    });
+
     updateCountdownDisplay();
     checkTextRequirement();
 
@@ -157,8 +165,7 @@ function setupTrialButtons() {
             continueBtn.click();
         }, 2000);
     }
-
-
+    
     if (bpImg.complete) {
         startTimer();
     } else {
@@ -171,19 +178,18 @@ function setupTrialButtons() {
 
     skipBtn.addEventListener('click', () => {
         const currentSkips = window.skipCount || 0;
-  
-        const nextSkipAttempt = currentSkips + 1;
+        const numSkips = currentSkips + 1;
 
         let popupText = "";
         let confirmBtnLabel = "Skip";
 
-        if (nextSkipAttempt === 1) {
+        if (numSkips === 1) {
             popupText = "You are about to skip a problem. You are allowed a maximum of four skips.";
-        } else if (nextSkipAttempt === 2) {
+        } else if (numSkips === 2) {
             popupText = "You are about to skip a second problem. You are allowed a maximum of four skips.";
-        } else if (nextSkipAttempt === 3) {
+        } else if (numSkips === 3) {
             popupText = "You are about to skip a third problem. You are allowed a maximum of four skips.";
-        } else if (nextSkipAttempt === 4) {
+        } else if (numSkips === 4) {
             popupText = "You are about to skip a fourth problem. Your session will end with this action.";
             confirmBtnLabel = "End";
         }
@@ -215,8 +221,18 @@ function setupTrialButtons() {
 
             clearInterval(timer);
             
-            window.skipCount = nextSkipAttempt;
+            window.skipCount = numSkips;
             jsPsych.data.addProperties({ total_skips: window.skipCount });
+
+            if (numSkips >= 4) {
+                jsPsych.abortExperiment(`
+                    <div class="final-text-container">
+                        <h1>Experiment Aborted</h1>
+                        <p>You have reached the maximum number of skips. The session has been terminated.</p>
+                    </div>
+                `);
+                return;
+            }
 
             textAreas.forEach(field => field.required = false); 
             continueBtn.disabled = false; 

@@ -69,7 +69,7 @@ let exampleTrial = {
         {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows: 2},
         {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows: 2}
     ],
-    sidebox: 1, 
+    sidebox: tid === 'ncr' ? 1 : selectedBlock[0].conditions[0][0], 
     on_load: setupInstructionMC
 };
 
@@ -155,18 +155,6 @@ for (let block of selectedBlock) {
     }
 }
 
-let finalTrial = {
-    type: jsPsychHtmlKeyboardResponse,
-    stimulus: trialText.finalText, 
-    choices: "NO_KEYS",
-    on_load: function() {
-        jsPsych.data.get().localSave('csv', 'experiment_results.csv');
-    }
-};
-
-timeline.push(finalTrial);
-
-
 let resultsTrial = {
     type: jsPsychHtmlKeyboardResponse,
     choices: ['NO KEYS'],
@@ -191,7 +179,7 @@ let resultsTrial = {
         let participantId = new Date().toISOString().replace(/T/, '-').replace(/\..+/, '').replace(/:/g, '-');
 
         // Dynamically determine if the experiment is currently running locally or on production
-        let isLocalHost = window.location.href.includes('localhost');
+        let isLocalHost = window.location.href.includes('localhost') || window.location.href.includes('127.0.0.1');
 
         let destination = '/save';
         if (!isLocalHost || forceOSFSave) {
@@ -220,10 +208,7 @@ timeline.push(resultsTrial);
 
 let debriefTrial = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: `
-    <h1>Thank you for participating!</h1> 
-    <p>You can close this tab.</p>
-    `,
+    stimulus: trialText.finalText,
     choices: ['NO KEYS'],
     on_start: function() {
     	let data = jsPsych.data
