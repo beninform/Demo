@@ -4,20 +4,6 @@ let uid = urlParams.get('uid') || 'PROLIFIC_ID';
 let tid = urlParams.get('tid') || 'ncr';
 let pid = urlParams.get('pid') || 'pia';
 
-// get the user id from the querystring
-
-// function getQueryVariable(variable) {
-//     var query = window.location.search.substring(1);
-//     var vars = query.split('&');
-//     for (var i = 0; i < vars.length; i++) {
-//         var pair = vars[i].split('=');
-//         if (decodeURIComponent(pair[0]) == variable) {
-//             return decodeURIComponent(pair[1]);
-//         }
-//     }
-// }
-// let id = getQueryVariable('id');
-
 let jsPsych = initJsPsych();
 
 let timeline = [];
@@ -25,38 +11,25 @@ let timeline = [];
 let selectedBlock = [];
 
 if (pid === 'pia') {
-    selectedBlock = [blocks[0]]; 
+    selectedBlock = [blocks[0]];        // part a (pia) uses blocks[0] (first block)
 } else if (pid === 'pib') {
-    selectedBlock = blocks.slice(1,3); 
-// } else if (pid === 'pic') {
-//     selectedBlock = [blocks[2]]; 
+    selectedBlock = blocks.slice(1,3);  // part b (pib) uses blocks[1] and blocks[2] (second and third block)
 } else {
-    selectedBlock = blocks;
+    selectedBlock = blocks;             // default, if no querystring value for pid, is to run all three blocks
 }
 
 let welcomeTrial = {
     type: jsPsychHtmlButtonResponse,
     stimulus: pid == 'pib' ? trialText.introductionTextParts23 : trialText.introductionTextPart1,
     choices: ['Continue'],
-    // prompt: ""
 };
 
 timeline.push(welcomeTrial);
 
-// TODO add radio button for 'I know the answer' prior to input text
 // TODO add institutional logo
-// TODO add option to resume later - with save form
-// TODO capture user code in instruction trial (or provide it in querystring)
-
 let instructionTrial = {
     type: jsPsychHtmlButtonResponse,
     stimulus: pid == 'pib' ? trialText.instructionTextParts23 : trialText.instructionTextPart1,
-    // questions: [
-    //     {prompt: 'Your code', required: true, name: 'usrcode'}
-    // ],
-    // data: {
-    //     collect: true
-    // }
     choices: ['Continue'],
 
 };
@@ -69,6 +42,11 @@ let exampleTrial = {
         {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows: 2},
         {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows: 2}
     ],
+    data: {
+        collect: true, // flag whether we want to collect to csv
+        imagenr: '0001',
+        blockId: 'Example Trial',
+    },
     sidebox: 1, 
     on_load: setupInstructionMC
 };
