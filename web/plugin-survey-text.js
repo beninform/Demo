@@ -149,13 +149,24 @@ var jsPsychSurveyText = function(n) {
                 console.log('Timer finished!');
             }, 60000);
 
-            if (bongProbNumber == 1) {
-                s += trialText.exampleProblemText;
 
-            } else if (bongProbNumber !== null) {
+            if (tid == 'ncr') {
+                if (bongProbNumber == 1) {
+                    s += '  <div id="candidate-rules" class="candidate-rules" style="height: 100%">';
+                    s += trialText.exampleProblemText;
+                    s += '  </div>';
+                }
+            } else if (tid == 'wcr') {
+
+
+            if (bongProbNumber !== null) {
+                s += '  <div id="candidate-rules" class="candidate-rules" style="height: 100%">';
+                if (bongProbNumber == 1) {
+                    s += trialText.exampleProblemText;
+                }
                 let filteredArray = rulesArray.filter((item) => item.BP == bongProbNumber);
 
-                s += '  <div id="candidate-rules" class="candidate-rules" style="height: 100%">';
+
                 s += `    <div id="table-container" class="table-container">
                               <h3>Candidate Rules</h3>
                               <table id="rules-table">
@@ -203,6 +214,7 @@ var jsPsychSurveyText = function(n) {
             myTimer.reset();
                
             };
+        };
             // we have now closed the candidate rules div
 
 

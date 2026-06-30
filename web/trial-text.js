@@ -1,5 +1,5 @@
 let trialText = {
-	introductionText: `
+	introductionTextPart1: `
 	<div class="intro-container">
 	    <div class="intro-top">
 	    	<h1>Bongard Problems</h1>
@@ -19,13 +19,47 @@ let trialText = {
 	    </div>
 	</div>
 	`,
-	instructionText: `
+	instructionTextPart1: `
 	<div class="instructions-container">
 		<h1>Instructions</h1>
 		<p>In each part of the experiment, you will be asked to solve a set of problems.
 		There will be one problem on each screen.</p>
 		<p>Each of the three parts will take approximately 35 minutes to complete. Your access to part two is dependent on your progress in part one.</p>
 		<p>Before we start part one, we will show you a single example problem.</p>
+		<p>As with all the problems, you must enter an answer in each box to be able to continue.</p>
+		<p>For efficient progress, if you wish, you can use the <code style="color:#8B0000;">Tab</code> button 
+		to move between the answer boxes - and to move on to the <code style="color:#8B0000;">Continue</code> button.
+		This means you can complete each screen using the keyboard alone.
+		But you may also just click on the <code style="color:#8B0000;">Continue</code> button with the mouse.</p>
+	</div>
+
+	`,
+	introductionTextParts23: `
+	<div class="intro-container">
+	    <div class="intro-top">
+	    	<h1>Bongard Problems</h1>
+	    	<h2>Welcome back to the Access Demonstrator</h2>
+			<p>As before, in this session, you will be shown a set of figures in two groups.</p>
+	    </div>
+
+	    <div class="intro-middle-container">
+	        <div class="intro-middle-left">You will be asked to tell us the rule that distinctly describes the first group.</div>
+	        <div class="intro-middle-right">You will also be asked to tell us the rule that distinctly describes the second group.</div>
+	    </div>
+
+	    <div class="intro-bottom">
+	    	<p>There are two parts to this session. You have been asked to complete parts two and three because of your success in part one.</p>
+	    	<p>Press the button below to proceed.</p>
+	    </div>
+	</div>
+	`,
+	instructionTextParts23: `
+	<div class="instructions-container">
+		<h1>Instructions</h1>
+		<p>In each of the two parts of this session, you will be asked to solve a set of problems.
+		As before, there will be one problem on each screen.</p>
+		<p>Each of the two parts will take approximately 35 minutes to complete.</p>
+		<p>Before we start, we will show you the example problem again, as a reminder of what to expect.</p>
 		<p>As with all the problems, you must enter an answer in each box to be able to continue.</p>
 		<p>For efficient progress, if you wish, you can use the <code style="color:#8B0000;">Tab</code> button 
 		to move between the answer boxes - and to move on to the <code style="color:#8B0000;">Continue</code> button.
@@ -71,42 +105,42 @@ let trialText = {
                 </div>
             </div>
     `,
-    wcrExampleProblem: `
-            <div class="preamble-form-wrapper wcr-layout">
-                <h1>Example Problem</h1>
+    // wcrExampleProblem: `
+    //         <div class="preamble-form-wrapper wcr-layout">
+    //             <h1>Example Problem</h1>
 
-                <div class='set-a-b-label-container'>
-                    <div id='set-a-label'><p>Set A</p></div>
-                    <div id='set-b-label'><p>Set B</p></div>
-                </div>
+    //             <div class='set-a-b-label-container'>
+    //                 <div id='set-a-label'><p>Set A</p></div>
+    //                 <div id='set-b-label'><p>Set B</p></div>
+    //             </div>
                 
-                <img class='bp-img' src='img/p0001.png' alt="Bongard Problem"/>
+    //             <img class='bp-img' src='img/p0001.png' alt="Bongard Problem"/>
 
-                <p class="example-instruction-text">Write your answers in the boxes. Then check only the second box.</p>
+    //             <p class="example-instruction-text">Write your answers in the boxes. Then check only the second box.</p>
 
-                <div class="instruction-box" style="width: 100%; padding-top: 20px; text-align: left; margin: 0 auto;">
-                    <p>On this page, you are shown 12 diagrams. Each diagram represents shapes with specific features, such as geometric properties or higher-level concepts.</p>
-                    <p>The 6 diagrams on the left side belong to Set A.<br>
-                    The 6 diagrams on the right side belong to Set B.</p>
-                    <p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
-                    <p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
-                </div>
+    //             <div class="instruction-box" style="width: 100%; padding-top: 20px; text-align: left; margin: 0 auto;">
+    //                 <p>On this page, you are shown 12 diagrams. Each diagram represents shapes with specific features, such as geometric properties or higher-level concepts.</p>
+    //                 <p>The 6 diagrams on the left side belong to Set A.<br>
+    //                 The 6 diagrams on the right side belong to Set B.</p>
+    //                 <p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
+    //                 <p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
+    //             </div>
 
-                <div id="survey-container-target"></div>
+    //             <div id="survey-container-target"></div>
 
-                <div class="mc-container">
-                    <div id="solution-text" class="hidden">
-                        <p>Here is an acceptable solution to the example problem:</p>
-                        <div class="solution-rules">
-                            <p>empty</p>
-                            <p>non-empty</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    `,
+    //             <div class="mc-container">
+    //                 <div id="solution-text" class="hidden">
+    //                     <p>Here is an acceptable solution to the example problem:</p>
+    //                     <div class="solution-rules">
+    //                         <p>empty</p>
+    //                         <p>non-empty</p>
+    //                     </div>
+    //                 </div>
+    //             </div>
+    //         </div>
+    // `,
 	exampleProblemText: `
-			<div id="candidate-rules" class="candidate-rules">
+			
 				<div class="instruction-box">
 					<p>On this page, you are shown 12 diagrams. Each diagram represents shapes with specific features, such as geometric properties or higher-level concepts.</p>
 					<p>The 6 diagrams on the left side belong to Set A.<br>
@@ -114,7 +148,7 @@ let trialText = {
 					<p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
 					<p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
 				</div>
-			</div>
+			
 	`,
 	exampleProblem_old: `
 		<div class="split-screen">
@@ -179,13 +213,53 @@ let trialText = {
 			</div>
 		</div>
 	`,
-	finalText:`
+
+	helpButtonText_ncr:`
+	    <button type="button" class="help-btn" id="help-toggle-btn">?</button>
+            <div class="help-popup hidden" id="help-popup-box">
+                    Type each of your rules into the appropriate answer box. The page shows a ‘time remaining’ countdown timer. 
+                    This allows you two and a half minutes for each problem. 
+                    After the time has elapsed, you will be automatically moved on to the next problem. 
+                    You can only use the ‘continue’ button once you have entered text into each of the answer boxes.
+                    You can skip if you are really stuck. But you are encouraged not to skip problems. 
+                    The skip button will only be available after the first ten seconds, so you should try to answer. 
+                    In any event, you will not be able to skip more than four problems.
+            </div>
+	`,
+	helpButtonText_wcr:`
+	    <button type="button" class="help-btn" id="help-toggle-btn">?</button>
+            <div class="help-popup hidden" id="help-popup-box">
+                    Complete each answer box. You cannot drag and drop any text from the candidate rules list. 
+                    You must type each of your rules into the appropriate box. <br />
+                    The page shows a ‘time remaining’ countdown timer. 
+                    This allows you two and a half minutes for each problem. 
+                    After the time has elapsed, you will be automatically moved on to the next problem. 
+                    You can only use the ‘continue’ button once you have entered text into each of the answer boxes.
+                    You can skip if you are really stuck. But you are encouraged not to skip problems. 
+                    The skip button will only be available after the first ten seconds, so you should try to answer. 
+                    In any event, you will not be able to skip more than four problems.
+            </div>
+	`,
+
+	finalTextPart1:`
 	<div class="final-text-container">
 	<p>Thank you for completing the first part of the experiment. 
         Your responses will be reviewed - usually within 24 hours, often sooner, depending on the time of day. 
         You will be contacted and either thanked for your time or asked to attempt some further problems. 
         Please contact us if you have heard nothing after two days. info@synergy.trx.li. 
         You can now close this tab</p>
+	</div>
+	`,
+	finalTextParts23:`
+	<div class="final-text-container">
+	<p>Thank you for completing the second and third parts of the experiment. 
+		We would like to ask you some questions about the experience and will be in touch through Prolific.
+        Please contact us if you have any questions or feedback. info@synergy.trx.li. 
+        You can now close this tab</p>
 	</div>`
 		
 	};
+
+
+
+

@@ -27,16 +27,16 @@ let selectedBlock = [];
 if (pid === 'pia') {
     selectedBlock = [blocks[0]]; 
 } else if (pid === 'pib') {
-    selectedBlock = [blocks[1]]; 
-} else if (pid === 'pic') {
-    selectedBlock = [blocks[2]]; 
+    selectedBlock = blocks.slice(1,3); 
+// } else if (pid === 'pic') {
+//     selectedBlock = [blocks[2]]; 
 } else {
     selectedBlock = blocks;
 }
 
 let welcomeTrial = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: trialText.introductionText,
+    stimulus: pid == 'pib' ? trialText.introductionTextParts23 : trialText.introductionTextPart1,
     choices: ['Continue'],
     // prompt: ""
 };
@@ -50,7 +50,7 @@ timeline.push(welcomeTrial);
 
 let instructionTrial = {
     type: jsPsychHtmlButtonResponse,
-    stimulus: trialText.instructionText,
+    stimulus: pid == 'pib' ? trialText.instructionTextParts23 : trialText.instructionTextPart1,
     // questions: [
     //     {prompt: 'Your code', required: true, name: 'usrcode'}
     // ],
@@ -64,12 +64,12 @@ timeline.push(instructionTrial);
 
 let exampleTrial = {
     type: jsPsychSurveyText,
-    preamble: tid === 'ncr' ? trialText.ncrExampleProblem : trialText.wcrExampleProblem,
+    preamble: trialText.ncrExampleProblem,
     questions: [
         {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows: 2},
         {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows: 2}
     ],
-    sidebox: tid === 'ncr' ? 1 : selectedBlock[0].conditions[0][0], 
+    sidebox: 1, 
     on_load: setupInstructionMC
 };
 
@@ -89,7 +89,7 @@ for (let block of selectedBlock) {
     timeline.push(blockIntroTrial);
 
 
-    //TODO give feedback on example page response
+    //
     for (let imgno of block.conditions[0]) {
         let imagenostr = '000'+imgno;
         let imgstr = imagenostr.slice(-4);
@@ -106,25 +106,9 @@ for (let block of selectedBlock) {
         let sideboxVal = null;
         if (tid === 'wcr') {  // switches candidate rules on (from querystring)
             sideboxVal = imgno;
-            trialPreamble += `
-                <button type="button" class="help-btn" id="help-toggle-btn">?</button>
-                <div class="help-popup hidden" id="help-popup-box">
-                        Type each of your rules into the appropriate answer box. You cannot drag and drop any text from the candidate rules list.
-                </div>
-            `;
+            trialPreamble += trialText.helpButtonText_wcr; 
         } else {
-            trialPreamble += `
-                <button type="button" class="help-btn" id="help-toggle-btn">?</button>
-                <div class="help-popup hidden" id="help-popup-box">
-                        Type each of your rules into the appropriate answer box. The page shows a ‘time remaining’ countdown timer. 
-                        This allows you two and a half minutes for each problem. 
-                        After the time has elapsed, you will be automatically moved on to the next problem. 
-                        You can only use the ‘continue’ button once you have entered text into each of the answer boxes.
-                        The skip button will only be available after the first ten seconds. 
-                        You are encouraged not to skip problems. 
-                        In any event, you will not be able to skip more than four problems.
-                </div>
-            `;
+            trialPreamble += trialText.helpButtonText_ncr;
         };
 
         let inputTrial = {
@@ -164,7 +148,7 @@ let resultsTrial = {
         <p>We are saving your answers.</p>
         `,
     on_start: function () {
-        let prefix = 'bpd_0';
+        let prefix = uid + '_' + tid + '_' + pid;
         let dataPipeExperimentId = 'FP1EmrkIikGE';
         let forceOSFSave = false;
 
@@ -176,7 +160,7 @@ let resultsTrial = {
             .csv();
 
         // Generate a participant ID based on the current timestamp
-        let participantId = new Date().toISOString().replace(/T/, '-').replace(/\..+/, '').replace(/:/g, '-');
+        let timestamp = new Date().toISOString().replace(/T/, '-').replace(/\..+/, '').replace(/:/g, '-');
 
         // Dynamically determine if the experiment is currently running locally or on production
         let isLocalHost = window.location.href.includes('localhost') || window.location.href.includes('127.0.0.1');
@@ -195,7 +179,7 @@ let resultsTrial = {
             },
             body: JSON.stringify({
                 experimentID: dataPipeExperimentId,
-                filename: prefix + '-' + participantId + '.csv',
+                filename: prefix + '-' + timestamp + '.csv',
                 data: results,
             }),
         }).then(data => {
@@ -208,7 +192,7 @@ timeline.push(resultsTrial);
 
 let debriefTrial = {
     type: jsPsychHtmlKeyboardResponse,
-    stimulus: trialText.finalText,
+    stimulus: pid == 'pib' ? trialText.finalTextParts23 : trialText.finalTextPart1,
     choices: ['NO KEYS'],
     on_start: function() {
     	let data = jsPsych.data
