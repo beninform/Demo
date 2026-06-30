@@ -117,8 +117,8 @@ var jsPsychSurveyText = function(n) {
                 s += '<p class="jspsych-survey-text">' + o.prompt + "</p>";
                 var u = e == 0 ? "autofocus" : "",
                     l = o.required ? "required" : "";
-                o.rows == 1 ? s += '<input type="text" id="input-' + a + '"  name="#jspsych-survey-text-response-' + a + '" data-name="' + o.name + '" size="' + o.columns + '" ' + u + " " + l + ' placeholder="' + o.placeholder + '"></input>' : s += '<textarea id="input-' + a + '" name="#jspsych-survey-text-response-' + a + '" data-name="' + o.name + '" cols="' + o.columns + '" rows="' + o.rows + '" ' + u + " " + l + ' placeholder="' + o.placeholder + '"></textarea>', 
-                s += "</div>"
+                o.rows == 1 ? s += '<input type="text" id="input-' + a + '"  name="#jspsych-survey-text-response-' + a + '" data-name="' + o.name + '" size="' + o.columns + '" ' + u + " " + l + ' placeholder="' + o.placeholder + '"></input>' : s += '<textarea id="input-' + a + '" name="#jspsych-survey-text-response-' + a + '" data-name="' + o.name + '" cols="' + o.columns + '" rows="' + o.rows + '" ' + u + " " + l + ' placeholder="' + o.placeholder + '"></textarea>'; 
+                s += "</div>";
             };
             s += `</div>`;  // end of form-row div
             s += '<input type="submit" id="jspsych-survey-text-next" class="jspsych-btn jspsych-survey-text" value="' + t.button_label + '"></input>';
