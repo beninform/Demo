@@ -226,8 +226,10 @@ function setupTrialButtons() {
             if (numSkips >= 4) {
                 jsPsych.abortExperiment(`
                     <div class="final-text-container">
-                        <h1>Experiment Aborted</h1>
-                        <p>You have reached the maximum number of skips. The session has been terminated.</p>
+                        <h1>Experiment Ended</h1>
+                        <p>You have reached the maximum number of skips. 
+                        Thank you for your efforts. You will be compensated according to the policy.
+                        The session is now over. You can close this tab.</p>
                     </div>
                 `);
                 return;
