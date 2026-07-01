@@ -13,10 +13,9 @@ function setupInstructionMC() {
     });
 
     const jspsychForm = document.getElementById('jspsych-survey-text-form');
-    const mcContainer = document.querySelector('.preamble-form-wrapper .mc-container');
+    const wrapper = document.querySelector('.preamble-form-wrapper');
     
-    mcContainer.parentNode.insertBefore(jspsychForm, mcContainer);
-    mcContainer.insertAdjacentHTML('beforebegin', trialText.exampleMC);
+    wrapper.insertAdjacentHTML('beforeend', trialText.exampleMC);
 
     const instructionBtn = document.querySelector('.instruction-btn');
     instructionBtn.appendChild(btn);

@@ -37,7 +37,7 @@ timeline.push(instructionTrial);
 
 let exampleTrial = {
     type: jsPsychSurveyText,
-    preamble: trialText.ncrExampleProblem,
+    preamble: trialText.ExampleProblem,
     questions: [
         {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows: 2},
         {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows: 2}
@@ -45,7 +45,7 @@ let exampleTrial = {
     data: {
         collect: true, // flag whether we want to collect to csv
         imagenr: '0001',
-        blockId: 'Example Trial',
+        blockId: 'Part 0',
     },
     sidebox: 1, 
     on_load: setupInstructionMC
@@ -54,6 +54,7 @@ let exampleTrial = {
 timeline.push(exampleTrial);
 
 
+// iterate the current array of blocks (called selectedBlock), show an intro, then get into the BPs
 for (let block of selectedBlock) {
     let blockIntroTrial = {
         type: jsPsychHtmlButtonResponse,
@@ -67,28 +68,29 @@ for (let block of selectedBlock) {
     timeline.push(blockIntroTrial);
 
 
-    //
+    // iterate the BPs in the current block
     for (let imgno of block.conditions[0]) {
         let imagenostr = '000'+imgno;
-        let imgstr = imagenostr.slice(-4);
+        let imgstr = imagenostr.slice(-4);  // trim the zero-padded string to 4 chars
 
         let trialPreamble = `
             <div class="trial-countdown-wrapper">
                 Time remaining: <span id="trial-countdown">--:--</span>
             </div>
             <h3>BP ${imgno}</h3>
-            ${trialText.tempLabelsText}
+            ${trialText.LabelsText}
             <img class='bp-img' src='img/p${imgstr}.png'/>
         `;
 
         let sideboxVal = null;
-        if (tid === 'wcr') {  // switches candidate rules on (from querystring)
-            sideboxVal = imgno;
-            trialPreamble += trialText.helpButtonText_wcr; 
+        if (tid === 'wcr') {  
+            sideboxVal = imgno;   // switches candidate rules on (from querystring)
+            trialPreamble += trialText.helpButtonText_wcr;  // adds help button text for w candidate rules
         } else {
-            trialPreamble += trialText.helpButtonText_ncr;
+            trialPreamble += trialText.helpButtonText_ncr;  // adds help button text for no candidate rules
         };
 
+        // create the regular BP trial page using values set above
         let inputTrial = {
             type: jsPsychSurveyText,
             preamble: trialPreamble,
@@ -103,17 +105,17 @@ for (let block of selectedBlock) {
             },
             sidebox: sideboxVal, 
             on_load: function() {
-                setupTrialButtons();
-                setupHelpButton();
+                setupTrialButtons();   // function defined in skip-button.js
+                setupHelpButton();     // function defined in skip-button.js
             }
         }
         
         timeline.push(inputTrial);
 
-        let results = jsPsych.data
-            .get()
-            .ignore('preamble')
-            .csv();
+        // let results = jsPsych.data
+        //     .get()
+        //     .ignore('preamble')
+        //     .csv();
     }
 }
 
@@ -122,8 +124,12 @@ let resultsTrial = {
     choices: ['NO KEYS'],
     async: false,
     stimulus: `
-        <h1>Please wait...</h1>
+        <h1>Thank you - please wait...</h1>
         <p>We are saving your answers.</p>
+        <p>We are most grateful for your contribution to this study.</p>
+        <p>Please don't navigate away from this page while we send results to the server.</p>
+        <p>Please don't close the tab or window until saving is complete.</p>
+
         `,
     on_start: function () {
         let prefix = uid + '_' + tid + '_' + pid;
@@ -137,7 +143,7 @@ let resultsTrial = {
             .ignore(['stimulus', 'trial_type', 'plugin_version', 'collect'])
             .csv();
 
-        // Generate a participant ID based on the current timestamp
+        // Generate a current timestamp for the filename
         let timestamp = new Date().toISOString().replace(/T/, '-').replace(/\..+/, '').replace(/:/g, '-');
 
         // Dynamically determine if the experiment is currently running locally or on production
@@ -146,7 +152,7 @@ let resultsTrial = {
         let destination = '/save';
         if (!isLocalHost || forceOSFSave) {
             destination = 'https://pipe.jspsych.org/api/data/';
-        }
+        };
 
         // Send the results to our saving end point
         fetch(destination, {
@@ -161,7 +167,8 @@ let resultsTrial = {
                 data: results,
             }),
         }).then(data => {
-            console.log(data);
+            // console.log(prefix + '-' + timestamp);
+            // console.log(data);
             jsPsych.finishTrial();
         })
     }
@@ -173,11 +180,15 @@ let debriefTrial = {
     stimulus: pid == 'pib' ? trialText.finalTextParts23 : trialText.finalTextPart1,
     choices: ['NO KEYS'],
     on_start: function() {
+        // Generate a current timestamp for the log
+        let timestamp = new Date().toISOString().replace(/T/, '-').replace(/\..+/, '').replace(/:/g, '-');
+
     	let data = jsPsych.data
 	    	.get()
 	    	.filter({ collect: true}) 
 	    	.ignore(['stimulus', 'trial_type', 'trial_index', 'plugin_version'])
 	    	.csv();
+        console.log(uid + '_' + tid + '_' + pid + '-' + timestamp);
     	console.log(data);
     }
 };

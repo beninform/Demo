@@ -153,7 +153,7 @@ var jsPsychSurveyText = function(n) {
             if (tid == 'ncr') {
                 if (bongProbNumber == 1) {
                     s += '  <div id="candidate-rules" class="candidate-rules" style="height: 100%">';
-                    s += trialText.exampleProblemText;
+                    s += trialText.exampleProblemInstructions;
                     s += '  </div>';
                 }
             } else if (tid == 'wcr') {
@@ -162,7 +162,7 @@ var jsPsychSurveyText = function(n) {
             if (bongProbNumber !== null) {
                 s += '  <div id="candidate-rules" class="candidate-rules" style="height: 100%">';
                 if (bongProbNumber == 1) {
-                    s += trialText.exampleProblemText;
+                    s += trialText.exampleProblemInstructions;
                 }
                 let filteredArray = rulesArray.filter((item) => item.BP == bongProbNumber);
 
