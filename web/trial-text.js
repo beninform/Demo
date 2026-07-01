@@ -68,7 +68,7 @@ let trialText = {
 	</div>
 
 	`,
-	 tempLabelsText: `
+	 LabelsText: `
         <div class='set-a-b-label-container'>
             <div id='set-a-label'>
                 <p>Set A</p>
@@ -79,67 +79,17 @@ let trialText = {
         </div>
 
     `,
-	ncrExampleProblem: `
-            <div class="preamble-form-wrapper ncr-layout">
+	ExampleProblem: `
                 <h1>Example Problem</h1>
-
                 <div class='set-a-b-label-container'>
                     <div id='set-a-label'><p>Set A</p></div>
                     <div id='set-b-label'><p>Set B</p></div>
                 </div>
-                
                 <img class='bp-img' src='img/p0001.png' alt="Bongard Problem"/>
+                <p class="example-instruction-text">Write your answers in the boxes. Then check only the second checkbox.</p>
 
-                <p class="example-instruction-text">Write your answers in the boxes. Then check only the second box.</p>
-
-                <div id="survey-container-target"></div>
-
-                <div class="mc-container">
-                    <div id="solution-text" class="hidden">
-                        <p>Here is an acceptable solution to the example problem:</p>
-                        <div class="solution-rules">
-                            <p>empty</p>
-                            <p>non-empty</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
     `,
-    // wcrExampleProblem: `
-    //         <div class="preamble-form-wrapper wcr-layout">
-    //             <h1>Example Problem</h1>
-
-    //             <div class='set-a-b-label-container'>
-    //                 <div id='set-a-label'><p>Set A</p></div>
-    //                 <div id='set-b-label'><p>Set B</p></div>
-    //             </div>
-                
-    //             <img class='bp-img' src='img/p0001.png' alt="Bongard Problem"/>
-
-    //             <p class="example-instruction-text">Write your answers in the boxes. Then check only the second box.</p>
-
-    //             <div class="instruction-box" style="width: 100%; padding-top: 20px; text-align: left; margin: 0 auto;">
-    //                 <p>On this page, you are shown 12 diagrams. Each diagram represents shapes with specific features, such as geometric properties or higher-level concepts.</p>
-    //                 <p>The 6 diagrams on the left side belong to Set A.<br>
-    //                 The 6 diagrams on the right side belong to Set B.</p>
-    //                 <p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
-    //                 <p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
-    //             </div>
-
-    //             <div id="survey-container-target"></div>
-
-    //             <div class="mc-container">
-    //                 <div id="solution-text" class="hidden">
-    //                     <p>Here is an acceptable solution to the example problem:</p>
-    //                     <div class="solution-rules">
-    //                         <p>empty</p>
-    //                         <p>non-empty</p>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         </div>
-    // `,
-	exampleProblemText: `
+	exampleProblemInstructions: `
 			
 				<div class="instruction-box">
 					<p>On this page, you are shown 12 diagrams. Each diagram represents shapes with specific features, such as geometric properties or higher-level concepts.</p>
@@ -149,55 +99,11 @@ let trialText = {
 					<p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
 				</div>
 			
-	`,
-	exampleProblem_old: `
-		<div class="split-screen">
-			<div class="left-panel">
-				<h1>Example Problem</h1>
-
-				<div class='set-a-b-label-container'>
-					<div id='set-a-label'><p>Set A</p></div>
-					<div id='set-b-label'><p>Set B</p></div>
-				</div>
-				
-				<img class='bp-img' src='img/p0001.png' alt="Bongard Problem"/>
-
-				<p style="margin-top:20px; font-weight: bold;">Write your answers in the boxes. Then check only the second box.</p>
-
-				<div id="survey-container-target"></div>
-
-				<div class="mc-container">
-					<div id="solution-text" class="hidden">
-						<p>Here is an acceptable solution to the example problem:</p>
-						<div class="solution-rules">
-							<p>empty</p>
-							<p>non-empty</p>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="right-panel">
-				<div class="instruction-box">
-					<p>On this page, you are shown 12 diagrams. Each diagram represents shapes with specific features, such as geometric properties or higher-level concepts.</p>
-					<p>The 6 diagrams on the left side belong to Set A.<br>
-					The 6 diagrams on the right side belong to Set B.</p>
-					<p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
-					<p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
-				</div>
-			</div>
-		</div>
-	`,
-	exampleReadyText: `
-		<div class="example-ready-container">
-			<p>Write your answers in the boxes. After answering, check only the second box.</p>
-		</div>
-
 	`,
 	exampleMC:`
 		<div class="mc-container">
-			<label><input type="checkbox" id="cb1"> First box</label>
-			<label><input type="checkbox" id="cb2"> Second box</label>
+			<label><input type="checkbox" id="cb1"> First checkbox</label>
+			<label><input type="checkbox" id="cb2"> Second checkbox</label>
 			
 			<div id="solution-text" class="hidden">
 				<p>Here is an acceptable solution to the example problem:</p>
@@ -243,19 +149,21 @@ let trialText = {
 
 	finalTextPart1:`
 	<div class="final-text-container">
-	<p>Thank you for completing the first part of the experiment. 
+		<h1>Thank you!</h1>
+		<p>Thank you for completing the first part of the experiment. 
         Your responses will be reviewed - usually within 24 hours, often sooner, depending on the time of day. 
         You will be contacted and either thanked for your time or asked to attempt some further problems. 
-        Please contact us if you have heard nothing after two days. info@synergy.trx.li. 
-        You can now close this tab</p>
+        Please contact us if you have heard nothing after two days. info@synergy.trx.li.</p>
+        <p>You can now close this tab.</p>
 	</div>
 	`,
 	finalTextParts23:`
 	<div class="final-text-container">
-	<p>Thank you for completing the second and third parts of the experiment. 
+		<h1>Thank you!</h1>
+		<p>Thank you for completing the second and third parts of the experiment. 
 		We would like to ask you some questions about the experience and will be in touch through Prolific.
-        Please contact us if you have any questions or feedback. info@synergy.trx.li. 
-        You can now close this tab</p>
+        Please contact us if you have any questions or feedback. info@synergy.trx.li.</p>
+        <p>You can now close this tab.</p>
 	</div>`
 		
 	};
