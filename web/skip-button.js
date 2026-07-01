@@ -339,12 +339,12 @@ function insertTimeInBlanks() {
 
     // Check if textarea is empty or only whitespace
     if (textarea0.value.trim() === "") {
-        textarea0.value = ' skipped ' + ts;
+        textarea0.value = 'skipped ' + ts;
     } else {
         textarea0.value += ' skipped ' + ts;
     }
     if (textarea1.value.trim() === "") {
-        textarea1.value = ' skipped ' + ts;
+        textarea1.value = 'skipped ' + ts;
     } else {
         textarea1.value += ' skipped ' + ts;
     };
