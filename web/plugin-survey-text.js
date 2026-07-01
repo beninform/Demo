@@ -123,7 +123,7 @@ var jsPsychSurveyText = function(n) {
             s += `</div>`;  // end of form-row div
             s += '<input type="submit" id="jspsych-survey-text-next" class="jspsych-btn jspsych-survey-text" value="' + t.button_label + '"></input>';
 
-            s += `<button id="skipBtn" class="jspsych-btn" onclick="skipAction()">Skip</button>`;
+            // s += `<button id="skipBtn" class="jspsych-btn" onclick="skipAction()">Skip</button>`;
 
             s += "</form>";
 

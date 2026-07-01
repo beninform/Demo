@@ -199,7 +199,7 @@ function setupTrialButtons() {
                     <p>${popupText}</p> 
                     <div class="skip-popup-buttons">
                         <button type="button" class="jspsych-btn" id="skip-popup-cancel">Cancel</button>
-                        <button type="button" class="jspsych-btn" id="skip-popup-confirm">${confirmBtnLabel}</button>
+                        <button type="button" class="jspsych-btn" id="skip-popup-confirm" onclick="skipAction()">${confirmBtnLabel}</button>
                     </div>
                 </div>
             </div>
@@ -339,9 +339,13 @@ function insertTimeInBlanks() {
 
     // Check if textarea is empty or only whitespace
     if (textarea0.value.trim() === "") {
-        textarea0.value = ts;
+        textarea0.value = ' skipped ' + ts;
+    } else {
+        textarea0.value += ' skipped ' + ts;
     }
     if (textarea1.value.trim() === "") {
-        textarea1.value = ts;
-    }
+        textarea1.value = ' skipped ' + ts;
+    } else {
+        textarea1.value += ' skipped ' + ts;
+    };
 };
