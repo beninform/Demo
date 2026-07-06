@@ -153,68 +153,66 @@ var jsPsychSurveyText = function(n) {
             if (tid == 'ncr') {
                 if (bongProbNumber == 1) {
                     s += '  <div id="candidate-rules" class="candidate-rules" style="height: 100%">';
-                    s += trialText.exampleProblemInstructions;
+                    s += trialText.ncrExampleProblemInstructions;
                     s += '  </div>';
                 }
             } else if (tid == 'wcr') {
-
-
-            if (bongProbNumber !== null) {
-                s += '  <div id="candidate-rules" class="candidate-rules" style="height: 100%">';
-                if (bongProbNumber == 1) {
-                    s += trialText.exampleProblemInstructions;
-                }
-                let filteredArray = rulesArray.filter((item) => item.BP == bongProbNumber);
-
-
-                s += `    <div id="table-container" class="table-container">
-                              <h3>Candidate Rules</h3>
-                              <table id="rules-table">
-                                    <thead>
-                            `;
-                const keys = Object.keys(filteredArray[0]);  // use first object to get keys
-                
-                keys.forEach(key => {  // iterate col heads
-                    if ( ['A', 'B'].includes(key) ) {
-                        s += `<th>${key}</th>`;
+                if (bongProbNumber !== null) {
+                    s += '  <div id="candidate-rules" class="candidate-rules" style="height: 100%">';
+                    if (bongProbNumber == 1) {
+                        s += trialText.wcrExampleProblemInstructions;
                     }
-                });
-                s += `      </thead>
-                     `;
-                // ---- Create table body ----
+                    let filteredArray = rulesArray.filter((item) => item.BP == bongProbNumber);
 
-                s += `      <tbody>
-                     `;
-                filteredArray.forEach(item => {  // iterate rows
-                    s += `        <tr>`  // open the row
 
+                    s += `    <div id="table-container" class="table-container">
+                                <h3>Candidate Rules</h3>
+                                <table id="rules-table">
+                                        <thead>
+                                `;
+                    const keys = Object.keys(filteredArray[0]);  // use first object to get keys
+                    
                     keys.forEach(key => {  // iterate col heads
                         if ( ['A', 'B'].includes(key) ) {
-                        s += `<td>${item[key]}</td>`  // insert cells of row
+                            s += `<th>${key}</th>`;
                         }
                     });
-                    
-                    s += `</tr>  
-                    `;           // close the row
-                });
+                    s += `      </thead>
+                        `;
+                    // ---- Create table body ----
 
-                s += `      </tbody>
-                          </table>
-                          </div>
-                    `;
-                // console.log('line 145 in plugin-survey-text.js - candidate rules for BP no', bongProbNumber)
-                s += `</div>
-            `;
+                    s += `      <tbody>
+                        `;
+                    filteredArray.forEach(item => {  // iterate rows
+                        s += `        <tr>`  // open the row
 
-            myTimer.reset();
+                        keys.forEach(key => {  // iterate col heads
+                            if ( ['A', 'B'].includes(key) ) {
+                            s += `<td>${item[key]}</td>`  // insert cells of row
+                            }
+                        });
+                        
+                        s += `</tr>  
+                        `;           // close the row
+                    });
 
-            } else {
-                // console.log('line 149 in plugin-survey-text.js - candidate rules for BP no', bongProbNumber)
-                // no div for candidate rules if bongProbNumber is null
-            myTimer.reset();
-               
+                    s += `      </tbody>
+                            </table>
+                            </div>
+                        `;
+                    // console.log('line 145 in plugin-survey-text.js - candidate rules for BP no', bongProbNumber)
+                    s += `</div>
+                `;
+
+                myTimer.reset();
+
+                } else {
+                    // console.log('line 149 in plugin-survey-text.js - candidate rules for BP no', bongProbNumber)
+                    // no div for candidate rules if bongProbNumber is null
+                myTimer.reset();
+                
+                };
             };
-        };
             // we have now closed the candidate rules div
 
 

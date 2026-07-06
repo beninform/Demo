@@ -79,7 +79,7 @@ let trialText = {
         </div>
 
     `,
-	ExampleProblem: `
+	exampleProblem: `
                 <h1>Example Problem</h1>
                 <div class='set-a-b-label-container'>
                     <div id='set-a-label'><p>Set A</p></div>
@@ -89,13 +89,23 @@ let trialText = {
                 <p class="example-instruction-text">Write your answers in the boxes. Then check only the second checkbox.</p>
 
     `,
-	exampleProblemInstructions: `
-			
+	ncrExampleProblemInstructions: `
 				<div class="instruction-box">
 					<p>On this page, you are shown 12 diagrams. Each diagram represents shapes with specific features, such as geometric properties or higher-level concepts.</p>
 					<p>The 6 diagrams on the left side belong to Set A.<br>
 					The 6 diagrams on the right side belong to Set B.</p>
 					<p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
+					<p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
+				</div>
+			
+	`,
+	wcrExampleProblemInstructions: `
+				<div class="instruction-box">
+					<p>On this page, you are shown 12 diagrams. Each diagram represents shapes with specific features, such as geometric properties or higher-level concepts.</p>
+					<p>The 6 diagrams on the left side belong to Set A.<br>
+					The 6 diagrams on the right side belong to Set B.</p>
+					<p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
+					<p>You are given candidate rules for assistance. Note that the candidate rules are AI-generated, so they may contain errors. In particular, there may be one correct rule-pair for each problem. But there could be several, or even none at all, that are correct.</p>
 					<p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
 				</div>
 			
@@ -146,7 +156,34 @@ let trialText = {
                     In any event, you will not be able to skip more than four problems.
             </div>
 	`,
-
+	timeoutPopup: `
+		<div class="timeout-popup-overlay">
+			<div class="timeout-popup-content">
+				<h3>Time for trial has run out!</h3>
+				<p>You will be sent to the next trial.</p>
+				<div class="spinner"></div>
+			</div>
+		</div>
+	`,
+	skipPopup: `
+		<div class="skip-popup-overlay" id="skip-confirm-popup">
+			<div class="skip-popup-content">
+				<p>%%POPUP_TEXT%%</p> 
+				<div class="skip-popup-buttons">
+					<button type="button" class="jspsych-btn" id="skip-popup-cancel">Cancel</button>
+					<button type="button" class="jspsych-btn" id="skip-popup-confirm" onclick="skipAction()">%%BTN_LABEL%%</button>
+				</div>
+			</div>
+		</div>
+	`,
+	abortSkipText: `
+		<div class="final-text-container">
+			<h1>Experiment Ended</h1>
+			<p>You have reached the maximum number of skips. 
+			Thank you for your efforts. You will be compensated according to the policy.
+			The session is now over. You can close this tab.</p>
+		</div>
+	`,
 	finalTextPart1:`
 	<div class="final-text-container">
 		<h1>Thank you!</h1>

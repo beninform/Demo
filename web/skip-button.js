@@ -142,15 +142,9 @@ function setupTrialButtons() {
     }
 
     function handleTimeout() {
-        const popupHTML = `
-            <div class="timeout-popup-overlay">
-                <div class="timeout-popup-content">
-                    <h3>Time for trial has run out!</h3>
-                    <p>You will be sent to the next trial.</p>
-                    <div class="spinner"></div>
-                </div>
-            </div>
-        `;
+        window.numTimeouts = (window.numTimeouts || 0) + 1;
+
+        const popupHTML = trialText.timeoutPopup;
         document.body.insertAdjacentHTML('beforeend', popupHTML);
 
         textAreas.forEach(field => { field.disabled = true; });
@@ -176,34 +170,26 @@ function setupTrialButtons() {
     });
 
     skipBtn.addEventListener('click', () => {
-        const currentSkips = window.skipCount || 0;
-        const numSkips = currentSkips + 1;
+        const numSkips = (window.skipCount || 0) + 1;
 
         let popupText = "";
         let confirmBtnLabel = "Skip";
 
         if (numSkips === 1) {
-            popupText = "You are about to skip a problem. You are allowed a maximum of four skips.";
+            popupText = "You are about to skip a problem. You are allowed a maximum of three skips.";
         } else if (numSkips === 2) {
-            popupText = "You are about to skip a second problem. You are allowed a maximum of four skips.";
+            popupText = "You are about to skip a second problem. You are allowed a maximum of three skips.";
         } else if (numSkips === 3) {
-            popupText = "You are about to skip a third problem. You are allowed a maximum of four skips.";
+            popupText = "You are about to skip a third problem. You are allowed a maximum of three skips.";
         } else if (numSkips === 4) {
             popupText = "You are about to skip a fourth problem. Your session will end with this action.";
             confirmBtnLabel = "End";
         }
 
-        const skipPopupHTML = `
-            <div class="skip-popup-overlay" id="skip-confirm-popup">
-                <div class="skip-popup-content">
-                    <p>${popupText}</p> 
-                    <div class="skip-popup-buttons">
-                        <button type="button" class="jspsych-btn" id="skip-popup-cancel">Cancel</button>
-                        <button type="button" class="jspsych-btn" id="skip-popup-confirm" onclick="skipAction()">${confirmBtnLabel}</button>
-                    </div>
-                </div>
-            </div>
-        `;
+        let skipPopupHTML = trialText.skipPopup;
+
+        skipPopupHTML = skipPopupHTML.replace('%%POPUP_TEXT%%', popupText);
+        skipPopupHTML = skipPopupHTML.replace('%%BTN_LABEL%%', confirmBtnLabel);
 
         document.body.insertAdjacentHTML('beforeend', skipPopupHTML);
 
@@ -224,14 +210,7 @@ function setupTrialButtons() {
             jsPsych.data.addProperties({ total_skips: window.skipCount });
 
             if (numSkips >= 4) {
-                jsPsych.abortExperiment(`
-                    <div class="final-text-container">
-                        <h1>Experiment Ended</h1>
-                        <p>You have reached the maximum number of skips. 
-                        Thank you for your efforts. You will be compensated according to the policy.
-                        The session is now over. You can close this tab.</p>
-                    </div>
-                `);
+                jsPsych.abortExperiment(trialText.abortSkipText);
                 return;
             }
 

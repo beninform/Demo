@@ -37,7 +37,7 @@ timeline.push(instructionTrial);
 
 let exampleTrial = {
     type: jsPsychSurveyText,
-    preamble: trialText.ExampleProblem,
+    preamble: trialText.exampleProblem,
     questions: [
         {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows: 2},
         {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows: 2}
