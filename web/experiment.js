@@ -26,12 +26,10 @@ let welcomeTrial = {
 
 timeline.push(welcomeTrial);
 
-// TODO add institutional logo
 let instructionTrial = {
     type: jsPsychHtmlButtonResponse,
     stimulus: pid == 'pib' ? trialText.instructionTextParts23 : trialText.instructionTextPart1,
     choices: ['Continue'],
-
 };
 timeline.push(instructionTrial);
 
@@ -43,12 +41,41 @@ let exampleTrial = {
         {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows: 2}
     ],
     data: {
-        collect: true, // flag whether we want to collect to csv
+        collect: true, 
         imagenr: '0001',
         blockId: 'Part 0',
     },
     sidebox: 1, 
-    on_load: setupInstructionMC
+    on_load: function() {
+        setupInstructionMC();
+        
+        const instr = document.getElementById('wcr-instructions');
+        const rulesText = document.getElementById('candidate-rules-section');
+        const rulesTable = document.getElementById('table-container');
+
+        if (rulesTable && rulesText) {
+            rulesTable.parentNode.insertBefore(rulesText, rulesTable.nextSibling);
+        }
+
+        if (rulesTable) {
+            rulesTable.classList.add('hidden');
+        }
+        
+        window.tabToggleListener = function(e) {
+            if (e.key === 'Tab' && rulesTable) {
+                e.preventDefault();
+
+                if (instr) instr.classList.toggle('hidden');
+                if (rulesText) rulesText.classList.toggle('hidden');
+                if (rulesTable) rulesTable.classList.toggle('hidden');
+            }
+        };
+        
+        document.addEventListener('keydown', window.tabToggleListener);
+    },
+    on_finish: function() {
+        document.removeEventListener('keydown', window.tabToggleListener);
+    }
 };
 
 timeline.push(exampleTrial);
@@ -77,7 +104,7 @@ for (let block of selectedBlock) {
             <div class="trial-countdown-wrapper">
                 Time remaining: <span id="trial-countdown">--:--</span>
             </div>
-            <h3>BP ${imgno}</h3>
+            <h3>BP ${imgno - 1}</h3>
             ${trialText.LabelsText}
             <img class='bp-img' src='img/p${imgstr}.png'/>
         `;
@@ -131,48 +158,10 @@ let resultsTrial = {
         <p>Please don't close the tab or window until saving is complete.</p>
 
         `,
-    on_start: function () {
-        let prefix = uid + '_' + tid + '_' + pid;
-        let dataPipeExperimentId = 'FP1EmrkIikGE';
-        let forceOSFSave = false;
-
-        // Filter and retrieve results as CSV data
-        let results = jsPsych.data
-            .get()
-            .filter({ collect: true })
-            .ignore(['stimulus', 'trial_type', 'plugin_version', 'collect'])
-            .csv();
-
-        // Generate a current timestamp for the filename
-        let timestamp = new Date().toISOString().replace(/T/, '-').replace(/\..+/, '').replace(/:/g, '-');
-
-        // Dynamically determine if the experiment is currently running locally or on production
-        let isLocalHost = window.location.href.includes('localhost') || window.location.href.includes('127.0.0.1');
-
-        let destination = '/save';
-        if (!isLocalHost || forceOSFSave) {
-            destination = 'https://pipe.jspsych.org/api/data/';
-        };
-
-        // Send the results to our saving end point
-        fetch(destination, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: '*/*',
-            },
-            body: JSON.stringify({
-                experimentID: dataPipeExperimentId,
-                filename: prefix + '-' + timestamp + '.csv',
-                data: results,
-            }),
-        }).then(data => {
-            // console.log(prefix + '-' + timestamp);
-            // console.log(data);
-            jsPsych.finishTrial();
-        })
-    }
-}
+    on_start: function() { 
+        finalizeSession('NORMAL');  // function defined in skip-button.js
+        }
+    } 
 timeline.push(resultsTrial);
 
 let debriefTrial = {
