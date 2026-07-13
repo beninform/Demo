@@ -48,30 +48,7 @@ let exampleTrial = {
     sidebox: 1, 
     on_load: function() {
         setupInstructionMC();
-        
-        const instr = document.getElementById('wcr-instructions');
-        const rulesText = document.getElementById('candidate-rules-section');
-        const rulesTable = document.getElementById('table-container');
-
-        if (rulesTable && rulesText) {
-            rulesTable.parentNode.insertBefore(rulesText, rulesTable.nextSibling);
-        }
-
-        if (rulesTable) {
-            rulesTable.classList.add('hidden');
-        }
-        
-        window.tabToggleListener = function(e) {
-            if (e.key === 'Tab' && rulesTable) {
-                e.preventDefault();
-
-                if (instr) instr.classList.toggle('hidden');
-                if (rulesText) rulesText.classList.toggle('hidden');
-                if (rulesTable) rulesTable.classList.toggle('hidden');
-            }
-        };
-        
-        document.addEventListener('keydown', window.tabToggleListener);
+        setupExampleTabs();
     },
     on_finish: function() {
         document.removeEventListener('keydown', window.tabToggleListener);

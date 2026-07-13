@@ -125,11 +125,6 @@ let trialText = {
 			<p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
 			<p>You are given candidate rules for assistance. Note that the candidate rules are AI-generated, so they may contain errors. In particular, there may be one correct rule-pair for each problem. But there could be several, or even none at all, that are correct.</p>
 			<p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
-			<p><em>Press <strong>TAB</strong> to view the candidate rules.</em></p>
-		</div>
-
-		<div id="candidate-rules-section" class="instruction-box-return hidden">
-			<p><em>Press <strong>TAB</strong> to return to the instructions.</em></p>
 		</div>
 	`,
 	exampleMC:`

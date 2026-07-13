@@ -226,6 +226,63 @@ function setupTrialButtons() {
     });
 }
 
+// setup tabs for the example problem
+function setupExampleTabs() {
+    const instr = document.getElementById('wcr-instructions');
+    const rulesTable = document.getElementById('table-container');
+
+    if (instr && rulesTable) {
+        const tabContainer = document.createElement('div');
+        tabContainer.className = 'tab-container';
+
+        const tabHeader = document.createElement('div');
+        tabHeader.className = 'tab-header';
+
+        const btnInstr = document.createElement('button');
+        btnInstr.className = 'tab-btn active';
+        btnInstr.innerText = 'Instructions';
+        btnInstr.type = 'button'; 
+
+        const btnRules = document.createElement('button');
+        btnRules.className = 'tab-btn';
+        btnRules.innerText = 'Candidate rules';
+        btnRules.type = 'button';
+
+        const tabContent = document.createElement('div');
+        tabContent.className = 'tab-content';
+
+        tabHeader.appendChild(btnInstr);
+        tabHeader.appendChild(btnRules);
+        tabContainer.appendChild(tabHeader);
+        tabContainer.appendChild(tabContent);
+
+        instr.parentNode.insertBefore(tabContainer, instr);
+
+        tabContent.appendChild(instr);
+        tabContent.appendChild(rulesTable);
+
+        instr.classList.remove('hidden');
+        rulesTable.classList.add('hidden');
+        
+        instr.style.paddingTop = '0';
+        rulesTable.style.marginTop = '0';
+
+        btnInstr.addEventListener('click', () => {
+            btnInstr.classList.add('active');
+            btnRules.classList.remove('active');
+            instr.classList.remove('hidden');
+            rulesTable.classList.add('hidden');
+        });
+
+        btnRules.addEventListener('click', () => {
+            btnRules.classList.add('active');
+            btnInstr.classList.remove('active');
+            rulesTable.classList.remove('hidden');
+            instr.classList.add('hidden');
+        });
+    }
+}
+
 // setup the help button and popup
 function setupHelpButton() {
     const helpBtn = document.getElementById('help-toggle-btn');
