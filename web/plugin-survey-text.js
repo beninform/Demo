@@ -184,16 +184,20 @@ var jsPsychSurveyText = function(n) {
                     s += `      <tbody>
                         `;
                     filteredArray.forEach(item => {  // iterate rows
-                        s += `        <tr>`  // open the row
-
-                        keys.forEach(key => {  // iterate col heads
-                            if ( ['A', 'B'].includes(key) ) {
-                            s += `<td>${item[key]}</td>`  // insert cells of row
-                            }
-                        });
-                        
-                        s += `</tr>  
-                        `;           // close the row
+                        // build up the row html
+                        var a_html = item["A"];
+                        if (item["A1"]) {
+                            a_html += ` <span class="ToolTip">${item["A1"]}</span>`
+                        }
+                        var b_html = item["B"];
+                        if (item["B1"]) {
+                            b_html += ` <span class="ToolTip">${item["B1"]}</span>`
+                        }
+                        // assemble the row
+                        s += `  <tr>\n`;   // open the row
+                        s += `    <td>${a_html}</td>\n`;
+                        s += `    <td>${b_html}</td>\n`;
+                        s += `  </tr>\n`;  // close the row
                     });
 
                     s += `      </tbody>

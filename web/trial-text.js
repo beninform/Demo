@@ -149,27 +149,31 @@ let trialText = {
 	helpButtonText_ncr:`
 	    <button type="button" class="help-btn" id="help-toggle-btn">?</button>
             <div class="help-popup hidden" id="help-popup-box">
-				Type each of your rules into the appropriate answer box. The page shows a ‘time remaining’ countdown timer. 
+				<p>Type each of your rules into the appropriate answer box. </p>
+				<p>The page shows a ‘time remaining’ countdown timer. 
 				This allows you two and a half minutes for each problem. 
-				After the time has elapsed, you will be automatically moved on to the next problem. 
-				You can only use the ‘continue’ button once you have entered text into each of the answer boxes.
+				After the time has elapsed, you will be automatically moved on to the next problem.
+				After three such 'timeouts', a further 'timeout' will end your session.</p>
+				<p>You can only use the ‘continue’ button once you have entered text into each of the answer boxes.
 				You can skip if you are really stuck. But you are encouraged not to skip problems. 
 				The skip button will only be available after the first ten seconds, so you should try to answer. 
-				In any event, you will not be able to skip more than four problems.
+				In any event, you will not be able to skip more than three problems.</p>
 		</div>
 	`,
 	helpButtonText_wcr:`
 	    <button type="button" class="help-btn" id="help-toggle-btn">?</button>
 		<div class="help-popup hidden" id="help-popup-box">
-				Complete each answer box. You cannot drag and drop any text from the candidate rules list. 
-				You must type each of your rules into the appropriate box. <br />
-				The page shows a ‘time remaining’ countdown timer. 
+				<p>Complete each answer box. You cannot drag and drop any text from the candidate rules list. 
+				You must type each of your rules into the appropriate box. Some candidate rules have further explanation
+				which you can see if you hover your mouse over the rule text.</p>
+				<p>The page shows a ‘time remaining’ countdown timer. 
 				This allows you two and a half minutes for each problem. 
 				After the time has elapsed, you will be automatically moved on to the next problem. 
-				You can only use the ‘continue’ button once you have entered text into each of the answer boxes.
+				After three such 'timeouts', a further 'timeout' will end your session.</p>
+				<p>You can only use the ‘continue’ button once you have entered text into each of the answer boxes.
 				You can skip if you are really stuck. But you are encouraged not to skip problems. 
 				The skip button will only be available after the first ten seconds, so you should try to answer. 
-				In any event, you will not be able to skip more than four problems.
+				In any event, you will not be able to skip more than three problems.</p>
 		</div>
 	`,
 	timeoutPopup: `
