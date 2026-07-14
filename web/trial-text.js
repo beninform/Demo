@@ -106,7 +106,7 @@ let trialText = {
 			<div id='set-b-label'><p>Set B</p></div>
 		</div>
 		<img class='bp-img' src='img/p0001.png' alt="Bongard Problem"/>
-		<p class="example-instruction-text">Write your answers in the boxes. Then check only the second checkbox.</p>
+		<p class="example-instruction-text">Write your answers in the boxes.</p>
     `,
 	ncrExampleProblemInstructions: `
 		<div class="instruction-box">
@@ -131,7 +131,7 @@ let trialText = {
 		<div class="mc-container">
 			<label><input type="checkbox" id="cb1"> First checkbox</label>
 			<label><input type="checkbox" id="cb2"> Second checkbox</label>
-			
+			<strong>Check only the second checkbox.</strong>
 			<div id="solution-text" class="hidden">
 				<p>Here is an acceptable solution to the example problem:</p>
 				
