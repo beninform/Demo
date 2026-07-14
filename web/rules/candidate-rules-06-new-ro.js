@@ -1,4 +1,4 @@
-[
+var rulesArray = [
     {
         "ID": 2,
         "BP": 1,
