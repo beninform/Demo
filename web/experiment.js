@@ -136,7 +136,7 @@ let resultsTrial = {
 
         `,
     on_start: function() { 
-        finalizeSession('NORMAL');  // function defined in skip-button.js
+        finalizeSession('NORMAL');  // function defined in data-save.js
         }
     } 
 timeline.push(resultsTrial);
