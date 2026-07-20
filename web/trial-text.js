@@ -21,11 +21,11 @@ let trialText = {
 
 			<div class="intro-middle-container">
 				<div class="intro-middle-left">
-					<p>You will be asked to tell us the rule that distrinctly describes the first group.</p>
+					<p>You will be asked to tell us the rule that distinctly describes the first group.</p>
 					<img src="img/p286A.png" alt="Example Set A" style="max-height: 250px; width: auto;">
 				</div>
 				<div class="intro-middle-right">
-				<p>You will be asked to tell us the rule that distrinctly describes the second group.</p>
+				<p>You will be asked to tell us the rule that distinctly describes the second group.</p>
 					<img src="img/p286B.png" alt="Example Set B" style="max-height: 250px; width: auto;">
 				</div>
 			</div>
@@ -45,10 +45,6 @@ let trialText = {
 			<p>Each of the three parts will take approximately 35 minutes to complete. Your access to part two is dependent on your progress in part one.</p>
 			<p>Before we start part one, we will show you a single example problem.</p>
 			<p>As with all the problems, you must enter an answer in each box to be able to continue.</p>
-			<p>For efficient progress, if you wish, you can use the <code style="color:#8B0000;">Tab</code> button 
-			to move between the answer boxes - and to move on to the <code style="color:#8B0000;">Continue</code> button.
-			This means you can complete each screen using the keyboard alone.
-			But you may also just click on the <code style="color:#8B0000;">Continue</code> button with the mouse.</p>
 		</div>
 	`,
 	introductionTextParts23: `
@@ -72,11 +68,11 @@ let trialText = {
 
 			<div class="intro-middle-container">
 				<div class="intro-middle-left">
-					<p>You will be asked to tell us the rule that distrinctly describes the first group.</p>
+					<p>You will be asked to tell us the rule that distinctly describes the first group.</p>
 					<img src="img/p286A.png" alt="Example Set A" style="max-height: 250px; width: auto;">
 				</div>
 				<div class="intro-middle-right">
-				<p>You will be asked to tell us the rule that distrinctly describes the second group.</p>
+				<p>You will be asked to tell us the rule that distinctly describes the second group.</p>
 					<img src="img/p286B.png" alt="Example Set B" style="max-height: 250px; width: auto;">
 				</div>
 			</div>
@@ -95,10 +91,6 @@ let trialText = {
 			<p>Each of the two parts will take approximately 35 minutes to complete. After the first part you will have the opportunity to take a short break.</p>
 			<p>Before we start, we will show you the example problem again, as a reminder of what to expect.</p>
 			<p>As with all the problems, you must enter an answer in each box to be able to continue.</p>
-			<p>For efficient progress, if you wish, you can use the <code style="color:#8B0000;">Tab</code> button 
-			to move between the answer boxes - and to move on to the <code style="color:#8B0000;">Continue</code> button.
-			This means you can complete each screen using the keyboard alone.
-			But you may also just click on the <code style="color:#8B0000;">Continue</code> button with the mouse.</p>
 		</div>
 	`,
 	 LabelsText: `
@@ -127,6 +119,10 @@ let trialText = {
 			The 6 diagrams on the right side belong to Set B.</p>
 			<p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
 			<p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
+			<p>For efficient progress, if you wish, you can use the <code style="color:#8B0000;">Tab</code> button 
+			to move between the answer boxes - and to move on to the <code style="color:#8B0000;">Continue</code> button.
+			This means you can complete each screen using the keyboard alone.
+			But you may also just click on the <code style="color:#8B0000;">Continue</code> button with the mouse.</p>		
 		</div>
 	`,
 	wcrExampleProblemInstructions: `
@@ -137,6 +133,10 @@ let trialText = {
 			<p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
 			<p>You are given candidate rules for assistance. Note that the candidate rules are AI-generated, so they may contain errors. In particular, there may be one correct rule-pair for each problem. But there could be several, or even none at all, that are correct.</p>
 			<p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
+			<p>For efficient progress, if you wish, you can use the <code style="color:#8B0000;">Tab</code> button 
+			to move between the answer boxes - and to move on to the <code style="color:#8B0000;">Continue</code> button.
+			This means you can complete each screen using the keyboard alone.
+			But you may also just click on the <code style="color:#8B0000;">Continue</code> button with the mouse.</p>		
 		</div>
 	`,
 	exampleMC:`
