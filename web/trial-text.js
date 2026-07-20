@@ -23,10 +23,12 @@ let trialText = {
 				<div class="intro-middle-left">
 					<p>You will be asked to tell us the rule that distinctly describes the first group.</p>
 					<img src="img/p286A.png" alt="Example Set A" style="max-height: 250px; width: auto;">
+					<p>Example: Large squares are higher</p>
 				</div>
 				<div class="intro-middle-right">
 				<p>You will be asked to tell us the rule that distinctly describes the second group.</p>
 					<img src="img/p286B.png" alt="Example Set B" style="max-height: 250px; width: auto;">
+					<p>Example: Small squares are higher</p>
 				</div>
 			</div>
 
@@ -70,10 +72,12 @@ let trialText = {
 				<div class="intro-middle-left">
 					<p>You will be asked to tell us the rule that distinctly describes the first group.</p>
 					<img src="img/p286A.png" alt="Example Set A" style="max-height: 250px; width: auto;">
+					<p>Example: Large squares are higher</p>
 				</div>
 				<div class="intro-middle-right">
 				<p>You will be asked to tell us the rule that distinctly describes the second group.</p>
 					<img src="img/p286B.png" alt="Example Set B" style="max-height: 250px; width: auto;">
+					<p>Example: Small squares are higher</p>
 				</div>
 			</div>
 
@@ -131,7 +135,7 @@ let trialText = {
 			<p>The 6 diagrams on the left side belong to Set A.<br>
 			The 6 diagrams on the right side belong to Set B.</p>
 			<p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
-			<p>You are given candidate rules for assistance. Note that the candidate rules are AI-generated, so they may contain errors. In particular, there may be one correct rule-pair for each problem. But there could be several, or even none at all, that are correct.</p>
+			<p>You are given candidate rules for assistance (click the tab above to see them). Note that the candidate rules are AI-generated, so they may contain errors. In particular, there may be one correct rule-pair for each problem. But there could be several, or even none at all, that are correct.</p>
 			<p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
 			<p>For efficient progress, if you wish, you can use the <code style="color:#8B0000;">Tab</code> button 
 			to move between the answer boxes - and to move on to the <code style="color:#8B0000;">Continue</code> button.
