@@ -195,8 +195,8 @@ let trialText = {
 	timeoutPopup: `
 		<div class="timeout-popup-overlay">
 			<div class="timeout-popup-content">
-				<h3>Time for trial has run out!</h3>
-				<p>You will be sent to the next trial.</p>
+				<h3>Time for this task has run out!</h3>
+				<p>You will be sent to the next page.</p>
 				<div class="spinner"></div>
 			</div>
 		</div>
