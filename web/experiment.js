@@ -151,7 +151,7 @@ let resultsTrial = {
         <p>Please don't close the tab or window until saving is complete.</p>
         `,
     on_start: function() { 
-        finalizeSession('NORMAL');  // function defined in skip-button.js
+        finalizeSession('NORMAL');  // function defined in data-save.js
         }
     } 
 timeline.push(resultsTrial);
