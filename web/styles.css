@@ -39,10 +39,10 @@
 .intro-middle-right {
     width: var(--middle-width);
     text-align: center;
-    border-style: solid;
-    padding: 30px;
-    padding-top: 50px;
-    padding-bottom: 60px;
+    /* border-style: solid; */
+    padding: 10px;
+    /* padding-top: 10px;
+    padding-bottom: 10px; */
 }
 
 .intro-bottom {
@@ -113,6 +113,19 @@
 
 .example-solution-container label {
     display: block;
+}
+
+.cursor-tooltip {
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none; /* Verhindert, dass der Tooltip den Mausklick blockiert */
+    z-index: 9999;
+    white-space: nowrap;
+    display: none; /* Standardmäßig unsichtbar */
 }
 
 .hidden {
@@ -196,11 +209,26 @@
     padding-top: 20px;
 }
 
+#table-container {
+    position: relative; 
+}
+
 .table-container {
     width: 100%;
     text-align: center;
     margin-left: auto;
     margin-top: 20px;
+}
+
+#table-container::after {
+    content: "";
+    position: absolute;
+    top: -15px;
+    right: -10px;
+    width: 45px;
+    height: 45px;
+    background-image: url('logos/eu_ai_label.png');
+    background-size: contain;
 }
 
 .instruction-box > p {
@@ -262,7 +290,7 @@
     width: 100%;
     padding-left: 10%;
     padding-right: 10%;
-    margin-top: 20px;
+    margin-top: 10px;
     text-align: left;
     padding: 0;
 }

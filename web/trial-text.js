@@ -20,8 +20,14 @@ let trialText = {
 			</div>
 
 			<div class="intro-middle-container">
-				<div class="intro-middle-left">You will be asked to tell us the rule that distinctly describes the first group.</div>
-				<div class="intro-middle-right">You will also be asked to tell us the rule that distinctly describes the second group.</div>
+				<div class="intro-middle-left">
+					<p>You will be asked to tell us the rule that distrinctly describes the first group.</p>
+					<img src="img/p286A.png" alt="Example Set A" style="max-height: 250px; width: auto;">
+				</div>
+				<div class="intro-middle-right">
+				<p>You will be asked to tell us the rule that distrinctly describes the second group.</p>
+					<img src="img/p286B.png" alt="Example Set B" style="max-height: 250px; width: auto;">
+				</div>
 			</div>
 
 			<div class="intro-bottom">
@@ -65,8 +71,14 @@ let trialText = {
 			</div>
 
 			<div class="intro-middle-container">
-				<div class="intro-middle-left">You will be asked to tell us the rule that distinctly describes the first group.</div>
-				<div class="intro-middle-right">You will also be asked to tell us the rule that distinctly describes the second group.</div>
+				<div class="intro-middle-left">
+					<p>You will be asked to tell us the rule that distrinctly describes the first group.</p>
+					<img src="img/p286A.png" alt="Example Set A" style="max-height: 250px; width: auto;">
+				</div>
+				<div class="intro-middle-right">
+				<p>You will be asked to tell us the rule that distrinctly describes the second group.</p>
+					<img src="img/p286B.png" alt="Example Set B" style="max-height: 250px; width: auto;">
+				</div>
 			</div>
 
 			<div class="intro-bottom">
@@ -80,7 +92,7 @@ let trialText = {
 			<h1>Instructions</h1>
 			<p>In each of the two parts of this session, you will be asked to solve a set of problems.
 			As before, there will be one problem on each screen.</p>
-			<p>Each of the two parts will take approximately 35 minutes to complete.</p>
+			<p>Each of the two parts will take approximately 35 minutes to complete. After the first part you will have the opportunity to take a short break.</p>
 			<p>Before we start, we will show you the example problem again, as a reminder of what to expect.</p>
 			<p>As with all the problems, you must enter an answer in each box to be able to continue.</p>
 			<p>For efficient progress, if you wish, you can use the <code style="color:#8B0000;">Tab</code> button 
@@ -105,7 +117,7 @@ let trialText = {
 			<div id='set-a-label'><p>Set A</p></div>
 			<div id='set-b-label'><p>Set B</p></div>
 		</div>
-		<img class='bp-img' src='img/p0001.png' alt="Bongard Problem"/>
+		<img class='bp-img' src='img/p0001.png' alt="Bongard Problem" style="max-height: 350px; width: auto;"/>
 		<p class="example-instruction-text">Write your answers in the boxes.</p>
     `,
 	ncrExampleProblemInstructions: `

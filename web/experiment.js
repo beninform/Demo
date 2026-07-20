@@ -41,7 +41,7 @@ let exampleTrial = {
         {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows: 2}
     ],
     data: {
-        collect: true, 
+        collect: false, 
         imagenr: '0001',
         blockId: 'Part 0',
     },
@@ -60,17 +60,32 @@ timeline.push(exampleTrial);
 
 // iterate the current array of blocks (called selectedBlock), show an intro, then get into the BPs
 for (let block of selectedBlock) {
-    let blockIntroTrial = {
-        type: jsPsychHtmlButtonResponse,
-        stimulus: `
-        	<h1>${block.title}</h1>
-            <p>There are ${block.conditions[0].length} problems in this part.</p>
-            <p>Press the button below to begin.</p>
-        	`,
-        choices: ['Continue']
-    };
-    timeline.push(blockIntroTrial);
-
+    if (block === blocks[2] && pid === 'pib') {
+        let breakTrial = {
+            type: jsPsychHtmlButtonResponse,
+            stimulus: `
+                <h1>${block.title}</h1>
+                <p>You have completed the first part of this session. Thank you.</p> 
+                <p>You could now take a short break. But don‘t leave the page.</p> 
+                <p>Click the continue button when you are ready for the final part.</p>
+                <p>There are ${block.conditions[0].length} problems in this part.</p>
+                `,
+            choices: ['Continue']
+        };
+        timeline.push(breakTrial);
+    }
+    else {
+        let blockIntroTrial = {
+            type: jsPsychHtmlButtonResponse,
+            stimulus: `
+                <h1>${block.title}</h1>
+                <p>There are ${block.conditions[0].length} problems in this part.</p>
+                <p>Press the button below to begin.</p>
+                `,
+            choices: ['Continue']
+        };
+        timeline.push(blockIntroTrial);
+    }   
 
     // iterate the BPs in the current block
     for (let imgno of block.conditions[0]) {
@@ -81,7 +96,7 @@ for (let block of selectedBlock) {
             <div class="trial-countdown-wrapper">
                 Time remaining: <span id="trial-countdown">--:--</span>
             </div>
-            <h3>BP ${imgno - 1}</h3>
+            <h3>Task ${imgno - 1}</h3>
             ${trialText.LabelsText}
             <img class='bp-img' src='img/p${imgstr}.png'/>
         `;
@@ -111,7 +126,8 @@ for (let block of selectedBlock) {
             on_load: function() {
                 setupTrialButtons();   // function defined in skip-button.js
                 setupHelpButton();     // function defined in skip-button.js
-            }
+            },
+            on_finish: handleTrialFinish
         }
         
         timeline.push(inputTrial);
@@ -133,7 +149,6 @@ let resultsTrial = {
         <p>We are most grateful for your contribution to this study.</p>
         <p>Please don't navigate away from this page while we send results to the server.</p>
         <p>Please don't close the tab or window until saving is complete.</p>
-
         `,
     on_start: function() { 
         finalizeSession('NORMAL');  // function defined in data-save.js

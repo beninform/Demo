@@ -26,6 +26,38 @@ function setupInstructionMC() {
 
     solutionText.classList.add('hidden');
 
+    let tooltip = document.getElementById('cb-cursor-tooltip');
+    if (!tooltip) {
+        tooltip = document.createElement('div');
+        tooltip.id = 'cb-cursor-tooltip';
+        tooltip.className = 'cursor-tooltip';
+        tooltip.innerText = 'Please enter a solution in both answer boxes first.';
+        document.body.appendChild(tooltip);
+    }
+
+    const mcContainer = document.querySelector('.mc-container');
+    if (mcContainer) {
+        mcContainer.addEventListener('mousemove', (e) => {
+            const rect1 = cb1.getBoundingClientRect();
+            const rect2 = cb2.getBoundingClientRect();
+
+            const isOverCb1 = e.clientX >= rect1.left && e.clientX <= rect1.right && e.clientY >= rect1.top && e.clientY <= rect1.bottom;
+            const isOverCb2 = e.clientX >= rect2.left && e.clientX <= rect2.right && e.clientY >= rect2.top && e.clientY <= rect2.bottom;
+
+            if ((isOverCb1 && cb1.disabled) || (isOverCb2 && cb2.disabled)) {
+                tooltip.style.display = 'block';
+                tooltip.style.left = (e.pageX + 15) + 'px'; 
+                tooltip.style.top = (e.pageY + 15) + 'px';
+            } else {
+                tooltip.style.display = 'none';
+            }
+        });
+
+        mcContainer.addEventListener('mouseleave', () => {
+            tooltip.style.display = 'none';
+        });
+    }
+
     function checkTextRequirement() {
 
         const hasEnoughText = Array.from(textAreas).every(t => t.value.trim().length >= 3);
@@ -143,6 +175,10 @@ function setupTrialButtons() {
 
     function handleTimeout() {
         window.numTimeouts = (window.numTimeouts || 0) + 1;
+        window.timeoutTrial = true;
+
+        const skipPopup = document.getElementById('skip-confirm-popup');
+        if (skipPopup) skipPopup.remove();
 
         const popupHTML = trialText.timeoutPopup;
         document.body.insertAdjacentHTML('beforeend', popupHTML);
@@ -152,11 +188,6 @@ function setupTrialButtons() {
         setTimeout(() => {
             const popup = document.querySelector('.timeout-popup-overlay');
             if (popup) popup.remove();
-
-            if (window.numTimeouts > 3) {
-                finalizeSession('ABORT_TIMEOUT');
-                return;
-            }
 
             textAreas.forEach(field => field.required = false); 
             continueBtn.disabled = false; 
@@ -212,16 +243,11 @@ function setupTrialButtons() {
             clearInterval(timer);
             
             window.skipCount = numSkips;
-            jsPsych.data.addProperties({ total_skips: window.skipCount });
-
-            if (numSkips > 3) {
-                finalizeSession('ABORT_SKIP');
-                return;
-            }
+            window.skippedTrial = true;
 
             textAreas.forEach(field => field.required = false); 
             continueBtn.disabled = false; 
-            continueBtn.click(); 
+            continueBtn.click();
         });
     });
 }
@@ -302,6 +328,80 @@ function setupHelpButton() {
     });
 }
 
+function handleTrialFinish(data) {
+    let currentSkips = window.skipCount || 0;
+    let currentTimeouts = window.numTimeouts || 0;
+
+    if (window.skippedTrial) {
+        data.trial_status = 'Skipped';
+        window.skippedTrial = false;
+    } else if (window.timeoutTrial) {
+        data.trial_status = 'Timeout';
+        window.timeoutTrial = false;
+    } else {
+        data.trial_status = 'Completed';
+    }
+
+    data.num_skips = currentSkips;
+    data.num_timeouts = currentTimeouts;
+
+    if (currentSkips > 3) {
+        finalizeSession('ABORT_SKIP');
+    } else if (currentTimeouts > 3) {
+        finalizeSession('ABORT_TIMEOUT');
+    }
+}
+
+function finalizeSession(status = 'NORMAL') {
+    let prefix = uid + '_' + tid + '_' + pid;
+    let dataPipeExperimentId = 'FP1EmrkIikGE';
+    let forceOSFSave = false;
+
+    // Filter and retrieve results as CSV data
+    let dataObj = jsPsych.data
+        .get()
+        .filter({ collect: true })
+        .ignore(['stimulus', 'trial_type', 'plugin_version', 'collect', 'time_elapsed']);
+
+    let results = dataObj.csv();
+
+    // Generate a current timestamp for the filename
+    let timestamp = new Date().toISOString().replace(/T/, '-').replace(/\..+/, '').replace(/:/g, '-');
+
+    dataObj.localSave('csv', prefix + '_' + status + '-' + timestamp + '.csv');
+
+    // Dynamically determine if the experiment is currently running locally or on production
+    let isLocalHost = window.location.href.includes('localhost') || window.location.href.includes('127.0.0.1');
+
+    let destination = '/save';
+    if (!isLocalHost || forceOSFSave) {
+        destination = 'https://pipe.jspsych.org/api/data/';
+    };
+
+    // Send the results to our saving end point
+    fetch(destination, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: '*/*',
+        },
+        body: JSON.stringify({
+            experimentID: dataPipeExperimentId,
+            filename: prefix + '_' + status + '-' + timestamp + '.csv',
+            data: results,
+        }),
+    }).then(data => {
+        if (status === 'NORMAL') {
+            jsPsych.finishTrial();
+        }
+    })
+
+    if (status === 'ABORT_TIMEOUT') {
+        jsPsych.abortExperiment(trialText.abortTimeoutText);
+    } else if (status === 'ABORT_SKIP') {
+        jsPsych.abortExperiment(trialText.abortSkipText);
+    }
+}
 
 // Function to show the skip button after 1 minute (60,000 ms)
 function showSkipButton() {
@@ -313,8 +413,8 @@ function showSkipButton() {
 
 // Action when skip button is clicked
 function skipAction() {
-	console.log("You skipped!");
-    insertTimeInBlanks();
+	console.log("skipped");
+    // insertTimeInBlanks();
 	// Perform another action here
 }
 
@@ -372,22 +472,22 @@ function getFormattedTimestamp() {
            String(now.getSeconds()).padStart(2, '0');
        };
 
-function insertTimeInBlanks() {
-    const textarea0 = document.getElementById('input-0');
-    const textarea1 = document.getElementById('input-1');
+// function insertTimeInBlanks() {
+//     const textarea0 = document.getElementById('input-0');
+//     const textarea1 = document.getElementById('input-1');
 
-    let ts = getFormattedTimestamp();
-    console.log('ts', ts);
+//     let ts = getFormattedTimestamp();
+//     console.log('ts', ts);
 
-    // Check if textarea is empty or only whitespace
-    if (textarea0.value.trim() === "") {
-        textarea0.value = 'skipped ' + ts;
-    } else {
-        textarea0.value += ' skipped ' + ts;
-    }
-    if (textarea1.value.trim() === "") {
-        textarea1.value = 'skipped ' + ts;
-    } else {
-        textarea1.value += ' skipped ' + ts;
-    };
-};
+//     // Check if textarea is empty or only whitespace
+//     if (textarea0.value.trim() === "") {
+//         textarea0.value = 'skipped ' + ts;
+//     } else {
+//         textarea0.value += ' skipped ' + ts;
+//     }
+//     if (textarea1.value.trim() === "") {
+//         textarea1.value = 'skipped ' + ts;
+//     } else {
+//         textarea1.value += ' skipped ' + ts;
+//     };
+// };
