@@ -95,6 +95,7 @@ function setupInstructionMC() {
 
 // setup continue and skip buttons 
 function setupTrialButtons() {
+    window.isTrialActive = true;
     const continueBtn = document.getElementById('jspsych-survey-text-next');
     const textAreas = document.querySelectorAll('textarea');
     const countdownDisplay = document.getElementById('trial-countdown');
@@ -146,12 +147,16 @@ function setupTrialButtons() {
     updateCountdownDisplay();
     checkTextRequirement();
 
-    let timer = null;
-
     function startTimer() {
+        if (!window.isTrialActive) return;
         const startTime = Date.now();
 
-        timer = setInterval(() => {
+        window.trialTimer = setInterval(() => {
+            if (!window.isTrialActive || !document.getElementById('trial-countdown')) {
+                clearInterval(window.trialTimer);
+                return;
+            }
+
             const secondsElapsed = Math.floor((Date.now() - startTime) / 1000);
 
             skipLockTime = Math.max(0, startSkipLock - secondsElapsed);
@@ -167,13 +172,15 @@ function setupTrialButtons() {
             updateCountdownDisplay();
             
             if (totalTrialTime <= 0) {
-                clearInterval(timer);
+                clearInterval(window.trialTimer);
                 handleTimeout();
             }
         }, 1000);
     }
 
     function handleTimeout() {
+        if (!window.isTrialActive) return;
+
         window.numTimeouts = (window.numTimeouts || 0) + 1;
         window.timeoutTrial = true;
 
@@ -186,6 +193,7 @@ function setupTrialButtons() {
         textAreas.forEach(field => { field.disabled = true; });
 
         setTimeout(() => {
+            if (!window.isTrialActive) return;
             const popup = document.querySelector('.timeout-popup-overlay');
             if (popup) popup.remove();
 
@@ -202,7 +210,7 @@ function setupTrialButtons() {
     }
 
     continueBtn.addEventListener('click', () => {
-        clearInterval(timer);
+        clearInterval(window.trialTimer);
     });
 
     skipBtn.addEventListener('click', () => {
@@ -240,7 +248,7 @@ function setupTrialButtons() {
         confirmBtn.addEventListener('click', () => {
             if (popupOverlay) popupOverlay.remove();
 
-            clearInterval(timer);
+            clearInterval(window.trialTimer);
             
             window.skipCount = numSkips;
             window.skippedTrial = true;
@@ -254,10 +262,10 @@ function setupTrialButtons() {
 
 // setup tabs for the example problem
 function setupExampleTabs() {
-    const instr = document.getElementById('wcr-instructions');
+    const instr = document.querySelector('.instruction-box');
     const rulesTable = document.getElementById('table-container');
 
-    if (instr && rulesTable) {
+    if (instr) {
         const tabContainer = document.createElement('div');
         tabContainer.className = 'tab-container';
 
@@ -268,44 +276,53 @@ function setupExampleTabs() {
         btnInstr.className = 'tab-btn active';
         btnInstr.innerText = 'Instructions';
         btnInstr.type = 'button'; 
-
-        const btnRules = document.createElement('button');
-        btnRules.className = 'tab-btn';
-        btnRules.innerText = 'Candidate rules';
-        btnRules.type = 'button';
+        btnInstr.style.cursor = 'default'; 
 
         const tabContent = document.createElement('div');
         tabContent.className = 'tab-content';
 
         tabHeader.appendChild(btnInstr);
-        tabHeader.appendChild(btnRules);
         tabContainer.appendChild(tabHeader);
         tabContainer.appendChild(tabContent);
 
         instr.parentNode.insertBefore(tabContainer, instr);
 
         tabContent.appendChild(instr);
-        tabContent.appendChild(rulesTable);
-
         instr.classList.remove('hidden');
-        rulesTable.classList.add('hidden');
-        
         instr.style.paddingTop = '0';
-        rulesTable.style.marginTop = '0';
 
-        btnInstr.addEventListener('click', () => {
-            btnInstr.classList.add('active');
-            btnRules.classList.remove('active');
-            instr.classList.remove('hidden');
+        if (tid === 'wcr' && rulesTable) {
+            
+            btnInstr.style.cursor = 'pointer'; 
+
+            const btnRules = document.createElement('button');
+            btnRules.className = 'tab-btn';
+            btnRules.innerText = 'Candidate rules';
+            btnRules.type = 'button';
+
+            tabHeader.appendChild(btnRules);
+            tabContent.appendChild(rulesTable);
+            
             rulesTable.classList.add('hidden');
-        });
+            rulesTable.style.marginTop = '0';
 
-        btnRules.addEventListener('click', () => {
-            btnRules.classList.add('active');
-            btnInstr.classList.remove('active');
-            rulesTable.classList.remove('hidden');
-            instr.classList.add('hidden');
-        });
+            btnInstr.addEventListener('click', () => {
+                btnInstr.classList.add('active');
+                btnRules.classList.remove('active');
+                instr.classList.remove('hidden');
+                rulesTable.classList.add('hidden');
+            });
+
+            btnRules.addEventListener('click', () => {
+                btnRules.classList.add('active');
+                btnInstr.classList.remove('active');
+                rulesTable.classList.remove('hidden');
+                instr.classList.add('hidden');
+            });
+
+        } else if (rulesTable) {
+            rulesTable.style.display = 'none'; 
+        }
     }
 }
 
@@ -329,6 +346,11 @@ function setupHelpButton() {
 }
 
 function handleTrialFinish(data) {
+    window.isTrialActive = false; 
+    
+    if (window.trialTimer) clearInterval(window.trialTimer);
+    if (window.timeoutDelay) clearTimeout(window.timeoutDelay);
+
     let currentSkips = window.skipCount || 0;
     let currentTimeouts = window.numTimeouts || 0;
 
