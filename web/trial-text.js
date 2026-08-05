@@ -116,35 +116,24 @@ let trialText = {
 		<img class='bp-img' src='img/p0001.png' alt="Bongard Problem" style="max-height: 350px; width: auto;"/>
 		<p class="example-instruction-text">Write your answers in the boxes.</p>
     `,
-	ncrExampleProblemInstructions: `
-		<div class="instruction-box">
+	ExampleProblemInstructions: `
 			<p>On this page, you are shown 12 diagrams. Each diagram represents shapes with specific features, such as geometric properties or higher-level concepts.</p>
 			<p>The 6 diagrams on the left side belong to Set A.<br>
-			The 6 diagrams on the right side belong to Set B.</p>
-			<p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
-			<p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
-			<p><b>Want to use keyboard only?</b></p>
-			<p>For efficient progress, if you wish, you can use the <code style="color:#8B0000;">Tab</code> button 
-			to move between the answer boxes - and to move on to the <code style="color:#8B0000;">Continue</code> button.
-			This means you can complete each screen using the keyboard alone.
-			But you may also just click on the <code style="color:#8B0000;">Continue</code> button with the mouse.</p>		
-		</div>
+			The 6 diagrams on the right side belong to Set B.</p>	
 	`,
-	wcrExampleProblemInstructions: `
-		<div id="wcr-instructions" class="instruction-box">
-			<p>On this page, you are shown 12 diagrams. Each diagram represents shapes with specific features, such as geometric properties or higher-level concepts.</p>
-			<p>The 6 diagrams on the left side belong to Set A.<br>
-			The 6 diagrams on the right side belong to Set B.</p>
+	ProblemInstructions: `
 			<p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
+			<p>Click the help button (?) for more information.</p>
 			<p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
 			<p><b>Want to use keyboard only?</b></p>
 			<p>For efficient progress, if you wish, you can use the <code style="color:#8B0000;">Tab</code> button 
 			to move between the answer boxes - and to move on to the <code style="color:#8B0000;">Continue</code> button.
 			This means you can complete each screen using the keyboard alone.
 			But you may also just click on the <code style="color:#8B0000;">Continue</code> button with the mouse.</p>		
+	`,
+	wcrInstructions: `
 			<p><b>AI assistance</b></p>
 			<p>You are given candidate rules for assistance (click the tab above to see them). Note that the candidate rules are AI-generated, so they may contain errors. In particular, there may be one correct rule-pair for each problem. But there could be several, or even none at all, that are correct.</p>
-		</div>
 	`,
 	exampleMC:`
 		<div class="mc-container">

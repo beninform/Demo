@@ -151,17 +151,25 @@ var jsPsychSurveyText = function(n) {
 
 
             if (tid == 'ncr') {
-                if (bongProbNumber == 1) {
                     s += '  <div id="instructions-div" class="instructions-div" style="height: 100%">';
-                    s += trialText.ncrExampleProblemInstructions;
+                    s += '   <div class="instruction-box">';
+                    if (bongProbNumber == 1) {
+                        s += trialText.ExampleProblemInstructions;
+                    }
+                    s += trialText.ProblemInstructions;
+                    s += '   </div>';
                     s += '  </div>';
-                }
             } else if (tid == 'wcr') {
                 if (bongProbNumber !== null) {
                     s += '  <div id="instructions-div" class="instructions-div" style="height: 100%">';
+                    s += '   <div class="instruction-box">';
                     if (bongProbNumber == 1) {
-                        s += trialText.wcrExampleProblemInstructions;
+                        s += trialText.ExampleProblemInstructions;
                     }
+                    s += trialText.ProblemInstructions;
+                    s += trialText.wcrInstructions;
+                    s += '   </div>';
+                    s += '  </div>';
                     let filteredArray = rulesArray.filter((item) => item.BP == bongProbNumber);
 
 

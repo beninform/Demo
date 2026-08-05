@@ -124,6 +124,7 @@ for (let block of selectedBlock) {
             },
             sidebox: sideboxVal, 
             on_load: function() {
+                setupExampleTabs();
                 setupTrialButtons();   // function defined in skip-button.js
                 setupHelpButton();     // function defined in skip-button.js
             },

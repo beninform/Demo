@@ -499,6 +499,9 @@
     font-size: 14px;
     color: #333;
 }
+.help-popup p {
+    margin-bottom: 15px;
+}
 
 .set-a-b-label-container {
     display: flex;
