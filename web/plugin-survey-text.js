@@ -152,13 +152,13 @@ var jsPsychSurveyText = function(n) {
 
             if (tid == 'ncr') {
                 if (bongProbNumber == 1) {
-                    s += '  <div id="candidate-rules" class="candidate-rules" style="height: 100%">';
+                    s += '  <div id="instructions-div" class="instructions-div" style="height: 100%">';
                     s += trialText.ncrExampleProblemInstructions;
                     s += '  </div>';
                 }
             } else if (tid == 'wcr') {
                 if (bongProbNumber !== null) {
-                    s += '  <div id="candidate-rules" class="candidate-rules" style="height: 100%">';
+                    s += '  <div id="instructions-div" class="instructions-div" style="height: 100%">';
                     if (bongProbNumber == 1) {
                         s += trialText.wcrExampleProblemInstructions;
                     }

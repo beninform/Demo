@@ -538,7 +538,7 @@ input[type=text]:focus {
     justify-content: center;	
 }
 
-.candidate-rules, .preamble-form-wrapper {
+.instructions-div, .preamble-form-wrapper {
     width: 45vw;
     text-align: center;
 } 
@@ -566,13 +566,6 @@ input[type=text]:focus {
   box-sizing: border-box;
 }
 
-
-/*.candidate-rules {
-	float: left;
-	position: absolute;
-	top: 0;
-	bottom: 0;
-}*/
 #table-container {
 	width: 40vw;
 }
