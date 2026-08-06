@@ -1,14 +1,15 @@
-// let blockSize = 33;
-let blockSize = 6;  // have only x problems in each part for testing
+const urlParams = new URLSearchParams(window.location.search);
 
-let imgns_a = [...Array(blockSize).keys()];
-let imgnos_a = imgns_a.map(a => a+2);
+let bsz = urlParams.get('bsz') || 33;  // block size
+let psh = urlParams.get('psh') || 0;   // problem shift (skips this number of BPs at the start of a block)
+prob_shift = parseInt(psh, 10);
 
-let imgns_b = [...Array(blockSize).keys()];
-let imgnos_b = imgns_b.map(a => a+33+2);
+let blockSize = bsz;  //6;  // have only x problems in each part for testing
 
-let imgns_c = [...Array(blockSize).keys()];
-let imgnos_c = imgns_c.map(a => a+33+33+2);
+let imgnos_a = Array.from({ length: blockSize }, (_, i) => i+2+prob_shift);
+let imgnos_b = Array.from({ length: blockSize }, (_, i) => i+33+2+prob_shift);
+let imgnos_c = Array.from({ length: blockSize }, (_, i) => i+33+33+2+prob_shift);
+
 
 let blocks = [
     {

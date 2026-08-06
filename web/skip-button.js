@@ -345,6 +345,51 @@ function setupHelpButton() {
     });
 }
 
+// insert variable text 1 on welcome page
+function insertParaTextTid(my_var, para_id, bsz) {
+    const para = document.getElementById(para_id);
+    str = '';
+    if (my_var=='ncr') {
+        str = 'You have been randomly assigned to the unassisted part of the study.';
+    } else if (my_var=='wcr') {
+        str = `You have been randomly assigned to the assisted part of the study. 
+        You will be provided with simple machine assistance.`;
+    }
+    if (para) {
+        para.textContent = str;
+    }
+};
+// insert variable text 2 on welcome page
+function insertParaTextPid(my_var, para_id, bsz) {
+    const para = document.getElementById(para_id);
+    str = '';
+    if (my_var=='pia') {
+        str = `There are ${bsz} problems in this session.`;
+    } else if (my_var=='pib') {
+        str = `There are two parts with ${bsz} problems each in this session.`;
+    }
+    if (para) {
+        para.textContent = str;
+    }
+};
+
+// insert variable text 3 on instructions page
+function insertParaTextTim(my_var, para_id, bsz) {
+    const para = document.getElementById(para_id);
+    let tim = Math.round(bsz * 1.06).toString();
+    str = '';
+    if (my_var=='pia') {
+        str = `This session should take about ${tim} minutes`;
+    } else if (my_var=='pib') {
+        str = `The two parts of this session should take about ${tim} minutes each.`;
+    }
+    if (para) {
+        para.textContent = str;
+    }
+};
+
+
+// trial finish status
 function handleTrialFinish(data) {
     window.isTrialActive = false; 
     

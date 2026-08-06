@@ -14,9 +14,11 @@ let trialText = {
 			</div>
 
 			<div class="intro-top">
-				<h1>Bongard Problems</h1>
-				<h2>Welcome to the Access Demonstrator</h2>
-				<p>In this demonstrator, you will be shown a set of figures in two groups.</p>
+				<h1>Logic Problems Study</h1>
+				<h2>Welcome to the study<br />
+				Logic Problems and Simple Machine Assistance</h2>
+				<p id="para-condition-welcome"></p>
+				<p>In this study, you will be shown a set of figures in two groups.</p>
 			</div>
 
 			<div class="intro-middle-container">
@@ -33,8 +35,7 @@ let trialText = {
 			</div>
 
 			<div class="intro-bottom">
-				<p>There are three parts to the experience.</p>
-				<p>Access to parts two and three depend on your success in part one.</p>
+				<p id="para-intro-bottom"></p>
 				<p>Press the button below to proceed.</p>
 			</div>
 		</div>
@@ -42,10 +43,12 @@ let trialText = {
 	instructionTextPart1: `
 		<div class="instructions-container">
 			<h1>Instructions</h1>
-			<p>In each part of the experiment, you will be asked to solve a set of problems.
+			<p>You will be asked to solve a set of problems.
 			There will be one problem on each screen.</p>
-			<p>Each of the three parts will take approximately 35 minutes to complete. Your access to part two is dependent on your progress in part one.</p>
-			<p>Before we start part one, we will show you a single example problem.</p>
+		    <p>You will have a maximum of 2.5 minutes for each problem. You can skip a problem if you're stuck. But you can only skip a maximum of three problems.</p>
+			<p id="para-instr-timing">Each of the three parts will take approximately 35 minutes to complete.</p>
+			<p>Your access to part two is dependent on your progress in part one.</p>
+			<p>Before we start, we will show you a single example problem.</p>
 			<p>As with all the problems, you must enter an answer in each box to be able to continue.</p>
 		</div>
 	`,
@@ -63,9 +66,11 @@ let trialText = {
 				</div>
 			</div>
 			<div class="intro-top">
-				<h1>Bongard Problems</h1>
-				<h2>Welcome back to the Access Demonstrator</h2>
-				<p>As before, in this session, you will be shown a set of figures in two groups.</p>
+				<h1>Logic Problems Study</h1>
+				<h2>Welcome to the study<br />
+				Logic Problems and Simple Machine Assistance</h2>
+				<p id="para-condition-welcome"></p>
+				<p>As before, in this session you will be shown a set of figures in two groups.</p>
 			</div>
 
 			<div class="intro-middle-container">
@@ -82,7 +87,8 @@ let trialText = {
 			</div>
 
 			<div class="intro-bottom">
-				<p>There are two parts to this session. You have been asked to complete parts two and three because of your success in part one.</p>
+				<p id="para-intro-bottom"></p>
+				<p>You have been asked to complete these because of your success in the first session.</p>
 				<p>Press the button below to proceed.</p>
 			</div>
 		</div>
@@ -90,9 +96,11 @@ let trialText = {
 	instructionTextParts23: `
 		<div class="instructions-container">
 			<h1>Instructions</h1>
-			<p>In each of the two parts of this session, you will be asked to solve a set of problems.
+			<p>You will be asked to solve a set of problems.
 			As before, there will be one problem on each screen.</p>
-			<p>Each of the two parts will take approximately 35 minutes to complete. After the first part you will have the opportunity to take a short break.</p>
+		    <p>You will have a maximum of 2.5 minutes for each problem. You can skip a problem if you're stuck. But you can only skip a maximum of three problems.</p>
+			<p id="para-instr-timing">Each of the two parts will take approximately 35 minutes to complete.</p>
+			<p>After the first part you will have the opportunity to take a short break.</p>
 			<p>Before we start, we will show you the example problem again, as a reminder of what to expect.</p>
 			<p>As with all the problems, you must enter an answer in each box to be able to continue.</p>
 		</div>

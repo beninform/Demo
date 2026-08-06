@@ -1,4 +1,3 @@
-const urlParams = new URLSearchParams(window.location.search);
 
 let uid = urlParams.get('uid') || 'PROLIFIC_ID'; 
 let tid = urlParams.get('tid') || 'ncr';
@@ -22,6 +21,10 @@ let welcomeTrial = {
     type: jsPsychHtmlButtonResponse,
     stimulus: pid == 'pib' ? trialText.introductionTextParts23 : trialText.introductionTextPart1,
     choices: ['Continue'],
+    on_load: function() {
+        insertParaTextTid(tid, "para-condition-welcome", bsz);
+        insertParaTextPid(pid, "para-intro-bottom", bsz);
+    },
 };
 
 timeline.push(welcomeTrial);
@@ -30,6 +33,9 @@ let instructionTrial = {
     type: jsPsychHtmlButtonResponse,
     stimulus: pid == 'pib' ? trialText.instructionTextParts23 : trialText.instructionTextPart1,
     choices: ['Continue'],
+    on_load: function() {
+        insertParaTextTim(pid, "para-instr-timing", bsz);
+    }
 };
 timeline.push(instructionTrial);
 
