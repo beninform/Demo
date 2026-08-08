@@ -261,7 +261,7 @@ function setupTrialButtons() {
 }
 
 // setup tabs for the example problem
-function setupExampleTabs() {
+function setupExampleTabs(isExample = true) {
     const instr = document.querySelector('.instruction-box');
     const rulesTable = document.getElementById('table-container');
 
@@ -273,7 +273,7 @@ function setupExampleTabs() {
         tabHeader.className = 'tab-header';
 
         const btnInstr = document.createElement('button');
-        btnInstr.className = 'tab-btn active';
+        btnInstr.className = 'tab-btn';
         btnInstr.innerText = 'Instructions';
         btnInstr.type = 'button'; 
         btnInstr.style.cursor = 'default'; 
@@ -286,13 +286,10 @@ function setupExampleTabs() {
         tabContainer.appendChild(tabContent);
 
         instr.parentNode.insertBefore(tabContainer, instr);
-
         tabContent.appendChild(instr);
-        instr.classList.remove('hidden');
         instr.style.paddingTop = '0';
 
         if (tid === 'wcr' && rulesTable) {
-            
             btnInstr.style.cursor = 'pointer'; 
 
             const btnRules = document.createElement('button');
@@ -302,9 +299,17 @@ function setupExampleTabs() {
 
             tabHeader.appendChild(btnRules);
             tabContent.appendChild(rulesTable);
-            
-            rulesTable.classList.add('hidden');
             rulesTable.style.marginTop = '0';
+
+            if (isExample) {
+                btnInstr.classList.add('active');
+                instr.classList.remove('hidden');
+                rulesTable.classList.add('hidden');
+            } else {
+                btnRules.classList.add('active');
+                rulesTable.classList.remove('hidden');
+                instr.classList.add('hidden');
+            }
 
             btnInstr.addEventListener('click', () => {
                 btnInstr.classList.add('active');
@@ -320,8 +325,10 @@ function setupExampleTabs() {
                 instr.classList.add('hidden');
             });
 
-        } else if (rulesTable) {
-            rulesTable.style.display = 'none'; 
+        } else {
+            btnInstr.classList.add('active');
+            instr.classList.remove('hidden');
+            if (rulesTable) rulesTable.style.display = 'none'; 
         }
     }
 }

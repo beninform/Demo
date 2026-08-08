@@ -54,7 +54,7 @@ let exampleTrial = {
     sidebox: 1, 
     on_load: function() {
         setupInstructionMC();
-        setupExampleTabs();
+        setupExampleTabs(true);
     },
     on_finish: function() {
         document.removeEventListener('keydown', window.tabToggleListener);
@@ -130,7 +130,7 @@ for (let block of selectedBlock) {
             },
             sidebox: sideboxVal, 
             on_load: function() {
-                setupExampleTabs();
+                setupExampleTabs(false);
                 setupTrialButtons();   // function defined in skip-button.js
                 setupHelpButton();     // function defined in skip-button.js
             },
