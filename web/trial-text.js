@@ -43,8 +43,7 @@ let trialText = {
 	instructionTextPart1: `
 		<div class="instructions-container">
 			<h1>Instructions</h1>
-			<p>You will be asked to solve a set of problems.
-			There will be one problem on each screen.</p>
+			<p>Throughout this session, there will be one problem on each screen.</p>
 		    <p>You will have a maximum of 2.5 minutes for each problem. You can skip a problem if you're stuck. But you can only skip a maximum of three problems.</p>
 			<p id="para-instr-timing">Each of the three parts will take approximately 35 minutes to complete.</p>
 			<p>Your access to part two is dependent on your progress in part one.</p>
@@ -96,8 +95,7 @@ let trialText = {
 	instructionTextParts23: `
 		<div class="instructions-container">
 			<h1>Instructions</h1>
-			<p>You will be asked to solve a set of problems.
-			As before, there will be one problem on each screen.</p>
+			<p>As before, there will be one problem on each screen throughout this session.</p>
 		    <p>You will have a maximum of 2.5 minutes for each problem. You can skip a problem if you're stuck. But you can only skip a maximum of three problems.</p>
 			<p id="para-instr-timing">Each of the two parts will take approximately 35 minutes to complete.</p>
 			<p>After the first part you will have the opportunity to take a short break.</p>
