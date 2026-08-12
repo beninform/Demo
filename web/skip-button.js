@@ -388,12 +388,29 @@ function insertParaTextTim(my_var, para_id, bsz) {
     let tim = Math.round(bsiz * 1.06).toString();
     str = '';
     if (my_var=='pia') {
-        str = `This session should take about ${tim} minutes`;
+        str = `This session should take about ${tim} minutes.`;
     } else if (my_var=='pib') {
         str = `The two parts of this session should take about ${tim} minutes each.`;
     }
     if (para) {
         para.textContent = str;
+    }
+};
+
+// insert previous responses on example explanation page
+function insertPrevResponses(previousA, previousB) {
+    const respA = document.getElementById('input-0');
+    const respB = document.getElementById('input-1');
+    respA.value = previousA;
+    respB.value = previousB;
+
+};
+
+// insert variable text 4 on example explanation page
+function insertParaTextExplain(my_var, para_id, para_text) {
+    const para = document.getElementById(para_id);
+    if (para) {
+        para.textContent = para_text;
     }
 };
 

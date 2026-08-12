@@ -17,6 +17,9 @@ if (pid === 'pia') {
     selectedBlock = blocks;             // default, if no querystring value for pid, is to run all three blocks
 }
 
+let userResponseA = '';  // global variable for last A response
+let userResponseB = '';  // global variable for last B response
+
 let welcomeTrial = {
     type: jsPsychHtmlButtonResponse,
     stimulus: pid == 'pib' ? trialText.introductionTextParts23 : trialText.introductionTextPart1,
@@ -43,11 +46,11 @@ let exampleTrial = {
     type: jsPsychSurveyText,
     preamble: trialText.exampleProblem,
     questions: [
-        {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows: 2},
-        {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows: 2}
+        {prompt: 'Your rule for set A', required: true, name: 'a_rule', rows: 2},
+        {prompt: 'Your rule for set B', required: true, name: 'b_rule', rows: 2}
     ],
     data: {
-        collect: false, 
+        collect: true, 
         imagenr: '0001',
         blockId: 'Part 0',
     },
@@ -57,11 +60,33 @@ let exampleTrial = {
         setupExampleTabs(true);
     },
     on_finish: function() {
+        let responseObj = jsPsych.data.get().last(1).trials[0].response;
+        userResponseA = responseObj.a_rule;
+        userResponseB = responseObj.b_rule;
         document.removeEventListener('keydown', window.tabToggleListener);
     }
 };
-
 timeline.push(exampleTrial);
+
+let exampleTrial2 = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: pid == 'pib' ? trialText.exampleExplanationPIA : trialText.exampleExplanationPIA,
+    choices: ['Continue'],
+    on_load: function() {
+        setupExampleTabs(true);
+        insertPrevResponses(userResponseA, userResponseB);
+        insertParaTextExplain(pid, "example-problem-guidance-title", trialText.exampleProblemGuidanceTitle);
+        insertParaTextExplain(pid, "example-problem-guidance-1", trialText.exampleProblemGuidance1);
+        insertParaTextExplain(pid, "example-problem-guidance-2", trialText.exampleProblemGuidance2);
+        insertParaTextExplain(pid, "example-problem-guidance-3", trialText.exampleProblemGuidance3);
+        insertParaTextExplain(pid, "example-problem-guidance-4", trialText.exampleProblemGuidance4);
+        insertParaTextExplain(pid, "example-problem-guidance-5", trialText.exampleProblemGuidance5);
+        if (tid == 'wcr') {
+            insertParaTextExplain(pid, "example-problem-guidance-6", trialText.exampleProblemGuidanceWcr);
+        } 
+    }
+};
+timeline.push(exampleTrial2);
 
 
 // iterate the current array of blocks (called selectedBlock), show an intro, then get into the BPs
@@ -120,8 +145,8 @@ for (let block of selectedBlock) {
             type: jsPsychSurveyText,
             preamble: trialPreamble,
             questions: [
-                {prompt: 'Your rule for set A', required: true, name: 'A-rule', rows:2, columns: 20},
-                {prompt: 'Your rule for set B', required: true, name: 'B-rule', rows:2, columns: 20}
+                {prompt: 'Your rule for set A', required: true, name: 'a_rule', rows:2, columns: 20},
+                {prompt: 'Your rule for set B', required: true, name: 'b_rule', rows:2, columns: 20}
             ],
             data: {
                 collect: true, // flag whether we want to collect to csv

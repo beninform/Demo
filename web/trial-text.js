@@ -45,8 +45,8 @@ let trialText = {
 			<h1>Instructions</h1>
 			<p>Throughout this session, there will be one problem on each screen.</p>
 		    <p>You will have a maximum of 2.5 minutes for each problem. You can skip a problem if you're stuck. But you can only skip a maximum of three problems.</p>
-			<p id="para-instr-timing">Each of the three parts will take approximately 35 minutes to complete.</p>
-			<p>Your access to part two is dependent on your progress in part one.</p>
+			<p id="para-instr-timing"></p>
+			<p>Your access to a second session is dependent on your progress in this session.</p>
 			<p>Before we start, we will show you a single example problem.</p>
 			<p>As with all the problems, you must enter an answer in each box to be able to continue.</p>
 		</div>
@@ -97,7 +97,7 @@ let trialText = {
 			<h1>Instructions</h1>
 			<p>As before, there will be one problem on each screen throughout this session.</p>
 		    <p>You will have a maximum of 2.5 minutes for each problem. You can skip a problem if you're stuck. But you can only skip a maximum of three problems.</p>
-			<p id="para-instr-timing">Each of the two parts will take approximately 35 minutes to complete.</p>
+			<p id="para-instr-timing"></p>
 			<p>After the first part you will have the opportunity to take a short break.</p>
 			<p>Before we start, we will show you the example problem again, as a reminder of what to expect.</p>
 			<p>As with all the problems, you must enter an answer in each box to be able to continue.</p>
@@ -148,7 +148,198 @@ let trialText = {
 			<p><b>AI assistance</b></p>
 			<p>You are given candidate rules for assistance (click the tab above to see them). Note that the candidate rules are AI-generated, so they may contain errors. In particular, there may be one correct rule-pair for each problem. But there could be several, or even none at all, that are correct.</p>
 	`,
+	exampleProblemGuidanceTitle: `
+		Looking at the example problem
+		`,
+	exampleProblemGuidance1: `
+		There's no one right answer. 
+		So here are some good and bad responses to show the kinds of things to think about.
+		`,
+	exampleProblemGuidance2: `
+		The rules are in pairs. And a correct pair needs both rule A and rule B to be true. 
+		Looking at the good rule pairs, they are not just mostly true. 
+		Both the rule for set A and the rule for set B are consistently true - that is, for all six figures in their set. 
+		`,
+	exampleProblemGuidance3: `
+		Notice, also, that in the bad rule pairs, an error in the rule for one set can make it a bad pair.
+		Saying there's an odd number of shapes in set B looks at first like it might be true. But there are two figures that have an even number of shapes. 
+		So the rule pair fails overall, even though the correct rule is about the number of shapes in the figures.
+		`,
+	exampleProblemGuidance4: `
+		In the last bad rule pair, again, an error on the rule for set B is what makes it bad overall.
+		Saying there's no space in the figures in set B isn't correct. 
+		So the rule pair fails, even though the correct rule involves space used in the figures.
+		`,
+	exampleProblemGuidance5: `
+		Try to answer as precisely as you can with as few words as possible.
+		`,
+	exampleProblemGuidanceWcr: `
+		Remember the candidate rules (click the tab above to see them). 
+		They are AI-generated, so they may contain errors. 
+		There may be one, several, or none at all correct. 
+		You might find it useful to compare the AI-generated rule pairs with the good and bad ones given here.
+		`,
+	exampleExplanationPIA: `
+<div id="outer-wrapper" class="outer-wrapper">
+  <div id="preamble-form-wrapper" class="preamble-form-wrapper">
+    <div id="jspsych-survey-text-preamble" class="jspsych-survey-text-preamble">
+      <h1>Example Problem</h1>
+      <div class="set-a-b-label-container">
+        <div id="set-a-label">
+          <p>Set A</p>
+        </div>
+        <div id="set-b-label">
+          <p>Set B</p>
+        </div>
+      </div>
+      <img class="bp-img" src="img/p0001.png" alt="Bongard Problem" style="max-height: 350px; width: auto;">
+      <p class="example-instruction-text">&nbsp;</p>
+    </div>
+    <form id="jspsych-survey-text-form" autocomplete="off">
+      <div class="form-row">
+        <div id="jspsych-survey-text-0" class="jspsych-survey-text-question" style="margin: 2em 0em;">
+          <p class="jspsych-survey-text">Your rule for set A</p>
+          <textarea readonly id="input-0" name="#jspsych-survey-text-response-0" data-name="a_rule" cols="40" rows="2" autofocus="" required="" placeholder=""></textarea>
+        </div>
+        <div id="jspsych-survey-text-1" class="jspsych-survey-text-question" style="margin: 2em 0em;">
+          <p class="jspsych-survey-text">Your rule for set B</p>
+          <textarea readonly id="input-1" name="#jspsych-survey-text-response-1" data-name="b_rule" cols="40" rows="2" required="" placeholder=""></textarea>
+        </div>
+      </div>
+
+      <div class="label-row">
+		<p class="eg-row-text">Good rule pairs</p>
+	  </div>
+
+      <div class="form-row">
+        <div id="jspsych-survey-text-0" class="jspsych-survey-text-question" style="margin: 2em 0em;">
+          <textarea readonly class="good-rule cols="40" rows="2">contain no figures at all</textarea>
+        </div>
+        <div id="jspsych-survey-text-1" class="jspsych-survey-text-question" style="margin: 2em 0em;">
+          <textarea readonly class="good-rule cols="40" rows="2">contain at least one drawn figure</textarea>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div id="jspsych-survey-text-0" class="jspsych-survey-text-question" style="margin: 2em 0em;">
+          <textarea readonly class="good-rule cols="40" rows="2">blank</textarea>
+        </div>
+        <div id="jspsych-survey-text-1" class="jspsych-survey-text-question" style="margin: 2em 0em;">
+          <textarea readonly class="good-rule cols="40" rows="2">has shapes</textarea>
+        </div>
+      </div>
+
+      <div class="label-row">
+		<p class="eg-row-text">Bad rule pairs</p>
+	  </div>
+      
+      <div class="form-row">
+        <div id="jspsych-survey-text-0" class="jspsych-survey-text-question" style="margin: 2em 0em;">
+          <textarea readonly class="bad-rule cols="40" rows="2">zero shapes</textarea>
+        </div>
+        <div id="jspsych-survey-text-1" class="jspsych-survey-text-question" style="margin: 2em 0em;">
+          <textarea readonly class="bad-rule" cols="40" rows="2">odd number of shapes</textarea>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div id="jspsych-survey-text-0" class="jspsych-survey-text-question" style="margin: 2em 0em;">
+          <textarea readonly class="bad-rule cols="40" rows="2">space</textarea>
+        </div>
+        <div id="jspsych-survey-text-1" class="jspsych-survey-text-question" style="margin: 2em 0em;">
+          <textarea readonly class="bad-rule" cols="40" rows="2">no space</textarea>
+        </div>
+      </div>
+
+    </form>
+    
+    
+    
+    
+  </div>
+  <div id="instructions-div" class="instructions-div" style="height: 100%">
+
+        <div class="instruction-box" style="padding-top: 0px;">
+         <h2 id="example-problem-guidance-title"></h2>
+          <p id="example-problem-guidance-1"></p>
+          <p id="example-problem-guidance-2"></p>
+          <p id="example-problem-guidance-3"></p>
+          <p id="example-problem-guidance-4"></p>
+          <p id="example-problem-guidance-5"></p>
+          <p id="example-problem-guidance-6"></p>
+        
+        </div>
+        
+        
+        
+        
+        
+        
+        <div id="table-container" class="table-container hidden" style="margin-top: 0px;">
+          <h3>Candidate Rules - static until updated for code</h3>
+
+          <table id="rules-table">
+            <thead>
+
+              <tr>
+                <th>A</th>
+                <th>B</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>[static] zero enclosed regions inside the frame</td>
+                <td>contain at least one closed outline shape</td>
+              </tr>
+              <tr>
+                <td>contain only white space with total ink limited to the border</td>
+                <td>contain exactly one connected figure</td>
+              </tr>
+              <tr>
+                <td>perfectly symmetric under any rotation</td>
+                <td>contain a small outline shape such as a circle or polygon</td>
+              </tr>
+              <tr>
+                <td>empty frames containing no figures at all</td>
+                <td>contain at least one drawn figure</td>
+              </tr>
+              <tr>
+                <td>nothing near their center</td>
+                <td>a figure occupying the central area</td>
+              </tr>
+              <tr>
+                <td>no curved lines</td>
+                <td>contain at least one curved line</td>
+              </tr>
+            </tbody>
+
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+	`,
+	exampleExplanationPIB: `
+			<p>example explanation of the example problem (pib)</p>
+			<p id="example-problem-guidance-1"></p>
+			<p id="example-problem-guidance-2"></p>
+			<p id="example-problem-guidance-3"></p>
+	`,
 	exampleMC:`
+		<div class="mc-container">
+			<label><input type="checkbox" id="cb1"> First checkbox</label>
+			<label><input type="checkbox" id="cb2"> Second checkbox</label>
+			<strong>Check only the second checkbox.</strong>
+			<div id="solution-text" class="hidden">
+				<div class="instruction-btn">
+					<button type="submit" id="btn" class="jspsych-btn hidden">Continue</button>
+				</div>
+			</div>
+		</div>
+	`,
+	exampleMC_old:`
 		<div class="mc-container">
 			<label><input type="checkbox" id="cb1"> First checkbox</label>
 			<label><input type="checkbox" id="cb2"> Second checkbox</label>
