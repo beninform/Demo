@@ -14,10 +14,8 @@ let trialText = {
 			</div>
 
 			<div class="intro-top">
-				<!-- h1>Logic Problems Study</h1 -->
 				<h2>Logic Problems and Simple Machine Assistance</h2>
 				<p id="para-condition-welcome"></p>
-				<!-- p>In this study, you will be shown a set of figures in two groups.</p -->
 			</div>
 
 			<div class="intro-middle-container">
@@ -64,11 +62,8 @@ let trialText = {
 				</div>
 			</div>
 			<div class="intro-top">
-				<h1>Logic Problems Study</h1>
-				<h2>Welcome to the study<br />
-				Logic Problems and Simple Machine Assistance</h2>
+				<h2>Logic Problems and Simple Machine Assistance</h2>
 				<p id="para-condition-welcome"></p>
-				<p>As before, in this session you will be shown a set of figures in two groups.</p>
 			</div>
 
 			<div class="intro-middle-container">
@@ -86,8 +81,6 @@ let trialText = {
 
 			<div class="intro-bottom">
 				<p id="para-intro-bottom"></p>
-				<p>You have been asked to complete these because of your success in the first session.</p>
-				<p>Press the button below to proceed.</p>
 			</div>
 		</div>
 	`,

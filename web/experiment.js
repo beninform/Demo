@@ -25,7 +25,7 @@ let welcomeTrial = {
     stimulus: pid == 'pib' ? trialText.introductionTextParts23 : trialText.introductionTextPart1,
     choices: ['Continue'],
     on_load: function() {
-        insertParaTextTid(tid, "para-condition-welcome", bsz);
+        insertParaTextTid(tid, pid, "para-condition-welcome", bsz);
         insertParaTextPid(pid, "para-intro-bottom", bsz);
     },
 };

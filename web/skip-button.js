@@ -353,30 +353,45 @@ function setupHelpButton() {
 }
 
 // insert variable text 1 on welcome page
-function insertParaTextTid(my_var, para_id, bsz) {
+function insertParaTextTid(tid, pid, para_id, bsz) {
     const para = document.getElementById(para_id);
     str = '';
-    if (my_var=='ncr') {
-        str = `Welcome! You have been randomly assigned to the unassisted part of the study.
-        In this study, you will be shown a set of figures in two groups.`;
-    } else if (my_var=='wcr') {
-        str = `Welcome! You have been randomly assigned to the assisted part of the study. 
-        You will be provided with simple machine assistance. 
-        In this study, you will be shown a set of figures in two groups.`;
+    if (pid=='pib') {
+        if (tid=='ncr') {
+            str = `Welcome back! You are still assigned to the unassisted part of the study.
+            As before, you will be shown a set of figures in two groups.`;
+        } else if (tid=='wcr') {
+            str = `Welcome back! You are still assigned to the assisted part of the study. 
+            You will be provided with simple machine assistance. 
+            As before, you will be shown a set of figures in two groups.`;
+        }        
+    } else {
+        if (tid=='ncr') {
+            str = `Welcome! You have been randomly assigned to the unassisted part of the study.
+            In this study, you will be shown a set of figures in two groups.`;
+        } else if (tid=='wcr') {
+            str = `Welcome! You have been randomly assigned to the assisted part of the study. 
+            You will be provided with simple machine assistance. 
+            In this study, you will be shown a set of figures in two groups.`;
+        }                
     }
+
     if (para) {
         para.textContent = str;
     }
 };
 // insert variable text 2 on welcome page
-function insertParaTextPid(my_var, para_id, bsz) {
+function insertParaTextPid(pid, para_id, bsz) {
     const bsiz = (bsz > 33) ? 33 : bsz;
     const para = document.getElementById(para_id);
     str = '';
-    if (my_var=='pia') {
-        str = `There are ${bsiz} problems in this session.`;
-    } else if (my_var=='pib') {
-        str = `There are two parts with ${bsiz} problems each in this session.`;
+    if (pid=='pia') {
+        str = `There are ${bsiz} problems in this session.
+               Press the button below to proceed.`;
+    } else if (pid=='pib') {
+        str = `There are two parts with ${bsiz} problems each in this session.
+               You have been asked to complete these because of your success in the first session.
+               Press the button below to proceed.`;
     }
     if (para) {
         para.textContent = str;
