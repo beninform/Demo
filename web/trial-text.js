@@ -276,44 +276,7 @@ let trialText = {
         
         
         <div id="table-container" class="table-container hidden" style="margin-top: 0px;">
-          <h3>Candidate Rules - static until updated for code</h3>
-
-          <table id="rules-table">
-            <thead>
-
-              <tr>
-                <th>A</th>
-                <th>B</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>[static] zero enclosed regions inside the frame</td>
-                <td>contain at least one closed outline shape</td>
-              </tr>
-              <tr>
-                <td>contain only white space with total ink limited to the border</td>
-                <td>contain exactly one connected figure</td>
-              </tr>
-              <tr>
-                <td>perfectly symmetric under any rotation</td>
-                <td>contain a small outline shape such as a circle or polygon</td>
-              </tr>
-              <tr>
-                <td>empty frames containing no figures at all</td>
-                <td>contain at least one drawn figure</td>
-              </tr>
-              <tr>
-                <td>nothing near their center</td>
-                <td>a figure occupying the central area</td>
-              </tr>
-              <tr>
-                <td>no curved lines</td>
-                <td>contain at least one curved line</td>
-              </tr>
-            </tbody>
-
-          </table>
+          <h3>Candidate Rules</h3>
 
         </div>
       </div>

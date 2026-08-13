@@ -56,6 +56,8 @@ let exampleTrial = {
     },
     sidebox: 1, 
     on_load: function() {
+        setupSurveyLayout();
+        setupRightHandDiv(isExample=true, tid, 1);
         setupInstructionMC();
         setupExampleTabs(true);
     },
@@ -73,6 +75,7 @@ let exampleTrial2 = {
     stimulus: pid == 'pib' ? trialText.exampleExplanationPIA : trialText.exampleExplanationPIA,
     choices: ['Continue'],
     on_load: function() {
+        generateTable(1);
         setupExampleTabs(true);
         insertPrevResponses(userResponseA, userResponseB);
         insertParaTextExplain(pid, "example-problem-guidance-title", trialText.exampleProblemGuidanceTitle);
@@ -155,7 +158,9 @@ for (let block of selectedBlock) {
             },
             sidebox: sideboxVal, 
             on_load: function() {
-                setupExampleTabs(false);
+                setupSurveyLayout();
+                setupRightHandDiv(isExample=false, tid, imgno);
+                setupExampleTabs(false);  // is not example page
                 setupTrialButtons();   // function defined in skip-button.js
                 setupHelpButton();     // function defined in skip-button.js
             },
