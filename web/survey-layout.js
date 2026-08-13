@@ -54,6 +54,17 @@ function setupSurveyLayout() {
 
 };
 
+
+function moveContinueButton() {
+    const buttonGroup = document.getElementById("jspsych-html-button-response-btngroup");
+    const preambleWrapper = document.getElementById("preamble-form-wrapper");
+    preambleWrapper.appendChild(buttonGroup);
+}
+
+
+
+
+
 // for shuffling candidate rules array
 function shuffle(array) {
   let currentIndex = array.length;
@@ -98,7 +109,6 @@ function setupRightHandDiv(isExample, tid, imgno) {
         instructionsBoxDiv.innerHTML += trialText.wcrInstructions  // if wcr
     }        
 
-
     // insert instructions-box into instructions-div
     instructionsDivRH.prepend(instructionsBoxDiv);
 
@@ -112,8 +122,125 @@ function setupRightHandDiv(isExample, tid, imgno) {
 
     instructionsDivRH.append(tableContainer);
 
-
     generateTable(bongProbNumber);
-
-
 }
+
+
+// setup tabs for the example problem
+function setupExampleRulesTabs() {
+
+    // const formDiv = document.getElementById("jspsych-survey-text-form");
+    const egRulesDiv = document.getElementById("example-rules-div");
+
+    const tabContainer = document.createElement('div');
+    tabContainer.id = 'eg-tab-container';
+    tabContainer.className = 'eg-tab-container';
+
+    const tabHeader = document.createElement('div');
+    tabHeader.className = 'eg-tab-header';
+
+    const label = document.createElement('p');
+    label.className = 'eg-tab-btn';
+    label.innerText = 'Example Rule Pairs:';
+    label.style.cursor = 'default'; 
+
+    const btnGd = document.createElement('button');
+    btnGd.className = 'eg-tab-btn';
+    btnGd.innerText = 'Good ones';
+    btnGd.type = 'button'; 
+    btnGd.style.cursor = 'pointer'; 
+
+    const btnBd = document.createElement('button');
+    btnBd.className = 'eg-tab-btn';
+    btnBd.innerText = 'Bad ones';
+    btnBd.type = 'button';
+
+    tabHeader.appendChild(label);
+    tabHeader.appendChild(btnGd);
+    tabHeader.appendChild(btnBd);
+    tabContainer.appendChild(tabHeader);
+    
+    const tabContent = document.createElement('div');
+    tabContent.className = 'eg-tab-content';
+
+    // create first content
+    const divGd = document.createElement('div');
+    divGd.classList.add("eg-good-rules");
+    setupExampleRulesTable('good', divGd, trialText.exampleGoodRulesArray)
+
+    // create second content
+    const divBd = document.createElement('div');
+    divBd.classList.add("eg-bad-rules");
+    setupExampleRulesTable('bad', divBd, trialText.exampleBadRulesArray)
+
+    tabContent.appendChild(divGd);
+    tabContent.appendChild(divBd);
+    tabContainer.appendChild(tabContent);
+
+    // put tabContainer in the DOM
+    // formDiv.appendChild(tabContainer);
+    egRulesDiv.appendChild(tabContainer);
+
+    btnGd.classList.add('active');
+    divGd.classList.remove('hidden');
+    divBd.classList.add('hidden');
+
+    btnGd.addEventListener('click', () => {
+        btnGd.classList.add('active');
+        btnBd.classList.remove('active');
+        divGd.classList.remove('hidden');
+        divBd.classList.add('hidden');
+    });
+
+    btnBd.addEventListener('click', () => {
+        btnBd.classList.add('active');
+        btnGd.classList.remove('active');
+        divBd.classList.remove('hidden');
+        divGd.classList.add('hidden');
+    });
+}
+
+
+
+
+
+// make the example rules table for tutorial (ExampleTrial2) page on left hand side
+function setupExampleRulesTable(typeRules, element, array) {
+    console.log('typeRules', typeRules);
+
+    const container = element; //document.getElementById('eg-tab-content');
+
+    if (typeRules=='good') {
+        const divEgGd = document.createElement('div');
+        divEgGd.classList.add("eg-good-rules");    
+    } else if (typeRules=='bad') {
+        const divEgBd = document.createElement('div');
+        divEgBd.classList.add("eg-bad-rules");           
+    }
+
+    const table = document.createElement('table');
+    table.classList.add("example-rules-table");
+    const tbody = document.createElement('tbody');
+
+    array.forEach(rowObject => {
+        const row = document.createElement("tr");
+        console.log('rowObject', rowObject);
+        keys = Object.keys(rowObject);
+        console.log('keys', keys);
+        keys.forEach(key => {
+            const cell = document.createElement('td');
+            cell.classList.add("example-rules-td");
+            cell.textContent = rowObject[key];
+            console.log('cell content', rowObject[key]);
+            row.appendChild(cell);
+        });
+        tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    container.appendChild(table);
+}
+
+
+
+

@@ -1,9 +1,9 @@
+// make the candidate rules table on right hand side
 function generateTable(bongProbNumber) {
 
     // get array for this BP's candidate rules
     let data = rulesArray.filter((item) => item.BP == bongProbNumber);    
     shuffle(data);
-    console.log('data', data);
     
     // Guard clause to handle empty arrays safely
     if (!data || data.length === 0) return;
@@ -61,3 +61,6 @@ function generateTable(bongProbNumber) {
     const container = document.getElementById('table-container');
     container.appendChild(table);
 }
+
+
+

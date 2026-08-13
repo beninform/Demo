@@ -75,7 +75,9 @@ let exampleTrial2 = {
     stimulus: pid == 'pib' ? trialText.exampleExplanationPIA : trialText.exampleExplanationPIA,
     choices: ['Continue'],
     on_load: function() {
-        generateTable(1);
+        setupExampleRulesTabs();
+        moveContinueButton();  // bc layout was designed for survey text, not button response trial
+        generateTable(1);  // candidate rules table
         setupExampleTabs(true);
         insertPrevResponses(userResponseA, userResponseB);
         insertParaTextExplain(pid, "example-problem-guidance-title", trialText.exampleProblemGuidanceTitle);

@@ -357,10 +357,12 @@ function insertParaTextTid(my_var, para_id, bsz) {
     const para = document.getElementById(para_id);
     str = '';
     if (my_var=='ncr') {
-        str = 'You have been randomly assigned to the unassisted part of the study.';
+        str = `Welcome! You have been randomly assigned to the unassisted part of the study.
+        In this study, you will be shown a set of figures in two groups.`;
     } else if (my_var=='wcr') {
-        str = `You have been randomly assigned to the assisted part of the study. 
-        You will be provided with simple machine assistance.`;
+        str = `Welcome! You have been randomly assigned to the assisted part of the study. 
+        You will be provided with simple machine assistance. 
+        In this study, you will be shown a set of figures in two groups.`;
     }
     if (para) {
         para.textContent = str;

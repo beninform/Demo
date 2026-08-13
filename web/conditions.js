@@ -16,15 +16,15 @@ let imgnos_c = Array.from({ length: blockSize }, (_, i) => i+33+33+2+prob_shift)
 
 let blocks = [
     {
-        title: 'Part 1',
+        title: 'Session 1',
         conditions: [imgnos_a]
     },
     {
-        title: 'Part 2',
+        title: 'Session 2 - Part 1',
         conditions: [imgnos_b]
     },
     {
-        title: 'Part 3',
+        title: 'Session 2 - Part 2',
         conditions: [imgnos_c]
     }
 ];

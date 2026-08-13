@@ -14,11 +14,10 @@ let trialText = {
 			</div>
 
 			<div class="intro-top">
-				<h1>Logic Problems Study</h1>
-				<h2>Welcome to the study<br />
-				Logic Problems and Simple Machine Assistance</h2>
+				<!-- h1>Logic Problems Study</h1 -->
+				<h2>Logic Problems and Simple Machine Assistance</h2>
 				<p id="para-condition-welcome"></p>
-				<p>In this study, you will be shown a set of figures in two groups.</p>
+				<!-- p>In this study, you will be shown a set of figures in two groups.</p -->
 			</div>
 
 			<div class="intro-middle-container">
@@ -128,56 +127,76 @@ let trialText = {
 			The 6 diagrams on the right side belong to Set B.</p>
 			<p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
 			<p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
-			<p><b>Want to use keyboard only?</b></p>
-			<p>For efficient progress, if you wish, you can use the <code style="color:#8B0000;">Tab</code> button 
-			to move between the answer boxes - and to move on to the <code style="color:#8B0000;">Continue</code> button.
-			This means you can complete each screen using the keyboard alone.
-			But you may also just click on the <code style="color:#8B0000;">Continue</code> button with the mouse.</p>
+
+			<div>
+				<div class="kb-tooltip">
+					<p><b>Want to use keyboard only?</b></p>
+						<span class="kb-tooltip-text">For efficient progress, if you wish, you can use the <span class="emph-text">Tab</span> button 
+						to move between the answer boxes - and to move on to the <span class="emph-text">Continue</span> button.
+						This means you can complete each screen using the keyboard alone.
+						But you may also just click on the <span class="emph-text">Continue</span> button with the mouse.</span>
+					</p>
+			  </div>
+		  <p>&nbsp;</p>
+		  </div>
 	`,
 	ProblemInstructions: `
 			<p>Your task is to determine two distinct rules, one rule that applies to all diagrams in Set A and one rule that applies to all diagrams in Set B.</p>
 			<p>Click the help button (?) for more information.</p>
 			<p><strong>Important:</strong> The rule for Set A must not apply to any diagram in Set B, and the rule for Set B must not apply to any diagram in Set A.</p>
-			<p><b>Want to use keyboard only?</b></p>
+
+			<div>
+				<div class="kb-tooltip">
+					<p><b>Want to use keyboard only?</b></p>
+						<span class="kb-tooltip-text">For efficient progress, if you wish, you can use the <span class="emph-text">Tab</span> button 
+						to move between the answer boxes - and to move on to the <span class="emph-text">Continue</span> button.
+						This means you can complete each screen using the keyboard alone.
+						But you may also just click on the <span class="emph-text">Continue</span> button with the mouse.</span>
+					</p>
+			  </div>
+		  <p>&nbsp;</p>
+		  </div>
+
+			<!-- p><b>Want to use keyboard only?</b></p>
 			<p>For efficient progress, if you wish, you can use the <code style="color:#8B0000;">Tab</code> button 
 			to move between the answer boxes - and to move on to the <code style="color:#8B0000;">Continue</code> button.
 			This means you can complete each screen using the keyboard alone.
-			But you may also just click on the <code style="color:#8B0000;">Continue</code> button with the mouse.</p>		
+			But you may also just click on the <code style="color:#8B0000;">Continue</code> button with the mouse.</p -->		
 	`,
 	wcrInstructions: `
+		  <div class="ai-tooltip">
 			<p><b>AI assistance</b></p>
-			<p>You are given candidate rules for assistance (click the tab above to see them). Note that the candidate rules are AI-generated, so they may contain errors. In particular, there may be one correct rule-pair for each problem. But there could be several, or even none at all, that are correct.</p>
+			<span class="ai-tooltip-text">You are given candidate rules for assistance (click the tab above to see them). Note that the candidate rules are AI-generated, so they may contain errors. In particular, there may be one correct rule-pair for each problem. But there could be several, or even none at all, that are correct.</span>
+			</div>
+
 	`,
 	exampleProblemGuidanceTitle: `
 		Looking at the example problem
 		`,
 	exampleProblemGuidance1: `
-		There's no one right answer. 
-		So here are some good and bad responses to show the kinds of things to think about.
+		It's clear there's no one right answer. 
 		`,
 	exampleProblemGuidance2: `
-		The rules are in pairs. And a correct pair needs both rule A and rule B to be true. 
-		Looking at the good rule pairs, they are not just mostly true. 
-		Both the rule for set A and the rule for set B are consistently true - that is, for all six figures in their set. 
+		The good rules are not just mostly true. 
+		Each rule is true for all six figures in its set. 
 		`,
 	exampleProblemGuidance3: `
-		Notice, also, that in the bad rule pairs, an error in the rule for one set can make it a bad pair.
-		Saying there's an odd number of shapes in set B looks at first like it might be true. But there are two figures that have an even number of shapes. 
-		So the rule pair fails overall, even though the correct rule is about the number of shapes in the figures.
+		Look at the bad rule pairs.
+		The rule for B fails because there are even numbers there, too. 
+		So it's an overall fail, even though it is indeed about the number of shapes in the figures.
 		`,
 	exampleProblemGuidance4: `
-		In the last bad rule pair, again, an error on the rule for set B is what makes it bad overall.
-		Saying there's no space in the figures in set B isn't correct. 
-		So the rule pair fails, even though the correct rule involves space used in the figures.
+		In the second bad example, saying there's no space in the figures in B isn't correct. 
+		So the answer fails, even though the rule does involve space used in the figures.
 		`,
 	exampleProblemGuidance5: `
-		Try to answer as precisely as you can with as few words as possible.
+		The best advice is, try to answer as precisely as you can with as few words as possible.
+		And check your rules.
 		`,
 	exampleProblemGuidanceWcr: `
-		Remember the candidate rules (click the tab above to see them). 
-		They are AI-generated, so they may contain errors. 
-		There may be one, several, or none at all correct. 
-		You might find it useful to compare the AI-generated rule pairs with the good and bad ones given here.
+		Remember the candidate rules are AI-generated. 
+		One, several, or none at all may be correct. 
+		You can compare them with the good and bad ones given here (click the tab above to see them).
 		`,
 	exampleExplanationPIA: `
 <div id="outer-wrapper" class="outer-wrapper">
@@ -206,44 +225,10 @@ let trialText = {
           <textarea readonly id="input-1" name="#jspsych-survey-text-response-1" data-name="b_rule" cols="40" rows="2" required="" placeholder=""></textarea>
         </div>
       </div>
-      <div class="label-row">
-        <p class="eg-row-text">Good rule pairs</p>
-      </div>
-      <div class="form-row">
-        <div id="jspsych-survey-text-0" class="jspsych-survey-text-question" style="margin: 2em 0em;">
-          <textarea readonly class="good-rule" cols="40" rows="2">contain no figures at all</textarea>
-        </div>
-        <div id="jspsych-survey-text-1" class="jspsych-survey-text-question" style="margin: 2em 0em;">
-          <textarea readonly class="good-rule" cols="40" rows="2">contain at least one drawn figure</textarea>
-        </div>
-      </div>
-      <div class="form-row">
-        <div id="jspsych-survey-text-0" class="jspsych-survey-text-question" style="margin: 2em 0em;">
-          <textarea readonly class="good-rule" cols="40" rows="2">blank</textarea>
-        </div>
-        <div id="jspsych-survey-text-1" class="jspsych-survey-text-question" style="margin: 2em 0em;">
-          <textarea readonly class="good-rule" cols="40" rows="2">has shapes</textarea>
-        </div>
-      </div>
-      <div class="label-row">
-        <p class="eg-row-text">Bad rule pairs</p>
-      </div>
-      <div class="form-row">
-        <div id="jspsych-survey-text-0" class="jspsych-survey-text-question" style="margin: 2em 0em;">
-          <textarea readonly class="bad-rule" cols="40" rows="2">zero shapes</textarea>
-        </div>
-        <div id="jspsych-survey-text-1" class="jspsych-survey-text-question" style="margin: 2em 0em;">
-          <textarea readonly class="bad-rule" cols="40" rows="2">odd number of shapes</textarea>
-        </div>
-      </div>
-      <div class="form-row">
-        <div id="jspsych-survey-text-0" class="jspsych-survey-text-question" style="margin: 2em 0em;">
-          <textarea readonly class="bad-rule" cols="40" rows="2">space</textarea>
-        </div>
-        <div id="jspsych-survey-text-1" class="jspsych-survey-text-question" style="margin: 2em 0em;">
-          <textarea readonly class="bad-rule" cols="40" rows="2">no space</textarea>
-        </div>
-      </div>
+
+
+<div id="example-rules-div"></div>
+
     </form>
   </div>
   <div id="instructions-div" class="instructions-div" style="height: 100%">
@@ -262,6 +247,30 @@ let trialText = {
   </div>
 </div>
 	`,
+	exampleGoodRulesArray:
+	[
+		{
+			"1_A": "contains no shapes at all",
+		  "1_B": "contains at least one shape"
+		},
+		{
+			'2_A':'blank',
+		  '2_B':'has shapes'
+		}				
+	]
+	,
+	exampleBadRulesArray:
+	[
+		{
+			"1_A": "zero shapes present",
+		  "1_B": "odd number of shapes present"
+		},
+		{
+			'2_A':'space',
+		  '2_B':'no space'
+		}	
+	]
+	,
 	exampleExplanationPIB: `
 			<p>example explanation of the example problem (pib)</p>
 			<p id="example-problem-guidance-1"></p>
