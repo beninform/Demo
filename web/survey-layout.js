@@ -48,6 +48,9 @@ function setupSurveyLayout() {
     // insert form row div (and its content) into jspsych-survey-text-form div
     surveyFormDiv.prepend(formRowDiv);
 
+    // reinstate focus after div manipulation (autofocus doesn't survive it)
+    const area0 = document.getElementById("input-0");
+    area0.focus();
 
 };
 

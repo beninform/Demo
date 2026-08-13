@@ -206,80 +206,58 @@ let trialText = {
           <textarea readonly id="input-1" name="#jspsych-survey-text-response-1" data-name="b_rule" cols="40" rows="2" required="" placeholder=""></textarea>
         </div>
       </div>
-
       <div class="label-row">
-		<p class="eg-row-text">Good rule pairs</p>
-	  </div>
-
+        <p class="eg-row-text">Good rule pairs</p>
+      </div>
       <div class="form-row">
         <div id="jspsych-survey-text-0" class="jspsych-survey-text-question" style="margin: 2em 0em;">
-          <textarea readonly class="good-rule cols="40" rows="2">contain no figures at all</textarea>
+          <textarea readonly class="good-rule" cols="40" rows="2">contain no figures at all</textarea>
         </div>
         <div id="jspsych-survey-text-1" class="jspsych-survey-text-question" style="margin: 2em 0em;">
-          <textarea readonly class="good-rule cols="40" rows="2">contain at least one drawn figure</textarea>
+          <textarea readonly class="good-rule" cols="40" rows="2">contain at least one drawn figure</textarea>
         </div>
       </div>
-
       <div class="form-row">
         <div id="jspsych-survey-text-0" class="jspsych-survey-text-question" style="margin: 2em 0em;">
-          <textarea readonly class="good-rule cols="40" rows="2">blank</textarea>
+          <textarea readonly class="good-rule" cols="40" rows="2">blank</textarea>
         </div>
         <div id="jspsych-survey-text-1" class="jspsych-survey-text-question" style="margin: 2em 0em;">
-          <textarea readonly class="good-rule cols="40" rows="2">has shapes</textarea>
+          <textarea readonly class="good-rule" cols="40" rows="2">has shapes</textarea>
         </div>
       </div>
-
       <div class="label-row">
-		<p class="eg-row-text">Bad rule pairs</p>
-	  </div>
-      
+        <p class="eg-row-text">Bad rule pairs</p>
+      </div>
       <div class="form-row">
         <div id="jspsych-survey-text-0" class="jspsych-survey-text-question" style="margin: 2em 0em;">
-          <textarea readonly class="bad-rule cols="40" rows="2">zero shapes</textarea>
+          <textarea readonly class="bad-rule" cols="40" rows="2">zero shapes</textarea>
         </div>
         <div id="jspsych-survey-text-1" class="jspsych-survey-text-question" style="margin: 2em 0em;">
           <textarea readonly class="bad-rule" cols="40" rows="2">odd number of shapes</textarea>
         </div>
       </div>
-
       <div class="form-row">
         <div id="jspsych-survey-text-0" class="jspsych-survey-text-question" style="margin: 2em 0em;">
-          <textarea readonly class="bad-rule cols="40" rows="2">space</textarea>
+          <textarea readonly class="bad-rule" cols="40" rows="2">space</textarea>
         </div>
         <div id="jspsych-survey-text-1" class="jspsych-survey-text-question" style="margin: 2em 0em;">
           <textarea readonly class="bad-rule" cols="40" rows="2">no space</textarea>
         </div>
       </div>
-
     </form>
-    
-    
-    
-    
   </div>
   <div id="instructions-div" class="instructions-div" style="height: 100%">
-
-        <div class="instruction-box" style="padding-top: 0px;">
-         <h2 id="example-problem-guidance-title"></h2>
-          <p id="example-problem-guidance-1"></p>
-          <p id="example-problem-guidance-2"></p>
-          <p id="example-problem-guidance-3"></p>
-          <p id="example-problem-guidance-4"></p>
-          <p id="example-problem-guidance-5"></p>
-          <p id="example-problem-guidance-6"></p>
-        
-        </div>
-        
-        
-        
-        
-        
-        
-        <div id="table-container" class="table-container hidden" style="margin-top: 0px;">
-          <h3>Candidate Rules</h3>
-
-        </div>
-      </div>
+    <div class="instruction-box" style="padding-top: 0px;">
+      <h2 id="example-problem-guidance-title"></h2>
+      <p id="example-problem-guidance-1"></p>
+      <p id="example-problem-guidance-2"></p>
+      <p id="example-problem-guidance-3"></p>
+      <p id="example-problem-guidance-4"></p>
+      <p id="example-problem-guidance-5"></p>
+      <p id="example-problem-guidance-6"></p>
+    </div>
+    <div id="table-container" class="table-container hidden" style="margin-top: 0px;">
+      <h3>Candidate Rules</h3>
     </div>
   </div>
 </div>
