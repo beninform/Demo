@@ -159,38 +159,7 @@ function setupExampleRulesDiv() {
 
 }
 
-function setupExampleCommentButtons(code_array) {
-
-    const array =    {
-        "1":
-        {
-          "A": "contains no shapes at all",
-          "B": "contains at least one shape",
-          "capt": `This example is a good rule pair`,
-          "note": `This example is a correct response. Rule A is true of each figure in set A. And rule B is true of each figure in set B.`
-        },
-        "2":
-        {
-          'A':'blank',
-          'B':'has shapes',
-          "capt": `This example is a good rule pair`,
-          "note": `A correct example response that's also concise. Rule A is true of each figure in set A. And rule B is true of each figure in set B.`
-        },
-        "3":
-      {
-          "A": "zero shapes present",
-          "B": "odd number of shapes present",
-          "capt": `This example is a bad rule pair`,
-          "note": `An incorrect example for the problem. While A is true, B isn't. There are figures with an even number of shapes in B. Both A and B must be true.`
-        },
-        "4":
-        {
-          'A':'space',
-          'B':'no space',
-          "capt": `This example is a bad rule pair`,
-          "note": `A failing example pair. B isn't true in this example. And even if A is true. That's not enough on its own. Both must be true.`
-        }   
-    };
+function setupExampleCommentButtons(array) {
 
     const egCommentForm = document.getElementById('example-problem-guidance-button-group'); // a form element
     const egAreaA = document.getElementById('example-rule-A');

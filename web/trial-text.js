@@ -170,7 +170,7 @@ let trialText = {
 		Click the button to reveal the example options.
 		`,
 	// exampleProblemGuidance3: `
-	// 	Comments on the example shown:
+	// 	   
 	// 	`,
 	exampleProblemGuidance4: `
 		Advice
@@ -241,28 +241,36 @@ let trialText = {
 </div>
 	`,
 	exampleRulesArray:
-	{
-		"R1":
-		{
-			"A": "contains no shapes at all",
-		  "B": "contains at least one shape"
-		},
-		"R2":
-		{
-			'A':'blank',
-		  'B':'has shapes'
-		},
-		"R3":
-	  {
-			"A": "zero shapes present",
-		  "B": "odd number of shapes present"
-		},
-		"R4":
-		{
-			'A':'space',
-		  'B':'no space'
-		}	
-	}
+  {
+    "1":
+    {
+      "A": "contains no shapes at all",
+      "B": "contains at least one shape",
+      "capt": `This example is a good rule pair`,
+      "note": `This example is a correct response. Rule A is true of each figure in set A. And rule B is true of each figure in set B.`
+    },
+    "2":
+    {
+      'A':'blank',
+      'B':'has shapes',
+      "capt": `This example is a good rule pair`,
+      "note": `A correct example response that's also concise. Rule A is true of each figure in set A. And rule B is true of each figure in set B.`
+    },
+    "3":
+  {
+      "A": "zero shapes present",
+      "B": "odd number of shapes present",
+      "capt": `This example is a bad rule pair`,
+      "note": `An incorrect example for the problem. While A is true, B isn't. There are figures with an even number of shapes in B. Both A and B must be true.`
+    },
+    "4":
+    {
+      'A':'space',
+      'B':'no space',
+      "capt": `This example is a bad rule pair`,
+      "note": `A failing example pair. B isn't true in this example. And even if A is true. That's not enough on its own. Both must be true.`
+    }   
+  };
 	,
 	exampleExplanationPIB: `
 			<p>example explanation of the example problem (pib)</p>
@@ -272,29 +280,10 @@ let trialText = {
 	`,
 	exampleMC:`
 		<div class="mc-container">
-			<label><input type="checkbox" id="cb1"> First checkbox</label>
-			<label><input type="checkbox" id="cb2"> Second checkbox</label>
-			<strong>Check only the second checkbox.</strong>
+			<strong>Check only the second option below to continue.</strong>
+			<label><input type="checkbox" id="cb1"> First option</label>
+			<label><input type="checkbox" id="cb2"> Second option</label>
 			<div id="solution-text" class="hidden">
-				<div class="instruction-btn">
-					<button type="submit" id="btn" class="jspsych-btn hidden">Continue</button>
-				</div>
-			</div>
-		</div>
-	`,
-	exampleMC_old:`
-		<div class="mc-container">
-			<label><input type="checkbox" id="cb1"> First checkbox</label>
-			<label><input type="checkbox" id="cb2"> Second checkbox</label>
-			<strong>Check only the second checkbox.</strong>
-			<div id="solution-text" class="hidden">
-				<p>Here is an acceptable solution to the example problem:</p>
-				
-				<div class="solution-rules">
-					<p>empty</p>
-					<p>non-empty</p>
-				</div>
-				
 				<div class="instruction-btn">
 					<button type="submit" id="btn" class="jspsych-btn hidden">Continue</button>
 				</div>

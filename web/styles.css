@@ -1,11 +1,10 @@
-/* Adjustable layout proportions */
-/*:root {
-    --vertical-space: 60px;
-    --horizontal-space: 60px;
-    --top-width: 60%;
-    --middle-width: 25%;
-    --bottom-width: 60%;
-}*/
+
+:root {                /* colours */
+  --primary: #2563eb;  /* blue */
+  --text: #1f2937;
+  --bg: #f3f4f6;
+  --border: #d1d5db;  /* unchecked button circle border, grey */
+}
 
 /* Erase browser default spacing discrepancies */
 *, *::before, *::after {
@@ -336,19 +335,6 @@
     font-style: italic;
 }
 
-/*.example-rule-comment {
-    min-height: 130px;
-}
-*/
-
-
-:root {
-  --primary: #2563eb;  /* blue */
-  --text: #1f2937;
-  --bg: #f3f4f6;
-  --border: #d1d5db;  /* unchecked button circle border, grey */
-}
-
 /* Hide default radio but keep accessible */
 .radio-input {
   opacity: 0;
@@ -403,22 +389,6 @@
   margin-right: 11px;
 }
 
-    /* Output text area */
-/*    .selection-output {
-      margin-top: 1.5rem;
-      font-weight: 500;
-      color: var(--primary);
-    }  */
-
-
-
-
-
-
-
-
-
-
 .wcr-layout .left-panel.preamble-form-wrapper {
     padding-top: 0 !important;
 }
@@ -464,7 +434,7 @@
     width: 100%;
     padding-left: 10%;
     padding-right: 10%;
-    margin-top: 10px;
+    margin-top: 30px;
     text-align: left;
     padding: 0;
 }
