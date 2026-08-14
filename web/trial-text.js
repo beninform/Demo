@@ -1,4 +1,6 @@
 let trialText = {
+	contactEmailValue: `experiment@synergy.trx.li`,
+	
 	introductionTextPart1: `
 		<div class="intro-container">
 			<div class="logo-container">
@@ -124,7 +126,7 @@ let trialText = {
 			<div>
 				<div class="kb-tooltip">
 					<p><b>Want to use keyboard only?</b></p>
-						<span class="kb-tooltip-text">For efficient progress, if you wish, you can use the <span class="emph-text">Tab</span> button 
+						<span class="kb-tooltip-text">For efficient progress, if you wish, you can use the <span class="emph-text">Tab</span> key 
 						to move between the answer boxes - and to move on to the <span class="emph-text">Continue</span> button.
 						This means you can complete each screen using the keyboard alone.
 						But you may also just click on the <span class="emph-text">Continue</span> button with the mouse.</span>
@@ -141,7 +143,7 @@ let trialText = {
 			<div>
 				<div class="kb-tooltip">
 					<p><b>Want to use keyboard only?</b></p>
-						<span class="kb-tooltip-text">For efficient progress, if you wish, you can use the <span class="emph-text">Tab</span> button 
+						<span class="kb-tooltip-text">For efficient progress, if you wish, you can use the <span class="emph-text">Tab</span> key 
 						to move between the answer boxes - and to move on to the <span class="emph-text">Continue</span> button.
 						This means you can complete each screen using the keyboard alone.
 						But you may also just click on the <span class="emph-text">Continue</span> button with the mouse.</span>
@@ -149,12 +151,6 @@ let trialText = {
 			  </div>
 		  <p>&nbsp;</p>
 		  </div>
-
-			<!-- p><b>Want to use keyboard only?</b></p>
-			<p>For efficient progress, if you wish, you can use the <code style="color:#8B0000;">Tab</code> button 
-			to move between the answer boxes - and to move on to the <code style="color:#8B0000;">Continue</code> button.
-			This means you can complete each screen using the keyboard alone.
-			But you may also just click on the <code style="color:#8B0000;">Continue</code> button with the mouse.</p -->		
 	`,
 	wcrInstructions: `
 		  <div class="ai-tooltip">
@@ -407,7 +403,8 @@ let trialText = {
 		<p>Thank you for completing the first part of the experiment. 
         Your responses will be reviewed - usually within 24 hours, often sooner, depending on the time of day. 
         You will be contacted and either thanked for your time or asked to attempt some further problems. 
-        Please contact us if you have heard nothing after two days. info@synergy.trx.li.</p>
+        Please contact us if you have heard nothing after two days.</p>
+        <p class="contact-email">info@synergy.trx.li</p>
         <p>You can now close this tab.</p>
 	</div>
 	`,
@@ -427,7 +424,9 @@ let trialText = {
 		<h1>Thank you!</h1>
 		<p>Thank you for completing the second and third parts of the experiment. 
 		We would like to ask you some questions about the experience and will be in touch through Prolific.
-        Please contact us if you have any questions or feedback. info@synergy.trx.li.</p>
-        <p>You can now close this tab.</p>
+    Please contact us if you have any questions or feedback.</p>
+		<p class="contact-email">info@synergy.trx.li</p>
+    <p>You can now close this tab.</p>
 	</div>`
 	};
+

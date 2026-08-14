@@ -115,6 +115,14 @@
     display: block;
 }
 
+.button-below-para-start {
+    margin-bottom: 550px;
+}
+
+.button-below-para-break {
+    margin-bottom: 450px;
+}
+
 .cursor-tooltip {
     position: absolute;
     background-color: #333;
@@ -526,7 +534,7 @@
     position: fixed;
     top: 60px;
     right: 20px;
-    width: 280px;
+    width: 340px;
     background-color: #ffffff;
     border: 1px solid #ced4da;
     border-radius: 6px;
@@ -681,7 +689,8 @@ h3 {
   padding:15px;
   color:333; 
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-
+  transform: translateX(17%);
+  transform: translateY(17%);
 }
 
 td:hover span.ToolTip{
@@ -721,18 +730,22 @@ td:hover span.ToolTip{
 
 .ai-tooltip-text, .kb-tooltip-text {
   visibility: hidden; /* Hidden by default */
-  width: 400px;
-  background-color: black;
-  color: #ffffff;
-  text-align: left;
-  padding: 8px;
+  width: 450px;
+  background-color: #ffffff;
+  border: 1px solid #ced4da;  text-align: left;
+  padding: 15px;
   border-radius: 6px;
   position: absolute;
   z-index: 1; /* Ensure tooltip is displayed above content */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1001;
+  text-align: left;
+  color: #333;  
 }
 
 .kb-tooltip .emph-text {
-    color: yellow;
+    color: darkred;
+    font-family: monospace;
 }
 
 .ai-tooltip:hover .ai-tooltip-text {

@@ -103,8 +103,8 @@ for (let block of selectedBlock) {
                 <h1>${block.title}</h1>
                 <p>You have completed the first part of this session. Thank you.</p> 
                 <p>You could now take a short break. But don‘t leave the page.</p> 
-                <p>Click the continue button when you are ready for the final part.</p>
                 <p>There are ${block.conditions[0].length} problems in this part.</p>
+                <p class="button-below-para-break">Click the button below when you are ready for the final part.</p>
                 `,
             choices: ['Continue']
         };
@@ -116,7 +116,7 @@ for (let block of selectedBlock) {
             stimulus: `
                 <h1>${block.title}</h1>
                 <p>There are ${block.conditions[0].length} problems in this part.</p>
-                <p>Press the button below to begin.</p>
+                <p class="button-below-para-start">Click the button below to begin.</p>
                 `,
             choices: ['Continue']
         };
@@ -210,6 +210,9 @@ let debriefTrial = {
 	    	.csv();
         console.log(uid + '_' + tid + '_' + pid + '-' + timestamp);
     	console.log(data);
+    },
+    on_load: function() {
+        setContactEmail(trialText.contactEmailValue);
     }
 };
 

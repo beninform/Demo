@@ -554,3 +554,11 @@ function getFormattedTimestamp() {
 //         textarea1.value += ' skipped ' + ts;
 //     };
 // };
+
+
+function setContactEmail(email_string) {
+    const emailAddr = document.querySelector('.contact-email');
+    console.log('emailAddr:', emailAddr);
+    emailAddr.innerText = email_string;
+
+}       

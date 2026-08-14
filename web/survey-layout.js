@@ -86,12 +86,6 @@ function shuffle(array) {
 function setupRightHandDiv(isExample, tid, imgno) {
     let bongProbNumber = imgno;
 
-    // Set the timer to show skip button after delay
-    const myTimer = createResettableTimer(() => {
-        // showSkipButton();
-        console.log('Timer finished! Sixty seconds since new page loaded.');
-    }, 60000);
-
     const instructionsDivRH = document.getElementById("instructions-div");
 
     // create instruction-box-div for instructions and candidate rules
@@ -206,7 +200,6 @@ function setupExampleRulesTabs() {
 
 // make the example rules table for tutorial (ExampleTrial2) page on left hand side
 function setupExampleRulesTable(typeRules, element, array) {
-    console.log('typeRules', typeRules);
 
     const container = element; //document.getElementById('eg-tab-content');
 
@@ -224,14 +217,11 @@ function setupExampleRulesTable(typeRules, element, array) {
 
     array.forEach(rowObject => {
         const row = document.createElement("tr");
-        console.log('rowObject', rowObject);
         keys = Object.keys(rowObject);
-        console.log('keys', keys);
         keys.forEach(key => {
             const cell = document.createElement('td');
             cell.classList.add("example-rules-td");
             cell.textContent = rowObject[key];
-            console.log('cell content', rowObject[key]);
             row.appendChild(cell);
         });
         tbody.appendChild(row);
