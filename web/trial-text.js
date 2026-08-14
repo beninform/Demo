@@ -270,7 +270,7 @@ let trialText = {
       "capt": `This example is a bad rule pair`,
       "note": `A failing example pair. B isn't true in this example. And even if A is true. That's not enough on its own. Both must be true.`
     }   
-  };
+  }
 	,
 	exampleExplanationPIB: `
 			<p>example explanation of the example problem (pib)</p>
