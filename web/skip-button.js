@@ -101,7 +101,7 @@ function setupTrialButtons() {
     const countdownDisplay = document.getElementById('trial-countdown');
     const bpImg = document.querySelector('.bp-img');
 
-    continueBtn.innerText = 'Continue';
+    continueBtn.value = 'Submit';
 
     const skipBtn = document.createElement('button');
     skipBtn.type = 'button';
@@ -112,8 +112,8 @@ function setupTrialButtons() {
     btnContainer.className = 'trial-buttons-container';
 
     continueBtn.parentNode.insertBefore(btnContainer, continueBtn);
-    btnContainer.appendChild(continueBtn);
     btnContainer.appendChild(skipBtn);
+    btnContainer.appendChild(continueBtn);
 
     let skipLockTime = 10;
     let totalTrialTime = 150;
@@ -368,11 +368,11 @@ function insertParaTextTid(tid, pid, para_id, bsz) {
     } else {
         if (tid=='ncr') {
             str = `Welcome! You have been randomly assigned to the unassisted part of the study.
-            In this study, you will be shown a set of figures in two groups.`;
+            You will be shown a set of figures in two groups.`;
         } else if (tid=='wcr') {
             str = `Welcome! You have been randomly assigned to the assisted part of the study. 
             You will be provided with simple machine assistance. 
-            In this study, you will be shown a set of figures in two groups.`;
+            You will be shown a set of figures in two groups.`;
         }                
     }
 
@@ -405,9 +405,10 @@ function insertParaTextTim(my_var, para_id, bsz) {
     let tim = Math.round(bsiz * 1.06).toString();
     str = '';
     if (my_var=='pia') {
-        str = `This session should take about ${tim} minutes.`;
+        str = `This session should take about ${tim} minutes. You are advised to maximise your browser window to eliminate any need for scrolling.`;
     } else if (my_var=='pib') {
-        str = `The two parts of this session should take about ${tim} minutes each.`;
+        str = `The two parts of this session should take about ${tim} minutes each. 
+               Once again, you are advised to maximise your browser window to eliminate any need for scrolling.`;
     }
     if (para) {
         para.textContent = str;
@@ -558,7 +559,22 @@ function getFormattedTimestamp() {
 
 function setContactEmail(email_string) {
     const emailAddr = document.querySelector('.contact-email');
-    console.log('emailAddr:', emailAddr);
     emailAddr.innerText = email_string;
 
 }       
+
+function setupFooter(email_string) {
+    // document.get('footer')
+    const foot = document.getElementById('contact-footer');
+    if (foot)  {
+        console.log('footer already there');
+    } else {
+        const footerElement = document.createElement('footer');
+        footerElement.classList.add('narrow-footer');
+        footerElement.id = 'contact-footer';
+        document.body.appendChild(footerElement);
+        footerElement.innerText = 'problems/feedback: ' + email_string; 
+    }
+}
+
+

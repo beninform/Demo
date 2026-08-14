@@ -7,11 +7,19 @@
     --bottom-width: 60%;
 }*/
 
+/* Erase browser default spacing discrepancies */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+  text-rendering: optimizeLegibility;
+}
+
 .intro-container {
     --vertical-space: 15px;
     --horizontal-space: 60px;
     --top-width: 60%;
-    --middle-width: 25%;
+    --middle-width: 30%;
     --bottom-width: 60%;
 
     margin: var(--vertical-space) var(--horizontal-space);
@@ -19,6 +27,15 @@
     flex-direction: column;
     align-items: center;
     /*font-family: Arial, sans-serif;*/
+}
+
+.intro-text-container{
+    padding-top: 10%;
+    /*padding-left: 20%;
+    padding-right: 20%;*/
+/*    max-width: 800px;
+    font-family: Arial, sans-serif;
+    text-align: left;*/
 }
 
 .intro-top {
@@ -290,6 +307,117 @@
 .example-instruction-text {
     margin-top: 20px;
 }
+
+.example-rules-area {
+    font-size: 18px;
+    font-family: monospace;
+}
+
+#example-problem-guidance-2 {
+    margin: 0px 14px;
+    font-style: italic;
+}
+
+#example-problem-guidance-button-group {
+    margin-bottom: 20px;
+}
+
+#example-problem-guidance-3 {
+    margin: 0px 0px;
+}
+
+.example-instruction {
+    margin: 0px 14px 0px 14px;
+    font-style: italic;
+}
+
+.example-comment {
+    margin: 0px 20px 0px 20px;
+    font-style: italic;
+}
+
+/*.example-rule-comment {
+    min-height: 130px;
+}
+*/
+
+
+:root {
+  --primary: #2563eb;  /* blue */
+  --text: #1f2937;
+  --bg: #f3f4f6;
+  --border: #d1d5db;  /* unchecked button circle border, grey */
+}
+
+/* Hide default radio but keep accessible */
+.radio-input {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+/* Custom radio outer circle */
+.radio-control {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  margin-right: 8px;
+  display: inline-grid;
+  place-items: center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Custom radio inner dot */
+.radio-control::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  transform: scale(0);
+  transition: transform 0.2s;
+}
+
+/* Checked states */
+.radio-input:checked + .radio-control {
+  border-color: var(--primary);
+}
+
+.radio-input:checked + .radio-control::after {
+  transform: scale(1);
+}
+
+/* Focus ring for keyboard users */
+.radio-input:focus-visible + .radio-control {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Text label styling */
+.radio-label-text {
+  font-size: 1rem;
+  user-select: none;
+  margin-left: 0px;
+  margin-right: 11px;
+}
+
+    /* Output text area */
+/*    .selection-output {
+      margin-top: 1.5rem;
+      font-weight: 500;
+      color: var(--primary);
+    }  */
+
+
+
+
+
+
+
+
+
 
 .wcr-layout .left-panel.preamble-form-wrapper {
     padding-top: 0 !important;
@@ -653,7 +781,7 @@ p {
 }
 
 .jspsych-content {
-	margin: 0em auto;
+	margin: 1em auto;
 }
 
 h3 {
@@ -714,6 +842,10 @@ td:hover span.ToolTip{
     font-size: 18px;
 }
 
+#fixed-height-div  {
+    min-height: 143px;
+}
+
 #example-rules-div table, #example-rules-div td {
   border: 1px solid black;
   border-collapse: collapse;
@@ -754,5 +886,13 @@ td:hover span.ToolTip{
 
 .kb-tooltip:hover .kb-tooltip-text {
   visibility: visible;
+}
+
+.narrow-footer {
+  font-size: 10pt;
+  max-width: 400px;
+  margin-left: auto; 
+  margin-right: 10px; 
+  margin-bottom: 7px;
 }
 

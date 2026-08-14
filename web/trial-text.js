@@ -22,12 +22,12 @@ let trialText = {
 
 			<div class="intro-middle-container">
 				<div class="intro-middle-left">
-					<p>You will be asked to tell us the rule that distinctly describes the first group.</p>
+					<p>You will be asked to tell us the rule that distinguishes the first group from the second.</p>
 					<img src="img/p286A.png" alt="Example Set A" style="max-height: 250px; width: auto;">
 					<p>Example: Large squares are higher</p>
 				</div>
 				<div class="intro-middle-right">
-				<p>You will be asked to tell us the rule that distinctly describes the second group.</p>
+				<p>You will be asked to tell us the rule that distinguishes the second group from the first.</p>
 					<img src="img/p286B.png" alt="Example Set B" style="max-height: 250px; width: auto;">
 					<p>Example: Small squares are higher</p>
 				</div>
@@ -35,7 +35,6 @@ let trialText = {
 
 			<div class="intro-bottom">
 				<p id="para-intro-bottom"></p>
-				<p>Press the button below to proceed.</p>
 			</div>
 		</div>
 	`,
@@ -70,12 +69,12 @@ let trialText = {
 
 			<div class="intro-middle-container">
 				<div class="intro-middle-left">
-					<p>You will be asked to tell us the rule that distinctly describes the first group.</p>
+					<p>You will be asked to tell us the rule that distinguishes the first group from the second.</p>
 					<img src="img/p286A.png" alt="Example Set A" style="max-height: 250px; width: auto;">
 					<p>Example: Large squares are higher</p>
 				</div>
 				<div class="intro-middle-right">
-				<p>You will be asked to tell us the rule that distinctly describes the second group.</p>
+				<p>You will be asked to tell us the rule that distinguishes the second group from the first.</p>
 					<img src="img/p286B.png" alt="Example Set B" style="max-height: 250px; width: auto;">
 					<p>Example: Small squares are higher</p>
 				</div>
@@ -160,23 +159,21 @@ let trialText = {
 
 	`,
 	exampleProblemGuidanceTitle: `
-		Looking at the example problem
+		Look at some example answers
 		`,
 	exampleProblemGuidance1: `
-		It's clear there's no one right answer. 
+    This page won't tell you whether your rule pair was correct or not.  
+    But here you can see some different example responses, each with an 
+    explanation of how they're good or bad. 
 		`,
 	exampleProblemGuidance2: `
-		The good rules are not just mostly true. 
-		Each rule is true for all six figures in its set. 
+		Click the button to reveal the example options.
 		`,
-	exampleProblemGuidance3: `
-		Look at the bad rule pairs.
-		The rule for B fails because there are even numbers there, too. 
-		So it's an overall fail, even though it is indeed about the number of shapes in the figures.
-		`,
+	// exampleProblemGuidance3: `
+	// 	Comments on the example shown:
+	// 	`,
 	exampleProblemGuidance4: `
-		In the second bad example, saying there's no space in the figures in B isn't correct. 
-		So the answer fails, even though the rule does involve space used in the figures.
+		Advice
 		`,
 	exampleProblemGuidance5: `
 		The best advice is, try to answer as precisely as you can with as few words as possible.
@@ -216,7 +213,12 @@ let trialText = {
       </div>
 
 
-<div id="example-rules-div"></div>
+			<div id="fixed-height-div">
+				<p id='replaceable-text'>There are example answers for this problem.<br />
+				See the instructions on the right for how to reveal them.</p>
+				<div id="example-rules-div"></div>
+			</div>
+
 
     </form>
   </div>
@@ -225,8 +227,10 @@ let trialText = {
       <h2 id="example-problem-guidance-title"></h2>
       <p id="example-problem-guidance-1"></p>
       <p id="example-problem-guidance-2"></p>
-      <p id="example-problem-guidance-3"></p>
-      <p id="example-problem-guidance-4"></p>
+
+      <form id="example-problem-guidance-button-group"></form>
+
+      <h3 id="example-problem-guidance-4"></h3>
       <p id="example-problem-guidance-5"></p>
       <p id="example-problem-guidance-6"></p>
     </div>
@@ -236,29 +240,29 @@ let trialText = {
   </div>
 </div>
 	`,
-	exampleGoodRulesArray:
-	[
+	exampleRulesArray:
+	{
+		"R1":
 		{
-			"1_A": "contains no shapes at all",
-		  "1_B": "contains at least one shape"
+			"A": "contains no shapes at all",
+		  "B": "contains at least one shape"
 		},
+		"R2":
 		{
-			'2_A':'blank',
-		  '2_B':'has shapes'
-		}				
-	]
-	,
-	exampleBadRulesArray:
-	[
-		{
-			"1_A": "zero shapes present",
-		  "1_B": "odd number of shapes present"
+			'A':'blank',
+		  'B':'has shapes'
 		},
+		"R3":
+	  {
+			"A": "zero shapes present",
+		  "B": "odd number of shapes present"
+		},
+		"R4":
 		{
-			'2_A':'space',
-		  '2_B':'no space'
+			'A':'space',
+		  'B':'no space'
 		}	
-	]
+	}
 	,
 	exampleExplanationPIB: `
 			<p>example explanation of the example problem (pib)</p>

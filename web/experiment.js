@@ -75,20 +75,23 @@ let exampleTrial2 = {
     stimulus: pid == 'pib' ? trialText.exampleExplanationPIA : trialText.exampleExplanationPIA,
     choices: ['Continue'],
     on_load: function() {
-        setupExampleRulesTabs();
+        // Examples and Explanation stuff
+        setupExampleRulesDiv();
         moveContinueButton();  // bc layout was designed for survey text, not button response trial
-        generateTable(1);  // candidate rules table
-        setupExampleTabs(true);
         insertPrevResponses(userResponseA, userResponseB);
         insertParaTextExplain(pid, "example-problem-guidance-title", trialText.exampleProblemGuidanceTitle);
         insertParaTextExplain(pid, "example-problem-guidance-1", trialText.exampleProblemGuidance1);
         insertParaTextExplain(pid, "example-problem-guidance-2", trialText.exampleProblemGuidance2);
-        insertParaTextExplain(pid, "example-problem-guidance-3", trialText.exampleProblemGuidance3);
+        setupExampleCommentButtons(trialText.exampleRulesArray);
+        // insertParaTextExplain(pid, "example-problem-guidance-3", trialText.exampleProblemGuidance3);
         insertParaTextExplain(pid, "example-problem-guidance-4", trialText.exampleProblemGuidance4);
         insertParaTextExplain(pid, "example-problem-guidance-5", trialText.exampleProblemGuidance5);
         if (tid == 'wcr') {
             insertParaTextExplain(pid, "example-problem-guidance-6", trialText.exampleProblemGuidanceWcr);
         } 
+        // Candidate rules stuff
+        generateTable(1);  // candidate rules table
+        setupExampleTabs(true);  // candidate rules tabs
     }
 };
 timeline.push(exampleTrial2);
@@ -100,11 +103,13 @@ for (let block of selectedBlock) {
         let breakTrial = {
             type: jsPsychHtmlButtonResponse,
             stimulus: `
+                <div class="intro-text-container">
                 <h1>${block.title}</h1>
                 <p>You have completed the first part of this session. Thank you.</p> 
                 <p>You could now take a short break. But don‘t leave the page.</p> 
                 <p>There are ${block.conditions[0].length} problems in this part.</p>
                 <p class="button-below-para-break">Click the button below when you are ready for the final part.</p>
+                </div>
                 `,
             choices: ['Continue']
         };
@@ -114,9 +119,11 @@ for (let block of selectedBlock) {
         let blockIntroTrial = {
             type: jsPsychHtmlButtonResponse,
             stimulus: `
+                <div class="intro-text-container">
                 <h1>${block.title}</h1>
                 <p>There are ${block.conditions[0].length} problems in this part.</p>
                 <p class="button-below-para-start">Click the button below to begin.</p>
+                </div>
                 `,
             choices: ['Continue']
         };
@@ -165,6 +172,7 @@ for (let block of selectedBlock) {
                 setupExampleTabs(false);  // is not example page
                 setupTrialButtons();   // function defined in skip-button.js
                 setupHelpButton();     // function defined in skip-button.js
+                setupFooter(trialText.contactEmailValue);
             },
             on_finish: handleTrialFinish
         }
