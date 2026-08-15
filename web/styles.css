@@ -858,6 +858,12 @@ td:hover span.ToolTip{
   visibility: visible;
 }
 
+.trial-buttons-container {
+  display: flex;
+  flex-direction: row-reverse; /* Swaps the visual layout order */
+  justify-content: flex-end;   /* Keeps them aligned to the original side if needed */
+}
+
 .narrow-footer {
   font-size: 10pt;
   max-width: 400px;

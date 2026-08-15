@@ -112,8 +112,8 @@ function setupTrialButtons() {
     btnContainer.className = 'trial-buttons-container';
 
     continueBtn.parentNode.insertBefore(btnContainer, continueBtn);
-    btnContainer.appendChild(skipBtn);
     btnContainer.appendChild(continueBtn);
+    btnContainer.appendChild(skipBtn);
 
     let skipLockTime = 10;
     let totalTrialTime = 150;
