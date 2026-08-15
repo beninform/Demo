@@ -260,7 +260,7 @@ function setupTrialButtons() {
     });
 }
 
-// setup tabs for the example problem
+// setup tabs for the RH page (instructions and candidate rules)
 function setupExampleTabs(isExample = true) {
     const instr = document.querySelector('.instruction-box');
     const rulesTable = document.getElementById('table-container');
@@ -563,8 +563,8 @@ function setContactEmail(email_string) {
 
 }       
 
+// required on regular BP pages in case it freezes (and loses data) - we'd prefer to know
 function setupFooter(email_string) {
-    // document.get('footer')
     const foot = document.getElementById('contact-footer');
     if (foot)  {
         console.log('footer already there');

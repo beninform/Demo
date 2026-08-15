@@ -778,16 +778,17 @@ h3 {
 .ToolTip{
   visibility:hidden;
   width:260px;
+  font-size: 10pt;
   position:absolute; 
   z-index:1;
   border:1px solid #ced4da;
   background-color:#fff;
   border-width:1px;
   border-radius:6px;
-  padding:15px;
+  padding:4px 8px;
   color:333; 
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transform: translateX(17%);
+  transform: translateX(19%);
   transform: translateY(17%);
 }
 
@@ -862,6 +863,22 @@ td:hover span.ToolTip{
   display: flex;
   flex-direction: row-reverse; /* Swaps the visual layout order */
   justify-content: flex-end;   /* Keeps them aligned to the original side if needed */
+}
+
+#toast {
+  position: fixed;
+  bottom: 70px;
+  right: 450px;
+  background: #ddd;
+  color: #222;
+  padding: 10px 20px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+#toast.show-toast {
+  opacity: 1;
 }
 
 .narrow-footer {

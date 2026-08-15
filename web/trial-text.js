@@ -309,7 +309,7 @@ let trialText = {
 		<div class="help-popup hidden" id="help-popup-box">
 				<p>Complete each answer box. You cannot drag and drop any text from the candidate rules list. 
 				You must enter each of your rules into the appropriate box. 
-				You can copy and paste a candidate rule or type your own. Some candidate rules have further explanation
+				You can click-to-copy and paste a candidate rule - or type your own. Some candidate rules have further explanation
 				which you can see if you hover your mouse over the rule text.</p>
 				<p>The page shows a ‘time remaining’ countdown timer. 
 				This allows you two and a half minutes for each problem. 

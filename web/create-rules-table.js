@@ -36,6 +36,7 @@ function generateTable(bongProbNumber) {
         [aContent,bContent].forEach(cellContent => {
             const cell = document.createElement('td');
             cell.textContent = cellContent; 
+            cell.setAttribute('onclick', 'logCellText(this)');
             span = document.createElement("span");
             span.classList.add("ToolTip")
             if (cellContent==aContent) {
@@ -60,7 +61,44 @@ function generateTable(bongProbNumber) {
     
     const container = document.getElementById('table-container');
     container.appendChild(table);
+
+
+    // toast div for click-to-copy
+    const toastDiv = document.createElement('div');
+    toastDiv.id = 'toast';
+    toastDiv.className = 'hidden-toast';
+    toastDiv.innerText = 'copied to clipboard!';
+
+    container.appendChild(toastDiv);
+
 }
 
 
+function logCellText(element) {
 
+    // Clone the cell to avoid breaking the live page
+    const clone = element.cloneNode(true);
+
+    // Remove all child elements (spans etc)
+    while (clone.firstElementChild) {
+    clone.firstElementChild.remove();
+    }
+
+    const cleanText = clone.textContent.trim();
+    console.log(cleanText);
+
+    navigator.clipboard.writeText(cleanText);
+
+    showToast();
+
+}
+
+function showToast() {
+  const toast = document.getElementById("toast");
+  
+  toast.classList.add("show-toast");
+
+  setTimeout(() => {
+    toast.classList.remove("show-toast");
+  }, 2000);
+}
