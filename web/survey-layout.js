@@ -68,12 +68,17 @@ function testImgLoading(task_number) {
 
     const img = document.getElementById('bp-img');
 
-    const handleImageLoad = () => {
+    const handleImageLoad = (event) => {
         console.log('handler triggered for task', task_number);
         container.classList.remove('is-loading');
         setTimeout(() => {  
             container.classList.add('is-loaded')  
         }, 100);  // allows visibility of loading UX behaviour in (fast) localhost
+        if (event=='load') {
+            console.log('success loading');
+        } else if (event=='error') {
+            console.log(event)
+        }
         img.removeEventListener('load', handleImageLoad)
     }
 
