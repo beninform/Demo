@@ -79,7 +79,7 @@ function testImgLoading(task_number) {
         container.classList.remove('is-loading');
         setTimeout(() => {
             container.classList.add('is-loaded')  
-        }, 2000);        
+        }, 500);        
         img.removeEventListener('load', handleImageLoad)
     }
 
