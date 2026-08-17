@@ -566,9 +566,7 @@ function setContactEmail(email_string) {
 // required on regular BP pages in case it freezes (and loses data) - we'd prefer to know
 function setupFooter(email_string) {
     const foot = document.getElementById('contact-footer');
-    if (foot)  {
-        console.log('footer already there');
-    } else {
+    if (!foot)  {
         const footerElement = document.createElement('footer');
         footerElement.classList.add('narrow-footer');
         footerElement.id = 'contact-footer';
