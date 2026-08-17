@@ -84,9 +84,9 @@ function testImgLoading() {
         console.log('waited for load - now loaded')
 
         // Error handling
-        img.addEventListener('error', () => {
-            console.error('Error: The image failed to load.');
-        }, { once: true });
+        // img.addEventListener('error', () => {
+        //     console.error('Error: The image failed to load.');
+        // }, { once: true });
     } 
 }
 
