@@ -62,6 +62,33 @@ function moveContinueButton() {
 }
 
 
+function testImgLoading() {
+    console.log('test triggered');
+    const container = document.getElementById('image-container');
+
+    function triggerEvent() {  // action to take on img load
+        console.log('Success: The bp image has loaded!');
+        // event logic
+        container.classList.add('is-loaded');
+    }    
+
+    const img = document.getElementById('bp-img');
+
+    if (img && img.complete && img.naturalWidth !== 0) {
+        // Trigger immediately if already loaded
+        console.log('was already loaded');
+        triggerEvent();
+    } else {
+        // Wait for the load event if it is still downloading
+        img.addEventListener('load', triggerEvent, { once: true });
+        console.log('waited for load - now loaded')
+
+        // Error handling
+        img.addEventListener('error', () => {
+            console.error('Error: The image failed to load.');
+        }, { once: true });
+    } 
+}
 
 
 

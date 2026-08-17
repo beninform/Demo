@@ -112,7 +112,10 @@ let trialText = {
 			<div id='set-a-label'><p>Set A</p></div>
 			<div id='set-b-label'><p>Set B</p></div>
 		</div>
-		<img class='bp-img' src='img/p0001.png' alt="Bongard Problem" style="max-height: 350px; width: auto;"/>
+    <div id="image-container" class="image-container">
+        <div id="pls-wait" class="pls-wait">Image loading...</div>
+        <img id='bp-img' class="bp-img" src="img/p0001.png" alt="a visual logic problem" style="max-height: 350px; width: auto;"/>
+    </div>   
 		<p class="example-instruction-text">Write your answers in the boxes.</p>
     `,
 	ExampleProblemInstructions: `
@@ -197,7 +200,10 @@ let trialText = {
           <p>Set B</p>
         </div>
       </div>
-      <img class="bp-img" src="img/p0001.png" alt="Bongard Problem" style="max-height: 350px; width: auto;">
+	    <div id="image-container" class="image-container">
+	        <div id="pls-wait" class="pls-wait">Image loading...</div>
+	        <img id='bp-img' class="bp-img" src="img/p0001.png" alt="a visual logic problem" style="max-height: 350px; width: auto;"/>
+	    </div>   
       <p class="example-instruction-text">&nbsp;</p>
     </div>
     <form id="jspsych-survey-text-form" autocomplete="off">

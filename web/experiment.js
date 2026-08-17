@@ -60,6 +60,8 @@ let exampleTrial = {
         setupRightHandDiv(isExample=true, tid, 1);
         setupInstructionMC();
         setupExampleTabs(true);
+        testImgLoading();
+
     },
     on_finish: function() {
         let responseObj = jsPsych.data.get().last(1).trials[0].response;
@@ -92,6 +94,7 @@ let exampleTrial2 = {
         // Candidate rules stuff
         generateTable(1);  // candidate rules table
         setupExampleTabs(true);  // candidate rules tabs
+        testImgLoading();
     }
 };
 timeline.push(exampleTrial2);
@@ -141,8 +144,11 @@ for (let block of selectedBlock) {
             </div>
             <h3>Task ${imgno - 1}</h3>
             ${trialText.LabelsText}
-            <img class='bp-img' src='img/p${imgstr}.png'/>
-        `;
+            <div id="image-container" class="image-container">
+                <div id="pls-wait" class="pls-wait">Image loading...</div>
+                <img id='bp-img' class="bp-img" src="img/p${imgstr}.png" alt="a visual logic problem" style="max-height: 350px; width: auto;"/>
+            </div>        
+            `;
 
         let sideboxVal = null;
         if (tid === 'wcr') {  
@@ -173,6 +179,8 @@ for (let block of selectedBlock) {
                 setupTrialButtons();   // function defined in skip-button.js
                 setupHelpButton();     // function defined in skip-button.js
                 setupFooter(trialText.contactEmailValue);
+                testImgLoading();
+
             },
             on_finish: handleTrialFinish
         }
