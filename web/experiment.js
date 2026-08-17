@@ -60,7 +60,7 @@ let exampleTrial = {
         setupRightHandDiv(isExample=true, tid, 1);
         setupInstructionMC();
         setupExampleTabs(true);
-        testImgLoading();
+        testImgLoading('example img');
 
     },
     on_finish: function() {
@@ -94,7 +94,7 @@ let exampleTrial2 = {
         // Candidate rules stuff
         generateTable(1);  // candidate rules table
         setupExampleTabs(true);  // candidate rules tabs
-        testImgLoading();
+        testImgLoading('example 2 img');
     }
 };
 timeline.push(exampleTrial2);
@@ -137,12 +137,13 @@ for (let block of selectedBlock) {
     for (let imgno of block.conditions[0]) {
         let imagenostr = '000'+imgno;
         let imgstr = imagenostr.slice(-4);  // trim the zero-padded string to 4 chars
+        let task_no = imgno-1;
 
         let trialPreamble = `
             <div class="trial-countdown-wrapper">
                 Time remaining: <span id="trial-countdown">--:--</span>
             </div>
-            <h3>Task ${imgno - 1}</h3>
+            <h3>Task ${task_no}</h3>
             ${trialText.LabelsText}
             <div id="image-container" class="image-container">
                 <div id="pls-wait" class="pls-wait">Image loading...</div>
@@ -179,7 +180,7 @@ for (let block of selectedBlock) {
                 setupTrialButtons();   // function defined in skip-button.js
                 setupHelpButton();     // function defined in skip-button.js
                 setupFooter(trialText.contactEmailValue);
-                testImgLoading();
+                testImgLoading(task_no);
 
             },
             on_finish: handleTrialFinish

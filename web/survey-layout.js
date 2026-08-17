@@ -62,15 +62,13 @@ function moveContinueButton() {
 }
 
 
-function testImgLoading() {
+function testImgLoading(task_number) {
     const container = document.getElementById('image-container');
 
     function triggerEvent() {  // action to take on img load
         setTimeout(() => {
             container.classList.add('is-loaded')  
         }, 300);
-
-        
     }    
 
     const img = document.getElementById('bp-img');
@@ -78,10 +76,11 @@ function testImgLoading() {
     if (img && img.complete && img.naturalWidth !== 0) {
         // Trigger immediately if already loaded
         triggerEvent();
+        console.log('already loaded -',task_number)
     } else {
         // Wait for the load event and then trigger
         img.addEventListener('load', triggerEvent, { once: true });
-        console.log('waited for load - now loaded')
+        console.log('waited for load -',task_number,'now loaded')
 
         // Error handling
         // img.addEventListener('error', () => {

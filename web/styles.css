@@ -135,6 +135,8 @@
 
 .image-container {
   position: relative;
+  height: 350px;
+  width: 554px;
   display: inline-block;
 }
 .image-container img {
