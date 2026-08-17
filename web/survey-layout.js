@@ -63,6 +63,56 @@ function moveContinueButton() {
 
 
 function testImgLoading(task_number) {
+    console.log('test triggered');
+    const container = document.getElementById('image-container');
+
+    // function triggerEvent() {  // action to take on img load
+    //     setTimeout(() => {
+    //         container.classList.add('is-loaded')  
+    //     }, 300);
+    // }    
+
+    const img = document.getElementById('bp-img');
+
+    const handleImageLoad = () => {
+        console.log('handler triggered for task', task_number);
+        container.classList.remove('is-loading');
+        setTimeout(() => {
+            container.classList.add('is-loaded')  
+        }, 2000);        
+        img.removeEventListener('load', handleImageLoad)
+    }
+
+
+    if ( !img.complete ) {
+        console.log('not complete when tested - add listener for task', task_number, 'via handler');
+        img.addEventListener('load', handleImageLoad);
+        img.addEventListener('error', handleImageLoad);
+    } else {
+        console.log(task_number, 'is complete when tested');
+        handleImageLoad();
+    }
+
+
+    // if (img && img.complete && img.naturalWidth !== 0) {
+    //     // Trigger immediately if already loaded
+    //     triggerEvent();
+    //     console.log('already loaded -',task_number)
+    // } else {
+    //     // Wait for the load event and then trigger
+    //     img.addEventListener('load', triggerEvent, { once: true });
+    //     console.log('waited for load -',task_number,'now loaded')
+
+    //     // Error handling
+    //     // img.addEventListener('error', () => {
+    //     //     console.error('Error: The image failed to load.');
+    //     // }, { once: true });
+    // } 
+}
+
+
+
+function testImgLoading_old(task_number) {
     const container = document.getElementById('image-container');
 
     function triggerEvent() {  // action to take on img load
