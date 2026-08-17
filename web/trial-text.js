@@ -1,5 +1,6 @@
 let trialText = {
-	contactEmailValue: `experiment@synergy.trx.li`,
+	contactEmailValue1: `experiment@synergy.trx.li`,
+	contactEmailValue: `b.j.m.wilson@swansea.ac.uk`,
 	
 	introductionTextPart1: `
 		<div class="intro-container">
