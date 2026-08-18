@@ -65,6 +65,7 @@ function moveContinueButton() {
 function testImgLoading(task_number) {
     console.log('  ** Test triggered');
     const container = document.getElementById('image-container');
+    const continueBtn = document.getElementById('jspsych-survey-text-next'); // for errors
 
     const img = document.getElementById('bp-img');
 
@@ -77,6 +78,7 @@ function testImgLoading(task_number) {
                 console.log('success loading img, task', task_number);
             } else if (event.type=='error') {
                 console.log(event.type, 'for task', task_number);
+                continueBtn.click():
             }
         } else {
             console.log('event undefined in handler, task', task_number);
