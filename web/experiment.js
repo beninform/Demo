@@ -175,7 +175,7 @@ for (let block of selectedBlock) {
             },
             sidebox: sideboxVal, 
             on_start: function() {
-                cosole.log(block.title);
+                console.log(block.title);
             },
             on_load: function() {
                 setupSurveyLayout();
