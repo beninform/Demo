@@ -194,7 +194,7 @@ for (let block of selectedBlock) {
                 setupTrialButtons();   // function defined in skip-button.js
                 setupHelpButton();     // function defined in skip-button.js
                 setupFooter(trialText.contactEmailValue);
-                // testImgLoading(task_no);
+                // testImgLoading(task_no); // now unused
 
             },
             on_finish: handleTrialFinish
@@ -202,10 +202,6 @@ for (let block of selectedBlock) {
         
         timeline.push(inputTrial);
 
-        // let results = jsPsych.data
-        //     .get()
-        //     .ignore('preamble')
-        //     .csv();
     }
 }
 

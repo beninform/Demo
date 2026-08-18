@@ -109,38 +109,26 @@ function updateCountdownDisplay() {
 }
 
 
-
-
-
 function startTimer() {
-
     const countdownDisplay = document.getElementById('trial-countdown');
-
     if (!window.isTrialActive) return;
     const startTime = Date.now();
-
     const skipBtn = document.getElementById('skip-btn');
-
     window.trialTimer = setInterval(() => {
         if (!window.isTrialActive || !document.getElementById('trial-countdown')) {
             clearInterval(window.trialTimer);
             return;
         }
-
         const secondsElapsed = Math.floor((Date.now() - startTime) / 1000);
-
         skipLockTime = Math.max(0, startSkipLock - secondsElapsed);
         totalTrialTime = Math.max(0, startTotalTime - secondsElapsed);
-
         if (skipLockTime > 0) {
             skipBtn.innerText = `Skip (${skipLockTime}s)`;
         } else {
             skipBtn.disabled = false;
             skipBtn.innerText = 'Skip';
         }
-
         updateCountdownDisplay();
-        
         if (totalTrialTime <= 0) {
             clearInterval(window.trialTimer);
             handleTimeout();
@@ -219,18 +207,10 @@ function setupTrialButtons() {
     continueBtn.parentNode.insertBefore(btnContainer, continueBtn);
     btnContainer.appendChild(continueBtn);
     btnContainer.appendChild(skipBtn);
-
-    // let skipLockTime = 10;
-    // let totalTrialTime = 150;
-
-    // const startSkipLock = skipLockTime;
-    // const startTotalTime = totalTrialTime;
     
     continueBtn.disabled = true;
     skipBtn.disabled = true;
     skipBtn.innerText = `Skip (${skipLockTime}s)`;
-
-
 
     function checkTextRequirement() {
         const hasEnoughText = Array.from(textAreas).every(t => t.value.trim().length >= 3);
@@ -247,72 +227,6 @@ function setupTrialButtons() {
 
     updateCountdownDisplay();
     checkTextRequirement();
-
-    // function startTimer() {
-    //     if (!window.isTrialActive) return;
-    //     const startTime = Date.now();
-
-    //     window.trialTimer = setInterval(() => {
-    //         if (!window.isTrialActive || !document.getElementById('trial-countdown')) {
-    //             clearInterval(window.trialTimer);
-    //             return;
-    //         }
-
-    //         const secondsElapsed = Math.floor((Date.now() - startTime) / 1000);
-
-    //         skipLockTime = Math.max(0, startSkipLock - secondsElapsed);
-    //         totalTrialTime = Math.max(0, startTotalTime - secondsElapsed);
-
-    //         if (skipLockTime > 0) {
-    //             skipBtn.innerText = `Skip (${skipLockTime}s)`;
-    //         } else {
-    //             skipBtn.disabled = false;
-    //             skipBtn.innerText = 'Skip';
-    //         }
-
-    //         updateCountdownDisplay();
-            
-    //         if (totalTrialTime <= 0) {
-    //             clearInterval(window.trialTimer);
-    //             handleTimeout();
-    //         }
-    //     }, 1000);
-    // }
-
-
-
-
-    // function handleTimeout() {
-    //     if (!window.isTrialActive) return;
-
-    //     window.numTimeouts = (window.numTimeouts || 0) + 1;
-    //     window.timeoutTrial = true;
-
-    //     const skipPopup = document.getElementById('skip-confirm-popup');
-    //     if (skipPopup) skipPopup.remove();
-
-    //     const popupHTML = trialText.timeoutPopup;
-    //     document.body.insertAdjacentHTML('beforeend', popupHTML);
-
-    //     textAreas.forEach(field => { field.disabled = true; });
-
-    //     setTimeout(() => {
-    //         if (!window.isTrialActive) return;
-    //         const popup = document.querySelector('.timeout-popup-overlay');
-    //         if (popup) popup.remove();
-
-    //         textAreas.forEach(field => field.required = false); 
-    //         continueBtn.disabled = false; 
-    //         continueBtn.click();
-    //     }, 2000);
-    // }
-    
-
-    // if (bpImg.complete) {
-    //     startTimer();
-    // } else {
-    //     bpImg.addEventListener('load', startTimer);
-    // }
 
     continueBtn.addEventListener('click', () => {
         clearInterval(window.trialTimer);
@@ -603,9 +517,6 @@ function handleTrialFinish(data) {
 }
 
 
-// NB - finalizeSession() function moved to data-save.js file
-
-
 // Function to show the skip button after 1 minute (60,000 ms)
 function showSkipButton() {
 	const skipBtn = document.getElementById('skipBtn');
@@ -674,26 +585,6 @@ function getFormattedTimestamp() {
            String(now.getMinutes()).padStart(2, '0') + ":" +
            String(now.getSeconds()).padStart(2, '0');
        };
-
-// function insertTimeInBlanks() {
-//     const textarea0 = document.getElementById('input-0');
-//     const textarea1 = document.getElementById('input-1');
-
-//     let ts = getFormattedTimestamp();
-//     console.log('ts', ts);
-
-//     // Check if textarea is empty or only whitespace
-//     if (textarea0.value.trim() === "") {
-//         textarea0.value = 'skipped ' + ts;
-//     } else {
-//         textarea0.value += ' skipped ' + ts;
-//     }
-//     if (textarea1.value.trim() === "") {
-//         textarea1.value = 'skipped ' + ts;
-//     } else {
-//         textarea1.value += ' skipped ' + ts;
-//     };
-// };
 
 
 function setContactEmail(email_string) {
