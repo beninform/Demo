@@ -54,6 +54,65 @@ function setupSurveyLayout() {
 
 };
 
+// // should run once per block
+// function preloadImages(block) {
+//     console.log(block.title);
+//     const imageNumbers = block.conditions[0];
+//     const imageFilenames = [];
+//     const imageSources = [];
+
+//     // iterate the block bps to generate filenames array
+//     imageNumbers.forEach(bpno => {
+//         // console.log('psh', psh);
+//         // console.log('bpno', bpno);
+//         let imageIndex = bpno-1-psh-1;
+//         // console.log('index:', imageIndex);
+//         let imagenostr = '000'+bpno;
+//         let imgstr = imagenostr.slice(-4);  // trim the zero-padded string to 4 chars
+//         let filename = 'p'+imgstr+'.png';
+//         // let filepath = 'img/'+filename;
+//         let task_no = bpno-1;
+//         // console.log('task', task_no);
+//         imageFilenames.push(filename);
+//         // console.log(imageFilenames[imageIndex]);
+//         // console.log('---');
+
+//         const img = new Image();
+//         console.log('srcs', 'img/'+filename);
+//         img.src = 'img/'+filename;
+//         imageSources.push(img);
+//     })
+//     // window.imageSources = imageFilenames;
+//     window.imageSources = imageSources;
+//     console.log('image sources', imageSources);
+// }
+
+// // should run once per bp
+// function loadSurveyQuestionImage(imgno) {
+//     const imageIndex = imgno-psh-2;
+//     const imageUrl = window.imageSources[imageIndex];
+//     console.log('load url', imageUrl);
+
+//     const imgContainer = document.getElementById('image-container');
+//     const imgEl = document.createElement('img');
+//     imgEl.id = 'pimg'; // for preloaded image (no css yet)
+//     // add other attributes to img (eg, size, style display: none)
+//     imgContainer.appendChild(imgEl);
+//     setTimeout(() => {
+//         imgEl.src = imageUrl.src
+//         imgEl.style.display = "block";        
+//     }, 400);
+
+
+    // if (imgEl.complete) {
+    //     startTimer();
+    // } else {
+    //     imgEl.addEventListener('load', startTimer);
+    // }
+
+
+// } 
+
 
 function moveContinueButton() {
     const buttonGroup = document.getElementById("jspsych-html-button-response-btngroup");

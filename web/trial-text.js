@@ -1,7 +1,22 @@
 let trialText = {
 	contactEmailValue1: `experiment@synergy.trx.li`,
 	contactEmailValue: `b.j.m.wilson@swansea.ac.uk`,
-	
+	noticeText:`
+		<h1>&nbsp;</h1>
+		<h1>&nbsp;</h1>
+		<h1>&nbsp;</h1>
+		<h1>Notice to Pilot Users</h1>
+		<h1>&nbsp;</h1>
+		<p>I am currently carrying out some tests in the live site</p> 
+		<p>(since the local development site does not reproduce problems with image loading).</p>
+		<p>&nbsp;</p>
+		<p>I can restore the intro and tutorial pages relatively quickly.</p>
+		<p>If you drop me an email or msg while this page is showing,</p> 
+		<p>I can probably restore for you in minutes.</p>
+		<p>&nbsp;</p>
+		<p>Ben</p>
+
+		`,
 	introductionTextPart1: `
 		<div class="intro-container">
 			<div class="logo-container">
@@ -332,7 +347,7 @@ let trialText = {
 		<div class="timeout-popup-overlay">
 			<div class="timeout-popup-content">
 				<h3>Time for this task has run out!</h3>
-				<p>You will be sent to the next page.</p>
+				<p>You will be sent to the next task.</p>
 				<div class="spinner"></div>
 			</div>
 		</div>

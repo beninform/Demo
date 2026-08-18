@@ -1,3 +1,9 @@
+let skipLockTime = 10;
+let totalTrialTime = 15;  // 150
+
+const startSkipLock = skipLockTime;
+const startTotalTime = totalTrialTime;
+
 // setup for the attention check boxes
 function setupInstructionMC() {
     const btn = document.querySelector('.jspsych-btn');
@@ -93,13 +99,112 @@ function setupInstructionMC() {
     });
 }
 
+
+
+function updateCountdownDisplay() {
+    const countdownDisplay = document.getElementById('trial-countdown');
+    const mins = String(Math.floor(totalTrialTime / 60)).padStart(2, '0');
+    const secs = String(totalTrialTime % 60).padStart(2, '0');
+    countdownDisplay.innerText = `${mins}:${secs}`;
+}
+
+
+
+
+
+function startTimer() {
+
+    const countdownDisplay = document.getElementById('trial-countdown');
+
+    if (!window.isTrialActive) return;
+    const startTime = Date.now();
+
+    const skipBtn = document.getElementById('skip-btn');
+
+    window.trialTimer = setInterval(() => {
+        if (!window.isTrialActive || !document.getElementById('trial-countdown')) {
+            clearInterval(window.trialTimer);
+            return;
+        }
+
+        const secondsElapsed = Math.floor((Date.now() - startTime) / 1000);
+
+        skipLockTime = Math.max(0, startSkipLock - secondsElapsed);
+        totalTrialTime = Math.max(0, startTotalTime - secondsElapsed);
+
+        if (skipLockTime > 0) {
+            skipBtn.innerText = `Skip (${skipLockTime}s)`;
+        } else {
+            skipBtn.disabled = false;
+            skipBtn.innerText = 'Skip';
+        }
+
+        updateCountdownDisplay();
+        
+        if (totalTrialTime <= 0) {
+            clearInterval(window.trialTimer);
+            handleTimeout();
+        }
+    }, 1000);
+}
+
+
+// should run once per block
+function preloadImages(block) {
+    console.log(block.title);
+    const imageNumbers = block.conditions[0];
+    const imageFilenames = [];
+    const imageSources = [];
+
+    // iterate the block bps to generate filenames array
+    imageNumbers.forEach(bpno => {
+        // console.log('psh', psh);
+        // console.log('bpno', bpno);
+        let imageIndex = bpno-1-psh-1;
+        // console.log('index:', imageIndex);
+        let imagenostr = '000'+bpno;
+        let imgstr = imagenostr.slice(-4);  // trim the zero-padded string to 4 chars
+        let filename = 'p'+imgstr+'.png';
+        // let filepath = 'img/'+filename;
+        let task_no = bpno-1;
+        // console.log('task', task_no);
+        imageFilenames.push(filename);
+        // console.log(imageFilenames[imageIndex]);
+        // console.log('---');
+
+        const img = new Image();
+        img.src = 'img/'+filename;
+        imageSources.push(img);
+    })
+    // window.imageSources = imageFilenames;
+    window.imageSources = imageSources;
+}
+
+// should run once per bp
+function loadSurveyQuestionImage(imgno) {
+    const imageIndex = imgno-psh-2;
+    const imageUrl = window.imageSources[imageIndex];
+    const imgContainer = document.getElementById('image-container');
+    const imgEl = document.createElement('img');
+    imgEl.id = 'pimg'; // for preloaded image (no css yet)
+    // add other attributes to img (eg, size, style display: none)
+    imgContainer.appendChild(imgEl);
+    setTimeout(() => {
+        imgEl.src = imageUrl.src
+        imgEl.style.display = "block";   
+        startTimer(); 
+    }, 400);
+}
+
+
 // setup continue and skip buttons 
 function setupTrialButtons() {
     window.isTrialActive = true;
     const continueBtn = document.getElementById('jspsych-survey-text-next');
     const textAreas = document.querySelectorAll('textarea');
     const countdownDisplay = document.getElementById('trial-countdown');
-    const bpImg = document.querySelector('.bp-img');
+    // const bpImg = document.querySelector('.bp-img');
+    const bpImg = document.querySelector('.pimg');
 
     continueBtn.value = 'Submit';
 
@@ -115,21 +220,17 @@ function setupTrialButtons() {
     btnContainer.appendChild(continueBtn);
     btnContainer.appendChild(skipBtn);
 
-    let skipLockTime = 10;
-    let totalTrialTime = 150;
+    // let skipLockTime = 10;
+    // let totalTrialTime = 150;
 
-    const startSkipLock = skipLockTime;
-    const startTotalTime = totalTrialTime;
+    // const startSkipLock = skipLockTime;
+    // const startTotalTime = totalTrialTime;
     
     continueBtn.disabled = true;
     skipBtn.disabled = true;
     skipBtn.innerText = `Skip (${skipLockTime}s)`;
 
-    function updateCountdownDisplay() {
-        const mins = String(Math.floor(totalTrialTime / 60)).padStart(2, '0');
-        const secs = String(totalTrialTime % 60).padStart(2, '0');
-        countdownDisplay.innerText = `${mins}:${secs}`;
-    }
+
 
     function checkTextRequirement() {
         const hasEnoughText = Array.from(textAreas).every(t => t.value.trim().length >= 3);
@@ -147,67 +248,71 @@ function setupTrialButtons() {
     updateCountdownDisplay();
     checkTextRequirement();
 
-    function startTimer() {
-        if (!window.isTrialActive) return;
-        const startTime = Date.now();
+    // function startTimer() {
+    //     if (!window.isTrialActive) return;
+    //     const startTime = Date.now();
 
-        window.trialTimer = setInterval(() => {
-            if (!window.isTrialActive || !document.getElementById('trial-countdown')) {
-                clearInterval(window.trialTimer);
-                return;
-            }
+    //     window.trialTimer = setInterval(() => {
+    //         if (!window.isTrialActive || !document.getElementById('trial-countdown')) {
+    //             clearInterval(window.trialTimer);
+    //             return;
+    //         }
 
-            const secondsElapsed = Math.floor((Date.now() - startTime) / 1000);
+    //         const secondsElapsed = Math.floor((Date.now() - startTime) / 1000);
 
-            skipLockTime = Math.max(0, startSkipLock - secondsElapsed);
-            totalTrialTime = Math.max(0, startTotalTime - secondsElapsed);
+    //         skipLockTime = Math.max(0, startSkipLock - secondsElapsed);
+    //         totalTrialTime = Math.max(0, startTotalTime - secondsElapsed);
 
-            if (skipLockTime > 0) {
-                skipBtn.innerText = `Skip (${skipLockTime}s)`;
-            } else {
-                skipBtn.disabled = false;
-                skipBtn.innerText = 'Skip';
-            }
+    //         if (skipLockTime > 0) {
+    //             skipBtn.innerText = `Skip (${skipLockTime}s)`;
+    //         } else {
+    //             skipBtn.disabled = false;
+    //             skipBtn.innerText = 'Skip';
+    //         }
 
-            updateCountdownDisplay();
+    //         updateCountdownDisplay();
             
-            if (totalTrialTime <= 0) {
-                clearInterval(window.trialTimer);
-                handleTimeout();
-            }
-        }, 1000);
-    }
+    //         if (totalTrialTime <= 0) {
+    //             clearInterval(window.trialTimer);
+    //             handleTimeout();
+    //         }
+    //     }, 1000);
+    // }
 
-    function handleTimeout() {
-        if (!window.isTrialActive) return;
 
-        window.numTimeouts = (window.numTimeouts || 0) + 1;
-        window.timeoutTrial = true;
 
-        const skipPopup = document.getElementById('skip-confirm-popup');
-        if (skipPopup) skipPopup.remove();
 
-        const popupHTML = trialText.timeoutPopup;
-        document.body.insertAdjacentHTML('beforeend', popupHTML);
+    // function handleTimeout() {
+    //     if (!window.isTrialActive) return;
 
-        textAreas.forEach(field => { field.disabled = true; });
+    //     window.numTimeouts = (window.numTimeouts || 0) + 1;
+    //     window.timeoutTrial = true;
 
-        setTimeout(() => {
-            if (!window.isTrialActive) return;
-            const popup = document.querySelector('.timeout-popup-overlay');
-            if (popup) popup.remove();
+    //     const skipPopup = document.getElementById('skip-confirm-popup');
+    //     if (skipPopup) skipPopup.remove();
 
-            textAreas.forEach(field => field.required = false); 
-            continueBtn.disabled = false; 
-            continueBtn.click();
-        }, 2000);
-    }
+    //     const popupHTML = trialText.timeoutPopup;
+    //     document.body.insertAdjacentHTML('beforeend', popupHTML);
+
+    //     textAreas.forEach(field => { field.disabled = true; });
+
+    //     setTimeout(() => {
+    //         if (!window.isTrialActive) return;
+    //         const popup = document.querySelector('.timeout-popup-overlay');
+    //         if (popup) popup.remove();
+
+    //         textAreas.forEach(field => field.required = false); 
+    //         continueBtn.disabled = false; 
+    //         continueBtn.click();
+    //     }, 2000);
+    // }
     
-    if (bpImg.complete) {
-        startTimer();
-    } else {
-        bpImg.addEventListener('load', startTimer);
-    }
+
+    // if (bpImg.complete) {
+    //     startTimer();
+    // } else {
+    //     bpImg.addEventListener('load', startTimer);
+    // }
 
     continueBtn.addEventListener('click', () => {
         clearInterval(window.trialTimer);
@@ -259,6 +364,37 @@ function setupTrialButtons() {
         });
     });
 }
+
+
+
+function handleTimeout() {
+    if (!window.isTrialActive) return;
+    const textAreas = document.querySelectorAll('textarea');
+    const continueBtn = document.getElementById('jspsych-survey-text-next');
+
+    window.numTimeouts = (window.numTimeouts || 0) + 1;
+    window.timeoutTrial = true;
+
+    const skipPopup = document.getElementById('skip-confirm-popup');
+    if (skipPopup) skipPopup.remove();
+
+    const popupHTML = trialText.timeoutPopup;
+    document.body.insertAdjacentHTML('beforeend', popupHTML);
+
+    textAreas.forEach(field => { field.disabled = true; });
+
+    setTimeout(() => {
+        if (!window.isTrialActive) return;
+        const popup = document.querySelector('.timeout-popup-overlay');
+        if (popup) popup.remove();
+
+        textAreas.forEach(field => field.required = false); 
+        continueBtn.disabled = false; 
+        continueBtn.click();
+    }, 2000);
+}
+
+
 
 // setup tabs for the RH page (instructions and candidate rules)
 function setupExampleTabs(isExample = true) {

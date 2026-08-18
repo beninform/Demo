@@ -20,6 +20,14 @@ if (pid === 'pia') {
 let userResponseA = '';  // global variable for last A response
 let userResponseB = '';  // global variable for last B response
 
+
+let noticeTrial = {
+    type: jsPsychHtmlButtonResponse,
+    stimulus: trialText.noticeText,
+    choices: ['Continue']
+};
+timeline.push(noticeTrial);
+
 let welcomeTrial = {
     type: jsPsychHtmlButtonResponse,
     stimulus: pid == 'pib' ? trialText.introductionTextParts23 : trialText.introductionTextPart1,
@@ -147,8 +155,9 @@ for (let block of selectedBlock) {
             <h3>Task ${task_no}</h3>
             ${trialText.LabelsText}
             <div id="image-container" class="image-container">
-                <div id="pls-wait" class="pls-wait">Image loading...</div>
+                <!-- div id="pls-wait" class="pls-wait">Image loading...</div>
                 <img id='bp-img' class="bp-img" src="img/p${imgstr}.png" alt="a visual logic problem" style="max-height: 350px; width: auto;"/>
+                <img id='bp-img' class="bp-img" src="img/p${imgstr}.png" alt="a visual logic problem" style="max-height: 350px; width: auto;"/ -->
             </div>        
             `;
 
@@ -175,18 +184,17 @@ for (let block of selectedBlock) {
             },
             sidebox: sideboxVal, 
             on_start: function() {
-                console.log(block.title);
-                window.imageSources = block.conditions[0];
-                console.log(imageSources);
+                preloadImages(block);
             },
             on_load: function() {
                 setupSurveyLayout();
+                loadSurveyQuestionImage(imgno);
                 setupRightHandDiv(isExample=false, tid, imgno);
                 setupExampleTabs(false);  // is not example page
                 setupTrialButtons();   // function defined in skip-button.js
                 setupHelpButton();     // function defined in skip-button.js
                 setupFooter(trialText.contactEmailValue);
-                testImgLoading(task_no);
+                // testImgLoading(task_no);
 
             },
             on_finish: handleTrialFinish
