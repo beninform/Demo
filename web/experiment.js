@@ -176,7 +176,7 @@ for (let block of selectedBlock) {
             sidebox: sideboxVal, 
             on_start: function() {
                 console.log(block.title);
-                window.imageSources = block.conditions;
+                window.imageSources = block.conditions[0];
                 console.log(imageSources);
             },
             on_load: function() {
