@@ -174,6 +174,9 @@ for (let block of selectedBlock) {
                 blockId: block.title,
             },
             sidebox: sideboxVal, 
+            on_start: function() {
+                cosole.log(block.title);
+            },
             on_load: function() {
                 setupSurveyLayout();
                 setupRightHandDiv(isExample=false, tid, imgno);
