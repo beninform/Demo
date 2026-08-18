@@ -1,5 +1,5 @@
 let skipLockTime = 10;
-let totalTrialTime = 15;  // 150
+let totalTrialTime = 150;  // 150
 
 const startSkipLock = skipLockTime;
 const startTotalTime = totalTrialTime;
