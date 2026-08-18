@@ -402,6 +402,26 @@ let trialText = {
 			The session is now over. You can close this tab.</p>
 		</div>
 	`,
+	waitForSaving: `
+	<div class="final-text-container">
+		<div class="logo-container">
+			<div class="logo-left">
+				<img src="logos/tuda_logo.png" alt="Institution Logo 1" style="max-height: 80px; width: auto;">
+			</div>
+			<div class="logo-center">
+				<img src="logos/swansea_logo.png" alt="Institution Logo 2" style="max-height: 80px; width: auto;">
+			</div>
+			<div class="logo-right">
+				<img src="logos/tango_logo.png" alt="Institution Logo 3" style="max-height: 80px; width: auto;">
+			</div>
+		</div>        
+		<h1>Thank you - please wait...</h1>
+    <p>We are saving your answers.</p>
+    <p>We are most grateful for your contribution to this study.</p>
+    <p>Please don't navigate away from this page while we send results to the server.</p>
+    <p>Please don't close the tab or window until saving is complete.</p>
+	</div>
+		`,
 	finalTextPart1:`
 	<div class="final-text-container">
 		<div class="logo-container">

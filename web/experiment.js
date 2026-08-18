@@ -213,13 +213,7 @@ let resultsTrial = {
     type: jsPsychHtmlKeyboardResponse,
     choices: ['NO KEYS'],
     async: false,
-    stimulus: `
-        <h1>Thank you - please wait...</h1>
-        <p>We are saving your answers.</p>
-        <p>We are most grateful for your contribution to this study.</p>
-        <p>Please don't navigate away from this page while we send results to the server.</p>
-        <p>Please don't close the tab or window until saving is complete.</p>
-        `,
+    stimulus: trialText.waitForSaving,
     on_start: function() { 
         finalizeSession('NORMAL');  // function defined in data-save.js
         }
