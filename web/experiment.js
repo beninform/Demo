@@ -60,7 +60,7 @@ let exampleTrial = {
         setupRightHandDiv(isExample=true, tid, 1);
         setupInstructionMC();
         setupExampleTabs(true);
-        testImgLoading('example img');
+        // testImgLoading('example img');
 
     },
     on_finish: function() {
@@ -94,7 +94,7 @@ let exampleTrial2 = {
         // Candidate rules stuff
         generateTable(1);  // candidate rules table
         setupExampleTabs(true);  // candidate rules tabs
-        testImgLoading('example 2 img');
+        // testImgLoading('example 2 img');
     }
 };
 timeline.push(exampleTrial2);
@@ -180,7 +180,7 @@ for (let block of selectedBlock) {
                 setupTrialButtons();   // function defined in skip-button.js
                 setupHelpButton();     // function defined in skip-button.js
                 setupFooter(trialText.contactEmailValue);
-                testImgLoading(task_no);
+                // testImgLoading(task_no);
 
             },
             on_finish: handleTrialFinish
