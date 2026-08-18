@@ -61,7 +61,7 @@ let exampleTrial = {
         setupRightHandDiv(isExample=true, tid, 1);
         setupInstructionMC();
         setupExampleTabs(true);
-        // testImgLoading('example img');
+        testImgLoading('example img');
 
     },
     on_finish: function() {
@@ -95,7 +95,7 @@ let exampleTrial2 = {
         // Candidate rules stuff
         generateTable(1);  // candidate rules table
         setupExampleTabs(true);  // candidate rules tabs
-        // testImgLoading('example 2 img');
+        testImgLoading('example 2 img');
     }
 };
 timeline.push(exampleTrial2);
