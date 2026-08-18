@@ -63,32 +63,32 @@ function moveContinueButton() {
 
 
 function testImgLoading(task_number) {
-    console.log('test triggered');
+    console.log('  ** Test triggered');
     const container = document.getElementById('image-container');
 
     const img = document.getElementById('bp-img');
 
     const handleImageLoad = (event) => {
-        console.log('handler triggered for task', task_number);
-        container.classList.remove('is-loading');
         setTimeout(() => {  
             container.classList.add('is-loaded')  
         }, 100);  // allows visibility of loading UX behaviour in (fast) localhost
-        if (event=='load') {
-            console.log('success loading');
-        } else if (event=='error') {
-            console.log(event)
+        if (event) {
+            if (event.type=='load') {
+                console.log('success loading img, task', task_number);
+            } else if (event.type=='error') {
+                console.log(event.type, 'for task', task_number);
+            }
+        } else {
+            console.log('event undefined in handler, task', task_number);
         }
-        img.removeEventListener('load', handleImageLoad)
     }
 
     if ( !img.complete ) {
-        console.log('not complete when tested - add listener for task', task_number, 'via handler');
         img.addEventListener('load', handleImageLoad);
         img.addEventListener('error', handleImageLoad);
     } else {
-        console.log(task_number, 'is complete when tested');
-        handleImageLoad();
+        console.log(task_number, 'img complete when tested');
+        container.classList.add('is-loaded');
     }
 }
 
