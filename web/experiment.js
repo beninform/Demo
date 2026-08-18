@@ -108,6 +108,9 @@ let exampleTrial2 = {
 };
 timeline.push(exampleTrial2);
 
+// // truncate the timeline so it starts only with the core trials
+// timeline = [];
+
 
 // iterate the current array of blocks (called selectedBlock), show an intro, then get into the BPs
 for (let block of selectedBlock) {
@@ -188,7 +191,7 @@ for (let block of selectedBlock) {
             },
             on_load: function() {
                 setupSurveyLayout();
-                loadSurveyQuestionImage(imgno);
+                loadSurveyQuestionImage(block, imgno);
                 setupRightHandDiv(isExample=false, tid, imgno);
                 setupExampleTabs(false);  // is not example page
                 setupTrialButtons();   // function defined in skip-button.js

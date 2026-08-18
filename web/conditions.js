@@ -17,14 +17,19 @@ let imgnos_c = Array.from({ length: blockSize }, (_, i) => i+33+33+2+prob_shift)
 let blocks = [
     {
         title: 'Session 1',
-        conditions: [imgnos_a]
+        conditions: [imgnos_a],
+        ID: 1
     },
     {
         title: 'Session 2 - Part 1',
-        conditions: [imgnos_b]
+        conditions: [imgnos_b],
+        ID: 2
     },
     {
         title: 'Session 2 - Part 2',
-        conditions: [imgnos_c]
+        conditions: [imgnos_c],
+        ID: 3
     }
 ];
+
+console.log('imgnos_b', imgnos_b);

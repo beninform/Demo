@@ -148,7 +148,15 @@ function preloadImages(block) {
     imageNumbers.forEach(bpno => {
         // console.log('psh', psh);
         // console.log('bpno', bpno);
-        let imageIndex = bpno-1-psh-1;
+        // console.log('psh', psh);
+        let imageIndex = 0;  // initialise
+        if (block.ID==1) {
+            imageIndex = bpno-1-psh-1;
+        } else if (block.ID==2) {
+            imageIndex = bpno-33-1-psh-1;
+        } else if (block.ID==3) {
+            imageIndex = bpno-33-33-1-psh-1;
+        }
         // console.log('index:', imageIndex);
         let imagenostr = '000'+bpno;
         let imgstr = imagenostr.slice(-4);  // trim the zero-padded string to 4 chars
@@ -156,7 +164,9 @@ function preloadImages(block) {
         // let filepath = 'img/'+filename;
         let task_no = bpno-1;
         // console.log('task', task_no);
+        // console.log('filename', filename);
         imageFilenames.push(filename);
+        // console.log(imageFilenames);
         // console.log(imageFilenames[imageIndex]);
         // console.log('---');
 
@@ -169,9 +179,18 @@ function preloadImages(block) {
 }
 
 // should run once per bp
-function loadSurveyQuestionImage(imgno) {
-    const imageIndex = imgno-psh-2;
+function loadSurveyQuestionImage(block, imgno) {
+    // console.log('---', block.ID);
+    let imageIndex = 0;  // initialise
+    if (block.ID==1) {
+        imageIndex = imgno-psh-2;
+    } else if (block.ID==2) {
+        imageIndex = imgno-33-psh-2;
+    } else if (block.ID==3) {
+        imageIndex = imgno-33-33-psh-2;
+    }
     const imageUrl = window.imageSources[imageIndex];
+    // console.log('imageUrl', imageUrl);
     const imgContainer = document.getElementById('image-container');
     const imgEl = document.createElement('img');
     imgEl.id = 'pimg'; // for preloaded image (no css yet)
