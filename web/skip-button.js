@@ -555,8 +555,11 @@ function insertParaTextTim(my_var, para_id, bsz) {
 function insertPrevResponses(previousA, previousB) {
     const respA = document.getElementById('input-0');
     const respB = document.getElementById('input-1');
+    respA.setAttribute('style', 'background-color: #D4D4D8; border: 0px;');
+    respB.setAttribute('style', 'background-color: #D4D4D8; border: 0px;');
     respA.value = previousA;
     respB.value = previousB;
+
 
 };
 

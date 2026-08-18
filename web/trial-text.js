@@ -220,7 +220,7 @@ let trialText = {
 	        <div id="pls-wait" class="pls-wait">Image loading...</div>
 	        <img id='bp-img' class="bp-img" src="img/p0001.png" alt="a visual logic problem" style="max-height: 350px; width: auto;"/>
 	    </div>   
-      <p class="example-instruction-text">&nbsp;</p>
+      <p class="example-instruction-text">Your rules are now saved</p>
     </div>
     <form id="jspsych-survey-text-form" autocomplete="off">
       <div class="form-row">
@@ -236,7 +236,8 @@ let trialText = {
 
 
 			<div id="fixed-height-div">
-				<p id='replaceable-text'>There are example answers for this problem.<br />
+				<p id='replaceable-text'>While your responses are fixed,<br />
+				there are example answers for this problem.<br />
 				See the instructions on the right for how to reveal them.</p>
 				<div id="example-rules-div"></div>
 			</div>
@@ -290,7 +291,7 @@ let trialText = {
       'A':'space',
       'B':'no space',
       "capt": `This example is a bad rule pair`,
-      "note": `A failing example pair. B isn't true in this example. And even if A is true. That's not enough on its own. Both must be true.`
+      "note": `A poor rule pair. B isn't specific enough in this example. And though A is true, that's not enough on its own. Both must be true.`
     }   
   }
 	,

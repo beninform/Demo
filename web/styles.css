@@ -340,6 +340,7 @@
 .example-rules-area {
     font-size: 18px;
     font-family: monospace;
+    padding: 4px;
 }
 
 #example-problem-guidance-2 {
@@ -695,10 +696,12 @@
 
 #input-0 {
     font-size: 18px;
+    padding: 4px;
 }
 
 #input-1 {
 	font-size: 18px;
+    padding: 4px;
 }
 
 
