@@ -78,7 +78,7 @@ function testImgLoading(task_number) {
                 console.log('success loading img, task', task_number);
             } else if (event.type=='error') {
                 console.log(event.type, 'for task', task_number);
-                continueBtn.click():
+                continueBtn.click();
             }
         } else {
             console.log('event undefined in handler, task', task_number);
