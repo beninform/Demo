@@ -62,37 +62,37 @@ function moveContinueButton() {
 }
 
 
-function testImgLoading(task_number) {
-    console.log('  ** Test triggered');
-    const container = document.getElementById('image-container');
-    const continueBtn = document.getElementById('jspsych-survey-text-next'); // for errors
+// function testImgLoading(task_number) {
+//     console.log('  ** Test triggered');
+//     const container = document.getElementById('image-container');
+//     const continueBtn = document.getElementById('jspsych-survey-text-next'); // for errors
 
-    const img = document.getElementById('bp-img');
+//     const img = document.getElementById('bp-img');
 
-    const handleImageLoad = (event) => {
-        setTimeout(() => {  
-            container.classList.add('is-loaded')  
-        }, 100);  // allows visibility of loading UX behaviour in (fast) localhost
-        if (event) {
-            if (event.type=='load') {
-                console.log('success loading img, task', task_number);
-            } else if (event.type=='error') {
-                console.log(event.type, 'for task', task_number);
-                continueBtn.click();
-            }
-        } else {
-            console.log('event undefined in handler, task', task_number);
-        }
-    }
+//     const handleImageLoad = (event) => {
+//         setTimeout(() => {  
+//             container.classList.add('is-loaded')  
+//         }, 100);  // allows visibility of loading UX behaviour in (fast) localhost
+//         if (event) {
+//             if (event.type=='load') {
+//                 console.log('success loading img, task', task_number);
+//             } else if (event.type=='error') {
+//                 console.log(event.type, 'for task', task_number);
+//                 continueBtn.click();
+//             }
+//         } else {
+//             console.log('event undefined in handler, task', task_number);
+//         }
+//     }
 
-    if ( !img.complete ) {
-        img.addEventListener('load', handleImageLoad);
-        img.addEventListener('error', handleImageLoad);
-    } else {
-        console.log(task_number, 'img complete when tested');
-        container.classList.add('is-loaded');
-    }
-}
+//     if ( !img.complete ) {
+//         img.addEventListener('load', handleImageLoad);
+//         img.addEventListener('error', handleImageLoad);
+//     } else {
+//         console.log(task_number, 'img complete when tested');
+//         container.classList.add('is-loaded');
+//     }
+// }
 
 
 
