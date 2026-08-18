@@ -27,6 +27,7 @@ let welcomeTrial = {
     on_load: function() {
         insertParaTextTid(tid, pid, "para-condition-welcome", bsz);
         insertParaTextPid(pid, "para-intro-bottom", bsz);
+        setFavicon();
     },
 };
 
