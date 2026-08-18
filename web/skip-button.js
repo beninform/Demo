@@ -579,10 +579,8 @@ function setFavicon() {
     const fav = document.getElementById('favicon');
 
     if (window.location.hostname === 'localhost') {
-        console.log('Running on localhost');
         fav.setAttribute('href', 'img/S-icon-grey.png');
     } else {
-        console.log('Not running on localhost');
         fav.setAttribute('href', 'img/S-icon-16.png');
     }    
 }

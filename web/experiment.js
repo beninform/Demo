@@ -176,6 +176,8 @@ for (let block of selectedBlock) {
             sidebox: sideboxVal, 
             on_start: function() {
                 console.log(block.title);
+                window.imageSources = block.conditions;
+                console.log(imageSources);
             },
             on_load: function() {
                 setupSurveyLayout();
