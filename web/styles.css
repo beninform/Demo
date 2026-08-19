@@ -226,6 +226,7 @@
 .eg-tab-content {
     padding: 8px;
     /*min-height: 200px;*/
+    height: 600px;
 }
 
 
