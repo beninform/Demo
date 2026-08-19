@@ -31,5 +31,3 @@ let blocks = [
         ID: 3
     }
 ];
-
-console.log('imgnos_b', imgnos_b);

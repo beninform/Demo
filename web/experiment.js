@@ -108,8 +108,8 @@ let exampleTrial2 = {
 };
 timeline.push(exampleTrial2);
 
-// // truncate the timeline so it starts only with the core trials
-// timeline = [];
+// truncate the timeline so it starts only with the core trials
+timeline = [];
 
 
 // iterate the current array of blocks (called selectedBlock), show an intro, then get into the BPs
