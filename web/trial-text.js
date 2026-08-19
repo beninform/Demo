@@ -259,7 +259,7 @@ let trialText = {
       <p id="example-problem-guidance-6"></p>
     </div>
     <div id="table-container" class="table-container hidden" style="margin-top: 0px;">
-      <h3>Candidate Rules</h3>
+      <h3>AI-Generated Candidate Rules</h3>
     </div>
   </div>
 </div>
@@ -285,7 +285,7 @@ let trialText = {
       "A": "zero shapes present",
       "B": "odd number of shapes present",
       "capt": `This example is a bad rule pair`,
-      "note": `An incorrect example for the problem. While A is true, B isn't. There are figures with an even number of shapes in B. Both A and B must be true.`
+      "note": `Incorrect for this problem. While A is true, B isn't. There are figures with an even number of shapes in B. Both A and B must be true.`
     },
     "4":
     {
@@ -315,8 +315,8 @@ let trialText = {
 		</div>
 	`,
 	helpButtonText_ncr:`
-	    <button type="button" class="help-btn" id="help-toggle-btn">?</button>
-            <div class="help-popup hidden" id="help-popup-box">
+	    <!--button type="button" class="help-btn" id="help-toggle-btn">?</button>
+            <div class="help-popup hidden" id="help-popup-box"-->
 				<p>Type each of your rules into the appropriate answer box. </p>
 				<p>The page shows a ‘time remaining’ countdown timer. 
 				This allows you two and a half minutes for each problem. 
@@ -326,11 +326,11 @@ let trialText = {
 				You can skip if you are really stuck. But you are encouraged not to skip problems. 
 				The skip button will only be available after the first ten seconds, so you should try to answer. 
 				In any event, you will not be able to skip more than three problems.</p>
-		</div>
+		<!-- /div -->
 	`,
 	helpButtonText_wcr:`
-	    <button type="button" class="help-btn" id="help-toggle-btn">?</button>
-		<div class="help-popup hidden" id="help-popup-box">
+	    <!--button type="button" class="help-btn" id="help-toggle-btn">?</button>
+		<div class="help-popup hidden" id="help-popup-box" -->
 				<p>Complete each answer box. You cannot drag and drop any text from the candidate rules list. 
 				You must enter each of your rules into the appropriate box. 
 				You can click-to-copy and paste a candidate rule - or type your own. Some candidate rules have further explanation
@@ -343,7 +343,7 @@ let trialText = {
 				You can skip if you are really stuck. But you are encouraged not to skip problems. 
 				The skip button will only be available after the first ten seconds, so you should try to answer. 
 				In any event, you will not be able to skip more than three problems.</p>
-		</div>
+		<!--/div-->
 	`,
 	timeoutPopup: `
 		<div class="timeout-popup-overlay">

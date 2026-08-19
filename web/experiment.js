@@ -167,9 +167,10 @@ for (let block of selectedBlock) {
         let sideboxVal = null;
         if (tid === 'wcr') {  
             sideboxVal = imgno;   // switches candidate rules on (from querystring)
-            trialPreamble += trialText.helpButtonText_wcr;  // adds help button text for w candidate rules
-        } else {
-            trialPreamble += trialText.helpButtonText_ncr;  // adds help button text for no candidate rules
+            // trialPreamble += trialText.helpButtonText_wcr;  // adds help button text for w candidate rules
+        // } else {
+        //     const boo = 0;
+            // trialPreamble += trialText.helpButtonText_ncr;  // adds help button text for no candidate rules
         };
 
         // create the regular BP trial page using values set above
@@ -196,7 +197,7 @@ for (let block of selectedBlock) {
                 setupRightHandDiv(isExample=false, tid, imgno);
                 setupExampleTabs(false);  // is not example page
                 setupTrialButtons();   // function defined in skip-button.js
-                setupHelpButton();     // function defined in skip-button.js
+                setupHelpButton(tid);     // function defined in skip-button.js
                 setupFooter(trialText.contactEmailValue);
                 // testImgLoading(task_no); // now unused
 

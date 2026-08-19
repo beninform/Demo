@@ -407,9 +407,31 @@ function setupExampleTabs(isExample = true) {
 }
 
 // setup the help button and popup
-function setupHelpButton() {
-    const helpBtn = document.getElementById('help-toggle-btn');
-    const helpPopup = document.getElementById('help-popup-box');
+function setupHelpButton(tid) {
+    const outerWrapper = document.getElementById('outer-wrapper');
+
+    const helpBtn = document.createElement('button');
+    helpBtn.id = 'help-toggle-btn';
+    helpBtn.classList.add('help-btn');
+    helpBtn.innerText = '?';
+
+    const helpPopup = document.createElement('div');
+    helpPopup.id = 'help-popup-box';
+    helpPopup.classList.add('help-popup');
+    helpPopup.classList.add('hidden');
+
+    // NEEDS CONDITIONAL FOR WCR, TOO !!!
+    if (tid=='ncr') {
+        helpPopup.innerHTML = trialText.helpButtonText_ncr
+    } else {
+        helpPopup.innerHTML = trialText.helpButtonText_wcr
+    }
+
+    outerWrapper.appendChild(helpBtn);
+    outerWrapper.appendChild(helpPopup);
+
+    // const helpBtn = document.getElementById('help-toggle-btn');
+    // const helpPopup = document.getElementById('help-popup-box');
 
     helpBtn.addEventListener('click', (e) => {
         e.stopPropagation();

@@ -141,7 +141,8 @@ function setupRightHandDiv(isExample, tid, imgno) {
     tableContainer.classList.add("table-container");
 
     h3Element = document.createElement("h3");
-    h3Element.innerText = 'Candidate Rules';
+    h3Element.innerText = 'AI-Generated Candidate Rules';
+    
     tableContainer.prepend(h3Element);
 
     instructionsDivRH.append(tableContainer);

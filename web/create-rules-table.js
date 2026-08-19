@@ -20,7 +20,7 @@ function generateTable(bongProbNumber) {
     keys.forEach(key => {
         if ( ['A', 'B'].includes(key) ) {
             const th = document.createElement('th');
-            th.textContent = key;
+            th.textContent = 'AI rule for set '+key;
             headerRow.appendChild(th);
         }
     });
