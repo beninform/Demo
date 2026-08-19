@@ -188,6 +188,7 @@ for (let block of selectedBlock) {
             sidebox: sideboxVal, 
             on_start: function() {
                 preloadImages(block);
+                setFavicon();
             },
             on_load: function() {
                 setupSurveyLayout();
