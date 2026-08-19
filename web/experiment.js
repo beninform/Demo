@@ -26,7 +26,7 @@ let noticeTrial = {
     stimulus: trialText.noticeText,
     choices: ['Continue']
 };
-timeline.push(noticeTrial);
+// timeline.push(noticeTrial);
 
 let welcomeTrial = {
     type: jsPsychHtmlButtonResponse,

@@ -139,16 +139,12 @@ function startTimer() {
 
 // should run once per block
 function preloadImages(block) {
-    console.log(block.title);
     const imageNumbers = block.conditions[0];
     const imageFilenames = [];
     const imageSources = [];
 
     // iterate the block bps to generate filenames array
-    console.log('bsz', bsz);
-    let my_i = 0;
     imageNumbers.forEach(bpno => {
-        my_i += 1;
         // console.log('psh', psh);
         // console.log('bpno', bpno);
         // console.log('psh', psh);
@@ -176,9 +172,6 @@ function preloadImages(block) {
         const img = new Image();
         img.src = 'img/'+filename;
         imageSources.push(img);
-        if (my_i >= bsz) {
-            console.log('images may be loaded');
-        }
     })
     // window.imageSources = imageFilenames;
     window.imageSources = imageSources;
