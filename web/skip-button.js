@@ -205,7 +205,12 @@ function loadSurveyQuestionImage(block, imgno) {
     setTimeout(() => {
         imgEl.src = imageUrl.src
         imgEl.style.display = "block";   
-        startTimer(); 
+        if (imgEl.complete) {
+            startTimer();             
+        } else {
+            imgEl.addEventListener('load', startTimer);
+        }
+
     }, 400);
 }
 
