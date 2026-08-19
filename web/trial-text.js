@@ -181,7 +181,8 @@ let trialText = {
 		Look at some example answers
 		`,
 	exampleProblemGuidance1: `
-    This page won't tell you whether your rule pair was correct or not.  
+    This page won't tell you whether your rule pair was correct or not. 
+    Nor will it let you improve your example problem rules. 
     But here you can see some different example responses, each with an 
     explanation of how they're good or bad. 
 		`,
