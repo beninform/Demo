@@ -346,7 +346,7 @@ function setupExampleTabs(isExample = true) {
         tabHeader.className = 'tab-header';
 
         const btnInstr = document.createElement('button');
-        btnInstr.className = 'tab-btn';
+        btnInstr.className = 'tab-btn'; 
         btnInstr.innerText = 'Instructions';
         btnInstr.type = 'button'; 
         btnInstr.style.cursor = 'default'; 
@@ -362,7 +362,7 @@ function setupExampleTabs(isExample = true) {
         tabContent.appendChild(instr);
         instr.style.paddingTop = '0';
 
-        if (tid === 'wcr' && rulesTable) {
+        if (typeof tid !== 'undefined' && tid === 'wcr' && rulesTable) {
             btnInstr.style.cursor = 'pointer'; 
 
             const btnRules = document.createElement('button');
@@ -373,6 +373,27 @@ function setupExampleTabs(isExample = true) {
             tabHeader.appendChild(btnRules);
             tabContent.appendChild(rulesTable);
             rulesTable.style.marginTop = '0';
+            rulesTable.style.position = 'relative';
+
+            const heading = rulesTable.querySelector('h3');
+            
+            if (heading && !rulesTable.querySelector('.heading-tooltip-wrapper')) {
+                heading.outerHTML = `
+                    <div class="heading-tooltip-wrapper">
+                        ${heading.outerHTML}
+                        <span class="heading-tooltip">AI system responses when provided with the task and images</span>
+                    </div>
+                `;
+            }
+
+            if (!rulesTable.querySelector('.eu-label-wrapper')) {
+                rulesTable.insertAdjacentHTML('beforeend', `
+                    <div class="eu-label-wrapper">
+                        <img src="logos/eu_ai_label.png" alt="EU AI Label" class="eu-ai-img">
+                        <span class="eu-label-tooltip">AI generated</span>
+                    </div>
+                `);
+            }
 
             if (isExample) {
                 btnInstr.classList.add('active');
@@ -445,6 +466,19 @@ function setupHelpButton(tid) {
     document.addEventListener('click', () => {
         helpPopup.classList.add('hidden');
     });
+}
+
+// add credits to footer
+function addProblemCredits(creditName) {
+    const existingCredit = document.getElementById('problem-credit-footer');
+    if (existingCredit) existingCredit.remove();
+
+    const creditHTML = trialText.problemCreditTemplate.replace('%%CREDIT%%', creditName);
+
+    const contentArea = document.querySelector('.jspsych-content');
+    if (contentArea) {
+        contentArea.insertAdjacentHTML('beforeend', creditHTML);
+    }
 }
 
 // insert variable text 1 on welcome page
