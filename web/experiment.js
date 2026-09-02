@@ -36,6 +36,7 @@ let welcomeTrial = {
         insertParaTextTid(tid, pid, "para-condition-welcome", bsz);
         insertParaTextPid(pid, "para-intro-bottom", bsz);
         setFavicon();
+        addProblemCredits('Lewis');
     },
 };
 
@@ -70,7 +71,7 @@ let exampleTrial = {
         setupInstructionMC();
         setupExampleTabs(true);
         testImgLoading('example img');
-
+        addProblemCredits('Bongard');
     },
     on_finish: function() {
         let responseObj = jsPsych.data.get().last(1).trials[0].response;
@@ -104,6 +105,7 @@ let exampleTrial2 = {
         generateTable(1);  // candidate rules table
         setupExampleTabs(true);  // candidate rules tabs
         testImgLoading('example 2 img');
+        addProblemCredits('Bongard');
     }
 };
 timeline.push(exampleTrial2);
@@ -200,7 +202,7 @@ for (let block of selectedBlock) {
                 setupHelpButton(tid);     // function defined in skip-button.js
                 setupFooter(trialText.contactEmailValue);
                 // testImgLoading(task_no); // now unused
-
+                addProblemCredits('Bongard');
             },
             on_finish: handleTrialFinish
         }
