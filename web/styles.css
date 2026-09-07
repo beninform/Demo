@@ -225,11 +225,8 @@
 
 .eg-tab-content {
     padding: 8px;
-    /*min-height: 200px;*/
-    height: 600px;
+    min-height: 600px;
 }
-
-
 
 .tab-container {
     border: 1px solid #ccc;
@@ -262,7 +259,7 @@
 
 .tab-content {
     padding: 20px;
-    height: 620px;
+    min-height: 600px;
     width: 533px;
 }
 
@@ -814,9 +811,10 @@ h3 {
 .ToolTip {
     visibility: hidden;
     width: 260px;
+    line-height: 1;
     font-size: 10pt;
     position: absolute; 
-    top: 90%;
+    top: 70%;
     left: 20px;
     z-index: 100;
     border: 1px solid #ced4da;
