@@ -21,7 +21,7 @@ let userResponseA = '';  // global variable for last A response
 let userResponseB = '';  // global variable for last B response
 
 
-let noticeTrial = {
+let noticeTrial = {  // NOTIFICATION WARNING - ONLY USED WHEN DEV CHANGES AFFECT PROD SITE
     type: jsPsychHtmlButtonResponse,
     stimulus: trialText.noticeText,
     choices: ['Continue']
@@ -52,7 +52,7 @@ let instructionTrial = {
 };
 timeline.push(instructionTrial);
 
-let exampleTrial = {
+let exampleTrial = {  // EXAMPLE PAGE 1/2 - ALLOW USER TO ENTER ANSWER
     type: jsPsychSurveyText,
     preamble: trialText.exampleProblem,
     questions: [
@@ -61,7 +61,7 @@ let exampleTrial = {
     ],
     data: {
         collect: true, 
-        imagenr: '0001',
+        imagenr: '1022',
         blockId: 'Part 0',
     },
     sidebox: 1, 
@@ -71,7 +71,7 @@ let exampleTrial = {
         setupInstructionMC();
         setupExampleTabs(true);
         testImgLoading('example img');
-        addProblemCredits('Bongard');
+        addProblemCredits('after Aaron David Fairbanks');
     },
     on_finish: function() {
         let responseObj = jsPsych.data.get().last(1).trials[0].response;
@@ -82,7 +82,7 @@ let exampleTrial = {
 };
 timeline.push(exampleTrial);
 
-let exampleTrial2 = {
+let exampleTrial2 = {  // EXAMPLE PAGE 2/2 - LOOK AT EXAMPLE ANSWERS ALONGSIDE THOSE OF THE USER (NOT EVALUATING THE USER'S)
     type: jsPsychHtmlButtonResponse,
     stimulus: pid == 'pib' ? trialText.exampleExplanationPIA : trialText.exampleExplanationPIA,
     choices: ['Continue'],
@@ -105,7 +105,7 @@ let exampleTrial2 = {
         generateTable(1);  // candidate rules table
         setupExampleTabs(true);  // candidate rules tabs
         testImgLoading('example 2 img');
-        addProblemCredits('Bongard');
+        addProblemCredits('after Aaron David Fairbanks');
     }
 };
 timeline.push(exampleTrial2);

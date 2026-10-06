@@ -134,7 +134,7 @@ let trialText = {
 		</div>
 		<div id="image-container" class="image-container">
 			<div id="pls-wait" class="pls-wait">Image loading...</div>
-			<img id='bp-img' class="bp-img" src="img/p0001.png" alt="a visual logic problem" style="max-height: 350px; width: auto;"/>
+			<img id='bp-img' class="bp-img" src="img/p1022.png" alt="a visual logic problem" style="max-height: 350px; width: auto;"/>
 		</div>   
 		<p class="example-instruction-text">Write your answers in the boxes.</p>
     `,
@@ -222,7 +222,7 @@ let trialText = {
 					</div>
 					<div id="image-container" class="image-container">
 						<div id="pls-wait" class="pls-wait">Image loading...</div>
-						<img id='bp-img' class="bp-img" src="img/p0001.png" alt="a visual logic problem" style="max-height: 350px; width: auto;"/>
+						<img id='bp-img' class="bp-img" src="img/p1022.png" alt="a visual logic problem" style="max-height: 350px; width: auto;"/>
 					</div>   
 					<p class="example-instruction-text">Your rules are now saved</p>
 				</div>
@@ -267,7 +267,7 @@ let trialText = {
 			</div>
 		</div>
 	`,
-	exampleRulesArray:
+	exampleRulesArray_old:
   {
     "1":
     {
@@ -299,6 +299,38 @@ let trialText = {
     }   
   }
 	,
+	exampleRulesArray:
+  {
+    "1":
+    {
+      "A": "contains at least one shape enclosed by another",
+      "B": "contains no shapes enclosed by another",
+      "capt": `This example is a good rule pair`,
+      "note": `This example is a correct response. Rule A is true of each figure in set A. And rule B is true of each figure in set B.`
+    },
+    "2":
+    {
+      'A':'nested',
+      'B':'not nested',
+      "capt": `This example is a good rule pair`,
+      "note": `A correct example response that's also concise. Rule A is true of each figure in set A. And rule B is true of each figure in set B.`
+    },
+    "3":
+  {
+      "A": "at least two shapes present",
+      "B": "only one shape present",
+      "capt": `This example is a bad rule pair`,
+      "note": `Incorrect for this problem. While A is true, B isn't. There are figures with more than one shape in B. Both A and B must be true.`
+    },
+    "4":
+    {
+      'A':'shapes inside shapes',
+      'B':'no shapes inside shapes',
+      "capt": `This example is a bad rule pair`,
+      "note": `A poor rule pair. B isn't specific enough in this example. And though A is true, that's not enough on its own. Both must be true.`
+    }   
+  }
+	,	
 	exampleExplanationPIB: `
 			<p>example explanation of the example problem (pib)</p>
 			<p id="example-problem-guidance-1"></p>
