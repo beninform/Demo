@@ -71,7 +71,7 @@ let exampleTrial = {  // EXAMPLE PAGE 1/2 - ALLOW USER TO ENTER ANSWER
         setupInstructionMC();
         setupExampleTabs(true);
         testImgLoading('example img');
-        addProblemCredits('after Aaron David Fairbanks');
+        addProblemCredits('after Fairbanks');
     },
     on_finish: function() {
         let responseObj = jsPsych.data.get().last(1).trials[0].response;
@@ -105,7 +105,7 @@ let exampleTrial2 = {  // EXAMPLE PAGE 2/2 - LOOK AT EXAMPLE ANSWERS ALONGSIDE T
         generateTable(1);  // candidate rules table
         setupExampleTabs(true);  // candidate rules tabs
         testImgLoading('example 2 img');
-        addProblemCredits('after Aaron David Fairbanks');
+        addProblemCredits('after Fairbanks');
     }
 };
 timeline.push(exampleTrial2);
