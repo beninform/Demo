@@ -100,9 +100,9 @@ function setupInstructionMC() {
 }
 
 
-
 function updateCountdownDisplay() {
     const countdownDisplay = document.getElementById('trial-countdown');
+    if (!countdownDisplay) return;
     const mins = String(Math.floor(totalTrialTime / 60)).padStart(2, '0');
     const secs = String(totalTrialTime % 60).padStart(2, '0');
     countdownDisplay.innerText = `${mins}:${secs}`;
@@ -110,25 +110,39 @@ function updateCountdownDisplay() {
 
 
 function startTimer() {
-    const countdownDisplay = document.getElementById('trial-countdown');
     if (!window.isTrialActive) return;
+
+    clearInterval(window.trialTimer);
+
     const startTime = Date.now();
     const skipBtn = document.getElementById('skip-btn');
+
+    totalTrialTime = startTotalTime;
+    skipLockTime = startSkipLock;
+    updateCountdownDisplay();
+    
+    if (skipBtn) {
+        skipBtn.disabled = skipLockTime > 0;
+        skipBtn.innerText = skipLockTime > 0 ? `Skip (${skipLockTime}s)` : 'Skip';
+    }
+
     window.trialTimer = setInterval(() => {
-        if (!window.isTrialActive || !document.getElementById('trial-countdown')) {
+        if (!window.isTrialActive) {
             clearInterval(window.trialTimer);
             return;
         }
+
         const secondsElapsed = Math.floor((Date.now() - startTime) / 1000);
         skipLockTime = Math.max(0, startSkipLock - secondsElapsed);
         totalTrialTime = Math.max(0, startTotalTime - secondsElapsed);
-        if (skipLockTime > 0) {
-            skipBtn.innerText = `Skip (${skipLockTime}s)`;
-        } else {
-            skipBtn.disabled = false;
-            skipBtn.innerText = 'Skip';
+
+        if (skipBtn) {
+            skipBtn.disabled = skipLockTime > 0;
+            skipBtn.innerText = skipLockTime > 0 ? `Skip (${skipLockTime}s)` : 'Skip';
         }
+
         updateCountdownDisplay();
+
         if (totalTrialTime <= 0) {
             clearInterval(window.trialTimer);
             handleTimeout();
@@ -209,7 +223,7 @@ function loadSurveyQuestionImage(block, imgno) {
 
 
 // setup continue and skip buttons 
-function setupTrialButtons() {
+function setupTrialButtons() {    
     window.isTrialActive = true;
     const continueBtn = document.getElementById('jspsych-survey-text-next');
     const textAreas = document.querySelectorAll('textarea');

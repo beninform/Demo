@@ -1,4 +1,3 @@
-
 let uid = urlParams.get('uid') || 'PROLIFIC_ID'; 
 let tid = urlParams.get('tid') || 'ncr';
 let pid = urlParams.get('pid') || 'pia';
