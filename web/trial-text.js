@@ -134,7 +134,7 @@ let trialText = {
 		</div>
 		<div id="image-container" class="image-container">
 			<div id="pls-wait" class="pls-wait">Image loading...</div>
-			<img id='bp-img' class="bp-img" src="img/p1022.png" alt="a visual logic problem" style="max-height: 350px; width: auto;"/>
+			<img id='bp-img' class="bp-img" src="img/p1022.png" alt="Problem is loading..." style="max-height: 350px; width: auto;"/>
 		</div>   
 		<p class="example-instruction-text">Write your answers in the boxes.</p>
     `,
@@ -222,7 +222,7 @@ let trialText = {
 					</div>
 					<div id="image-container" class="image-container">
 						<div id="pls-wait" class="pls-wait">Image loading...</div>
-						<img id='bp-img' class="bp-img" src="img/p1022.png" alt="a visual logic problem" style="max-height: 350px; width: auto;"/>
+						<img id='bp-img' class="bp-img" src="img/p1022.png" alt="Problem is loading..." style="max-height: 350px; width: auto;"/>
 					</div>   
 					<p class="example-instruction-text">Your rules are now saved</p>
 				</div>

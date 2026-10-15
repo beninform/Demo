@@ -214,8 +214,8 @@ function setupTrialButtons() {
     const continueBtn = document.getElementById('jspsych-survey-text-next');
     const textAreas = document.querySelectorAll('textarea');
     const countdownDisplay = document.getElementById('trial-countdown');
-    // const bpImg = document.querySelector('.bp-img');
-    const bpImg = document.querySelector('.pimg');
+    const bpImg = document.querySelector('.bp-img');
+    // const bpImg = document.querySelector('.pimg');
 
     continueBtn.value = 'Submit';
 
@@ -250,6 +250,20 @@ function setupTrialButtons() {
 
     updateCountdownDisplay();
     checkTextRequirement();
+
+    if (bpImg) {
+        if (bpImg.complete) {
+            if (bpImg.naturalHeight !== 0) {
+                startTimer();
+            }
+        } else {
+            bpImg.addEventListener('load', startTimer);
+            
+            bpImg.addEventListener('error', () => {
+                console.warn('Image could not be loaded. Timer paused.');
+            });
+        }
+    }
 
     continueBtn.addEventListener('click', () => {
         clearInterval(window.trialTimer);

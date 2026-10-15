@@ -160,11 +160,9 @@ for (let block of selectedBlock) {
             <h3>Task ${task_no}</h3>
             ${trialText.LabelsText}
             <div id="image-container" class="image-container">
-                <!-- div id="pls-wait" class="pls-wait">Image loading...</div>
-                <img id='bp-img' class="bp-img" src="img/p${imgstr}.png" alt="a visual logic problem" style="max-height: 350px; width: auto;"/>
-                <img id='bp-img' class="bp-img" src="img/p${imgstr}.png" alt="a visual logic problem" style="max-height: 350px; width: auto;"/ -->
+                <img id='bp-img' class="bp-img" src="img/p${imgstr}.png" alt="Problem is loading..." style="max-height: 350px; width: auto;"/>
             </div>        
-            `;
+        `;
 
         let sideboxVal = null;
         if (tid === 'wcr') {  
@@ -195,7 +193,7 @@ for (let block of selectedBlock) {
             },
             on_load: function() {
                 setupSurveyLayout();
-                loadSurveyQuestionImage(block, imgno);
+                // loadSurveyQuestionImage(block, imgno);
                 setupRightHandDiv(isExample=false, tid, imgno);
                 setupExampleTabs(false);  // is not example page
                 setupTrialButtons();   // function defined in skip-button.js
