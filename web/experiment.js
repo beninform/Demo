@@ -67,6 +67,7 @@ let instructionTrial = {
 };
 timeline.push(instructionTrial);
 
+let tmStamp = new Date().toISOString();
 let exampleTrial = {  // EXAMPLE PAGE 1/2 - ALLOW USER TO ENTER ANSWER
     type: jsPsychSurveyText,
     preamble: trialText.exampleProblem,
@@ -78,6 +79,7 @@ let exampleTrial = {  // EXAMPLE PAGE 1/2 - ALLOW USER TO ENTER ANSWER
         collect: true, 
         imagenr: '1022',
         blockId: 'Part 0',
+        timstmp: tmStamp,
     },
     sidebox: 1, 
     on_load: function() {
