@@ -1,7 +1,7 @@
 function finalizeSession(status = 'NORMAL') {
     let prefix = uid + '_' + tid + '_' + pid;
     let dataPipeExperimentId = 'AaShxzFjskGS';
-    let forceOSFSave = false;
+    let forceOSFSave = true;
 
     // Filter and retrieve results as CSV data
     let results = jsPsych.data
