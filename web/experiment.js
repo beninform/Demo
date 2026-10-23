@@ -167,6 +167,7 @@ for (let block of selectedBlock) {
         let imagenostr = '000'+imgno;
         let imgstr = imagenostr.slice(-4);  // trim the zero-padded string to 4 chars
         let task_no = imgno-1;
+        let tmStamp = new Date().toISOString();
 
         let trialPreamble = `
             <div class="trial-countdown-wrapper">
@@ -200,6 +201,7 @@ for (let block of selectedBlock) {
                 collect: true, // flag whether we want to collect to csv
                 imagenr: imgstr,
                 blockId: block.title,
+                timstmp: tmStamp,
             },
             sidebox: sideboxVal, 
             on_start: function() {
