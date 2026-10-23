@@ -78,7 +78,7 @@ let exampleTrial = {  // EXAMPLE PAGE 1/2 - ALLOW USER TO ENTER ANSWER
     data: {
         collect: true, 
         imagenr: '1022',
-        blockId: 'Part 0',
+        blockId: 'Session 0',
         timstmp: tmStamp,
     },
     sidebox: 1, 
