@@ -17,7 +17,7 @@ const jsPsych = initJsPsych({
 });
 
 // const subject_id = jsPsych.randomization.randomID(10);
-const subject_id = 'boo'+uid+tid+pid+'boo';
+const subject_id = `${uid}_${tid}_${pid}`;
 
 
 let timeline = [];
