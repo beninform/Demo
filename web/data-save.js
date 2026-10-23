@@ -2,7 +2,7 @@ function finalizeSession(status = 'NORMAL') {
     let prefix = uid + '_' + tid + '_' + pid;
     // let dataPipeExperimentId = 'AaShxzFjskGS';
     let dataPipeExperimentId = '9UUycVOaXVFx';
-    let forceOSFSave = true;
+    let forceOSFSave = false;
 
     // Filter and retrieve results as CSV data
     let results = jsPsych.data
