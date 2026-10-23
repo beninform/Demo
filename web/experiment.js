@@ -17,8 +17,8 @@ const jsPsych = initJsPsych({
 });
 
 // const subject_id = jsPsych.randomization.randomID(10);
-let tmStamp = new Date().toISOString();
-const subject_id = `${uid}_${tid}_${pid}_${tmStamp}`;
+let tmStamp1 = new Date().toISOString();
+const subject_id = `${uid}_${tid}_${pid}_${tmStamp1}`;
 
 
 let timeline = [];
@@ -68,7 +68,7 @@ let instructionTrial = {
 };
 timeline.push(instructionTrial);
 
-let tmStamp = new Date().toISOString();
+let tmStamp2 = new Date().toISOString();
 let exampleTrial = {  // EXAMPLE PAGE 1/2 - ALLOW USER TO ENTER ANSWER
     type: jsPsychSurveyText,
     preamble: trialText.exampleProblem,
@@ -80,7 +80,7 @@ let exampleTrial = {  // EXAMPLE PAGE 1/2 - ALLOW USER TO ENTER ANSWER
         collect: true, 
         imagenr: '1022',
         blockId: 'Session 0',
-        timstmp: tmStamp,
+        timstmp: tmStamp2,
     },
     sidebox: 1, 
     on_load: function() {
@@ -170,7 +170,7 @@ for (let block of selectedBlock) {
         let imagenostr = '000'+imgno;
         let imgstr = imagenostr.slice(-4);  // trim the zero-padded string to 4 chars
         let task_no = imgno-1;
-        let tmStamp = new Date().toISOString();
+        let tmStamp3 = new Date().toISOString();
 
         let trialPreamble = `
             <div class="trial-countdown-wrapper">
@@ -204,7 +204,7 @@ for (let block of selectedBlock) {
                 collect: true, // flag whether we want to collect to csv
                 imagenr: imgstr,
                 blockId: block.title,
-                timstmp: tmStamp,
+                timstmp: tmStamp3,
             },
             sidebox: sideboxVal, 
             on_start: function() {
