@@ -2,23 +2,23 @@ let uid = urlParams.get('uid') || 'PROLIFIC_ID';
 let tid = urlParams.get('tid') || 'ncr';
 let pid = urlParams.get('pid') || 'pia';
 
-let jsPsych = initJsPsych();
+// let jsPsych = initJsPsych();
 
-// const jsPsych = initJsPsych({
-//   extensions: [
-//     {
-//       type: jsPsychExtensionPipe,
-//       params: {
-//         experiment_id: "AaShxzFjskGS",
-//         filename: () => `${subject_id}.csv`
-//       }
-//     }
-//   ]
-// });
+const jsPsych = initJsPsych({
+  extensions: [
+    {
+      type: jsPsychExtensionPipe,
+      params: {
+        experiment_id: "AaShxzFjskGS",
+        filename: () => `${subject_id}.csv`
+      }
+    }
+  ]
+});
 
-// // const subject_id = jsPsych.randomization.randomID(10);
-// let tmStamp1 = new Date().toISOString();
-// const subject_id = `${uid}_${tid}_${pid}_${tmStamp1}`;
+// const subject_id = jsPsych.randomization.randomID(10);
+let tmStamp1 = new Date().toISOString();
+const subject_id = `${uid}_${tid}_${pid}_${tmStamp1}`;
 
 
 let timeline = [];
