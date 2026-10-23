@@ -9,7 +9,8 @@ const jsPsych = initJsPsych({
     {
       type: jsPsychExtensionPipe,
       params: {
-        experiment_id: "AaShxzFjskGS",
+        // experiment_id: "AaShxzFjskGS",
+        experiment_id: "9UUycVOaXVFx",
         filename: () => `${subject_id}.csv`
       }
     }
