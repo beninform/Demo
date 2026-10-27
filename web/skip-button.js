@@ -227,9 +227,8 @@ function setupTrialButtons() {
     window.isTrialActive = true;
     const continueBtn = document.getElementById('jspsych-survey-text-next');
     const textAreas = document.querySelectorAll('textarea');
-    const countdownDisplay = document.getElementById('trial-countdown');
     const bpImg = document.querySelector('.bp-img');
-    // const bpImg = document.querySelector('.pimg');
+    const loadingMsg = document.getElementById('loading-msg');
 
     continueBtn.value = 'Submit';
 
@@ -262,19 +261,16 @@ function setupTrialButtons() {
         });
     });
 
-    updateCountdownDisplay();
     checkTextRequirement();
 
     if (bpImg) {
         if (bpImg.complete) {
-            if (bpImg.naturalHeight !== 0) {
-                startTimer();
-            }
+            if (loadingMsg) loadingMsg.style.display = 'none';
+            startTimer();
         } else {
-            bpImg.addEventListener('load', startTimer);
-            
-            bpImg.addEventListener('error', () => {
-                console.warn('Image could not be loaded. Timer paused.');
+            bpImg.addEventListener('load', () => {
+                if (loadingMsg) loadingMsg.style.display = 'none';
+                startTimer();
             });
         }
     }

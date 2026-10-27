@@ -180,6 +180,7 @@ for (let block of selectedBlock) {
             <h3>Task ${task_no}</h3>
             ${trialText.LabelsText}
             <div id="image-container" class="image-container">
+                <p id="loading-msg">Problem is loading...</p>
                 <img id='bp-img' class="bp-img" src="img/p${imgstr}.png" alt="Problem is loading..." style="max-height: 350px; width: auto;"/>
             </div>        
         `;
