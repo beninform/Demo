@@ -13,7 +13,9 @@ const jsPsych = initJsPsych({
         // experiment_id: "9UUycVOaXVFx",  // logic26a
         // experiment_id: "kPS51QoNHFLJ",  // logic26b
         // experiment_id: "zhl04UKve4wU",  // logic26f
-        experiment_id: "ycyhZHPCYXgP",  // logic26g
+        // experiment_id: "ycyhZHPCYXgP",  // logic26g
+        experiment_id: "NFq34fbbst7b",  // logic26h
+
         filename: () => `${subject_id}.csv`
       }
     }
