@@ -99,13 +99,14 @@ function setupInstructionMC() {
     });
 }
 
-
+let timerValue = '00:00';
 function updateCountdownDisplay() {
     const countdownDisplay = document.getElementById('trial-countdown');
     if (!countdownDisplay) return;
     const mins = String(Math.floor(totalTrialTime / 60)).padStart(2, '0');
     const secs = String(totalTrialTime % 60).padStart(2, '0');
-    countdownDisplay.innerText = `${mins}:${secs}`;
+    timerValue = `${mins}:${secs}`;
+    countdownDisplay.innerText = timerValue;
 }
 
 
@@ -277,6 +278,7 @@ function setupTrialButtons() {
 
     continueBtn.addEventListener('click', () => {
         clearInterval(window.trialTimer);
+        console.log('timerValue', timerValue);
     });
 
     skipBtn.addEventListener('click', () => {
@@ -600,13 +602,13 @@ function handleTrialFinish(data) {
     let currentTimeouts = window.numTimeouts || 0;
 
     if (window.skippedTrial) {
-        data.trial_status = 'Skipped';
+        data.trial_status = 'Skipped '+timerValue;
         window.skippedTrial = false;
     } else if (window.timeoutTrial) {
         data.trial_status = 'Timeout';
         window.timeoutTrial = false;
     } else {
-        data.trial_status = 'Completed';
+        data.trial_status = 'Completed '+timerValue;
     }
 
     data.num_skips = currentSkips;

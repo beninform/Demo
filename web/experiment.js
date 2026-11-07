@@ -15,7 +15,8 @@ const jsPsych = initJsPsych({
         // experiment_id: "zhl04UKve4wU",  // logic26f
         // experiment_id: "ycyhZHPCYXgP",  // logic26g
         // experiment_id: "NFq34fbbst7b",  // logic26h
-        experiment_id: "zIusAPVvkdOS",  // logic26i
+        // experiment_id: "zIusAPVvkdOS",  // logic26i
+        experiment_id: "mPkwNDdZ3gcb",  // logic26j
 
         filename: () => `${subject_id}.csv`
       }
@@ -213,6 +214,7 @@ for (let block of selectedBlock) {
                 imagenr: imgstr,
                 blockId: block.title,
                 timstmp: tmStamp3,
+                taskNum: task_no,
             },
             sidebox: sideboxVal, 
             on_start: function() {
