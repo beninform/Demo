@@ -1,5 +1,6 @@
 let skipLockTime = 10;
 let totalTrialTime = 150;  // 150
+let elapsedTrialTime = 0;
 
 const startSkipLock = skipLockTime;
 const startTotalTime = totalTrialTime;
@@ -134,6 +135,7 @@ function startTimer() {
         }
 
         const secondsElapsed = Math.floor((Date.now() - startTime) / 1000);
+        elapsedTrialTime = secondsElapsed;
         skipLockTime = Math.max(0, startSkipLock - secondsElapsed);
         totalTrialTime = Math.max(0, startTotalTime - secondsElapsed);
 
@@ -278,7 +280,8 @@ function setupTrialButtons() {
 
     continueBtn.addEventListener('click', () => {
         clearInterval(window.trialTimer);
-        console.log('timerValue', timerValue);
+        // console.log('timerValue', timerValue);
+        // console.log('elapsedTrialTime', elapsedTrialTime);
     });
 
     skipBtn.addEventListener('click', () => {
@@ -602,13 +605,13 @@ function handleTrialFinish(data) {
     let currentTimeouts = window.numTimeouts || 0;
 
     if (window.skippedTrial) {
-        data.trial_status = 'Skipped '+timerValue;
+        data.trial_status = `Skipped at ${elapsedTrialTime} sec`;
         window.skippedTrial = false;
     } else if (window.timeoutTrial) {
         data.trial_status = 'Timeout';
         window.timeoutTrial = false;
     } else {
-        data.trial_status = 'Completed '+timerValue;
+        data.trial_status = `Completed at ${elapsedTrialTime} sec`;
     }
 
     data.num_skips = currentSkips;

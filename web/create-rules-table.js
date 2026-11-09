@@ -85,7 +85,7 @@ function logCellText(element) {
     }
 
     const cleanText = clone.textContent.trim();
-    console.log(cleanText);
+    // console.log(cleanText);
 
     navigator.clipboard.writeText(cleanText);
 
