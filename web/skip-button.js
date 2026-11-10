@@ -605,13 +605,13 @@ function handleTrialFinish(data) {
     let currentTimeouts = window.numTimeouts || 0;
 
     if (window.skippedTrial) {
-        data.trial_status = `Skipped at ${elapsedTrialTime} sec`;
+        data.trial_status = `Skipped after ${elapsedTrialTime} sec`;
         window.skippedTrial = false;
     } else if (window.timeoutTrial) {
         data.trial_status = 'Timeout';
         window.timeoutTrial = false;
     } else {
-        data.trial_status = `Completed at ${elapsedTrialTime} sec`;
+        data.trial_status = `Completed in ${elapsedTrialTime} sec`;
     }
 
     data.num_skips = currentSkips;
