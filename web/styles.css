@@ -714,6 +714,7 @@ input[type=text]:focus {
     display: flex;
     justify-content: center;	
     max-width: 1200px;
+    height: 800px;
 }
 
 .instructions-div, .preamble-form-wrapper {
@@ -984,3 +985,25 @@ td:hover span.ToolTip{
   margin-bottom: 7px;
 }
 
+
+
+/* Hide the screen warning message on desktop and wider tablet screens by default */
+#screen-size-warning {
+  display: none;
+}
+
+/* Trigger when the screen is narrower than a standard iPad in landscape (1024px) */
+@media screen and (max-width: 1024px) {
+  #jspsych-target {
+    display: none;
+  }
+
+  #screen-size-warning {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+    text-align: center;
+  }
+}

@@ -5,6 +5,7 @@ let pid = urlParams.get('pid') || 'pia';
 // let jsPsych = initJsPsych();
 
 const jsPsych = initJsPsych({
+  display_element: 'jspsych-target',
   extensions: [
     {
       type: jsPsychExtensionPipe,
