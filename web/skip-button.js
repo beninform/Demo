@@ -708,7 +708,8 @@ function setupFooter(email_string) {
         const footerElement = document.createElement('footer');
         footerElement.classList.add('narrow-footer');
         footerElement.id = 'contact-footer';
-        document.body.appendChild(footerElement);
+        jspsychTarget = document.getElementById('jspsych-target');
+        jspsychTarget.appendChild(footerElement);
         footerElement.innerText = 'problems/feedback: ' + email_string; 
     }
 }
