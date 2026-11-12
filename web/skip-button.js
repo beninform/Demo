@@ -606,12 +606,15 @@ function handleTrialFinish(data) {
 
     if (window.skippedTrial) {
         data.trial_status = `Skipped after ${elapsedTrialTime} sec`;
+        data.trial_time = elapsedTrialTime;
         window.skippedTrial = false;
     } else if (window.timeoutTrial) {
         data.trial_status = 'Timeout';
+        data.trial_time = elapsedTrialTime;
         window.timeoutTrial = false;
     } else {
         data.trial_status = `Completed in ${elapsedTrialTime} sec`;
+        data.trial_time = elapsedTrialTime;
     }
 
     data.num_skips = currentSkips;
@@ -708,8 +711,8 @@ function setupFooter(email_string) {
         const footerElement = document.createElement('footer');
         footerElement.classList.add('narrow-footer');
         footerElement.id = 'contact-footer';
-        jspsychTarget = document.getElementById('jspsych-target');
-        jspsychTarget.appendChild(footerElement);
+        jspsychContent = document.getElementById('jspsych-content');
+        jspsychContent.appendChild(footerElement);
         footerElement.innerText = 'problems/feedback: ' + email_string; 
     }
 }
