@@ -64,6 +64,7 @@ let trialText = {
 			<p>Throughout this session, there will be one problem on each screen.</p>
 		    <p>You will have a maximum of 2.5 minutes for each problem. You can skip a problem if you're stuck. But you can only skip a maximum of three problems.</p>
 			<p id="para-instr-timing"></p>
+		  <p>It is important that you do not reload the page during the experiment as it will adversely affect data collection.</p>
 			<p>Your access to a second session is dependent on your progress in this session.</p>
 			<p>Before we start, we will show you a single example problem.</p>
 			<p>As with all the problems, you must enter an answer in each box to be able to continue.</p>
@@ -112,6 +113,7 @@ let trialText = {
 		    <p>You will have a maximum of 2.5 minutes for each problem. You can skip a problem if you're stuck. But you can only skip a maximum of three problems.</p>
 			<p id="para-instr-timing"></p>
 			<p>After the first part you will have the opportunity to take a short break.</p>
+		  <p>It is important that you do not reload the page during the experiment as it will adversely affect data collection.</p>
 			<p>Before we start, we will show you the example problem again, as a reminder of what to expect.</p>
 			<p>As with all the problems, you must enter an answer in each box to be able to continue.</p>
 		</div>
