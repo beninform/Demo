@@ -150,7 +150,8 @@ for (let block of selectedBlock) {
                 <div class="intro-text-container">
                 <h1>${block.title}</h1>
                 <p>You have completed the first part of this session. Thank you.</p> 
-                <p>You could now take a short break. But don‘t leave the page.</p> 
+                <p>You could now take a short break.</p> 
+                <p>But it is important that you do not reload the page as it will adversely affect data collection.</p>
                 <p>There are ${block.conditions[0].length} problems in this part.</p>
                 <p class="button-below-para-break">Click the button below when you are ready for the final part.</p>
                 </div>
